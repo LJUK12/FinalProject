@@ -55,7 +55,17 @@ public class PostController {
 
 		// +14 start
 
-		int endIdx = vo.getPostContent().indexOf(".jpg");
+		boolean jpg = vo.getPostContent().contains(".jpg");
+		boolean png = vo.getPostContent().contains(".png");
+		boolean gif = vo.getPostContent().contains(".gif");
+		int endIdx = 0; 
+		if(jpg) {
+			endIdx = vo.getPostContent().indexOf(".jpg");
+		}else if(png) {
+			endIdx = vo.getPostContent().indexOf(".png");
+		}else if(gif) {
+			endIdx = vo.getPostContent().indexOf(".gif");
+		}
 		System.out.println("endIdx = " + endIdx);
 
 		// + 4 end

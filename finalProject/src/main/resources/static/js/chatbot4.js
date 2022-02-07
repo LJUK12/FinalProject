@@ -107,7 +107,7 @@
 				$('#message').val('');	
 			},
 			error: function(e) {
-				alert("에러가 발생했습니다 : " + e);
+				
 			}
 		});
 	
@@ -194,7 +194,7 @@
 						
             },
             error:function(data){
-               alert("오류가 발생했습니다.");				
+             		
             }
        });
 	}
@@ -212,7 +212,7 @@
 				$('audio').hide();
             },
             error:function(data){
-               alert("에러 발생");				
+              			
             }
        });
 	}
