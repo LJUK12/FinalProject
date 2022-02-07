@@ -127,7 +127,6 @@
 												<div class="class-format2">${pt.postState}</div>
 												<p class="information">${pt.postTitle}</p>
 											</div>
-
 										</div>
 									</div>
 								</c:forEach>
