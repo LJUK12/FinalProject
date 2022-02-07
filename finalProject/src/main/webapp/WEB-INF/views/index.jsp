@@ -113,7 +113,6 @@
 								<c:forEach items="${postList}" var="pt" end="4">
 									<div>
 										<div class="class-card">
-
 											<a href="/post/detailViewPost/${pt.postNo}"> <img
 												src="/resource/photo_upload/${pt.postImg }" alt="top1"
 												class="class-image" />
