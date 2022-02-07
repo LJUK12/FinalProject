@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.finalProject.dao.IChatDAO">
+	<resultMap id="ChatResult" type="com.project.finalProject.model.ChatVO">
+		<result property="chatNo" column="chatNo" />
+		<result property="postNo" column="postNo" />
+		<result property="memNo" column="memNo" />
+		<result property="chatContent" column="chatContent" />
+		<result property="chatDate" column="chatDate" />
+	</resultMap>
+	
+	<!-- index 페이지에 전체 내용 출력 (최신순) -->
+  	<select id="listAllChat" parameterType="int" resultMap="ChatResult">
+  		SELECT * FROM chatting where postNo=#{postNo} ORDER BY chatNo DESC
+  	</select>
+	
+	
+	<!-- 게시글 작성  -->
+	<insert id="insertChat" parameterType="com.project.finalProject.model.ChatVO">
+		INSERT INTO chatting (chatNo,postNo,memNo,chatContent,chatDate)
+		VALUES (null,#{postNo},#{memNo},#{chatContent},#{chatDate})
+	</insert>
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.finalProject.dao.IMemberDAO">
+  
+	  <!-- 로그인 -->
+		<select id="loginCheck" parameterType="hashmap" resultType="com.project.finalProject.model.MemberVO">
+			SELECT * FROM member WHERE memId=#{id} and memPwd=#{pwd}
+		</select>
+		
+		<!-- ID 중복 확인 -->
+		<select id="memIdCheck" resultType="string" parameterType="string">
+			SELECT memId FROM member WHERE memId =#{memId}
+		</select>
+		
+		<!-- Email 중복 확인 -->
+		<select id="memEmailCheck" resultType="string" parameterType="string">
+			SELECT memEmail FROM member WHERE memEmail = #{email}
+		</select>
+		
+		<!-- 회원가입 -->
+		<insert id="memJoin" parameterType="com.project.finalProject.model.MemberVO">
+			INSERT INTO member(memId, memPwd, memName, memAddress1, memAddress2, memEmail, memPhone)
+			VALUES (#{memId}, #{memPwd}, #{memName}, #{memAddress1}, #{memAddress2}, #{memEmail}, #{memPhone})
+		</insert>
+		
+		<!-- 상품 상세 정보 조회  -->
+ 		<select id="profileInfo" parameterType="string" resultType="com.project.finalProject.model.MemberVO">
+ 			SELECT * FROM member WHERE memId=#{memId}  		
+ 		</select>
+ 		
+ 		<!-- 상품 정보 수정 : 수정된 정보 DB에 저장 (상품번호는 수정 안 함 : 기본키 변경 안 함) -->
+		<update id="updateProfile" parameterType="com.project.finalProject.model.MemberVO">
+ 			UPDATE member
+ 			SET memId=#{memId}, memPwd=#{memPwd}, memName=#{memName}, memAddress1=#{memAddress1}, memAddress2=#{memAddress2}, 
+ 			memEmail=#{memEmail}, memPhone=#{memPhone} 
+ 			WHERE memId=#{memId}
+ 		</update>
+  </mapper>
