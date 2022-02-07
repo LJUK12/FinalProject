@@ -212,15 +212,14 @@
 								<c:set var="postNum" value="0" />
 								<c:forEach items="${postList}" var="post">
 
-									<div class="class-card">
-
+									<div>
 										<div class="class-card">
-
 
 											<a href="/post/detailViewPost/${post.postNo}"> <img
 												src="/resource/photo_upload/${post.postImg }" alt="top1"
 												class="class-image" />
 											</a>
+
 										</div>
 										<div class="class-container">
 											<div class="class-skill">
@@ -231,9 +230,8 @@
 											</div>
 
 										</div>
-
-										</a>
 									</div>
+									
 									<c:set var="postNum" value="${postNum + 1}" />
 									<c:if test="${postNum eq 5}">
 										<c:set var="postNum" value="0" />

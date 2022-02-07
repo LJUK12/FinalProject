@@ -2,8 +2,7 @@
 		 pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.Date"%>
-<%@ page import="java.text.SimpleDateFormat"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +13,10 @@
 		<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
 	</head>
 	<body>
-		<!-- TOP  -->
+<!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
+		
+		<div id="mainIndexBox">
 		<div id="wrap">
 			
 				<br><br><br>
@@ -68,6 +69,7 @@
 	                </div>
 	            </article>	       
 			
+		</div>
 		</div>
 	</body>
 </html>

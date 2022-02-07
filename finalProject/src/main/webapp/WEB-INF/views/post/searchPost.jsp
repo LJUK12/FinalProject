@@ -27,8 +27,10 @@
                 	<c:forEach items="${postVO }" var="post">
                 		<div>
                             <div class="class-card">
-                            	<img src="/resource/photo_upload/${post.postImg }" alt="top1" class="class-image" />
-                                <a href="/post/detailViewPost/${post.postNo }" target="_blank"></a>
+                            <a href="/post/detailViewPost/${post.postNo}"> <img
+												src="/resource/photo_upload/${post.postImg }" alt="top1"
+												class="class-image" />
+											</a>
                             </div>
                             <div class="class-container">
 	                            <div class="class-skill">
