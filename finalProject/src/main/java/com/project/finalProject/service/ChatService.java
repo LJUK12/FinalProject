@@ -1,6 +1,7 @@
 package com.project.finalProject.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,10 +24,18 @@ public class ChatService implements IChatService {
 		return dao.listAllChat(postNo);
 	}
 
+
 	@Override
 	public void insertChat(ChatVO vo) {
+		// TODO Auto-generated method stub
 		dao.insertChat(vo);
-
 	}
 
+
+
+
+
+	
+
+	
 }

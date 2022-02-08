@@ -8,7 +8,7 @@ public class ChatVO {
 	private int postNo;
 	private int memNo;
 	private String chatContent;
-	private String chatDate;
+	private Date chatDate;
 	
 	
 	public int getChatNo() {
@@ -35,12 +35,14 @@ public class ChatVO {
 	public void setChatContent(String chatContent) {
 		this.chatContent = chatContent;
 	}
-	public String getChatDate() {
+	public Date getChatDate() {
 		return chatDate;
 	}
-	public void setChatDate(String chatDate) {
+	public void setChatDate(Date chatDate) {
 		this.chatDate = chatDate;
 	}
+	
+
 	
 	
 }

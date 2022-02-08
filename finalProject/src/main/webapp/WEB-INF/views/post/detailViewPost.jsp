@@ -2,7 +2,7 @@
 		 pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +11,7 @@
 		<title>Post</title>
 		<link href='/css/detailViewPost.css' rel="stylesheet" type="text/css">
 		<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
+		<script src="<c:url value='/js/insertchat2.js'/>"></script>
 	</head>
 	<body>
 <!-- TOP -->
@@ -37,7 +38,55 @@
 				<br><br>
 				
 				
-				<jsp:include page="/WEB-INF/views/post/chatting.jsp" flush='true' />
+			<article>
+			
+				<div id="hotItemsSection">
+	           	<h2>댓글</h2>
+	           	
+	           	<br><br>
+	          
+	           	<form id="Chatting">
+	           	
+	           	
+	           		${sessionScope.No}
+	        		${sessionScope.sid}
+	        		<input type="hidden" name="postNo" id="postNo" value="${post.postNo }">
+					<input type="hidden" name="memNo" id="memNo" value="${sessionScope.No}">	
+	        		<div>
+						<input type="text" id="chatContent" 
+						name="chatContent" placeholder="입력">
+					</div>
+	        	    <%-- <fmt:formatDate value="${chat.chatDate }"  pattern="YY.MM.dd yy:hh:ss"/> --%>
+	        		<!-- <div style="margin-left: 10px;"><a id="insertchat">입력</a></div> -->
+	        		<input type="submit" value="입력">
+					
+				
+				</form>
+				
+				
+				
+				
+				
+				<br><br>
+				
+				<div id="chatList" >
+					
+					<c:forEach items="${chatList}" var="chat">
+					 
+		                        <p>${chat.memNo }</p>
+		                        <p>${chat.chatContent }</p><br>
+		                          
+		            </c:forEach>
+		             
+				</div>
+				
+				
+				
+				
+				
+				
+				</div>
+				</article>	
 				
 				
                 <article>
