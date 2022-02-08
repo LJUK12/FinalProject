@@ -1,5 +1,6 @@
 package com.project.finalProject.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,17 @@ public class MemberController {
 		@RequestMapping("/joinForm")
 		public String joinForm() {
 			return "member/joinForm";
+		}
+		
+		//아이디 찾기 이동
+		@RequestMapping("/idSearchForm")
+		public String idSearchForm() {
+			return "member/idSearchForm";
+		}
+		
+		@RequestMapping("/pwdSearchForm")
+		public String pwdSearchForm() {
+			return "member/pwdSearchForm";
 		}
 		
 		// 로그인 처리
@@ -95,6 +107,30 @@ public class MemberController {
 			service.memJoin(vo);
 			
 			return "redirect:/";
+		}
+		
+		//아이디 찾기
+		@ResponseBody
+		@RequestMapping("/idSearch")
+		public ArrayList<MemberVO> idSearch(@RequestParam HashMap<String, Object> param, 
+				Model model){
+
+			ArrayList<MemberVO> memList = service.idSearch(param);
+			model.addAttribute("memList", memList);
+			
+			return memList;
+		}
+		
+		//비밀번호 찾기
+		@ResponseBody
+		@RequestMapping("/pwdSearch")
+		public ArrayList<MemberVO> pwdSearch(@RequestParam HashMap<String, Object> param, 
+				Model model){
+		
+			ArrayList<MemberVO> memList = service.pwdSearch(param);
+			model.addAttribute("memList", memList);
+			
+			return memList;
 		}
 		
 		// 전체 정보 조회
