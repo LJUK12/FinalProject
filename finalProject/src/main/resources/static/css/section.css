@@ -1,10 +1,32 @@
 /************* Section ************/
 
-#hotItemsSection {
+#hotItemsSection1 {
   width: 100%;
   background: white;
   padding: 10px 0;
 }
+
+#hotItemsSection2{
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  background-color: #E0F8F1;
+}
+
+#hotItemsSection3 {
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  background-color: #EFF2FB;
+}
+
+#hotItemsSection4 {
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+  background-color: #FBEFF2;
+}
+
 
 #hotItemsSection > h3 {
   padding: 0px 13px 13px 10px;
@@ -13,7 +35,17 @@
 
 .hotItemGroup {
   display: flex;
-  justify-content: space-evenly;
+  margin-left:21.2%;
+}
+
+.hotItemGroup1 {
+  display: flex;
+  margin-left:23%;
+}
+
+.hotItemGroup2 {
+  display: flex;
+  margin-left:20%;
 }
 
 .hotItems {

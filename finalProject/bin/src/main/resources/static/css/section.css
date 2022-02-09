@@ -1,0 +1,29 @@
+/************* Section ************/
+
+#hotItemsSection {
+  width: 100%;
+  background: white;
+  padding: 10px 0;
+}
+
+#hotItemsSection > h3 {
+  padding: 0px 13px 13px 10px;
+  color: black;
+}
+
+.hotItemGroup {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hotItems {
+  width: 200px;
+  height: 250px;
+  border-radius: 20px;
+  background: white;
+  margin: 10px 0;
+}
+
+.hotItems:hover {
+  opacity: 0.8;
+}

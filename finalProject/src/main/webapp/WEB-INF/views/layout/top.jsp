@@ -8,11 +8,13 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	   
+	    <link href="<c:url value='/css/index.css'/>" rel="stylesheet" type="text/css">
 	    <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css">
 	    <link href="<c:url value='/css/menuNav.css'/>" rel="stylesheet" type="text/css">
 	    <link href="<c:url value='/css/mainBanner.css'/>" rel="stylesheet" type="text/css">
 	    <link href="<c:url value='/css/section.css'/>" rel="stylesheet" type="text/css">
 	    <link href="<c:url value='/css/index-modal.css'/>" rel="stylesheet" type="text/css">
+	    
 		<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
 		<script src="<c:url value='/js/searchPost.js'/>"></script>
 		<script src="<c:url value='/js/main.js'/>"></script>
@@ -63,29 +65,29 @@
 						<div id="cell">
 						 <div id="firstName">
 						 <a href="<c:url value='/'/>"><br><h1 id="naming">&ensp;&nbsp; final 4조</h1></a>
-			               <article>
-				        		<div id="SearchBarBox">
-						            <div id="SearchBar">
-						                <div>
-											<input onkeyup="searchEnterkey();" type="text" id="searchBarInput" name="searchBarInput" placeholder="검색어 입력">
-					                	</div>
-						                <span><i class="fas fa-times" id="searchBarRemove"></i></span>
-						                <div style="margin-left: 10px;"><a id="searchPost">검색</a></div>
-						                <div><button id="popup_open_btn">IMG</button></div>
-						            </div>
-						        </div>
-				        	</article>
-				        	<a href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i></a>
-				        	<a href="<c:url value='/join'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp; </h3></a>
-				        		<hr id="hr2">
-	                		<a href="<c:url value='/login'/>"><br><br><h3 class="naming3">게시판 &ensp;&ensp;&nbsp;</h3></a>
-								<hr id="hr2">
-	                		<a href="<c:url value='/insertPostForm'/>"><br><br><h3 class="naming4">게시글 작성</h3></a>
+				               <article>
+					        		<div id="SearchBarBox">
+							            <div id="SearchBar">
+							                <div>
+												<input onkeyup="searchEnterkey();" type="text" id="searchBarInput" name="searchBarInput" placeholder="검색어 입력">
+						                	</div>
+							                <span><i class="fas fa-times" id="searchBarRemove"></i></span>
+							                <div style="margin-left: 10px;"><a id="searchPost">검색</a></div>
+							                <div><button id="popup_open_btn">IMG</button></div>
+							            </div>
+							        </div>
+					        	</article>
+					        	<a href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i></a>
+					        	<a href="<c:url value='/join'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp; </h3></a>
+					        		<hr id="hr2">
+		                		<a href="<c:url value='/login'/>"><br><br><h3 class="naming3">게시판 &ensp;&ensp;&nbsp;</h3></a>
+									<hr id="hr2">
+		                		<a href="<c:url value='/insertPostForm'/>"><br><br><h3 class="naming4">게시글 작성</h3></a>
+	                		</div><hr id="hr3">
 			               </div>
 						</div>
 					</div>
                 </div>
-            </div>
             <script src="<c:url value='/js/index_modal.js'/>"></script>
 		</header>
 	</body>

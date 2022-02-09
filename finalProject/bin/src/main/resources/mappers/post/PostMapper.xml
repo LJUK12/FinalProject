@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.finalProject.dao.IPostDAO">
+	<resultMap id="postResult" type="com.project.finalProject.model.PostVO">
+		<result property="postNo" column="postNo" />
+		<result property="postTitle" column="postTitle" />
+		<result property="postContent" column="postContent" />
+		<result property="postDate" column="postDate" />
+		<result property="postTag" column="postTag" />	
+		<result property="postHit" column="postHit" />	
+		<result property="postFavorit" column="postFavorit" />	
+		<result property="postState" column="postState" />
+		<result property="postImg" column="postImg" />
+		<result property="memNo" column="memNo" />	
+	</resultMap>
+	
+	<!-- index 페이지에 전체 내용 출력 (최신순) -->
+  	<select id="listAllPost" resultMap="postResult">
+  		SELECT * FROM post ORDER BY postNo DESC
+  	</select>
+	
+	
+	<!-- 게시글 작성  -->
+	<insert id="insertPost" parameterType="com.project.finalProject.model.PostVO">
+		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo)
+		VALUES (null,#{postTitle},#{postContent},#{postDate},#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo})
+	</insert>
+	
+	
+	<!-- Post 페이지 이동 -->	
+    <select id="detailVeiwPost" parameterType="int" resultType="com.project.finalProject.model.PostVO">
+   		SELECT * FROM post WHERE postNo=#{postNo}
+    </select>
+	
+		
+		<!-- 상품 검색 -->
+   <select id="searchPost" parameterType="string" resultType="com.project.finalProject.model.PostVO">
+  		SELECT p.postNo, m.memNo, p.postTitle, p.postContent, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
+ 		FROM post p, member m
+ 		WHERE m.memNo = p.memNo AND p.postTag LIKE CONCAT("%", #{postTag}, "%")
+   </select>
+</mapper>

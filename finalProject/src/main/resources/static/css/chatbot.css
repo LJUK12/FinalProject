@@ -28,9 +28,16 @@
 	border-radius: 25px;
 	background: #39adec;
 	position: fixed;
-	left: 30px;
-	bottom: 30px;
+	position: fixed;
+ 	top: 88%;
+  	left: 83.6%;
 }
+
+#chatbot-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 #chatbot-btn img{
 	width: 30px;
 	height: 30px;
@@ -43,8 +50,8 @@
 	height: 450px;
 	background: white;
 	position: fixed;
-	left: 50px;
-	bottom: 100px;
+	left: 79.4%;
+	top: 38%;
 	border-radius: 10px;
 	box-shadow: 3px 3px 3px 3px gray;
 	z-index: 10;
