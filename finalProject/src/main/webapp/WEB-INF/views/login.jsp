@@ -20,7 +20,7 @@
 
         <section id="login">
             <div id="loginHeader">
-                <img id="loginLogoImg" src="./image/KIRRI.png">
+                <h3>로그인</h3>
             </div>
             <form id="loginForm">
                 <p id="loginError"></p>
@@ -29,7 +29,8 @@
                 <input type="submit" name="submit" id="submit" value="로그인">
             </form>
             <div id="loginAnchor">
-                <a href="#">아이디/비밀번호 찾기</a>
+            	<a href="<c:url value='/idSearchForm'/>">아이디 찾기</a>&nbsp;|&nbsp;
+                <a href="<c:url value='/pwdSearchForm'/>">비밀번호 찾기</a>&nbsp;|&nbsp;
                 <a href="/join">회원가입</a>
             </div>
             <div id="socialLiogin">

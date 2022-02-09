@@ -1,5 +1,6 @@
 package com.project.finalProject.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -18,27 +19,49 @@ import com.project.finalProject.service.MemberService;
 @Controller
 public class MemberController {
 
-	// DI 설정
+		// DI 설정
 		@Autowired
 		MemberService service;
+		
+		//회원가입 페이지로 이동
+		@RequestMapping("/join")
+		public String join() {
+			return "member/joinTerms";
+		}
+		
+		@RequestMapping("/joinForm")
+		public String joinForm() {
+			return "member/joinForm";
+		}
+		
+		//아이디 찾기 이동
+		@RequestMapping("/idSearchForm")
+		public String idSearchForm() {
+			return "member/idSearchForm";
+		}
+		
+		@RequestMapping("/pwdSearchForm")
+		public String pwdSearchForm() {
+			return "member/pwdSearchForm";
+		}
 		
 		// 로그인 처리
 		@ResponseBody
 		@RequestMapping("/loginCheck")
 		public String loginCheck(@RequestParam HashMap<String, Object> param, Model model,
 												HttpSession session) {
-			// 로그인 체크
-			MemberVO vo = service.loginCheck(param);
-			String result = "fail";
-			if(vo!=null) {
-				// 로그인 성공 시 세션 변수 지정
-				session.setAttribute("sid", vo.getMemId());
-				
-				session.setAttribute("No", vo.getMemNo());
-				System.out.println(vo.getMemNo());
-				result ="success";
-			}
-			return result;
+		// 로그인 체크
+		MemberVO vo = service.loginCheck(param);
+		String result = "fail";
+		if(vo!=null) {
+			// 로그인 성공 시 세션 변수 지정
+			session.setAttribute("sid", vo.getMemId());
+			
+			session.setAttribute("No", vo.getMemNo());
+			System.out.println(vo.getMemNo());
+			result ="success";
+		}
+		return result;
 		}
 		
 		// 로그아웃
@@ -64,9 +87,8 @@ public class MemberController {
 		// 사용자 이메일 중복 확인
 		@ResponseBody
 		@RequestMapping("/memEmailCheck")
-		public String memEmailCheck(@RequestParam("memEmailId") String memEmailId, @RequestParam("memEmail") String memEmail) {
-			String email = memEmailId + '@' + memEmail;
-			String memEmail_result = service.memEmailCheck(email);
+		public String memEmailCheck(@RequestParam("memEmail") String memEmail) {
+			String memEmail_result = service.memEmailCheck(memEmail);
 			
 			String result = "use";
 			if(memEmail_result != null)
@@ -77,10 +99,38 @@ public class MemberController {
 		
 		// 회원가입
 		@RequestMapping("/memJoin")
-		public String memJoin(MemberVO vo) {
+		public String memJoin(MemberVO vo,@RequestParam("memHP1") String memHP1,
+							 @RequestParam("memHP2") String memHP2,
+							 @RequestParam("memHP3") String memHP3) {
+			
+			vo.setMemPhone(memHP1+memHP2+memHP3);
 			service.memJoin(vo);
 			
 			return "redirect:/";
+		}
+		
+		//아이디 찾기
+		@ResponseBody
+		@RequestMapping("/idSearch")
+		public ArrayList<MemberVO> idSearch(@RequestParam HashMap<String, Object> param, 
+				Model model){
+
+			ArrayList<MemberVO> memList = service.idSearch(param);
+			model.addAttribute("memList", memList);
+			
+			return memList;
+		}
+		
+		//비밀번호 찾기
+		@ResponseBody
+		@RequestMapping("/pwdSearch")
+		public ArrayList<MemberVO> pwdSearch(@RequestParam HashMap<String, Object> param, 
+				Model model){
+		
+			ArrayList<MemberVO> memList = service.pwdSearch(param);
+			model.addAttribute("memList", memList);
+			
+			return memList;
 		}
 		
 		// 전체 정보 조회

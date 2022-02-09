@@ -5,7 +5,7 @@
   
   <mapper namespace="com.project.finalProject.dao.IMemberDAO">
   
-	  <!-- 로그인 -->
+	  	<!-- 로그인 -->
 		<select id="loginCheck" parameterType="hashmap" resultType="com.project.finalProject.model.MemberVO">
 			SELECT * FROM member WHERE memId=#{id} and memPwd=#{pwd}
 		</select>
@@ -17,7 +17,7 @@
 		
 		<!-- Email 중복 확인 -->
 		<select id="memEmailCheck" resultType="string" parameterType="string">
-			SELECT memEmail FROM member WHERE memEmail = #{email}
+			SELECT memEmail FROM member WHERE memEmail = #{memEmail}
 		</select>
 		
 		<!-- 회원가입 -->
@@ -25,6 +25,16 @@
 			INSERT INTO member(memId, memPwd, memName, memAddress1, memAddress2, memEmail, memPhone)
 			VALUES (#{memId}, #{memPwd}, #{memName}, #{memAddress1}, #{memAddress2}, #{memEmail}, #{memPhone})
 		</insert>
+		
+		<!--id 찾기  -->
+		<select id="idSearch" resultType="com.project.finalProject.model.MemberVO" parameterType="hashmap">
+			SELECT * FROM member WHERE memEmail = #{memEmail} and memName =#{memName}
+		</select>
+		
+		<!--비번 찾기  -->
+		<select id="pwdSearch" resultType="com.project.finalProject.model.MemberVO" parameterType="hashmap">
+			SELECT * FROM member WHERE memId =#{memId} and memEmail = #{memEmail}
+		</select>
 		
 		<!-- 상품 상세 정보 조회  -->
  		<select id="profileInfo" parameterType="string" resultType="com.project.finalProject.model.MemberVO">
