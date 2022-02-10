@@ -9,7 +9,7 @@
 		$.ajax({
 			type:"post",
 			url:"memEmailCheck",
-			data:{"memEmailId": $('#memEmailId').val(), "memEmail": $('#memEmail').val()},  
+			data:{"memEmail": $('#memEmail').val()},    
 			dataType:'text',
 			success:function(result){
 				if(result == "no_use"){

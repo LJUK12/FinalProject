@@ -53,5 +53,18 @@ public class MemberService implements IMemberService{
 		return dao.listAllProfile();
 	}
 	
-	
+
+	@Override
+	public ArrayList<MemberVO> idSearch(HashMap<String, Object> map) {
+		return dao.idSearch(map);
+	}
+
+	@Override
+	public ArrayList<MemberVO> pwdSearch(HashMap<String, Object> map) {
+		return dao.pwdSearch(map);
+	}
+
+
+
+
 }
