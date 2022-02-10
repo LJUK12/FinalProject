@@ -48,5 +48,11 @@ public class PostService implements IPostService{
 		return dao.searchPost(postTag);
 	}
 
+	@Override
+	public ArrayList<PostVO> titleContentSearchPost(String postKeyword) {
+		// TODO Auto-generated method stub
+		return dao.titleContentSearchPost(postKeyword);
+	}
+
 
 }

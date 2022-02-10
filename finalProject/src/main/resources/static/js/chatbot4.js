@@ -15,15 +15,12 @@
 	const record = document.getElementById("record");
     const stop = document.getElementById("stop");
     const soundClips = document.getElementById("sound-clips");
-
     const audioCtx = new(window.AudioContext || window.webkitAudioContext)(); // 오디오 컨텍스트 정의
-
     if (navigator.mediaDevices) {
         var constraints = {
             audio: true
         }
          let chunks = [];
-
         navigator.mediaDevices.getUserMedia(constraints)
             .then(stream => {
                 const  mediaRecorder = new MediaRecorder(stream);
@@ -33,7 +30,6 @@
                     record.style.background = "red";
                     record.style.color = "black";
                 }
-
                 stop.onclick = () => {//정지 버튼 클릭 시
                     mediaRecorder.stop();//녹음 정지                       
                     record.style.background = "";
@@ -68,7 +64,6 @@
                     fileUpload(blob, clipName);
                    
                 }//mediaRecorder.onstop
-
                 //녹음 시작시킨 상태가 되면 chunks에 녹음 데이터를 저장하라 
                 mediaRecorder.ondataavailable = e => {
                     chunks.push(e.data)
@@ -217,20 +212,26 @@
        });
 	}
 	
-	
+
 	// 챗봇 닫기
 	$('#btnClose').on('click', function(){
-		$('#chatbot-box').css('display', "none");
+
+		$('#chatbot-box').slideToggle(500);
+		chatbotBtnColorChange();
 	})
-	
+
 	$('#chatbot-btn').on('click', function(){
-		$('#chatbot-box').css('display', 'block');
+	
+		$('#chatbot-box').slideToggle(500);
+		chatbotBtnColorChange();
 	})
+
+	function chatbotBtnColorChange(){
+		if($('#chatbot-box').css('height') > "10"){
+			$('#chatbot-btn').css('background-color', '#f7bc6c');	
+		} else {
+			$('#chatbot-btn').css('background-color', '#6fc2f0');
+		}
+	}
+
 });
-
-
-
-
-
-
-

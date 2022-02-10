@@ -139,27 +139,13 @@ public class PostController {
 	public String searchPost(@RequestParam("searchBarInput") String searchBarInput, Model model) {
 
 		ArrayList<PostVO> postVO = postService.searchPost(searchBarInput);
-		model.addAttribute("postVO", postVO);
+		ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(searchBarInput);
+		model.addAttribute("searchPostVO", postVO);
 		model.addAttribute("resultStr", searchBarInput);
+		model.addAttribute("titleCntPostVO", titleCntPostVO);
 
 		return "post/searchPost";
-	}
-
-
-	  
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping("/insertChat.do") public String insertChat(ChatVO
-	 * vo,@RequestParam("postNo")int postNo) { String result ="success";
-	 * System.out.println(vo); chatService.insertChat(vo); //
-	 * model.addAttribute("chatVO",chatVO); return result; }
-	 * 
-	 * 
-	 */
-	
-	
-	  
+	}	  
 		
 		 @ResponseBody
 		 @RequestMapping("/insertChat.do")
@@ -206,13 +192,16 @@ public class PostController {
 			 * for(int i = 0; i<strList.size(); i++) { resultStr += strList.get(i) + " "; }
 			 */
 			resultStr = strList.get(0);
-			System.out.println("Controller 寃곌낵 : " + resultStr);
+			System.out.println("Controller : " +resultStr);
 			resultStr = tsService.papagoTranslate(resultStr);
-			System.out.println("Controller papago 寃곌낵 : " + resultStr);
+			System.out.println("Controller papago  : " +resultStr);
 			ArrayList<PostVO> postVO = postService.searchPost(resultStr);
 
+			ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(resultStr);
+			
 			model.addAttribute("resultStr", resultStr);
-			model.addAttribute("postVO", postVO);
+			model.addAttribute("searchPostVO", postVO);
+			model.addAttribute("titleCntPostVO", titleCntPostVO);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -220,6 +209,22 @@ public class PostController {
 		}
 
 		return "post/searchPost";
+	}
+	
+	
+	@RequestMapping("/allContentSearchPost/{resultStr}")
+	public String allContentSearchPost(@PathVariable String resultStr, Model model) {
+		System.out.println("allSearch : " + resultStr);
+		ArrayList<PostVO> postVO = postService.titleContentSearchPost(resultStr);
+		model.addAttribute("searchPostVO", postVO);
+		return "post/allSearchPost";
+	}
+
+	@RequestMapping("/allCateorySearchPost/{resultStr}")
+	public String allCateorySearchPost(@PathVariable String resultStr, Model model) {
+		ArrayList<PostVO> postVO = postService.searchPost(resultStr);
+		model.addAttribute("searchPostVO", postVO);
+		return "post/allSearchPost";
 	}
 
 }

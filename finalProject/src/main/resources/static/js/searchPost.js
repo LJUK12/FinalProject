@@ -27,7 +27,7 @@ function searchPostAjax(){
 		if($searchBarInput.val() != ""){
 			$.ajax({
 				type:"post",
-				url:"searchPost",
+				url:"/searchPost",
 				data:{"searchBarInput" : $searchBarInput.val()},
 				dataType: "text",
 				success:function(result){

@@ -19,52 +19,117 @@
 				<span id="resultStrValue">검색 키워드 없음</span>
 			</c:if>
 		</p>
-			<c:if test="${not empty postVO}">
-			<div id="hotItemsSection">
-			<div class="hotItemGroup">
-                <ul class="class-list" data-position="0">
-               		<c:set var="postNum" value="0"/>
-                	<c:forEach items="${postVO }" var="post">
-                		<div>
-                            <div class="class-card">
-                            <a href="/post/detailViewPost/${post.postNo}"> <img
-												src="/resource/photo_upload/${post.postImg }" alt="top1"
-												class="class-image" />
-											</a>
-                            </div>
-                            <div class="class-container">
-	                            <div class="class-skill">
-	                                <div class="class-format">지역</div>&ensp;
-	                                <div class="class-format2">${post.postState }</div>
-	                            	
-	                            	
-                                </div>
-                                <div>
-                                	<p class="information">${post.postTag }:${post.postTitle }</p>
-	                            	<p><fmt:formatDate value="${post.postDate }"  pattern="YY.MM.dd yy:hh:ss"/></p>
-	                            	<p>조회수 : ${post.postHit }</p>
-                                </div>
-                                
-                               </div>
-                         </div>
-	                    
-                   		 <c:set var="postNum" value="${postNum + 1}"/>
-	                    <c:if test="${postNum eq 5}">
-	                    	<c:set var="postNum" value="0"/>
-	                    	</ul>
-	                    	</div>
-	                    	<div class="hotItemGroup">
-	                    	<ul class="class-list" data-position="0">
-	                    </c:if>
-                    </c:forEach>
-                 </ul>
-              </div>
-             </div>
-             </c:if>
+
+		<h3>제목&내용 검색 결과</h3>
+		<c:if test="${not empty titleCntPostVO }">
+		<div style="text-align:right; margin-right: 10px;"><a href="/allContentSearchPost/${resultStr}">전체보기 ></a></div>
+		<div id="hotItemsSection">
+		<div class="hotItemGroup">
+
+              <ul class="class-list" data-position="0">
+             		<c:set var="postNum" value="0"/>
+             		<c:set var="breakPostNum" value="0"/>
+              	<c:forEach items="${titleCntPostVO }" var="post">
+              		<c:if test="${breakPostNum ne 2}">
+              		<div>
+                          <div class="class-card">
+                          <a href="/post/detailViewPost/${post.postNo}"> <img
+										src="/resource/photo_upload/${post.postImg }" alt="top1"
+										class="class-image" />
+									</a>
+                          </div>
+                          <div class="class-container">
+                           <div class="class-skill">
+                               <div class="class-format">지역</div>&ensp;
+                               <div class="class-format2">${post.postState }</div>
+
+
+                              </div>
+                              <div>
+                              	<p class="information">${post.postTag }:${post.postTitle }</p>
+                           	<p><fmt:formatDate value="${post.postDate }"  pattern="YY.MM.dd yy:hh:ss"/></p>
+                           	<p>조회수 : ${post.postHit }</p>
+                              </div>
+
+                             </div>
+                       </div>
+                   </c:if>
+
+                 		 <c:set var="postNum" value="${postNum + 1}"/>
+                   <c:if test="${postNum eq 5}">
+	                   	<c:set var="postNum" value="0"/>
+	                   	<c:set var="breakPostNum" value="${breakPostNum + 1}"/>
+	                   	</ul>
+	                   	</div>
+	                   	<div class="hotItemGroup">
+	                   	<ul class="class-list" data-position="0">
+                   </c:if>
+                  </c:forEach>
+               </ul>
+        	 </div>
+        	</div>
+		</c:if>
+		<c:if test="${empty titleCntPostVO }">
+			<br>
+			<p>검색결과가 없습니다.</p>
+			<br>
+		</c:if>
+		<hr>
+
+		<h3>카테고리 검색 결과</h3>
+		<c:if test="${not empty searchPostVO}">
+		<div style="text-align:right; margin-right: 10px;"><a href="/allCateorySearchPost/${resultStr}">전체보기 ></a></div>
+		<div id="hotItemsSection">
+		<div class="hotItemGroup">
+              <ul class="class-list" data-position="0">
+             		<c:set var="postNum" value="0"/>
+             		<c:set var="breakPostNum" value="0"/>
+
+              	<c:forEach items="${searchPostVO }" var="post">
+              		<c:if test="${breakPostNum ne 2}">
+	              		<div>
+	                          <div class="class-card">
+	                          <a href="/post/detailViewPost/${post.postNo}"> <img
+											src="/resource/photo_upload/${post.postImg }" alt="top1"
+											class="class-image" />
+										</a>
+	                          </div>
+	                          <div class="class-container">
+	                           <div class="class-skill">
+	                               <div class="class-format">지역</div>&ensp;
+	                               <div class="class-format2">${post.postState }</div>
+
+
+	                              </div>
+	                              <div>
+	                              	<p class="information">${post.postTag }:${post.postTitle }</p>
+	                           	<p><fmt:formatDate value="${post.postDate }"  pattern="YY.MM.dd yy:hh:ss"/></p>
+	                           	<p>조회수 : ${post.postHit }</p>
+	                              </div>
+
+	                           </div>
+                       </div>
+                   	</c:if>
+
+                	<c:set var="postNum" value="${postNum + 1}"/>
+                   <c:if test="${postNum eq 5}">
+	                   	<c:set var="postNum" value="0"/>
+	                   	<c:set var="breakPostNum" value="${breakPostNum + 1}"/>
+	                   	</ul>
+	                   	</div>
+	                   	<div class="hotItemGroup">
+	                   	<ul class="class-list" data-position="0">
+                   </c:if>
+                  </c:forEach>
+               </ul>
+        	 </div>
+        	</div>
+        </c:if>
 			
-			
-			<c:if test="${empty postVO}">
-				<p>검색결과가 없습니다.</p>
-			</c:if>
+		<c:if test="${empty searchPostVO}">
+			<br>
+			<p>검색결과가 없습니다.</p>
+			<br>
+		</c:if>
 	</body>
 </html>

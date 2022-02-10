@@ -18,9 +18,8 @@
 <!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
 		
-		<div id="mainIndexBox">
 		<div id="wrap2">
-			
+		<div id="mainIndexBox">	
 				<br><br><br><br><br><br>
 				<h1>${post.postTitle}</h1><br>
 				<p class="topmem">${post.memNo } · ${post.postDate}</p><br>

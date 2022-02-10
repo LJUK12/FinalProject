@@ -15,4 +15,5 @@ public interface IPostDAO {
 	void deletePost(String postNo);
 	PostVO detailVeiwPost(int postNo);
 	ArrayList<PostVO> searchPost(String postTag);
+	ArrayList<PostVO> titleContentSearchPost(String postKeyword);
 }
