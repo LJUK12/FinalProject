@@ -140,19 +140,65 @@ public class MemberController {
 		}
 		
 		// 프로필 수정 폼으로 이동
-		@RequestMapping("/updateProfileForm")///{memId}
-		public String updateProfileForm() {
-			// @PathVariable String memId, Model model
-//			// 상품번호 전달하고, 해당 상품 정보 받아오기 
-//			MemberVO mem = service.profileInfo(memId); // 상세 상품 조회 메소드 그대로 사용
-//			model.addAttribute("mem", mem);
-			return "updateProfileForm";
+				@RequestMapping("/updateProfileForm")///{memId}
+				public String updateProfileForm() {
+					// @PathVariable String memId, Model model
+//					// 상품번호 전달하고, 해당 상품 정보 받아오기 
+//					MemberVO mem = service.profileInfo(memId); // 상세 상품 조회 메소드 그대로 사용
+//					model.addAttribute("mem", mem);
+					return "/member/updateProfileForm";
+				}
+
+				// 상품 정보 수정 : 수정된 상품 정보 DB에 저장
+				@RequestMapping("/updateProfile")
+				public String updateProfile(MemberVO member,
+						@RequestParam("memEmailId") String memEmailId, @RequestParam("memEmail") String memEmail) { 
+					String email = memEmailId + '@' + memEmail;
+					member.setMemEmail(email);
+					service.updateProfile(member);		
+					return "redirect:./memberDetail";
+				}
+
+		
+		//마이페이지로 이동
+		@RequestMapping("/myPageForm")
+		public String myPageForm() {
+			return "/member/myPageForm";
 		}
 		
-		// 상품 정보 수정 : 수정된 상품 정보 DB에 저장
-		@RequestMapping("/updateProfile")
-		public String updateProfile() { //MemberVO mem
-//			service.updateProfile(mem);		
-			return "redirect:./listAllProfile";
+		//회원 정보 조회
+		@RequestMapping("/memberDetail")
+		public String memberDetail(Model model, HttpSession session) {
+			
+			String memId = (String)session.getAttribute("sid");
+			MemberVO member = service.profileInfo(memId);
+			
+			model.addAttribute("member",member);
+			
+			return "/member/memberDetailForm";
 		}
+		
+		
+		//회원 탈퇴 폼으로 이동
+		@RequestMapping("/withdrawMemberForm")
+		public String withdrawMemberForm() {
+			return "/member/withdrawMemberForm";
+		}
+		
+		//회원 탈퇴 처리
+		@ResponseBody
+		@RequestMapping("/withdrawMember")
+		public String withdrawMember(@RequestParam("memId") String memId,
+				@RequestParam("memPwd") String memPwd) {
+			MemberVO member = service.profileInfo(memId);
+			String result = "fail";
+			if(memPwd.equals(member.getMemPwd()) ) {
+				service.withdrawMember(memId);
+				result = "success";
+			}
+			return result;
+		}
+		
+		
+		
 }

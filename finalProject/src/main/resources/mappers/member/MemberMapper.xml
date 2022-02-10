@@ -36,8 +36,10 @@
 			SELECT * FROM member WHERE memId =#{memId} and memEmail = #{memEmail}
 		</select>
 		
-		
-		<!-- 상품 상세 정보 조회  -->
+ 		
+
+ 		
+ 		<!-- 회원 상세 정보 조회  -->
  		<select id="profileInfo" parameterType="string" resultType="com.project.finalProject.model.MemberVO">
  			SELECT * FROM member WHERE memId=#{memId}  		
  		</select>
@@ -49,4 +51,17 @@
  			memEmail=#{memEmail}, memPhone=#{memPhone} 
  			WHERE memId=#{memId}
  		</update>
+ 		
+ 		<!-- 회원 탈퇴 -->
+ 		<delete id="withdrawMember" parameterType="string">
+ 		DELETE FROM member WHERE memId=#{memId}
+ 		</delete>
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
   </mapper>

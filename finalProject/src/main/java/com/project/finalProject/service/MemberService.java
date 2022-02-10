@@ -64,6 +64,12 @@ public class MemberService implements IMemberService{
 		return dao.pwdSearch(map);
 	}
 
+	@Override
+	public void withdrawMember(String memId) {
+		dao.withdrawMember(memId);
+		
+	}
+
 
 
 

@@ -52,7 +52,7 @@
 					<c:if test="${not empty sessionScope.sid}">
 						<a href="<c:url value='/logout'/>">로그아웃</a>
 						<a href="<c:url value='/cart'/>">즐겨찾기</a>
-						<a href="<c:url value='/myFeed'/>">${sessionScope.sid}님의 마이페이지</a>
+						<a href="<c:url value='/myPageForm'/>">${sessionScope.sid}님의 마이페이지</a>
 					</c:if>
 				</div><hr/>
 				

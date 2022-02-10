@@ -16,4 +16,5 @@ public interface IMemberDAO {
 	ArrayList<MemberVO> listAllProfile();   	// 전체 정보 조회
 	MemberVO profileInfo(String memId);			// 상세 상품 조회
 	void updateProfile(MemberVO memVo);			// 상품 정보 수정
+	void withdrawMember(String memId);	
 }
