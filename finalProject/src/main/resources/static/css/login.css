@@ -8,7 +8,6 @@
 	--login-color-border: #A4A4A4;
 }
 
-
 *{
 	margin:0;
 	padding:0;
@@ -68,9 +67,11 @@ body{
 	border: solid 1px var(	--border-gray-color );
 	background: white;
 }
+
 .password-wrap{
 	margin-top: 13px;
 }
+
 .login-input-wrap input{
 	border: none;
 	width:430px;
@@ -79,9 +80,16 @@ body{
 	margin-left: 10px;
 	height:30px;
 }
+
 .login-button-wrap {
 	padding-top: 13px;
 }
+
+.login-button-wrap:hover{
+	box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(25, 42, 70, 0);
+    transform: translate(0, -2px);
+}
+
 .login-button-wrap button{
 	width: 465px;
 	height :48px;
@@ -93,36 +101,22 @@ body{
 .login-stay-sign-in{
 	width: 465px;
 	height: 52px;
-	
-	display: flex;
-	font-size: 15px;
-	color: #4e4e4e;
-	align-items: center;
-	justify-content: flex-start;
 	border-bottom: solid 1px var(--border-gray-color);
-}
-.login-stay-sign-in i{
-	font-size: 25px;
-	color: #9ba1a3;
-}
-.login-stay-sign-in span{
-	padding-left: 5px;
-	line-height: 25px;
 }
 
 .Easy-sgin-in-wrap{
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-top: 40px;
 
 }
+
 .Easy-sgin-in-wrap h2{
 	font-size: 20px;
 }
-.Easy-sgin-in-wrap .sign-button-list
-{
+
+.Easy-sgin-in-wrap .sign-button-list{
 	padding-top:25px;
 	list-style: none;
 	width: 465px;
@@ -130,9 +124,11 @@ body{
 	flex-direction: column;
 	align-items: center;
 }
+
 .Easy-sgin-in-wrap .sign-button-list li{
 	padding-bottom: 10px;
 }
+
 .Easy-sgin-in-wrap .sign-button-list li button{
 	width: 465px;
 	height: 56px;
@@ -140,61 +136,34 @@ body{
 	text-align: left;
 	background: white;
 }
+
 .Easy-sgin-in-wrap .sign-button-list li button i{
 	padding-left: 15px;
 	font-size: 20px;
 }
-.fa-qrcode
-{
+
+.fa-qrcode{
 	color:var(--login-color);
 }
+
 .fa-line{
 	color:var(--login-color);
 }
-.fa-facebook-square
-{
+
+.fa-facebook-square{
 	color:#4064ac;
 }
+
 .Easy-sgin-in-wrap .sign-button-list li button span{
 	padding-left: 20px;
 	font-size: 18px;
 }
+
 .Easy-sgin-in-wrap .forget-msg{
 	color:var(--font-color);
 	font-size: 14px;
 	padding-top: 10px;
 
-}
-footer{
-   
-	padding-top: 95px;
-	padding-bottom: 15px;
-
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	width:768px;
-
-
-
-}
-.copyright-wrap{
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 15px;
-
-
-}
-footer .copyright-wrap span img{
-	width: 59px;
-	
-	height: 11px;
-}
-footer .copyright-wrap span{
-	font-size: 13px;
-	line-height: 15px;
 }
 
 #login3{
