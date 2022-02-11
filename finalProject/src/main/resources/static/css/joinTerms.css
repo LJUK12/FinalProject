@@ -10,7 +10,8 @@
 }
 
 .agree_box{
-	display: flex;
+	margin-left:34%;
+	display:inline;
 }
 
 .article_box{

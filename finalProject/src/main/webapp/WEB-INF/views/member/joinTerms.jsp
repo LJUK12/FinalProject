@@ -16,17 +16,12 @@
 
 			<!-- TOP  -->
 		   <jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
-<br><br><br><br><br><br><br><br>
+			<br><br><br><br>
 			<section>
 
 			<div class="joinTerms">
 
-			<h2>약관동의</h2>
-
-			<br>
-			<input type="checkbox" id="allCheck">
-			<label for="allCheck">전체동의</label>
-			<br>
+			<h2>약관동의</h2><br><br>
 
 			<div class="agree_box">
 			<div class="article_box">
@@ -47,7 +42,7 @@
 					</p>
 				</div>
 				<br>
-				<input type="checkbox" id="agree1" class="chk"><label for="agree1">동의합니다.</label>
+				<input type="checkbox" id="agree1" class="chk"><label for="agree1">동의합니다.</label><br><br><br><br>
 			</div>
 
 			<div class="article_box">
@@ -73,11 +68,16 @@
 			</div>
 			</div>
 
+			<br><br><br>
+			<input type="checkbox" id="allCheck">
+			<label for="allCheck">전체동의</label>
 			<br>
 			<div class="btn-area">
-				<button id="joinCancle_btn"><a href="/">취소</a></button>
 				<button id="joinTerms_btn"><a href="<c:url value='/joinForm'/>">동의하고 다음 단계로 이동</a></button>
+				<button id="joinCancle_btn"><a href="/">취소</a></button>
 			</div>
+			
+			
 
 			</div><!-- joinTerms -->
 			</section>
