@@ -88,7 +88,7 @@
 							        </div>
 					        	</article>
 					        	<a href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i></a>
-					        	<a href="<c:url value='/join'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp; </h3></a>
+					        	<a href="<c:url value='/myPageForm'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp; </h3></a>
 					        		<hr id="hr2">
 		                		<a href="<c:url value='/login'/>"><br><br><h3 class="naming3">게시판 &ensp;&ensp;&nbsp;</h3></a>
 									<hr id="hr2">

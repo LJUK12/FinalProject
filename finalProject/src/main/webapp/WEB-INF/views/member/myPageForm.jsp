@@ -17,16 +17,22 @@
 		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		
 		<section>
-		<h3>mypage</h3>
-		<a href="<c:url value='/memberDetail'/>">회원 정보</a><br>
-		<a href="<c:url value='/withdrawMemberForm'/>">회원 탈퇴</a><br>
-		<a href="<c:url value='/myPostList/1'/>">내가 쓴 글</a><br>
-		
-		
-		
-		
-		
-		
+			<h1>mypage</h1><br><br>
+			<a href="<c:url value='/memberDetail'/>">
+				<div class="mypageBox">
+					회원 정보<br>
+				</div>
+			</a>
+			<a href="<c:url value='/withdrawMemberForm'/>">
+				<div class="mypageBox">
+	        		회원 탈퇴<br>		
+				</div>
+			</a><br><br>
+			<a href="<c:url value='/myPostList/1'/>">
+				<div class="mypageBox">
+					내가 쓴 글<br>
+				</div>
+			</a>
 		</section>
 		
 <!-- BOTTOM -->

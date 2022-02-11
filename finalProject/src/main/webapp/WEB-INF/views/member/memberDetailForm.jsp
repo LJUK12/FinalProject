@@ -18,37 +18,34 @@
 		<!-- mypagemenu -->
 		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		
-		<section>
-		
-		
-		<table>
-		<tr>
-		<th>회원번호</th><td>${member.memNo }</td>
-		</tr>
-		<tr>
-		<th>ID</th><td>${member.memId }</td>
-		</tr>
-		<tr>
-		<th>성명</th><td>${member.memName }</td>
-		</tr>
-		<tr>
-		<th>주소</th><td>${member.memAddress1 }<br>
-						${member.memAddress2 }</td>
-		</tr>
-		<tr>
-		<th>이메일</th><td>${member.memEmail }</td>
-		</tr>
-		<tr>
-		<th>전화번호</th><td>${member.memPhone }</td>
-		</tr>
-		<tr><td align="center">
-		<button id="update">회원 정보 수정</button>
-		<button id="home">메인 페이지로</button></td>
-		</tr>
-		</table>
-		
-		
-		
+		<section id="myPageSection1">
+			<div id="commonInformation1">
+				<div id="inf1">
+					<h1>기본정보</h1><br>
+					<div class="common1">
+						<h4>ID &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memId }</h4>
+					</div><hr class="common1Hr">
+					<div class="common1">
+						<h4>성명 &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
+					</div><hr class="common1Hr">
+					<div class="common1">
+						<h4>주소 &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memAddress1 }</h4>&ensp;<h4>${member.memAddress2 }</h4>
+					</div><hr class="common1Hr">
+				</div>
+			</div><br>
+			<div id="commonInformation2">
+				<div id="inf1">
+					<h1>연락처 정보</h1><br>
+					<div class="common1">
+						<h4>이메일 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memEmail }</h4>
+					</div><hr class="common1Hr">
+					<div class="common1">
+						<h4>전화번호 &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
+					</div><hr class="common1Hr">
+				</div><br>
+				&ensp;&ensp;<button id="update">회원 정보 수정</button>
+				&ensp;<button id="home">메인 페이지로</button>
+			</div>				
 		</section>
 		
 <!-- BOTTOM -->
