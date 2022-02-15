@@ -2,10 +2,11 @@ package com.project.finalProject.controller;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -226,5 +227,45 @@ public class PostController {
 		model.addAttribute("searchPostVO", postVO);
 		return "post/allSearchPost";
 	}
+	
+	
+	//내가 쓴 글 목록
+		@RequestMapping("/myPostList/{page}")
+		public String myPostList(HttpSession session, Model model, @PathVariable String page) {
+			int memNo = (int)session.getAttribute("No");
+			
+			int spage = 1;
+			if(page != null)
+	            spage = Integer.parseInt(page);
+			
+			HashMap<String, Object> myOpt = new HashMap<String, Object>();
+			myOpt.put("memNo", memNo);
+			myOpt.put("start", spage*10-9);
+			
+			ArrayList<PostVO> postList = postService.myPost(myOpt);
+			int listCount = postService.postListCount(memNo);
+			
+			// 전체 페이지 수
+	        int maxPage = (int)(listCount/10.0 + 0.9);
+	        //시작 페이지 번호
+	        int startPage = (int)(spage/5.0 + 0.8) * 5 - 4;
+	        //마지막 페이지 번호
+	        int endPage = startPage + 4;
+	        if(endPage > maxPage)    endPage = maxPage;
+	        
+	        model.addAttribute("spage",spage);
+	        model.addAttribute("maxPage",maxPage);
+	        model.addAttribute("startPage",startPage);
+	        model.addAttribute("endPage",endPage);
+			model.addAttribute("postList",postList);
+			
+			return "/post/myPostList";
+		}
+		
+	
+	
+	
+	
+	
 
 }
