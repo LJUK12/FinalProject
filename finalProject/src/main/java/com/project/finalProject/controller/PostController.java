@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
 import com.project.finalProject.model.PhotoVo;
 import com.project.finalProject.model.PostVO;
 import com.project.finalProject.service.ChatService;
+import com.project.finalProject.service.MemberService;
 import com.project.finalProject.service.ObjectDetectionService;
 import com.project.finalProject.service.PostService;
 import com.project.finalProject.service.TranslationService;
@@ -30,7 +32,11 @@ public class PostController {
 
 	@Autowired
 	PostService postService;
-
+	
+	@Autowired
+	MemberService memService;
+	
+	
 	@Autowired
 	ChatService chatService;
 
@@ -123,16 +129,21 @@ public class PostController {
 	@RequestMapping("/post/detailViewPost/{postNo}")
 	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model) {
 
+
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
 
 		/* chatService.insertChat(vo); */
+		
+		
 
-		ArrayList<ChatVO> chatList = chatService.listAllChat(postNo);
+		ArrayList<ChatMemberVO2> chatList = chatService.listAllChat(postNo);
 		model.addAttribute("chatList", chatList);
 
 		ArrayList<PostVO> postList2 = postService.listAllPost();
 		model.addAttribute("postList2", postList2);
+		
+		
 		return "post/detailViewPost";
 	}
 
@@ -158,8 +169,23 @@ public class PostController {
 		  return result; }
 		
 	  
-	  
-	  
+		 @ResponseBody
+		 @RequestMapping("/favorit")
+		 public String Favoritcountplus(@RequestParam("postNo")int postNo) {
+		  System.out.println(postNo);
+		  String result ="success"; 
+		  postService.FavoritCountPlus(postNo);
+		  return result; 
+		  }
+		
+		 //페이지 시작시 memNo로 아이디 찾아오기
+		 @ResponseBody
+		 @RequestMapping("/searchMemid")
+		 public String searchMemid(@RequestParam("postNo")int postNo) {
+		  System.out.println(postNo);
+		  String result=memService.searchMemId(postNo);
+		  return result; 
+		  }
 	  
 	  
 	  

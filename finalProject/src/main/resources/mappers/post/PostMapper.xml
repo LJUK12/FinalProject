@@ -15,6 +15,8 @@
 		<result property="postState" column="postState" />
 		<result property="postImg" column="postImg" />
 		<result property="memNo" column="memNo" />	
+		<result property="postDecl" column="postDecl" />
+		<result property="postMap" column="postMap" />	
 	</resultMap>
 	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
@@ -22,11 +24,15 @@
   		SELECT * FROM post ORDER BY postNo DESC
   	</select>
 	
+	<!-- index 페이지에 전체 내용 출력 (인기순) -->
+  	<select id="listAllPostByFavorit" resultMap="postResult">
+  		SELECT * FROM post ORDER BY postFavorit DESC
+  	</select>
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertPost" parameterType="com.project.finalProject.model.PostVO">
-		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo)
-		VALUES (null,#{postTitle},#{postContent},#{postDate},#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo})
+		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo,postDecl,postMap)
+		VALUES (null,#{postTitle},#{postContent},#{postDate},#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo},#{postDecl},#{postMap})
 	</insert>
 	
 	
@@ -63,8 +69,13 @@
 	<select id="postListCount" parameterType="int" resultType="int">
 		SELECT count(*) FROM post WHERE memNo=#{memNo}
 	</select>
+	
+	
+   <!-- Favorit +1 -->
+   <select id="FavoritCountPlus" parameterType="int">
+		UPDATE post set postFavorit=postFavorit+1 WHERE postNo=#{postNo}
+	</select>
    
-   
-   
+  
    
 </mapper>

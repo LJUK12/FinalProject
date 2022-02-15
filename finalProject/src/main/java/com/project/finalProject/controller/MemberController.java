@@ -56,6 +56,9 @@ public class MemberController {
 			session.setAttribute("sid", vo.getMemId());
 			
 			session.setAttribute("No", vo.getMemNo());
+			
+			session.setAttribute("sgrade", vo.getMemGrade());
+			
 			System.out.println(vo.getMemNo());
 			result ="success";
 		}

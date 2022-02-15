@@ -14,8 +14,22 @@ public class PostVO {
 	private String postState;
 	private String postImg;
 	private int memNo;
+	private int postDecl;
+	private String postMap;
 	
 	
+	public int getPostDecl() {
+		return postDecl;
+	}
+	public void setPostDecl(int postDecl) {
+		this.postDecl = postDecl;
+	}
+	public String getPostMap() {
+		return postMap;
+	}
+	public void setPostMap(String postMap) {
+		this.postMap = postMap;
+	}
 	// DB�뿉�뒗 �뾾吏�留� 寃뚯떆�뙋�뿉 �꽔�쓣 �옉�꽦�옄 �젙蹂� 異붽�
 	private String memId;
 	

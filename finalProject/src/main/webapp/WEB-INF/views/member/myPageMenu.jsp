@@ -12,12 +12,13 @@
 
 <div>
 <h1>마이페이지</h1>
-<ul>
-<li><a href="<c:url value='/memberDetail'/>">회원 정보</a></li>
-<li><a href="<c:url value='/withdrawMemberForm'/>">회원 탈퇴</a></li>
-<li><a href="<c:url value='/myPostList/1'/>">내가 쓴 글</a></li>
+<div id="myPage">
 
-</ul>
+	<ul>
+		<li><a href="<c:url value='/memberDetail'/>">회원 정보</a></li>
+		<li><a href="<c:url value='/withdrawMemberForm'/>">회원 탈퇴</a></li>
+		<li><a href="<c:url value='/myPostList/1'/>">내가 쓴 글</a></li>
+	</ul>
 </div>
 
 

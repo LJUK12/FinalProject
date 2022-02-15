@@ -59,7 +59,12 @@
  		
  		
  		
- 		
+ 		<!-- memNo로 memId 찾기  -->
+ 		<select id="searchMemId" parameterType="int" resultType="string">
+ 			SELECT m.memId 
+ 			FROM post p,member m 
+ 			WHERE m.memNo = p.memNo AND p.postNo=#{postNo}		
+ 		</select>
  		
  		
  		

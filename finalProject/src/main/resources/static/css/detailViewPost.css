@@ -124,4 +124,48 @@ input{
 
 
 
+#subfunction{
+display: inline-block; 
+}
+
+
+
+#favoritbtn{
+	margin:0;
+	width:650px;
+
+}
+
+
+#favoritbtn img{
+	
+	float:left;
+	width:25px; 
+	margin-right:10px;
+	
+}
+
+#favorit{
+	width:30px;
+
+	
+}
+
+
+
+#buybtn{
+    font-weight: 600;
+    height: 25px;
+    font-size: 18px;
+    align-items: center;
+	background: rgb(247, 0, 0);
+    border: 1px solid rgb(223, 0, 0);
+    color: rgb(255, 255, 255);
+	float:right;
+}
+
+
+
+
+
 

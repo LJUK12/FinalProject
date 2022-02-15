@@ -18,4 +18,7 @@ public interface IPostDAO {
 	ArrayList<PostVO> titleContentSearchPost(String postKeyword);
 	ArrayList<PostVO> myPost(HashMap<String, Object> myOpt);								//내가 쓴 글 찾기
 	int postListCount(int memNo);			
+	void FavoritCountPlus(int postNo);
+	ArrayList<PostVO> listAllPostByFavorit();
+
 }

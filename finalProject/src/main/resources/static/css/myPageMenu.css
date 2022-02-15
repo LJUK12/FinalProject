@@ -1,10 +1,60 @@
 /* myPageMenu.css */
-
-
-section {
-	 margin-left: 200px;
+#myPage{
+	margin-left:410px;
+	margin-top:30px; 
+	display:inline-block;
 }
 
+section{
+	margin-left:600px;
+	height: 300px;
+}
+
+.mypageBox{
+	display: inline-block;
+	margin-right:20px;
+	width:300px;
+	height:150px;
+	border: 1px solid black;
+	text-align:center;
+	padding: 60px;
+}
+
+#myPageSection1{
+
+	height: 400px;
+	width:40%;
+}
+
+#commonInformation1{
+
+	border-radius: 20px;
+	text-align:left;
+	width:500px;
+	height:180px;
+	border: 1px solid black;
+}
+
+#inf1{
+	margin-top: 20px;
+	margin-left:20px;
+}
+
+.common1{
+	display:flex;
+	margin:5px auto;
+}
+
+.common1Hr{
+	width:80%;
+}
+
+#commonInformation2{
+	border-radius: 20px;
+	width:500px;
+	height:200px;
+	border: 1px solid black;
+}
 ul {
 		list-style-type: none;
 		background-color:#eee;
@@ -13,7 +63,7 @@ ul {
 		padding: 0;
 		margin:  0;
 		position: fixed;
-		height: 30%;
+		height: 400px;
 		overflow: auto;
 	}
 

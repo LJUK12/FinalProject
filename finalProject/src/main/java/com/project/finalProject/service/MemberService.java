@@ -70,6 +70,12 @@ public class MemberService implements IMemberService{
 		
 	}
 
+	@Override
+	public String searchMemId(int memNo) {
+		// TODO Auto-generated method stub
+		return dao.searchMemId(memNo);
+	}
+
 
 
 
