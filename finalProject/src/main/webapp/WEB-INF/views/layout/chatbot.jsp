@@ -34,7 +34,7 @@
 				</form>		
 			</div>
 			
-			<div>
+			<div id="chatRecord">
 			<!-- 음성 녹음 -->
 			음성 메시지 : <button id="record">녹음</button> 
 							<button id="stop">정지</button>
