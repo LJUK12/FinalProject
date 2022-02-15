@@ -39,8 +39,8 @@ a {
 /* 슬라이더 1 시작 */
 
 .slider-1 {
-	margin-left:270px;
-  width: 70%;
+  margin-left:380px;
+  width: 62.5%;
   height: 400px;
   position: relative;
 }
@@ -91,13 +91,13 @@ a {
 .slider-1 > .side-btns > div {
   position: absolute;
   top: 0;
-  left: 390px;
+  left: 150px;
   width: 25%;
   height: 100%;
   cursor: pointer;
 }
 .slider-1 > .side-btns > div:last-child {
-  left: 1030px;
+  left: 760px;
   right: 0;
 }
 .slider-1 > .side-btns > div > span {

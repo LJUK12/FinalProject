@@ -15,29 +15,22 @@
 		
 	</head>
 	<body>
-<!-- TOP -->
+		<!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
 		
 		<div id="wrap2">
 		<div id="mainIndexBox">	
 				<br><br><br><br><br><br>
 				<h1>${post.postTitle}</h1><br>
-				<p class="topmem">${post.memNo } · ${post.postDate}</p><br>
+					<p class="topmem">${post.memNo } · ${post.postDate}</p><br>
 				<div id="tagtop">
 					<p class="tagbutton">${post.postTag}</p>
 				</div>
 				<br><br>
-				<p id="content">${post.postContent }</p>
+					<p id="content">${post.postContent }</p>
 				<br><br><br>
-				<p id="bottomid">${post.memNo}</p>
-				
-				<br><br>
-
-				<hr>
-				
-				<br><br>
-				
-				
+					<p id="bottomid">${post.memNo}</p>
+				<br><br><hr><br><br>
 			<article>
 			
 				<div id="hotItemsSection">
