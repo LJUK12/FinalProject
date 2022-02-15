@@ -74,7 +74,7 @@
 					<div id="nameWrapper">
 						<div id="cell">
 						 <div id="firstName">
-						 <a href="<c:url value='/'/>"><br><h1 id="naming">&ensp;&nbsp; final 4조</h1></a>
+						 <a href="<c:url value='/'/>"><br><h1 id="naming">&ensp;&nbsp; BaNaDa</h1></a>
 				               <article>
 					        		<div id="SearchBarBox">
 							            <div id="SearchBar">
