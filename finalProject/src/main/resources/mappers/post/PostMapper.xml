@@ -16,7 +16,9 @@
 		<result property="postImg" column="postImg" />
 		<result property="memNo" column="memNo" />	
 		<result property="postDecl" column="postDecl" />
-		<result property="postMap" column="postMap" />	
+		<result property="postMap" column="postMap" />
+		<result property="postWay" column="postWay" />
+		<result property="postPrice" column="postPrice" />		
 	</resultMap>
 	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
@@ -31,8 +33,8 @@
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertPost" parameterType="com.project.finalProject.model.PostVO">
-		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo,postDecl,postMap)
-		VALUES (null,#{postTitle},#{postContent},#{postDate},#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo},#{postDecl},#{postMap})
+		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo,postDecl,postMap,postWay,postPrice)
+		VALUES (null,#{postTitle},#{postContent},#{postDate},#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo},#{postDecl},#{postMap},#{postWay},#{postPrice})
 	</insert>
 	
 	

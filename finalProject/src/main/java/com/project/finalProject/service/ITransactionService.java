@@ -1,11 +1,10 @@
-package com.project.finalProject.dao;
+package com.project.finalProject.service;
 
 import java.util.ArrayList;
 
-
 import com.project.finalProject.model.TransactionVO;
 
-public interface ITransactionDAO {
+public interface ITransactionService {
 
 	void insertTransaction(TransactionVO vo);
 	ArrayList<TransactionVO> listAllTran(); 

@@ -163,7 +163,6 @@ public class PostController {
 		 @RequestMapping("/insertChat.do")
 		 public String insertChat(ChatVO vo) {
 		  String result ="success"; 
-		  System.out.println(vo); 
 		  chatService.insertChat(vo);
 		 // model.addAttribute("chatVO",chatVO); 
 		  return result; }
@@ -172,7 +171,6 @@ public class PostController {
 		 @ResponseBody
 		 @RequestMapping("/favorit")
 		 public String Favoritcountplus(@RequestParam("postNo")int postNo) {
-		  System.out.println(postNo);
 		  String result ="success"; 
 		  postService.FavoritCountPlus(postNo);
 		  return result; 

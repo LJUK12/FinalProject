@@ -93,7 +93,8 @@
 											</div>
 											<div class="class-skill">
 												<div>좋아요: ${pt.postFavorit}</div>&ensp;
-												<div>${pt.postState}</div>
+												<div>가격: ${pt.postPrice }원</div>&ensp;
+												<div>${pt.postWay}</div>
 											</div>
 										</div>
 									</div>
@@ -191,8 +192,9 @@
 												<p class="information">${ptf.postTitle}</p>
 											</div>
 											<div class="class-skill">
-												<div>좋아요: ${ptf.postFavorit}</div>&ensp;
-												<div>${ptf.postState}</div>
+												<div>좋아요: ${pt.postFavorit}</div>&ensp;
+												<div>가격: ${pt.postPrice }원</div>&ensp;
+												<div>${pt.postWay}</div>
 											</div>
 										</div>
 									</div>
@@ -273,7 +275,7 @@
 								<ul class="class-list" data-position="0">
 									<c:set var="postNum" value="0" />
 									<c:forEach items="${postList}" var="post">
-									<div>
+										<div>
 										<div class="class-card">
 											<a href="/post/detailViewPost/${post.postNo}"> 
 											<img src="/resource/photo_upload/${post.postImg }" alt="top1"
@@ -285,6 +287,11 @@
 												<div class="class-format">지역</div>&ensp;
 												<div class="class-format2">${post.postState}</div>
 												<p class="information">${post.postTitle}</p>
+											</div>
+											<div class="class-skill">
+												<div>좋아요: ${post.postFavorit}</div>&ensp;
+												<div>가격: ${post.postPrice }원</div>&ensp;
+												<div>${post.postWay}</div>
 											</div>
 										</div>
 									</div>

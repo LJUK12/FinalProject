@@ -81,7 +81,7 @@
 										value="${sessionScope.No}" readonly>
 										
 									<label for="reg_id">가격:</label> <input type="text"
-										class="form-control3" name="postTitle2" id="postTitle2"
+										class="form-control3" name="postPrice" id="postPrice"
 										placeholder="가격 입력">
 									<br>
 								</div>
@@ -112,7 +112,14 @@
 									<option value="의류" >의류</option>
 									<option value="디지털기기" selected>디지털기기</option>
 									</select> 
-		          							
+		          					
+		          				<label for="tag"><br>거래방식</label>
+		          					<select class="form-control3" name="postWay" id="postWay">
+									<option value="직거래">직거래</option>
+									<option value="택배거래" selected>택배거래</option>
+									</select> 
+		          					
+		          					<br>
 									<input type="hidden" class="form-control" name="postState"
 									id="postState" value="판매중">
 									<input type="file" id="uploadFile" name="uploadFile"><br>

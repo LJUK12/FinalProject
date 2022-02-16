@@ -26,6 +26,7 @@
 				<br><br><br><br><br><br>
 				<h1>${post.postTitle}</h1><br>
 				<div class="topmem" id="searchmemId"></div><br>
+				<p>${post.postPrice }원</p><br>
 				<div id="tagtop">
 					<p class="tagbutton">${post.postTag}</p>
 				</div>
@@ -39,8 +40,11 @@
 				<div id="favoritbtn"><img src="/image/likeit.png" id="favoritimg">
 				<input type="text" id="favorit"value="${post.postFavorit }"readonly>
 				
-
-				<input type="button" id="buybtn" value="구매하기">
+				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
+				
+				<c:if test="${not empty sessionScope.sid }">
+					<input type="button" id="buybtn" value="구매하기">
+				</c:if>
 
 				
 				</div>

@@ -20,6 +20,19 @@ $(function() {
 	
 		return false;
 	})
+	
+	$('#buybtn').click(function() {
+		var postNo=$('#postNo').val();
+		console.log(postNo);
+		console.log($('#postWay').val());
+		if($('#postWay').val()=="직거래"){
+			location.href="/post/insertdirectTranForm/"+postNo;
+		}else if($('#postWay').val()=="택배거래"){
+			location.href="/post/insertcourierTranForm/"+postNo;
+		}
+	})
+	
+	
 })
 
 

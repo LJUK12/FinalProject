@@ -16,8 +16,21 @@ public class PostVO {
 	private int memNo;
 	private int postDecl;
 	private String postMap;
+	private String postWay;
+	private int postPrice;
 	
-	
+	public int getPostPrice() {
+		return postPrice;
+	}
+	public void setPostPrice(int postPrice) {
+		this.postPrice = postPrice;
+	}
+	public String getPostWay() {
+		return postWay;
+	}
+	public void setPostWay(String postWay) {
+		this.postWay = postWay;
+	}
 	public int getPostDecl() {
 		return postDecl;
 	}
