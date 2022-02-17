@@ -29,4 +29,11 @@ public class TransactionService implements ITransactionService {
 		return dao.listAllTran();
 	}
 
+
+	@Override
+	public TransactionVO selectTran(int ponstNo) {
+		// TODO Auto-generated method stub
+		return dao.selectTran(ponstNo);
+	}
+
 }

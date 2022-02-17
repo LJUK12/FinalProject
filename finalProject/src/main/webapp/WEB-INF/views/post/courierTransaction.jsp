@@ -17,7 +17,7 @@
 	<br>
 	<br>
 	<div id="wrap">
-	<form id="insertTransactionForm2" method="post" action="/post/insertTran"
+	<form id="insertTransactionForm2" method="post" action="/post/insertTran/${post.postNo }"
 							enctype="multipart/form-data" onsubmit="submitContents()">
 	결제방식: <select class="form-control3" name="tranPayment" id="tranPayment">
 		<option value="카드" >카드</option>

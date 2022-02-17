@@ -39,10 +39,15 @@ public class TransactionController {
 	}
 	
 	
-	@RequestMapping("/post/insertTran")
-	public String insertdirectTran(TransactionVO vo) {
+	@RequestMapping("/post/insertTran/{postNo}")
+	public String insertdirectTran(@PathVariable int postNo,TransactionVO vo,Model model) {
 		
 		tranService.insertTransaction(vo);
+		
+		TransactionVO tranvo = tranService.selectTran(postNo);
+		model.addAttribute("tranList",tranvo);
+		
+		postService.updatePostState(postNo);
 		
 		return"/post/transResult";
 	}

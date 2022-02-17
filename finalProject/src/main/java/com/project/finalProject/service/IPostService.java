@@ -20,5 +20,6 @@ public interface IPostService {
 	int postListCount(int memNo);		
 	void FavoritCountPlus(int postNo);
 	ArrayList<PostVO> listAllPostByFavorit();
+	void updatePostState(int postNo);
 
 }

@@ -43,7 +43,9 @@
 				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
 				
 				<c:if test="${not empty sessionScope.sid }">
+					<c:if test="${post.postState eq '판매중' }">
 					<input type="button" id="buybtn" value="구매하기">
+					</c:if>
 				</c:if>
 
 				

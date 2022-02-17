@@ -76,6 +76,13 @@ public class PostService implements IPostService{
 		return dao.listAllPostByFavorit();
 	}
 
+	@Override
+	public void updatePostState(int postNo) {
+		// TODO Auto-generated method stub
+		dao.updatePostState(postNo);
+		
+	}
+
 
 
 

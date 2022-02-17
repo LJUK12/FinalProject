@@ -78,6 +78,11 @@
 		UPDATE post set postFavorit=postFavorit+1 WHERE postNo=#{postNo}
 	</select>
    
+   
+   <!-- 구매 확인 -->
+  	<select id="updatePostState" parameterType="int">
+  		UPDATE post SET postState="판매됨" WHERE postNo=#{postNo};
+  	</select>
   
    
 </mapper>

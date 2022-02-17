@@ -14,7 +14,16 @@
 	<br>
 	<br>
 	<div id="wrap">
-	<p>결제 완료</p>
+		
+		<h3>결제 확인</h3><br>
+		결제방법: <p>${tranList.tranPayment }</p><br>
+		거래방법: <p>${tranList.tranWay }</p><br>
+		상품명: <p>${tranList.postNo }</p><br>
+		판매자: <p>${tranList.sellerNo }</p><br>
+		구매자: <p>${tranList.memNo }</p><br>
+		가격: <p>${tranList.tranPrice }</p><br>
+	
+		<p>결제 완료</p>
 	</div>
 	<!-- BOTTOM -->
 	<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true' />

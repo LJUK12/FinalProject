@@ -20,12 +20,20 @@
   		SELECT * FROM transaction ORDER BY tranNo DESC
   	</select>
 	
+		<!-- 구매 확인 -->
+  	<select id="selectTran" parameterType="int" resultMap="tranResult">
+  		SELECT * FROM transaction WHERE postNo=#{postNo}
+  	</select>
+	
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertTransaction" parameterType="com.project.finalProject.model.TransactionVO">
 		INSERT INTO transaction (tranNo,tranPayment,tranWay,postNo,sellerNo,memNo,tranPrice)
 		VALUES (null,#{tranPayment},#{tranWay},#{postNo},#{sellerNo},#{memNo},#{tranPrice})
 	</insert>
+  
+  
+	
   
    
 </mapper>
