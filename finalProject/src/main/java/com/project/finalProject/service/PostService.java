@@ -54,5 +54,15 @@ public class PostService implements IPostService{
 		return dao.titleContentSearchPost(postKeyword);
 	}
 
+	@Override
+	public ArrayList<PostVO> myPost(HashMap<String, Object> myOpt) {
+		return dao.myPost(myOpt);
+	}
+
+	@Override
+	public int postListCount(int memNo) {
+		return dao.postListCount(memNo);
+	}
+
 
 }

@@ -68,6 +68,11 @@ public class MemberService implements IMemberService{
 	public void managerDeleteProfile(int memNo) {
 		dao.managerDeleteProfile(memNo);
 	}
+	public void withdrawMember(String memId) {
+		dao.withdrawMember(memId);
+		
+	}
+
 
 
 }

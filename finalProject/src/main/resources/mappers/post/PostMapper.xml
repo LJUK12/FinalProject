@@ -54,4 +54,21 @@
    		DELETE FROM post WHERE postNo=#{postNo}
    </delete>
    
+   <!-- 내가 쓴 글 찾기 -->
+	<select id="myPost" parameterType="hashmap" resultType="com.project.finalProject.model.PostVO">
+		SELECT * FROM 
+			(SELECT @ROWNUM:=@ROWNUM+1 as rnum, postNo, postTitle, postContent, postDate, postTag, postHit, postFavorit, 
+			postState, postImg, memNo
+			FROM (SELECT * FROM post WHERE memNo=#{memNo}) as b1, (SELECT @ROWNUM := 0 ) rset) as b2
+			<![CDATA[WHERE rnum>=#{start} and rnum<=(#{start}+9)]]>
+	</select>
+	
+	<!-- 글 목록 수 -->
+	<select id="postListCount" parameterType="int" resultType="int">
+		SELECT count(*) FROM post WHERE memNo=#{memNo}
+	</select>
+   
+   
+   
+   
 </mapper>

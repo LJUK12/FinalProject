@@ -17,4 +17,5 @@ public interface IMemberDAO {
 	MemberVO profileInfo(String memId);			// 상세 상품 조회
 	void updateProfile(MemberVO memVo);			// 상품 정보 수정
 	void managerDeleteProfile(int memNo);	// 관리자 페이지 삭제 : 필요시 코드 지우기 가능
+	void withdrawMember(String memId);
 }
