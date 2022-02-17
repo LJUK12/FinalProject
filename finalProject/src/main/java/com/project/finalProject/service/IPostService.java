@@ -12,7 +12,7 @@ import com.project.finalProject.model.PostVO;
 public interface IPostService {
 	ArrayList<PostVO> listAllPost(); 
 	void insertPost(PostVO vo);
-	void deletePost(String postNo);
+	void deletePost(int postNo);
 	PostVO detailVeiwPost(int postNo);
 	ArrayList<PostVO> searchPost(String postTag);
 	ArrayList<PostVO> titleContentSearchPost(String postKeyword);

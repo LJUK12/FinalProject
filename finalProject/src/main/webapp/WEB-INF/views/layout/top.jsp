@@ -42,7 +42,10 @@
 	        </div>
 	        
 			<div id="header">
-				<div id="mainLogo">				
+				<div id="mainLogo">
+					<c:if test="${sessionScope.sgrade eq '운영자'}">
+						<a href="<c:url value='/rootManager'/>"><h2>관리자</h2></a>
+					</c:if>				
 	                <a href="<c:url value='/join'/>"><h2>회원가입</h2></a>
 	                <a href="<c:url value='/login'/>"><h2>로그인</h2></a>
 				</div><hr/>

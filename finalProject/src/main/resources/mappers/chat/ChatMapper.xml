@@ -24,7 +24,12 @@
 		VALUES (null,#{postNo},#{memNo},#{chatContent},#{chatDate})
 	</insert>
 	
-	
-	
-	
+	<!-- 관리자 채팅 목록 가져오기 -->
+	<select id="listAllChatManager" resultMap="ChatResult">
+		SELECT * FROM chatting ORDER BY postNo
+	</select>
+	<!-- 채팅 삭제하기 -->
+	<delete id="deleteChat" parameterType="int">
+		DELETE FROM chatting WHERE chatNo=#{chatNo}
+	</delete>
 </mapper>

@@ -49,5 +49,9 @@
  		FROM post p, member m
  		WHERE m.memNo = p.memNo AND (p.postTitle LIKE CONCAT("%", #{postKeyword}, "%") OR p.postContent LIKE CONCAT("%", #{postKeyword}, "%"))
    </select>
+   <!-- 상품 삭제하기 -->
+   <delete id="deletePost" parameterType="int">
+   		DELETE FROM post WHERE postNo=#{postNo}
+   </delete>
    
 </mapper>

@@ -64,7 +64,10 @@ public class MemberService implements IMemberService{
 		return dao.pwdSearch(map);
 	}
 
-
+	@Override
+	public void managerDeleteProfile(int memNo) {
+		dao.managerDeleteProfile(memNo);
+	}
 
 
 }

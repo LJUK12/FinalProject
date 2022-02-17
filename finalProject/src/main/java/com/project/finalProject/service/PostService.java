@@ -33,7 +33,7 @@ public class PostService implements IPostService{
 	}
 
 	@Override
-	public void deletePost(String postNo) {
+	public void deletePost(int postNo) {
 		dao.deletePost(postNo);
 		
 	}

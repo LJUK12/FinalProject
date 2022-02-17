@@ -32,8 +32,17 @@ public class ChatService implements IChatService {
 	}
 
 
+	@Override
+	public ArrayList<ChatVO> listAllChatManager(){
+		// 관리자 채팅 목록 조회
+		return dao.listAllChatManager();
+	}
 
-
+	@Override
+	public void deleteChat(int chatNo) {
+		// 채팅 내역 삭제
+		dao.deleteChat(chatNo);
+	}
 
 	
 

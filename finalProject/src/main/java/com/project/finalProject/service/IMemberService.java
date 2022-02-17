@@ -16,4 +16,5 @@ public interface IMemberService {
 	ArrayList<MemberVO> listAllProfile();   	// 전체 정보 조회
 	MemberVO profileInfo(String memId);			// 프로필 정보 불러오기
 	void updateProfile(MemberVO memVo);			// 프로필 수정
+	void managerDeleteProfile(int memNo);	// 관리자 페이지 삭제 : 필요시 코드 지우기 가능
 }
