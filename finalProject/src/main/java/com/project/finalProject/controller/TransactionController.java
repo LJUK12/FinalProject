@@ -1,6 +1,5 @@
 package com.project.finalProject.controller;
 
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,13 +44,13 @@ public class TransactionController {
 		
 		tranService.insertTransaction(vo);
 		
-		return"/post/transResultView";
-	}
-	
-	@RequestMapping("/post/transResultView")
-	public String transResult(Model model) {
 		return"/post/transResult";
 	}
+	
+	/*
+	 * @RequestMapping("/post/transResultView") public String transResult(Model
+	 * model) { return"/post/transResult"; }
+	 */
 
 	/*
 	 * @RequestMapping("/post/insertcourierTran/{postNo}") public String
