@@ -45,10 +45,10 @@ public class TransactionController {
 		
 		tranService.insertTransaction(vo);
 		
-		return"/post/transResult";
+		return"/post/transResultView";
 	}
 	
-	@RequestMapping("/post/transResult")
+	@RequestMapping("/post/transResultView")
 	public String transResult(Model model) {
 		return"/post/transResult";
 	}
