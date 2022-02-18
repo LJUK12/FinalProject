@@ -22,6 +22,7 @@
 		판매자: <p>${tranList.sellerNo }</p><br>
 		구매자: <p>${tranList.memNo }</p><br>
 		가격: <p>${tranList.tranPrice }</p><br>
+		거래일: <p>${tranList.tranDate }</p><br>
 	
 		<p>결제 완료</p>
 	</div>

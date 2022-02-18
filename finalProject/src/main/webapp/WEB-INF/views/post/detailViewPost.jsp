@@ -25,6 +25,7 @@
 
 				<br><br><br><br><br><br>
 				<h1>${post.postTitle}</h1><br>
+				<p>${post.postDate }</p><br>
 				<div class="topmem" id="searchmemId"></div><br>
 				<p>${post.postPrice }원</p><br>
 				<div id="tagtop">

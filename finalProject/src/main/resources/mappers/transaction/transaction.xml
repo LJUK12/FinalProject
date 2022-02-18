@@ -28,8 +28,8 @@
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertTransaction" parameterType="com.project.finalProject.model.TransactionVO">
-		INSERT INTO transaction (tranNo,tranPayment,tranWay,postNo,sellerNo,memNo,tranPrice)
-		VALUES (null,#{tranPayment},#{tranWay},#{postNo},#{sellerNo},#{memNo},#{tranPrice})
+		INSERT INTO transaction (tranNo,tranPayment,tranWay,postNo,sellerNo,memNo,tranPrice,tranDate)
+		VALUES (null,#{tranPayment},#{tranWay},#{postNo},#{sellerNo},#{memNo},#{tranPrice},default)
 	</insert>
   
   

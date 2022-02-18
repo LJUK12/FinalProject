@@ -7,7 +7,7 @@ public class PostVO {
 	private int postNo;
 	private String postTitle;
 	private String postContent;
-	private Date postDate;
+	private String postDate;
 	private String postTag;
 	private int postHit;
 	private int postFavorit;
@@ -70,10 +70,10 @@ public class PostVO {
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	public Date getPostDate() {
+	public String getPostDate() {
 		return postDate;
 	}
-	public void setPostDate(Date postDate) {
+	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
 	public String getPostTag() {

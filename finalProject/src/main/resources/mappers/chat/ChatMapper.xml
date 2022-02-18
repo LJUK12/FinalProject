@@ -33,7 +33,7 @@
 	<!-- 게시글 작성  -->
 	<insert id="insertChat" parameterType="com.project.finalProject.model.ChatVO">
 		INSERT INTO chatting (chatNo,postNo,memNo,chatContent,chatDate)
-		VALUES (null,#{postNo},#{memNo},#{chatContent},#{chatDate})
+		VALUES (null,#{postNo},#{memNo},#{chatContent},default)
 	</insert>
 	
 	

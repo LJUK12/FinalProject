@@ -7,6 +7,13 @@ public class TransactionVO {
 	private String tranWay;
 	private int postNo;
 	private int sellerNo;
+	private String tranDate;
+	public String getTranDate() {
+		return tranDate;
+	}
+	public void setTranDate(String tranDate) {
+		this.tranDate = tranDate;
+	}
 	public int getTranPrice() {
 		return tranPrice;
 	}
