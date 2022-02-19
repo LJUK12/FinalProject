@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.finalProject.model.MemberVO;
+import com.project.finalProject.service.FavoritService;
 import com.project.finalProject.service.MemberService;
 
 @Controller
@@ -20,6 +21,7 @@ public class MemberController {
 		// DI 설정
 		@Autowired
 		MemberService service;
+		
 		
 		//회원가입 페이지로 이동
 		@RequestMapping("/join")

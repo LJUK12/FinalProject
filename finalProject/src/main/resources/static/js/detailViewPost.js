@@ -20,9 +20,26 @@ $(function() {
 	
 		return false;
 	})
+	
+	var FavoritPost = $('#favoritPost').val();
+	$("#favoritPost").on("click",function(){
+		
+		console.log("dd");
+		FavoritPostAjax();
+	})
+	
+	if(FavoritPost == 1){
+		$("#favoritPost").css("background-color","blue");
+	}
 })
 
-
+/*$(document).ready(function(){
+	$("#FavoritPost").on("click",function(){
+		var FavoritPost = $('#favoritPost').val();
+		console.log("dd");
+		FavoritPostAjax();
+	})
+})*/
 
 function SearchMemIDAjax() {
 	console.log($('#postNo').val());
@@ -87,6 +104,37 @@ function FavoritAjax() {
 		error: function(result, textStatus) {
 			console.log(result + textStatus);
 			alert("에러");
+		}
+	});
+}
+
+function FavoritPostAjax(){
+	$.ajax({
+		type:"post",
+		url:"/favoritPost",
+		data:{postNo:  $('#postNo').val(),favorit:$('#favoritPost').val()},
+		dataType:'text',
+		success: function(favorit) {
+			var FavoritPost = $('#favoritPost').val();
+			if(favorit == 0){
+				FavoritPost = 0;
+				$("#favoritPost").css("background-color","white");
+				console.log(favorit);
+			}
+			else if(favorit == 1){
+				FavoritPost = 1;
+				$("#favoritPost").css("background-color","blue");
+				console.log(favorit);
+			}
+			else{
+				alert("로그인 후 입력해 주세요");
+			}
+			
+			$('#favoritPost').value = FavoritPost
+
+		},
+		error: function(favorit, textStatus) {
+			alert("로그인 후 입력해 주세요");
 		}
 	});
 }

@@ -75,6 +75,7 @@ public class PostService implements IPostService{
 		// TODO Auto-generated method stub
 		return dao.listAllPostByFavorit();
 	}
+	
 
 
 

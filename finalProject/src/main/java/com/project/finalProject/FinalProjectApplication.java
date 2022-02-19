@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.project.finalProject.dao.IChatDAO;
+import com.project.finalProject.dao.IFavoritDAO;
 import com.project.finalProject.dao.IMemberDAO;
 import com.project.finalProject.dao.IPostDAO;
 
@@ -21,6 +22,7 @@ import com.project.finalProject.dao.IPostDAO;
 @MapperScan(basePackageClasses = IMemberDAO.class)
 @MapperScan(basePackageClasses = IPostDAO.class)
 @MapperScan(basePackageClasses = IChatDAO.class)
+@MapperScan(basePackageClasses = IFavoritDAO.class)
 @SpringBootApplication
 public class FinalProjectApplication {
 

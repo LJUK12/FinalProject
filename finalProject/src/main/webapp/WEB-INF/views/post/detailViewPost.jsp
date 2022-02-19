@@ -38,6 +38,7 @@
 				
 				<div id="favoritbtn"><img src="/image/likeit.png" id="favoritimg">
 				<input type="text" id="favorit"value="${post.postFavorit }"readonly>
+				<button id="favoritPost" value="${favoritPost }">즐겨찾기</button>
 				
 
 				<input type="button" id="buybtn" value="구매하기">

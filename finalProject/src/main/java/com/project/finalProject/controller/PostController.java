@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
+import com.project.finalProject.model.FavoritVO;
 import com.project.finalProject.model.PhotoVo;
 import com.project.finalProject.model.PostVO;
 import com.project.finalProject.service.ChatService;
+import com.project.finalProject.service.FavoritService;
 import com.project.finalProject.service.MemberService;
 import com.project.finalProject.service.ObjectDetectionService;
 import com.project.finalProject.service.PostService;
@@ -45,6 +47,9 @@ public class PostController {
 
 	@Autowired
 	private TranslationService tsService;
+	
+	@Autowired
+	private FavoritService faService;
 
 	@RequestMapping("/insertPostForm")
 	public String insertPostForm() {
@@ -127,14 +132,25 @@ public class PostController {
 	// detailViewPost 상세 보기에서 사용
 
 	@RequestMapping("/post/detailViewPost/{postNo}")
-	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model) {
+	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model, HttpSession session) {
 
 
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
 
-		/* chatService.insertChat(vo); */
+		//즐겨찾기 여부
+		model.addAttribute("favoritPost",0);
+		if(session.getAttribute("No") != null) {
+			int memNo = (int)session.getAttribute("No");
+			HashMap<String, Object> list = new HashMap<String, Object>();
+			list.put("memNo", memNo);
+			list.put("postNo", postNo);
+			if(faService.selectFavorit(list) != null) {
+				model.addAttribute("favoritPost",1);
+			}
 		
+		}
+		/* chatService.insertChat(vo); */
 		
 
 		ArrayList<ChatMemberVO2> chatList = chatService.listAllChat(postNo);
@@ -289,9 +305,57 @@ public class PostController {
 		}
 		
 	
+	//게시글 즐겨찾기
+		
+		@ResponseBody
+		@RequestMapping("/favoritPost")
+		public int favoritPost(@RequestParam HashMap<String, Object> list, HttpSession session) {
+			int memNo = (int)session.getAttribute("No");
+			String memId = (String)session.getAttribute("sid");
+			System.out.println(list.get("favorit"));
+			int favorit = Integer.parseInt(String.valueOf(list.get("favorit")));
+			list.remove("favorit");
+			list.put("memNo", memNo);
+			FavoritVO vo = faService.selectFavorit(list);
+			System.out.println("in");
+			
+			if(memId != null) {
+				if(vo == null) {
+					favorit = 1;
+					faService.insertFavorit(list);
+				}
+				else {
+					favorit =0;
+					faService.deleteFavorit(vo.getFvrNo());
+				}
+			}
+			else {
+				favorit = -1;
+			}
+			System.out.println(favorit + " out");
+			return favorit;
+			
+		}
 	
-	
-	
+		//즐겨찾기 목록
+		@RequestMapping("/myFavorit")
+		public String myFavorit(HttpSession session, Model model) {
+			int memNo = (int)session.getAttribute("No");
+			ArrayList<FavoritVO> fvList = faService.selectFavoritList(memNo);
+			
+			ArrayList<PostVO> postList = new ArrayList<PostVO>();
+			ArrayList<String> memIdList = new ArrayList<String>();
+			
+			for(FavoritVO fv : fvList) {
+				postList.add(postService.detailVeiwPost(Integer.parseInt(fv.getPostNo())));
+				memIdList.add(memService.searchMemId(Integer.parseInt(fv.getPostNo())));
+			}
+			
+			model.addAttribute("postList",postList);
+			model.addAttribute("memIdList",memIdList);
+			
+			return "/post/myFavoritList";
+		}
 	
 
 }

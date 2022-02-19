@@ -75,7 +75,7 @@
    <select id="FavoritCountPlus" parameterType="int">
 		UPDATE post set postFavorit=postFavorit+1 WHERE postNo=#{postNo}
 	</select>
-   
+  
   
    
 </mapper>
