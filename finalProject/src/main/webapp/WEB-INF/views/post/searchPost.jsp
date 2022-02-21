@@ -12,6 +12,7 @@
    
 </head>
    <body>
+   <br><br><br>
       <div class="searchDiv">
          <p><br>
          검색내용 : 
@@ -50,7 +51,7 @@
                               </div>
                               <div>
                                  <p class="information">${post.postTag }:${post.postTitle }</p>
-                              <p><fmt:formatDate value="${post.postDate }"  pattern="YY.MM.dd yy:hh:ss"/></p>
+                              <p>날짜 : ${post.postDate }</p>
                               <p>조회수 : ${post.postHit }</p>
                               </div>
 
@@ -108,7 +109,7 @@
                                     </div>
                                     <div>
                                        <p class="information">${post.postTag }:${post.postTitle }</p>
-                                    <p><fmt:formatDate value="${post.postDate }"  pattern="YY.MM.dd yy:hh:ss"/></p>
+                                    <p>${post.postDate }</p>
                                     <p>조회수 : ${post.postHit }</p>
                                     </div>
    

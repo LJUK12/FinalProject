@@ -48,7 +48,7 @@ public class TransactionController {
 		model.addAttribute("tranList",tranvo);
 		
 		postService.updatePostState(postNo);
-		
+		System.out.println(vo);
 		return"/post/transResult";
 	}
 	

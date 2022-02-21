@@ -12,7 +12,7 @@
 		<result property="sellerNo" column="sellerNo" />
 		<result property="memNo" column="memNo" />
 		<result property="tranPrice" column="tranPrice" />
-
+		<result property="tranAddress" column="tranAddress" />
 	</resultMap>
 	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
@@ -28,8 +28,8 @@
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertTransaction" parameterType="com.project.finalProject.model.TransactionVO">
-		INSERT INTO transaction (tranNo,tranPayment,tranWay,postNo,sellerNo,memNo,tranPrice,tranDate)
-		VALUES (null,#{tranPayment},#{tranWay},#{postNo},#{sellerNo},#{memNo},#{tranPrice},default)
+		INSERT INTO transaction (tranNo,tranPayment,tranWay,postNo,sellerNo,memNo,tranPrice,tranDate,tranAddress)
+		VALUES (null,#{tranPayment},#{tranWay},#{postNo},#{sellerNo},#{memNo},#{tranPrice},default,#{tranAddress})
 	</insert>
   
   

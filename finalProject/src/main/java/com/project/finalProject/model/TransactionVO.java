@@ -8,6 +8,13 @@ public class TransactionVO {
 	private int postNo;
 	private int sellerNo;
 	private String tranDate;
+	private String tranAddress;
+	public String getTranAddress() {
+		return tranAddress;
+	}
+	public void setTranAddress(String tranAddress) {
+		this.tranAddress = tranAddress;
+	}
 	public String getTranDate() {
 		return tranDate;
 	}
@@ -58,5 +65,12 @@ public class TransactionVO {
 		this.memNo = memNo;
 	}
 	private int memNo;
+	@Override
+	public String toString() {
+		return "TransactionVO [tranNo=" + tranNo + ", tranPayment=" + tranPayment + ", tranWay=" + tranWay + ", postNo="
+				+ postNo + ", sellerNo=" + sellerNo + ", tranDate=" + tranDate + ", tranAddress=" + tranAddress
+				+ ", tranPrice=" + tranPrice + ", memNo=" + memNo + "]";
+	}
+	
 	
 }
