@@ -68,7 +68,10 @@
 		SELECT count(*) FROM post WHERE memNo=#{memNo}
 	</select>
    
-   
+   <!-- 관리자 Post detail 가져오기-->	
+    <select id="manageDetailViewPost" parameterType="int" resultType="com.project.finalProject.model.PostVO">
+   		SELECT p.*, m.memId FROM post p, member m WHERE p.postNo=#{postNo} and p.memNo = m.memNo
+    </select>
    
    
 </mapper>

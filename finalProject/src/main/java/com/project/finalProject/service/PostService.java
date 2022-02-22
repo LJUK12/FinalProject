@@ -63,6 +63,11 @@ public class PostService implements IPostService{
 	public int postListCount(int memNo) {
 		return dao.postListCount(memNo);
 	}
-
+	
+	@Override
+	public PostVO manageDetailViewPost(int postNo) {
+		//관리자용 디테일 뷰
+		return dao.manageDetailViewPost(postNo);
+	}
 
 }

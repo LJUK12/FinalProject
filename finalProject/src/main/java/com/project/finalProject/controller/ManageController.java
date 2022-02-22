@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.finalProject.model.ChatVO;
 import com.project.finalProject.model.MemberVO;
@@ -52,9 +53,22 @@ public class ManageController {
 	}
 	
 	// 관리자페이지 수정 삭제
-	@RequestMapping("/memberManager/memEdit/{memNo}")
-	public String ManagerMemEdit() {
-		return "redirect:../";
+	@RequestMapping("/memberManager/memEdit/{memId}")
+	public String ManagerMemEdit(@PathVariable String memId, Model model) {
+		MemberVO memVO = memService.profileInfo(memId);
+		model.addAttribute("memVO", memVO);
+		return "manage/memEditManagement";
+	}
+	// 관리자 회원수정
+	@RequestMapping("/memberManager/memEdit2")
+	public String memEdit2(MemberVO vo,@RequestParam("memHP1") String memHP1,
+						 @RequestParam("memHP2") String memHP2,
+						 @RequestParam("memHP3") String memHP3) {
+		
+		vo.setMemPhone(memHP1+memHP2+memHP3);
+		memService.updateProfile(vo);
+		
+		return "redirect:/memberManager";
 	}
 	@RequestMapping("/memberManager/memDelete/{memNo}")
 	public String ManagerMemDelete(@PathVariable int memNo) {
@@ -62,8 +76,10 @@ public class ManageController {
 		return "redirect:../";
 	}
 	@RequestMapping("/postManager/postEdit/{postNo}")
-	public String ManagerpostEdit() {
-		return "redirect:../";
+	public String ManagerpostEdit(@PathVariable int postNo, Model model) {
+		PostVO postVO = postService.manageDetailViewPost(postNo);
+		model.addAttribute("postVO", postVO);
+		return "manage/postEditManagement";
 	}
 	@RequestMapping("/postManager/postDelete/{postNo}")
 	public String ManagerpostDelete(@PathVariable int postNo) {

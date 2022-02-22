@@ -26,7 +26,7 @@
 						<td>${mem.memName }</td><td>${mem.memAddress1 }</td><td>${mem.memAddress2 }</td>
 						<td>${mem.memEmail }</td><td>${mem.memPhone }</td>
 						<td>${mem.memGrade }</td><td>${mem.memImg }</td>
-						<td><a href="<c:url value='/memberManager/memEdit/${mem.memNo }' />">수정</a></td>
+						<td><a href="<c:url value='/memberManager/memEdit/${mem.memId }' />">수정</a></td>
 						<td><a href="<c:url value='/memberManager/memDelete/${mem.memNo}' />">삭제</a></td>
 					</tr>
 					</c:forEach>
