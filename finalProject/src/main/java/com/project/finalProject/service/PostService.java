@@ -54,5 +54,36 @@ public class PostService implements IPostService{
 		return dao.titleContentSearchPost(postKeyword);
 	}
 
+	@Override
+	public ArrayList<PostVO> myPost(HashMap<String, Object> myOpt) {
+		return dao.myPost(myOpt);
+	}
+
+	@Override
+	public int postListCount(int memNo) {
+		return dao.postListCount(memNo);
+	}
+
+	@Override
+	public void FavoritCountPlus(int postNo) {
+		dao.FavoritCountPlus(postNo);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> listAllPostByFavorit() {
+		// TODO Auto-generated method stub
+		return dao.listAllPostByFavorit();
+	}
+
+	@Override
+	public void updatePostState(int postNo) {
+		// TODO Auto-generated method stub
+		dao.updatePostState(postNo);
+		
+	}
+
+
+
 
 }

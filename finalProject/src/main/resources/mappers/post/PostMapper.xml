@@ -15,6 +15,10 @@
 		<result property="postState" column="postState" />
 		<result property="postImg" column="postImg" />
 		<result property="memNo" column="memNo" />	
+		<result property="postDecl" column="postDecl" />
+		<result property="postMap" column="postMap" />
+		<result property="postWay" column="postWay" />
+		<result property="postPrice" column="postPrice" />		
 	</resultMap>
 	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
@@ -22,11 +26,15 @@
   		SELECT * FROM post ORDER BY postNo DESC
   	</select>
 	
+	<!-- index 페이지에 전체 내용 출력 (인기순) -->
+  	<select id="listAllPostByFavorit" resultMap="postResult">
+  		SELECT * FROM post ORDER BY postFavorit DESC
+  	</select>
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertPost" parameterType="com.project.finalProject.model.PostVO">
-		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo)
-		VALUES (null,#{postTitle},#{postContent},#{postDate},#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo})
+		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo,postDecl,postMap,postWay,postPrice)
+		VALUES (null,#{postTitle},#{postContent},default,#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo},#{postDecl},#{postMap},#{postWay},#{postPrice})
 	</insert>
 	
 	
@@ -49,5 +57,32 @@
  		FROM post p, member m
  		WHERE m.memNo = p.memNo AND (p.postTitle LIKE CONCAT("%", #{postKeyword}, "%") OR p.postContent LIKE CONCAT("%", #{postKeyword}, "%"))
    </select>
+   
+   <!-- 내가 쓴 글 찾기 -->
+	<select id="myPost" parameterType="hashmap" resultType="com.project.finalProject.model.PostVO">
+		SELECT * FROM 
+			(SELECT @ROWNUM:=@ROWNUM+1 as rnum, postNo, postTitle, postContent, postDate, postTag, postHit, postFavorit, 
+			postState, postImg, memNo
+			FROM (SELECT * FROM post WHERE memNo=#{memNo}) as b1, (SELECT @ROWNUM := 0 ) rset) as b2
+			<![CDATA[WHERE rnum>=#{start} and rnum<=(#{start}+9)]]>
+	</select>
+	
+	<!-- 글 목록 수 -->
+	<select id="postListCount" parameterType="int" resultType="int">
+		SELECT count(*) FROM post WHERE memNo=#{memNo}
+	</select>
+	
+	
+   <!-- Favorit +1 -->
+   <select id="FavoritCountPlus" parameterType="int">
+		UPDATE post set postFavorit=postFavorit+1 WHERE postNo=#{postNo}
+	</select>
+   
+   
+   <!-- 구매 확인 -->
+  	<select id="updatePostState" parameterType="int">
+  		UPDATE post SET postState="판매됨" WHERE postNo=#{postNo};
+  	</select>
+  
    
 </mapper>

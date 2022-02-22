@@ -10,6 +10,20 @@ public class MemberVO {
 	private String memAddress2;
 	private String memEmail;
 	private String memPhone;
+	private String memGrade;
+	public String getMemGrade() {
+		return memGrade;
+	}
+	public void setMemGrade(String memGrade) {
+		this.memGrade = memGrade;
+	}
+	public String getMemImg() {
+		return memImg;
+	}
+	public void setMemImg(String memImg) {
+		this.memImg = memImg;
+	}
+	private String memImg;
 	
 	
 	public int getMemNo() {

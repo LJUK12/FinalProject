@@ -64,6 +64,18 @@ public class MemberService implements IMemberService{
 		return dao.pwdSearch(map);
 	}
 
+	@Override
+	public void withdrawMember(String memId) {
+		dao.withdrawMember(memId);
+		
+	}
+
+	@Override
+	public String searchMemId(int memNo) {
+		// TODO Auto-generated method stub
+		return dao.searchMemId(memNo);
+	}
+
 
 
 

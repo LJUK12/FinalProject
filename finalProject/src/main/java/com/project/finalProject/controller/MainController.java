@@ -22,7 +22,10 @@ public class MainController {
 		
 		  ArrayList<PostVO> postList = pstService.listAllPost();
 		  model.addAttribute("postList",postList);
-		 
+		  
+		  
+		  ArrayList<PostVO> postFavoritList =pstService.listAllPostByFavorit();
+		  model.addAttribute("postFavoritList",postFavoritList);
 		return "index";
 	}
 

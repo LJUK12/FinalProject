@@ -2,10 +2,11 @@ package com.project.finalProject.controller;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
 import com.project.finalProject.model.PhotoVo;
 import com.project.finalProject.model.PostVO;
 import com.project.finalProject.service.ChatService;
+import com.project.finalProject.service.MemberService;
 import com.project.finalProject.service.ObjectDetectionService;
 import com.project.finalProject.service.PostService;
 import com.project.finalProject.service.TranslationService;
@@ -29,7 +32,11 @@ public class PostController {
 
 	@Autowired
 	PostService postService;
-
+	
+	@Autowired
+	MemberService memService;
+	
+	
 	@Autowired
 	ChatService chatService;
 
@@ -122,16 +129,21 @@ public class PostController {
 	@RequestMapping("/post/detailViewPost/{postNo}")
 	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model) {
 
+
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
 
 		/* chatService.insertChat(vo); */
+		
+		
 
-		ArrayList<ChatVO> chatList = chatService.listAllChat(postNo);
+		ArrayList<ChatMemberVO2> chatList = chatService.listAllChat(postNo);
 		model.addAttribute("chatList", chatList);
 
 		ArrayList<PostVO> postList2 = postService.listAllPost();
 		model.addAttribute("postList2", postList2);
+		
+		
 		return "post/detailViewPost";
 	}
 
@@ -151,14 +163,27 @@ public class PostController {
 		 @RequestMapping("/insertChat.do")
 		 public String insertChat(ChatVO vo) {
 		  String result ="success"; 
-		  System.out.println(vo); 
 		  chatService.insertChat(vo);
 		 // model.addAttribute("chatVO",chatVO); 
 		  return result; }
 		
 	  
-	  
-	  
+		 @ResponseBody
+		 @RequestMapping("/favorit")
+		 public String Favoritcountplus(@RequestParam("postNo")int postNo) {
+		  String result ="success"; 
+		  postService.FavoritCountPlus(postNo);
+		  return result; 
+		  }
+		
+		 //페이지 시작시 memNo로 아이디 찾아오기
+		 @ResponseBody
+		 @RequestMapping("/searchMemid")
+		 public String searchMemid(@RequestParam("postNo")int postNo) {
+		  System.out.println(postNo);
+		  String result=memService.searchMemId(postNo);
+		  return result; 
+		  }
 	  
 	  
 	  
@@ -226,5 +251,45 @@ public class PostController {
 		model.addAttribute("searchPostVO", postVO);
 		return "post/allSearchPost";
 	}
+	
+	
+	//내가 쓴 글 목록
+		@RequestMapping("/myPostList/{page}")
+		public String myPostList(HttpSession session, Model model, @PathVariable String page) {
+			int memNo = (int)session.getAttribute("No");
+			
+			int spage = 1;
+			if(page != null)
+	            spage = Integer.parseInt(page);
+			
+			HashMap<String, Object> myOpt = new HashMap<String, Object>();
+			myOpt.put("memNo", memNo);
+			myOpt.put("start", spage*10-9);
+			
+			ArrayList<PostVO> postList = postService.myPost(myOpt);
+			int listCount = postService.postListCount(memNo);
+			
+			// 전체 페이지 수
+	        int maxPage = (int)(listCount/10.0 + 0.9);
+	        //시작 페이지 번호
+	        int startPage = (int)(spage/5.0 + 0.8) * 5 - 4;
+	        //마지막 페이지 번호
+	        int endPage = startPage + 4;
+	        if(endPage > maxPage)    endPage = maxPage;
+	        
+	        model.addAttribute("spage",spage);
+	        model.addAttribute("maxPage",maxPage);
+	        model.addAttribute("startPage",startPage);
+	        model.addAttribute("endPage",endPage);
+			model.addAttribute("postList",postList);
+			
+			return "/post/myPostList";
+		}
+		
+	
+	
+	
+	
+	
 
 }
