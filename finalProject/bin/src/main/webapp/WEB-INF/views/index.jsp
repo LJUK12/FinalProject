@@ -110,11 +110,11 @@
 						<h3>오늘의 hot 상품</h3>
 						<div class="hotItemGroup">
 							<ul class="class-list" data-position="0">
-								<c:forEach items="${postList}" var="pt" end="4">
+								<c:forEach items="${postFavoritList}" var="ptf" end="4">
 									<div>
 										<div class="class-card">
-											<a href="/post/detailViewPost/${pt.postNo}"> <img
-												src="/resource/photo_upload/${pt.postImg }" alt="top1"
+											<a href="/post/detailViewPost/${ptf.postNo}"> <img
+												src="/resource/photo_upload/${ptf.postImg }" alt="top1"
 												class="class-image" />
 											</a>
 
@@ -123,8 +123,8 @@
 											<div class="class-skill">
 												<div class="class-format">지역</div>
 												&ensp;
-												<div class="class-format2">${pt.postState}</div>
-												<p class="information">${pt.postTitle}</p>
+												<div class="class-format2">${ptf.postState}</div>
+												<p class="information">${ptf.postTitle}</p>
 											</div>
 										</div>
 									</div>

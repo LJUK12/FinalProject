@@ -11,25 +11,46 @@
 		<title>Post</title>
 		<link href='/css/detailViewPost.css' rel="stylesheet" type="text/css">
 		<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
-		<script src="<c:url value='/js/insertchat2.js'/>"></script>
+		<script src="<c:url value='/js/detailViewPost.js'/>"></script>
+		
 		
 	</head>
 	<body>
 <!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
 		
-		<div id="wrap2">
+		
 		<div id="mainIndexBox">	
+		<div id="wrap2">
+
 				<br><br><br><br><br><br>
 				<h1>${post.postTitle}</h1><br>
-				<p class="topmem">${post.memNo } · ${post.postDate}</p><br>
+				<p>${post.postDate }</p><br>
+				<div class="topmem" id="searchmemId"></div><br>
+				<p>${post.postPrice }원</p><br>
 				<div id="tagtop">
 					<p class="tagbutton">${post.postTag}</p>
 				</div>
 				<br><br>
 				<p id="content">${post.postContent }</p>
 				<br><br><br>
-				<p id="bottomid">${post.memNo}</p>
+				<%-- <p id="bottomid">${post.memNo}</p> --%>
+				
+				<div id="subfunction">
+				
+				<div id="favoritbtn"><img src="/image/likeit.png" id="favoritimg">
+				<input type="text" id="favorit"value="${post.postFavorit }"readonly>
+				
+				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
+				
+				<c:if test="${not empty sessionScope.sid }">
+					<c:if test="${post.postState eq '판매중' }">
+					<input type="button" id="buybtn" value="구매하기">
+					</c:if>
+				</c:if>
+
+				
+				</div>
 				
 				<br><br>
 
@@ -48,10 +69,10 @@
 	           	<form id="Chatting">
 	           	
 	           	
-	           		${sessionScope.No}
 	        		${sessionScope.sid}
 	        		<input type="hidden" name="postNo" id="postNo" value="${post.postNo }">
-					<input type="hidden" name="memNo" id="memNo" value="${sessionScope.No}">	
+					<input type="hidden" name="memNo" id="memNo" value="${sessionScope.No}">
+					<input type="hidden" name="memid" id="memid" value="${sessionScope.sid}">		
 	        		<div>
 						<input type="text" id="chatContent" 
 						name="chatContent" placeholder="입력">
@@ -73,7 +94,7 @@
 					
 					<c:forEach items="${chatList}" var="chat">
 					 
-		                        <p>${chat.memNo }</p>
+		                        <p>${chat.memId }</p>
 		                        <p>${chat.chatContent }</p><br>
 		                          
 		            </c:forEach>
@@ -93,8 +114,9 @@
 			  <article>
 	                <div id="hotItemsSection">
 	                 
-	                    <h2>오늘의 hot 상품</h2>
-	                    <div class="hotItemGroup">
+	                    <h2>오늘의 hot 상품</h2><br>
+	                    <div class="hotItemGroup" style="margin-left:0">
+	                    <!-- 마진 레프트 제거 -->
 	                   <ul class="class-list" data-position="0">
 								<c:forEach items="${postList2}" var="pt" end="2">
 									<div>
@@ -118,6 +140,7 @@
 	            </article>	       
 		</div>
 		
+		</div>
 		</div>
 		
 		

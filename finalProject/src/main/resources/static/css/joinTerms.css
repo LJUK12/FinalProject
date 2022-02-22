@@ -3,29 +3,30 @@
 
 
 .joinTerms{
-	position: relative;
-	display: flex;
+   position: relative;
+   display: flex;
     flex-direction: column;
     text-align: center;
 }
 
 .agree_box{
-	display: flex;
+   margin-left:34%;
+   display:inline;
 }
 
 .article_box{
-	width: 50%;
-	text-align: left;
+   width: 50%;
+   text-align: left;
 }
 
 .article{
-	height: 100px;
-	border: 0.5;
-	overflow-y: scroll;
+   height: 100px;
+   border: 0.5;
+   overflow-y: scroll;
 }
 
 label{
-	cursor:pointer;
+   cursor:pointer;
 }
 
 
@@ -40,8 +41,8 @@ input[type='checkbox'] { /* input 감추기 */
 }
 
 input[type='checkbox']+label{
-	display: inline-block;
-	font-size: 16px;
+   display: inline-block;
+   font-size: 16px;
 }
 
 input[type='checkbox'] + label:before {
@@ -60,18 +61,18 @@ input[type='checkbox']:checked + label:before {
 }
 
 #joinCancle_btn{
-	height:40px;
-	font-size:15px;
-	border: solid 1px #dadada;
-	border: none;
-	border-radius: 3px;
+   height:40px;
+   font-size:15px;
+   border: solid 1px #dadada;
+   border: none;
+   border-radius: 3px;
 }
 
 #joinTerms_btn{
-	height:40px;
-	font-size:15px;
-	background:coral;
-	color:white;
-	border: none;
-	border-radius: 3px;
+   height:40px;
+   font-size:15px;
+   background:coral;
+   color:white;
+   border: none;
+   border-radius: 3px;
 } 
