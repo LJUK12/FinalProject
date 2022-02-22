@@ -25,12 +25,15 @@
 
 				<br><br><br><br><br><br>
 				<h1>${post.postTitle}</h1><br>
-				<p>${post.postDate }</p><br>
-				<div class="topmem" id="searchmemId"></div><br>
-				<p>${post.postPrice }원</p><br>
+				<div class="topmem" id="searchmemId"></div> <p>${post.postDate }</p><br>
+				
+				
 				<div id="tagtop">
-					<p class="tagbutton">${post.postTag}</p>
-				</div>
+					<img src="/image/tag.png" id="tagimg"> 상품태그
+					<p class="tagbutton">#${post.postTag}</p>
+				</div><br>
+				
+				<p>${post.postPrice } 원</p><br>
 				<br><br>
 				<p id="content">${post.postContent }</p>
 				<br><br><br>
@@ -72,15 +75,19 @@
 	        		${sessionScope.sid}
 	        		<input type="hidden" name="postNo" id="postNo" value="${post.postNo }">
 					<input type="hidden" name="memNo" id="memNo" value="${sessionScope.No}">
-					<input type="hidden" name="memid" id="memid" value="${sessionScope.sid}">		
-	        		<div>
+					<input type="hidden" name="memid" id="memid" value="${sessionScope.sid}">	
+	        		<div><br>
 						<input type="text" id="chatContent" 
-						name="chatContent" placeholder="입력">
+						name="chatContent" placeholder="로그인 후 입력하세요">
 					</div>
 	        	    <%-- <fmt:formatDate value="${chat.chatDate }"  pattern="YY.MM.dd yy:hh:ss"/> --%>
 	        		<!-- <div style="margin-left: 10px;"><a id="insertchat">입력</a></div> -->
-	        		<input type="submit" value="입력">
-					
+	        		<div id = "chatbottom">
+	        		<div id = "chatsubmitbtn">
+	        		<img src="/image/chatbtn.png" id="chatbtnimg">
+	        		<input type="submit" value="등록" id="chatsubmit">
+	        		</div>
+					</div>
 				
 				</form>
 				
@@ -93,9 +100,12 @@
 				<div id="chatList" >
 					
 					<c:forEach items="${chatList}" var="chat">
-					 
+					 			
+					 			<br>
 		                        <p>${chat.memId }</p>
+		                        <p class="chatingDate" id="chatid"><fmt:formatDate  value="${chat.chatDate }"  pattern="YY.MM.dd hh:ss"/></p>
 		                        <p>${chat.chatContent }</p><br>
+		                        <hr class="chathr">
 		                          
 		            </c:forEach>
 		             

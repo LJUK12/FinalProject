@@ -61,7 +61,10 @@ function SearchMemIDAjax() {
 
 function insertchatAjax() {
 	var formdata = $('#Chatting').serialize();
-	
+	if($('#chatContent').val() ==""){
+		alert("내용을 입력하세요");
+		return false;
+	}
 	$.ajax({
 		type: "post",
 		url: "/insertChat.do",
@@ -69,12 +72,20 @@ function insertchatAjax() {
 		dataType: 'text',
 		
 		success: function(result) {
-
-			$('#chatList').prepend($('#chatContent').val() + "<br><br>");
-			$('#chatList').prepend($('#memid').val() + "<br>");
+			let today = new Date();
+			var year = today.getFullYear().toString();
+			var year2 = year.substr(2,4);
+			let month = today.getMonth() + 1
+			let date = today.getDate();
+			let hours = today.getHours();
+			let minutes = today.getMinutes();
+			let seconds = today.getSeconds();
+			$('#chatList').prepend($('#chatContent').val() + "<br><br><hr class='chathr'>");
+			$('#chatList').prepend("<p class='chatingDate'>"+year2+"."+"0"+month+"."+date+"."+hours+"."+minutes+"</p>");
+			$('#chatList').prepend("<br>"+$('#memid').val() + "<br>");
 			
 			$('#chatContent').val('');
-			console.log(result);
+			
 
 		},
 		error: function(result, textStatus) {

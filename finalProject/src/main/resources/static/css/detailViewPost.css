@@ -30,28 +30,7 @@ h1 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
-#tagtop {
-    margin-top: 0.875rem;
-    margin-bottom: -0.875rem;
-    min-height: 0.875rem;
-}
-.tagbutton {
-    margin-bottom: 0.875rem;
-    background: rgb(241, 243, 245);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: 2rem;
-    border-radius: 1rem;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-right: 44rem;
-    color: rgb(12, 166, 120);
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1rem;
 
-}
 
 .topmem {
     -webkit-box-align: center;
@@ -166,6 +145,58 @@ display: inline-block;
 
 
 
+.chatingDate{
+    color: #848484;
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 0;
+    font-family: tahoma;
+}
 
+.chathr{
+	border-top : 1px dashed #bbb; border-bottom : 1px dashed #fff
+}
 
+#chatContent{
+	width: 100%;
+    padding: 20px;
+    height: 80px;
+    border: 1px solid rgb(238, 238, 238);
+}
 
+#chatbottom{
+	display: flex;
+    width: 100%;
+    height: 50px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    
+}
+
+#chatsubmitbtn{
+	border: 1px solid rgb(238, 238, 238);
+    height: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: rgb(136, 136, 136)
+}
+
+#chatsubmit{
+	background-color:white;
+}
+
+#chatbtnimg{
+	height:60%;
+	margin-right:5px;
+}
+
+#tagimg{
+	width: 15px;
+    aspect-ratio: auto 15 / 18;
+    height: 18px;
+}

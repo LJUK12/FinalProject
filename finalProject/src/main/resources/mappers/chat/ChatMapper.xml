@@ -24,7 +24,7 @@
 	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
   	<select id="listAllChat" parameterType="int" resultMap="ChatmemberResult">
-  		SELECT c.chatNo,c.postNo, c.memNo, c.chatContent, c.chatDate, m.memId
+  		SELECT c.chatNo,c.postNo, c.memNo, c.chatContent, c.chatDate, m.memId, c.chatDate
   		FROM chatting c, member m 
   		where c.memNo = m.memNo AND postNo=#{postNo} ORDER BY chatNo DESC
   	</select>
