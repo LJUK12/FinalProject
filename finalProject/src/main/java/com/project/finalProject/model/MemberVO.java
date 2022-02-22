@@ -10,10 +10,21 @@ public class MemberVO {
 	private String memAddress2;
 	private String memEmail;
 	private String memPhone;
-	
-	// 속성추가
 	private String memGrade;
+	public String getMemGrade() {
+		return memGrade;
+	}
+	public void setMemGrade(String memGrade) {
+		this.memGrade = memGrade;
+	}
+	public String getMemImg() {
+		return memImg;
+	}
+	public void setMemImg(String memImg) {
+		this.memImg = memImg;
+	}
 	private String memImg;
+	
 	
 	public int getMemNo() {
 		return memNo;
@@ -64,17 +75,4 @@ public class MemberVO {
 		this.memPhone = memPhone;
 	}
 	
-	// 속성 추가
-	public String getMemGrade() {
-		return memGrade;
-	}
-	public void setMemGrade(String memGrade) {
-		this.memGrade = memGrade;
-	}
-	public String getMemImg() {
-		return memImg;
-	}
-	public void setMemImg(String memImg) {
-		this.memImg = memImg;
-	}
 }

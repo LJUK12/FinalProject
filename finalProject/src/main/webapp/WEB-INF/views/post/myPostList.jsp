@@ -12,7 +12,7 @@
 <div id="wrap">
 <!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true'/>
-		
+		<br><br>
 		<!-- mypagemenu -->
 		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		

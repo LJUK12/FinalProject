@@ -68,10 +68,19 @@ public class MemberService implements IMemberService{
 	public void managerDeleteProfile(int memNo) {
 		dao.managerDeleteProfile(memNo);
 	}
+	
+	@Override
 	public void withdrawMember(String memId) {
 		dao.withdrawMember(memId);
 		
 	}
+
+	@Override
+	public String searchMemId(int memNo) {
+		// TODO Auto-generated method stub
+		return dao.searchMemId(memNo);
+	}
+
 
 
 

@@ -61,9 +61,19 @@
  		<delete id="managerDeleteProfile" parameterType="int">
  			delete from member where memNo=#{memNo}
  		</delete>
+
  		<!-- 회원 탈퇴 -->
  		<delete id="withdrawMember" parameterType="string">
  		DELETE FROM member WHERE memId=#{memId}
  		</delete>
+
  		
+ 		<!-- memNo로 memId 찾기  -->
+ 		<select id="searchMemId" parameterType="int" resultType="string">
+ 			SELECT m.memId 
+ 			FROM post p,member m 
+ 			WHERE m.memNo = p.memNo AND p.postNo=#{postNo}		
+ 		</select>
+ 		
+
   </mapper>

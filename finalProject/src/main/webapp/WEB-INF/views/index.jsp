@@ -92,9 +92,9 @@
 												<p class="information">${pt.postTitle}</p>
 											</div>
 											<div class="class-skill">
-												<div>좋아요:</div>&ensp;
-												<div>${pt.postState}</div>
-												<p class="information">${pt.postTitle}</p>
+												<div>좋아요: ${pt.postFavorit}</div>&ensp;
+												<div>가격: ${pt.postPrice }원</div>&ensp;
+												<div>${pt.postWay}</div>
 											</div>
 										</div>
 									</div>
@@ -177,19 +177,24 @@
 								</div>
 							</ul>
 							<ul class="class-list" data-position="0">
-								<c:forEach items="${postList}" var="pt" end="3">
+								<c:forEach items="${postFavoritList}" var="ptf" end="3">
 									<div>
 										<div class="class-card">
-											<a href="/post/detailViewPost/${pt.postNo}"> 
-											<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
+											<a href="/post/detailViewPost/${ptf.postNo}"> 
+											<img src="/resource/photo_upload/${ptf.postImg }" alt="top1"
 												 class="class-image" />
 											</a>
 										</div>
 										<div class="class-container">
 											<div class="class-skill">
 												<div class="class-format">지역</div>&ensp;
-												<div class="class-format2">${pt.postState}</div>
-												<p class="information">${pt.postTitle}</p>
+												<div class="class-format2">${ptf.postState}</div>
+												<p class="information">${ptf.postTitle}</p>
+											</div>
+											<div class="class-skill">
+												<div>좋아요: ${pt.postFavorit}</div>&ensp;
+												<div>가격: ${pt.postPrice }원</div>&ensp;
+												<div>${pt.postWay}</div>
 											</div>
 										</div>
 									</div>
@@ -265,12 +270,12 @@
 				<!-- 두번째 상품 list -->
 				<article>
 					<div id="hotItemsSection4">
-						<h3 class="productTag">상품목록</h3>
+						<h1 class="productTag"><br>&ensp;상품목록</h1><br>
 							<div class="hotItemGroup2">
 								<ul class="class-list" data-position="0">
 									<c:set var="postNum" value="0" />
 									<c:forEach items="${postList}" var="post">
-									<div>
+										<div>
 										<div class="class-card">
 											<a href="/post/detailViewPost/${post.postNo}"> 
 											<img src="/resource/photo_upload/${post.postImg }" alt="top1"
@@ -282,6 +287,11 @@
 												<div class="class-format">지역</div>&ensp;
 												<div class="class-format2">${post.postState}</div>
 												<p class="information">${post.postTitle}</p>
+											</div>
+											<div class="class-skill">
+												<div>좋아요: ${post.postFavorit}</div>&ensp;
+												<div>가격: ${post.postPrice }원</div>&ensp;
+												<div>${post.postWay}</div>
 											</div>
 										</div>
 									</div>

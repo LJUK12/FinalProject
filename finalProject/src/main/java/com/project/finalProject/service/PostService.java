@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import com.project.finalProject.dao.IPostDAO;
 import com.project.finalProject.model.PostVO;
 
-
-
-
 @Service
 public class PostService implements IPostService{
 
@@ -50,7 +47,6 @@ public class PostService implements IPostService{
 
 	@Override
 	public ArrayList<PostVO> titleContentSearchPost(String postKeyword) {
-		// TODO Auto-generated method stub
 		return dao.titleContentSearchPost(postKeyword);
 	}
 
@@ -63,11 +59,31 @@ public class PostService implements IPostService{
 	public int postListCount(int memNo) {
 		return dao.postListCount(memNo);
 	}
+
 	
 	@Override
 	public PostVO manageDetailViewPost(int postNo) {
 		//관리자용 디테일 뷰
 		return dao.manageDetailViewPost(postNo);
 	}
+
+	@Override
+	public void FavoritCountPlus(int postNo) {
+		dao.FavoritCountPlus(postNo);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> listAllPostByFavorit() {
+		return dao.listAllPostByFavorit();
+	}
+
+	@Override
+	public void updatePostState(int postNo) {
+		dao.updatePostState(postNo);
+		
+	}
+
+
 
 }

@@ -3,8 +3,8 @@
  */
 
 $(function() {
-	$('#Chatting').on('submit', function() {
-		insertchatAjax();
+	$('#favoritbtn').click(function() {
+		FavoritAjax();
 	
 		return false;
 	})
@@ -15,29 +15,22 @@ $(function() {
 
 
 
-function insertchatAjax() {
-	var formdata = $('#Chatting').serialize();
+function FavoritAjax() {
+	var postNo = $('#postNo').val();
 	
 	$.ajax({
 		type: "post",
-		url: "/insertChat.do",
-		data: formdata,
+		url: "/Favorit",
+		data: postNo,
 		dataType: 'text',
 		
 		success: function(result) {
-
-			$('#chatList').prepend($('#chatContent').val() + "<br><br>");
-			$('#chatList').prepend($('#memNo').val() + "<br>");
 			
-			$('#chatContent').val('');
 			console.log(result);
 
 		},
 		error: function(result, textStatus) {
-			alert(result);
-			console.log(result);
-			console.log(textStatus);
-			alert(textStatus);
+			alert("에러");
 		}
 	});
 }

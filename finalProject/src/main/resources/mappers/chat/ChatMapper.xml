@@ -10,18 +10,30 @@
 		<result property="memNo" column="memNo" />
 		<result property="chatContent" column="chatContent" />
 		<result property="chatDate" column="chatDate" />
+
+	</resultMap>
+	
+	<resultMap id="ChatmemberResult" type="com.project.finalProject.model.ChatMemberVO2">
+		<result property="chatNo" column="chatNo" />
+		<result property="postNo" column="postNo" />
+		<result property="memNo" column="memNo" />
+		<result property="chatContent" column="chatContent" />
+		<result property="chatDate" column="chatDate" />
+		<result property="memId" column="memId" />
 	</resultMap>
 	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
-  	<select id="listAllChat" parameterType="int" resultMap="ChatResult">
-  		SELECT * FROM chatting where postNo=#{postNo} ORDER BY chatNo DESC
+  	<select id="listAllChat" parameterType="int" resultMap="ChatmemberResult">
+  		SELECT c.chatNo,c.postNo, c.memNo, c.chatContent, c.chatDate, m.memId
+  		FROM chatting c, member m 
+  		where c.memNo = m.memNo AND postNo=#{postNo} ORDER BY chatNo DESC
   	</select>
 	
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertChat" parameterType="com.project.finalProject.model.ChatVO">
 		INSERT INTO chatting (chatNo,postNo,memNo,chatContent,chatDate)
-		VALUES (null,#{postNo},#{memNo},#{chatContent},#{chatDate})
+		VALUES (null,#{postNo},#{memNo},#{chatContent},default)
 	</insert>
 	
 	<!-- 관리자 채팅 목록 가져오기 -->

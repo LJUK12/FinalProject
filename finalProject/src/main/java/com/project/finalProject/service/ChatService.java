@@ -1,13 +1,13 @@
 package com.project.finalProject.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.project.finalProject.dao.IChatDAO;
+import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
 
 @Service
@@ -19,7 +19,7 @@ public class ChatService implements IChatService {
 	
 	
 	@Override
-	public ArrayList<ChatVO> listAllChat(int postNo) {
+	public ArrayList<ChatMemberVO2> listAllChat(int postNo) {
 		// TODO Auto-generated method stub
 		return dao.listAllChat(postNo);
 	}

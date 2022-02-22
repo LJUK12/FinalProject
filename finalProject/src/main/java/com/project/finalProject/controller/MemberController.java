@@ -56,8 +56,10 @@ public class MemberController {
 			session.setAttribute("sid", vo.getMemId());
 			
 			session.setAttribute("No", vo.getMemNo());
+			
 			session.setAttribute("sgrade", vo.getMemGrade());
-			System.out.println(vo.getMemGrade());
+			
+			System.out.println(vo.getMemNo());
 			result ="success";
 		}
 		return result;
@@ -184,6 +186,7 @@ public class MemberController {
 		@RequestMapping("/withdrawMemberForm")
 		public String withdrawMemberForm() {
 			return "/member/withdrawMemberForm";
+
 		}
 		
 		//회원 탈퇴 처리
@@ -199,7 +202,7 @@ public class MemberController {
 			}
 			return result;
 		}
-		
+
 		
 		
 }

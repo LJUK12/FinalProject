@@ -21,17 +21,20 @@ import com.project.finalProject.service.TTSService;
 @Controller
 public class MainController {
 	
-	  @Autowired PostService pstService;
-	  @Autowired STTService sttService;
-	  @Autowired ChatbotService chbService;
-	  @Autowired TTSService ttsService;
+	@Autowired PostService pstService;
+	@Autowired STTService sttService;
+	@Autowired ChatbotService chbService;
+	@Autowired TTSService ttsService;
 	// index 페이지로 이동
 	@RequestMapping("/")
 	public String index(Model model) {
 		
 		  ArrayList<PostVO> postList = pstService.listAllPost();
 		  model.addAttribute("postList",postList);
-		 
+		  
+		  
+		  ArrayList<PostVO> postFavoritList =pstService.listAllPostByFavorit();
+		  model.addAttribute("postFavoritList",postFavoritList);
 		return "index";
 	}
 

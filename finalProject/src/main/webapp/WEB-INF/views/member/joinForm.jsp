@@ -20,7 +20,7 @@
 		
 			<!-- TOP  -->
 		   <jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
-		   <br><br><br><br><br><br><br><br>
+		   <br><br>
 			<section>
 			<div id='content'>
 

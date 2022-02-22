@@ -7,15 +7,42 @@ public class PostVO {
 	private int postNo;
 	private String postTitle;
 	private String postContent;
-	private Date postDate;
+	private String postDate;
 	private String postTag;
 	private int postHit;
 	private int postFavorit;
 	private String postState;
 	private String postImg;
 	private int memNo;
+	private int postDecl;
+	private String postMap;
+	private String postWay;
+	private int postPrice;
 	
-	
+	public int getPostPrice() {
+		return postPrice;
+	}
+	public void setPostPrice(int postPrice) {
+		this.postPrice = postPrice;
+	}
+	public String getPostWay() {
+		return postWay;
+	}
+	public void setPostWay(String postWay) {
+		this.postWay = postWay;
+	}
+	public int getPostDecl() {
+		return postDecl;
+	}
+	public void setPostDecl(int postDecl) {
+		this.postDecl = postDecl;
+	}
+	public String getPostMap() {
+		return postMap;
+	}
+	public void setPostMap(String postMap) {
+		this.postMap = postMap;
+	}
 	// DB�뿉�뒗 �뾾吏�留� 寃뚯떆�뙋�뿉 �꽔�쓣 �옉�꽦�옄 �젙蹂� 異붽�
 	private String memId;
 	
@@ -43,10 +70,10 @@ public class PostVO {
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	public Date getPostDate() {
+	public String getPostDate() {
 		return postDate;
 	}
-	public void setPostDate(Date postDate) {
+	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
 	public String getPostTag() {
