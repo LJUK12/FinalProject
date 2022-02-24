@@ -21,14 +21,13 @@ div {
     margin-right: 44rem;
     margin-bottom: 5px;
 }
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+
+a {
+	text-decoration: none; color: black; 
+}
+
+a:visited {
+	text-decoration: none; 	
 }
 
 
@@ -128,10 +127,13 @@ display: inline-block;
 
 #favorit{
 	width:30px;
-	margin-right:450px;
+	margin-right:5px;
 	
 }
 
+#favoritPost{
+	margin-right:445px;
+}
 
 
 .buybtn{

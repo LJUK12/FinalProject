@@ -20,6 +20,14 @@ section{
 	padding: 60px;
 }
 
+a {
+	text-decoration: none; color: black; 
+}
+
+a:visited {
+	text-decoration: none; 	
+}
+
 #myPageSection1{
 
 	height: 400px;

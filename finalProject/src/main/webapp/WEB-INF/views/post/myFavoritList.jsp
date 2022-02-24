@@ -17,27 +17,23 @@
 		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		
 		<section>
-		<h1>mypage</h1><br><br>
-			<a href="<c:url value='/memberDetail'/>">
-				<div class="mypageBox">
-					회원 정보<br>
-				</div>
-			</a>
-			<a href="<c:url value='/withdrawMemberForm'/>">
-				<div class="mypageBox">
-	        		회원 탈퇴<br>		
-				</div>
-			</a><br><br>
-			<a href="<c:url value='/myPostList/1'/>">
-				<div class="mypageBox">
-					내가 쓴 글<br>
-				</div>
-			</a>
-			<a href="<c:url value='/myFavorit'/>">
-				<div class="mypageBox">
-	        		나의 즐겨찾기<br>		
-				</div>
 		
+		<c:set var="i" value="0"/>
+		<h3>나의 즐겨찾기</h3>
+<div id="myPost">
+<table width="800" align="center" border="1">
+<tr>
+<th>글번호</th><th width="500">제목</th><th>글쓴이</th><th>날자</th>
+<tr>
+<c:forEach items="${postList }" var="post">
+<tr>
+<td>${post.postNo }</td><td width="500"><a href="<c:url value='/post/detailViewPost/${post.postNo }'/>">${post.postTitle }</a> </td><td><c:out value="${memIdList[i]}" /> </td><td>${post.postDate }</td>
+</tr>
+<c:set var="i" value="${i+1 }"/>
+</c:forEach>
+
+</table>
+</div>
 		
 		
 		</section>
