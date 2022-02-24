@@ -10,15 +10,14 @@
 </head>
 <body>
 
-<div>
-<h1>마이페이지</h1>
+<h1 id="logo">마이페이지</h1> 
 <div id="myPage">
-
-	<ul>
-		<li><a href="<c:url value='/memberDetail'/>">회원 정보</a></li>
-		<li><a href="<c:url value='/withdrawMemberForm'/>">회원 탈퇴</a></li>
-		<li><a href="<c:url value='/myPostList/1'/>">내가 쓴 글</a></li>
-	</ul>
+   <ul>
+      <li><a href="<c:url value='/memberDetail'/>">회원 정보</a></li>
+      <li><a href="<c:url value='/withdrawMemberForm'/>">회원 탈퇴</a></li>
+      <li><a href="<c:url value='/myPostList/1'/>">내가 쓴 글</a></li>
+      <li><a href="<c:url value='/myFavorit'/>">즐겨찾기 목록</a></li>
+   </ul>
 </div>
 
 

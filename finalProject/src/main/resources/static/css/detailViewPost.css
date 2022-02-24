@@ -111,7 +111,7 @@ display: inline-block;
 #favoritbtn{
 	display: flex;
 	margin:0;
-	width:650px;
+	width:700px;
 
 }
 
@@ -132,7 +132,7 @@ display: inline-block;
 }
 
 #favoritPost{
-	margin-right:100px;
+	margin-right:350px;
 }
 
 
