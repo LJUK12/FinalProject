@@ -23,7 +23,7 @@
 					<c:forEach items="${chatVO}" var="chat">
 					<tr><td>${chat.chatNo }</td><td>${chat.postNo }</td>
 						<td>${chat.memNo }</td><td>${chat.chatContent }</td>
-						<td><fmt:formatDate value="${chat.chatDate }" pattern="YY.MM.dd yy:hh:ss"/></td>
+						<td><%-- <fmt:formatDate value="${chat.chatDate }" pattern="YY.MM.dd yy:hh:ss"/> --%></td>
 						<td><a href="<c:url value='/chatManager/chatEdit/${chat.chatNo }' />">수정</a></td>
 						<td><a href="<c:url value='/chatManager/chatDelete/${chat.chatNo}' />">삭제</a></td>
 					</tr>

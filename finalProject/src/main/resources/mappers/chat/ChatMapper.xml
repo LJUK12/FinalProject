@@ -44,4 +44,13 @@
 	<delete id="deleteChat" parameterType="int">
 		DELETE FROM chatting WHERE chatNo=#{chatNo}
 	</delete>
+	
+	<!-- 관리자 특정 채팅 내역 가져오기  -->
+	<select id="manageChatList" parameterType="int" resultMap="ChatmemberResult">
+		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo};
+	</select>
+	<!-- 관리자 특정 채팅 수정하기  -->
+	<update id="manageUpdateChat" parameterType="hashmap">
+		update chatting set chatContent = #{chatContent} WHERE chatNo=#{chatNo}
+	</update>
 </mapper>

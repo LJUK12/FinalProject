@@ -32,7 +32,10 @@
 		VALUES (null,#{tranPayment},#{tranWay},#{postNo},#{sellerNo},#{memNo},#{tranPrice},default,#{tranAddress})
 	</insert>
   
-  
+  	<!-- 관리자 거래내역 삭제 -->
+  	<delete id="manageDeleteTran" parameterType="int">
+  		DELETE FROM transaction WHERE tranNo=#{tranNo}
+  	</delete>
 	
   
    

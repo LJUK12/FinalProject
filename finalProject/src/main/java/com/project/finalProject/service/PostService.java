@@ -84,6 +84,16 @@ public class PostService implements IPostService{
 		
 	}
 
-
+	@Override
+	public ArrayList<PostVO> manageAllPost(){
+		//관리자 allListPost
+		return dao.manageAllPost();
+	}
+	
+	@Override
+	public void manageEditPosting(PostVO vo) {
+		// 관리자 postEdit
+		dao.manageEditPosting(vo);
+	}
 
 }

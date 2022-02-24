@@ -35,5 +35,10 @@ public class TransactionService implements ITransactionService {
 		// TODO Auto-generated method stub
 		return dao.selectTran(ponstNo);
 	}
-
+	
+	@Override
+	public void manageDeleteTran(int tranNo) {
+		// 관리자 삭제
+		dao.manageDeleteTran(tranNo);
+	}
 }

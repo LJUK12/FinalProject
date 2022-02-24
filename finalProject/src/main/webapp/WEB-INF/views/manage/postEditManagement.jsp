@@ -20,7 +20,7 @@
 	
 	<% Date nowTime = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); %>
-		
+	<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
 	<script>
 		$(document).on('click', '#btnSave', function(e) {
 			e.preventDefault();
@@ -30,6 +30,13 @@
 		$(document).on('click','#btnList',function(e) {
 			e.preventDefault();
 			location.href = "${pageContext.request.contextPath}/board/getBoardList";
+		});
+		$(function(){
+			var postTags = $('#postTags').val();
+			var postWays = $('#postWays').val();
+
+			$('#postTag').val(postTags).attr("selected", "selected");
+			$('#postWay').val(postWays).attr("selected", "selected");
 		});
 	</script>
 </head>
@@ -53,7 +60,7 @@
 					<div class="container" role="main">
 					<div id="inner1"><h2 id="postMain">게시글 수정</h2><br></div>
 					<div class="container2">		
-						<form id="insertPostForm" method="post" action="/post/insertPost"
+						<form id="insertPostForm" method="post" action="/postManager/postEdit2"
 							enctype="multipart/form-data" onsubmit="submitContents()">
 							
 							<div class="postWrite">
@@ -64,11 +71,11 @@
 									<br>
 									<label for="reg_id">작성자:</label> <input type="text"
 										class="form-control2" name="memNo" id="memNo"
-										value="${postVO.memId}" readonly>
+										value="${postVO.memNo}" readonly>
 										
 									<label for="reg_id">가격:</label> <input type="text"
-										class="form-control3" name="postTitle2" id="postTitle2"
-										value="fds">
+										class="form-control3" name="postPrice" id="postPrice"
+										value="${postVO.postPrice }">
 									<br>
 								</div>
 			
@@ -76,7 +83,7 @@
 							</div>
 								<!-- CONTENT -->
 								<div class="mb-3 content">
-									<textarea name="postContent" id="postContent" rows="10" cols="90"></textarea>
+									<textarea name="postContent" id="postContent" rows="10" cols="90">${postVO.postContent}</textarea>
 									<!-- <div contentEditable="true" id="post_content" class="form-control" >
 			
 			                            </div> -->
@@ -91,7 +98,7 @@
 									<!-- <input type="text"
 									class="form-control" name="postTag" id="postTag"
 									placeholder="태그를 입력해 주세요">  -->
-									
+									<input type="hidden" id="postTags" value="${postVO.postTag }">
 									<select class="form-control3" name="postTag" id="postTag">
 									<option value="생활가전">생활가전</option>
 									<option value="가구/인테리어">가구/인테리어</option>
@@ -99,6 +106,14 @@
 									<option value="디지털기기" selected>디지털기기</option>
 									</select> 
 		          							
+									<label for="tag"><br>거래방식</label>
+									<input type="hidden" id="postWays" value="${postVO.postWay }">
+		          					<select class="form-control3" name="postWay" id="postWay">
+									<option value="직거래">직거래</option>
+									<option value="택배거래" selected>택배거래</option>
+									</select> 
+		          					
+		          					<br>
 									<input type="hidden" class="form-control" name="postState"
 									id="postState" value="판매중">
 									<input type="file" id="uploadFile" name="uploadFile"><br>
@@ -107,7 +122,7 @@
 							<hr id="hrhr">
 							<div><br>
 								<input type="submit" class="postComplete1" value="등록"> 
-								<input type="button" class="postComplete2" value="취소" onclick="location.href='<c:url value="/"/>'">
+								<input type="button" class="postComplete2" value="취소" onclick="location.href='<c:url value="/postManager"/>'">
 							</div>
 						</form>
 						</div>

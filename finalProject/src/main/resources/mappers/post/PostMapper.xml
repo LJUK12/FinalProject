@@ -2,8 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="com.project.finalProject.dao.IPostDAO">
+ <mapper namespace="com.project.finalProject.dao.IPostDAO">
 	<resultMap id="postResult" type="com.project.finalProject.model.PostVO">
 		<result property="postNo" column="postNo" />
 		<result property="postTitle" column="postTitle" />
@@ -81,7 +80,10 @@
    		SELECT p.*, m.memId FROM post p, member m WHERE p.postNo=#{postNo} and p.memNo = m.memNo
     </select>
 	
-	
+	<!-- 관리자 Post allList 가져오기-->	
+    <select id="manageAllPost" parameterType="int" resultType="com.project.finalProject.model.PostVO">
+   		SELECT p.*, m.memId FROM post p, member m WHERE p.memNo = m.memNo order by postNo desc
+    </select>
 	
    <!-- Favorit +1 -->
    <select id="FavoritCountPlus" parameterType="int">
@@ -94,5 +96,9 @@
   		UPDATE post SET postState="판매됨" WHERE postNo=#{postNo};
   	</select>
   
+  <!-- 관리자 EditPost  -->
+  <update id="manageEditPosting" parameterType="com.project.finalProject.model.PostVO">
+  		UPDATE post SET postTitle=#{postTitle}, postContent=#{postContent}, postTag=#{postTag}, postImg=#{postImg}, postWay=#{postWay}, postPrice=#{postPrice} WHERE postNo=#{postNo}
+  </update>
    
 </mapper>
