@@ -21,5 +21,6 @@ public interface IPostDAO {
 	void FavoritCountPlus(int postNo);
 	ArrayList<PostVO> listAllPostByFavorit();
 	void updatePostState(int postNo);
-
+	void deletePost(int postNo);
+	PostVO listPost(int postNo);
 }

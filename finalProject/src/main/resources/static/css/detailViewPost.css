@@ -110,6 +110,7 @@ display: inline-block;
 
 
 #favoritbtn{
+	display: flex;
 	margin:0;
 	width:650px;
 
@@ -119,28 +120,49 @@ display: inline-block;
 #favoritbtn img{
 	
 	float:left;
-	width:25px; 
+	width:23px; 
+	height:23px;
 	margin-right:10px;
 	
 }
 
 #favorit{
 	width:30px;
-
+	margin-right:450px;
 	
 }
 
 
 
-#buybtn{
-    font-weight: 600;
-    height: 25px;
-    font-size: 18px;
+.buybtn{
+ 	border: 1px solid rgb(238, 238, 238);
+    height: 32px;
+    display: flex;
+    -webkit-box-align: center;
     align-items: center;
-	background: rgb(247, 0, 0);
-    border: 1px solid rgb(223, 0, 0);
-    color: rgb(255, 255, 255);
-	float:right;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: rgb(136, 136, 136);
+    width:100px;
+    margin-right:3px;
+}
+
+
+.deletebtn{
+ 	border: 1px solid rgb(238, 238, 238);
+    height: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: rgb(136, 136, 136);
+    width:100px;
+    margin-right:3px;
+}
+
+#buy{
+	background-color:white;
 }
 
 
@@ -190,13 +212,31 @@ display: inline-block;
 	background-color:white;
 }
 
-#chatbtnimg{
+.chatbtnimg{
 	height:60%;
 	margin-right:5px;
 }
 
+#contentbtn{
+	display: flex;
+}
+
 #tagimg{
-	width: 15px;
-    aspect-ratio: auto 15 / 18;
-    height: 18px;
+	width: 13px;
+    aspect-ratio: auto 13 / 16;
+    height: 16px;
+}
+
+#tagtop{
+	color: rgb(178, 178, 178);
+	text-decoration: none;
+    display: block;
+    margin-top: 25px;
+    padding-bottom: 23px;
+    position: relative;
+    
+}
+
+#delete{
+	background-color:white;
 }

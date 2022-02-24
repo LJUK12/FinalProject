@@ -32,11 +32,10 @@ public class PostController {
 
 	@Autowired
 	PostService postService;
-	
+
 	@Autowired
 	MemberService memService;
-	
-	
+
 	@Autowired
 	ChatService chatService;
 
@@ -129,21 +128,17 @@ public class PostController {
 	@RequestMapping("/post/detailViewPost/{postNo}")
 	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model) {
 
-
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
 
 		/* chatService.insertChat(vo); */
-		
-		
 
 		ArrayList<ChatMemberVO2> chatList = chatService.listAllChat(postNo);
 		model.addAttribute("chatList", chatList);
 
 		ArrayList<PostVO> postList2 = postService.listAllPost();
 		model.addAttribute("postList2", postList2);
-		
-		
+
 		return "post/detailViewPost";
 	}
 
@@ -157,38 +152,53 @@ public class PostController {
 		model.addAttribute("titleCntPostVO", titleCntPostVO);
 
 		return "post/searchPost";
-	}	  
-		
-		 @ResponseBody
-		 @RequestMapping("/insertChat.do")
-		 public String insertChat(ChatVO vo) {
-		  String result ="success"; 
-		  chatService.insertChat(vo);
-		 // model.addAttribute("chatVO",chatVO); 
-		  return result; }
-		
-	  
-		 @ResponseBody
-		 @RequestMapping("/favorit")
-		 public String Favoritcountplus(@RequestParam("postNo")int postNo) {
-		  String result ="success"; 
-		  postService.FavoritCountPlus(postNo);
-		  return result; 
-		  }
-		
-		 //페이지 시작시 memNo로 아이디 찾아오기
-		 @ResponseBody
-		 @RequestMapping("/searchMemid")
-		 public String searchMemid(@RequestParam("postNo")int postNo) {
-		  System.out.println(postNo);
-		  String result=memService.searchMemId(postNo);
-		  return result; 
-		  }
-	  
-	  
-	  
-	  
-	  
+	}
+
+	@ResponseBody
+	@RequestMapping("/insertChat.do")
+	public String insertChat(ChatVO vo) {
+		String result = "success";
+		chatService.insertChat(vo);
+		// model.addAttribute("chatVO",chatVO);
+		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping("/favorit")
+	public String Favoritcountplus(@RequestParam("postNo") int postNo) {
+		String result = "success";
+		postService.FavoritCountPlus(postNo);
+		return result;
+	}
+
+	// 페이지 시작시 memNo로 아이디 찾아오기
+	@ResponseBody
+	@RequestMapping("/searchMemid")
+	public String searchMemid(@RequestParam("postNo") int postNo) {
+		String result = memService.searchMemId(postNo);
+		return result;
+	}
+
+	
+	 @ResponseBody
+	 @RequestMapping("/deletePost")
+	 public String deletePost(@RequestParam("postNo")int postNo,@RequestParam("memNo")int memNo){ 
+	 PostVO vo = postService.listPost(postNo); 
+	 System.out.println(vo);
+	 System.out.println(vo.getMemNo());
+	 String result = "fail"; 
+	 if(vo.getPostNo() == postNo) 
+	 { 
+		if(vo.getMemNo() == memNo) {
+		postService.deletePost(postNo); 
+		result = "success"; 
+			}
+		} 
+	 System.out.println(result);
+	 return result; 
+	 }
+	 
+	 
 
 	@RequestMapping("/objectDetection")
 	public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model) {
@@ -217,13 +227,13 @@ public class PostController {
 			 * for(int i = 0; i<strList.size(); i++) { resultStr += strList.get(i) + " "; }
 			 */
 			resultStr = strList.get(0);
-			System.out.println("Controller : " +resultStr);
+			System.out.println("Controller : " + resultStr);
 			resultStr = tsService.papagoTranslate(resultStr);
-			System.out.println("Controller papago  : " +resultStr);
+			System.out.println("Controller papago  : " + resultStr);
 			ArrayList<PostVO> postVO = postService.searchPost(resultStr);
 
 			ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(resultStr);
-			
+
 			model.addAttribute("resultStr", resultStr);
 			model.addAttribute("searchPostVO", postVO);
 			model.addAttribute("titleCntPostVO", titleCntPostVO);
@@ -235,8 +245,7 @@ public class PostController {
 
 		return "post/searchPost";
 	}
-	
-	
+
 	@RequestMapping("/allContentSearchPost/{resultStr}")
 	public String allContentSearchPost(@PathVariable String resultStr, Model model) {
 		System.out.println("allSearch : " + resultStr);
@@ -251,45 +260,39 @@ public class PostController {
 		model.addAttribute("searchPostVO", postVO);
 		return "post/allSearchPost";
 	}
-	
-	
-	//내가 쓴 글 목록
-		@RequestMapping("/myPostList/{page}")
-		public String myPostList(HttpSession session, Model model, @PathVariable String page) {
-			int memNo = (int)session.getAttribute("No");
-			
-			int spage = 1;
-			if(page != null)
-	            spage = Integer.parseInt(page);
-			
-			HashMap<String, Object> myOpt = new HashMap<String, Object>();
-			myOpt.put("memNo", memNo);
-			myOpt.put("start", spage*10-9);
-			
-			ArrayList<PostVO> postList = postService.myPost(myOpt);
-			int listCount = postService.postListCount(memNo);
-			
-			// 전체 페이지 수
-	        int maxPage = (int)(listCount/10.0 + 0.9);
-	        //시작 페이지 번호
-	        int startPage = (int)(spage/5.0 + 0.8) * 5 - 4;
-	        //마지막 페이지 번호
-	        int endPage = startPage + 4;
-	        if(endPage > maxPage)    endPage = maxPage;
-	        
-	        model.addAttribute("spage",spage);
-	        model.addAttribute("maxPage",maxPage);
-	        model.addAttribute("startPage",startPage);
-	        model.addAttribute("endPage",endPage);
-			model.addAttribute("postList",postList);
-			
-			return "/post/myPostList";
-		}
-		
-	
-	
-	
-	
-	
+
+	// 내가 쓴 글 목록
+	@RequestMapping("/myPostList/{page}")
+	public String myPostList(HttpSession session, Model model, @PathVariable String page) {
+		int memNo = (int) session.getAttribute("No");
+
+		int spage = 1;
+		if (page != null)
+			spage = Integer.parseInt(page);
+
+		HashMap<String, Object> myOpt = new HashMap<String, Object>();
+		myOpt.put("memNo", memNo);
+		myOpt.put("start", spage * 10 - 9);
+
+		ArrayList<PostVO> postList = postService.myPost(myOpt);
+		int listCount = postService.postListCount(memNo);
+
+		// 전체 페이지 수
+		int maxPage = (int) (listCount / 10.0 + 0.9);
+		// 시작 페이지 번호
+		int startPage = (int) (spage / 5.0 + 0.8) * 5 - 4;
+		// 마지막 페이지 번호
+		int endPage = startPage + 4;
+		if (endPage > maxPage)
+			endPage = maxPage;
+
+		model.addAttribute("spage", spage);
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("postList", postList);
+
+		return "/post/myPostList";
+	}
 
 }

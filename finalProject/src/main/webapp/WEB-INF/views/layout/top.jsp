@@ -11,7 +11,6 @@
        <link href="<c:url value='/css/index.css'/>" rel="stylesheet" type="text/css">
        <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css">
        <link href="<c:url value='/css/menuNav.css'/>" rel="stylesheet" type="text/css">
-       <link href="<c:url value='/css/mainBanner.css'/>" rel="stylesheet" type="text/css">
        <link href="<c:url value='/css/section.css'/>" rel="stylesheet" type="text/css">
        <link href="<c:url value='/css/index-modal.css'/>" rel="stylesheet" type="text/css">
        
@@ -38,7 +37,7 @@
                </form>
             </div>
             <a class="modal_close_btn">닫기</a>
-           </div>
+         </div>
            
          <div id="header">
             <div id="mainLogo">            
@@ -55,9 +54,16 @@
                   <a href="<c:url value='/myPageForm'/>">${sessionScope.sid}님의 마이페이지</a>
                </c:if>
             </div><hr/>
-            
+            <a href="<c:url value='/'/>">
+            	<br><br><h1 id="mainName">BaNaDa</h1></a>
             <button type="button" class="mobile-menu"><i class="fas fa-bars"></i></button>
-               <div class="menuwrap">
+         </div>
+         <script src="<c:url value='/js/index_modal.js'/>"></script>
+  	</header>
+      
+      	<div class="cell">
+            <div id="firstName">
+            <div class="menuwrap">
                  <nav id="menu">
                      <!-- "메뉴목록 표시" -->
                      <ul class="category_list">
@@ -68,37 +74,46 @@
                          <li class=""><a class="link_sub_item" href="/category/5">시계</a></li>
                      </ul>            
                  </nav>
-             </div>
-            
-               <div id="userManageBtn">
-               <div id="nameWrapper">
-                  <div id="cell">
-                   <div id="firstName">
-                   <a href="<c:url value='/'/>"><br><h1 id="naming">&ensp;&nbsp; BaNaDa</h1></a>
-                           <article>
-                             <div id="SearchBarBox">
-                                 <div id="SearchBar">
-                                     <div>
-                                    <input onkeyup="searchEnterkey();" type="text" id="searchBarInput" name="searchBarInput" placeholder="검색어 입력">
-                                     </div>
-                                     <span><i class="fas fa-times" id="searchBarRemove"></i></span>
-                                     <div style="margin-left: 10px;"><a id="searchPost">검색</a></div>
-                                     <div><button id="popup_open_btn">IMG</button></div>
-                                 </div>
-                             </div>
-                          </article>
-                          <a href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i></a>
-                          <a href="<c:url value='/myPageForm'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp; </h3></a>
-                             <hr id="hr2">
-                            <a href="<c:url value='/login'/>"><br><br><h3 class="naming3">게시판 &ensp;&ensp;&nbsp;&ensp;</h3></a>
-                           <hr id="hr2">
-                            <a href="<c:url value='/insertPostForm'/>"><br><br><h3 class="naming4">게시글 작성</h3></a>
-                         </div><hr id="hr3">
-                        </div>
+             	</div>
+            <a href="<c:url value='/'/>"><br><h2 id="naming">&ensp;&ensp;&ensp;&nbsp;카테고리</h2></a>
+            <article>
+              <div id="SearchBarBox">
+                  <div id="SearchBar">
+                      <div>
+                     <input onkeyup="searchEnterkey();" type="text" id="searchBarInput" name="searchBarInput" placeholder="검색어 입력">
+                      </div>
+                      <span><i class="fas fa-times" id="searchBarRemove"></i></span>
+                      <div style="margin-left: 10px;"><a id="searchPost">검색</a></div>
+                      <div><button id="popup_open_btn">IMG</button></div>
                   </div>
-               </div>
-                </div>
-            <script src="<c:url value='/js/index_modal.js'/>"></script>
-      </header>
+              </div>
+           	</article>
+               <a href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i>&ensp;&ensp;</a> 
+               <a href="<c:url value='/myPageForm'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp; </h3></a>
+                  <hr id="hr2">
+                 <a href="<c:url value='/board/list'/>"><br><br><h3 class="naming3">커뮤니티 &ensp;&ensp;&nbsp;</h3></a>
+                <hr id="hr2">
+                 <a href="<c:url value='/insertPostForm'/>"><br><br><h3 class="naming4">&ensp;상품 판매</h3></a>
+              </div><hr id="hr3">
+            </div>
+            
+	         <aside id="aside1">
+				<a href="/login"><br>
+					<p class="asideNaming">로그인</p> 
+					<i class="fas fa-sign-in-alt fa-2x"></i>
+				</a><br><br><br>
+				<a href="/logout">
+					<p class="asideNaming">로그아웃</p>
+					<i class="fas fa-sign-out-alt fa-2x"></i>
+				</a><br><br><br>
+				<a>
+					<p class="asideNaming">최근목록</p>
+					<i class="fas fa-sign-in-alt fa-2x"></i>
+				</a><br><br><br>
+				<a>
+					<p class="asideNaming">고객센터</p>
+					<i class="fas fa-sign-in-alt fa-2x"></i>
+				</a><br><br>
+			</aside><br> 
    </body>
 </html>

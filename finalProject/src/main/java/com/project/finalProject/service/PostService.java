@@ -83,7 +83,19 @@ public class PostService implements IPostService{
 		
 	}
 
+	@Override
+	public void deletePost(int postNo) {
+		// TODO Auto-generated method stub
+		dao.deletePost(postNo);
+	}
 
+	@Override
+	public PostVO listPost(int postNo) {
+		
+		return dao.listPost(postNo);
+	}
+
+	
 
 
 }

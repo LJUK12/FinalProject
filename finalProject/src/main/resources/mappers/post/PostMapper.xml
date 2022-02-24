@@ -26,6 +26,11 @@
   		SELECT * FROM post ORDER BY postNo DESC
   	</select>
 	
+	<!-- post -->
+  	<select id="listPost" parameterType="int" resultMap="postResult">
+  		SELECT * FROM post WHERE postNo=#{postNo}
+  	</select>
+  	
 	<!-- index 페이지에 전체 내용 출력 (인기순) -->
   	<select id="listAllPostByFavorit" resultMap="postResult">
   		SELECT * FROM post ORDER BY postFavorit DESC
@@ -81,8 +86,14 @@
    
    <!-- 구매 확인 -->
   	<select id="updatePostState" parameterType="int">
-  		UPDATE post SET postState="판매됨" WHERE postNo=#{postNo};
+  		UPDATE post SET postState="판매됨" WHERE postNo=#{postNo}
   	</select>
-  
-   
+ 
+   	
+   	<!-- 상품 삭제 -->
+  	<select id="deletePost" parameterType="int">
+  		delete from post where postNo=#{postNo}
+  	</select>
+ 
+   	
 </mapper>

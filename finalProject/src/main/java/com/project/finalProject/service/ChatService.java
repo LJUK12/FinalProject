@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.project.finalProject.dao.IChatDAO;
 import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
+import com.project.finalProject.model.ComChatMemberVO2;
+import com.project.finalProject.model.ComChatVO;
 
 @Service
 public class ChatService implements IChatService {
@@ -29,6 +31,20 @@ public class ChatService implements IChatService {
 	public void insertChat(ChatVO vo) {
 		// TODO Auto-generated method stub
 		dao.insertChat(vo);
+	}
+
+
+	@Override
+	public ArrayList<ComChatMemberVO2> listAllChatCommunity(int comNo) {
+		// TODO Auto-generated method stub
+		return dao.listAllChatCommunity(comNo);
+	}
+
+
+	@Override
+	public void insertChat2(ComChatVO vo) {
+		// TODO Auto-generated method stub
+		dao.insertChat2(vo);
 	}
 
 

@@ -6,30 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>4조 최종 프로젝트</title>
+<link href="<c:url value='/css/mainBanner.css'/>" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="wrap">
 		<!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
 
-		<aside id="aside1">
-			<a href="/login"><br>
-				<p class="asideNaming">로그인</p> 
-				<i class="fas fa-sign-in-alt fa-2x"></i>
-			</a><br><br><br>
-			<a href="/logout">
-				<p class="asideNaming">로그아웃</p>
-				<i class="fas fa-sign-out-alt fa-2x"></i>
-			</a><br><br><br>
-			<a>
-				<p class="asideNaming">최근목록</p>
-				<i class="fas fa-sign-in-alt fa-2x"></i>
-			</a><br><br><br>
-			<a>
-				<p class="asideNaming">고객센터</p>
-				<i class="fas fa-sign-in-alt fa-2x"></i>
-			</a><br><br>
-		</aside><br> 
 
 		<div id="mainIndexBox">
 			<section>
@@ -87,7 +70,7 @@
 										</div>
 										<div class="class-container">
 											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
+												<div class="class-format">지역</div>
 												<div class="class-format2">${pt.postState}</div>
 												<p class="information">${pt.postTitle}</p>
 											</div>
@@ -111,48 +94,49 @@
 							<ul class="class-list" data-position="0">
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_room_black_24dp.png" 
+											alt="top1" class="class-image2" /> 
+											<a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">지역별 장터</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_contact_phone_black_18dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">고객센터</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_local_fire_department_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">지역 best</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_attach_money_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">시세조회</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_safety_divider_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">안심거래</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_shopping_basket_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">전체상품</h4>
@@ -187,7 +171,7 @@
 										</div>
 										<div class="class-container">
 											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
+												<div class="class-format">지역</div>
 												<div class="class-format2">${ptf.postState}</div>
 												<p class="information">${ptf.postTitle}</p>
 											</div>
@@ -284,7 +268,7 @@
 										</div>
 										<div class="class-container">
 											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
+												<div class="class-format">지역</div>
 												<div class="class-format2">${post.postState}</div>
 												<p class="information">${post.postTitle}</p>
 											</div>

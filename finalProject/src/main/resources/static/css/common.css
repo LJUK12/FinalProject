@@ -17,30 +17,32 @@ body {
   background: white;
 }
 #wrap {
-   padding-top: 150px;
   width: 100%;
   margin: 0 auto;
 }
 
-/************* Header ************/
-#header {   
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  
-  
-  width: 100%;
-  height: 150px;
-  background: white;
-  text-align: center;
-  z-index: 999;
+#mainIndexBox{
+	margin-top: -80px;
 }
 
-#cell{
+/************* Header ************/
+#header {   
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: white;
+  text-align: center;
+}
+
+.cell{
    background: white;
    width: 110%;
+   height: auto;
+   position: sticky;
+   top:0;
+   z-index:10;
    
+
 }
 
 #firstName{
@@ -63,8 +65,8 @@ body {
    margin-left: 40px;
 }
 
-.naming4{
-   margin-left: 40px;
+.naming4{ 
+   margin-left: 30px;
 }
 
 .naming5{
@@ -90,7 +92,7 @@ body {
 /* main logo */
 #mainLogo {
   text-align: right;
-  margin-right: 315px;
+  margin-right: 324px;
   padding: 10px;
  
 }
@@ -107,24 +109,6 @@ body {
   display: inline;
 }
 
-/* btn */
-#userManageBtn {
-  margin-top : 20px;
-  margin-right: 30px;
-}
-
-#userManageBtn > a {
-  float: right;
-  color: #e9e7e3;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 0 8px;
-}
-
-#userManageBtn > a:hover {
-  color: black;
-}
 
 /************* SearchBar ************/
 #SearchBarBox {
@@ -226,6 +210,14 @@ a {
   object-fit:cover;
 }
 
+.class-image2 {
+  margin:28px;
+  border-radius: 8px 8px 0 0;
+  width:55%;
+  height:55%;
+  object-fit:cover;
+}
+
 .class-card {
   height: 200px;
   width: 220px;
@@ -310,14 +302,17 @@ a {
   font-size: 0.8rem;
   color: #fff;
   background-color: #bd8f3c;
-  padding: 0.2rem;
+  padding: 0.3rem;
+  border-radius: 15px;
 }
 
 .class-format2 {
   font-size: 0.8rem;
   color: #fff;
   background-color: green;
-  padding: 0.2rem;
+  padding: 0.3rem;
+  border-radius: 15px;
+  margin-left:3px;
 }
 
 .class-desc {
@@ -401,6 +396,7 @@ a {
     border: 0.5px solid;
     border-radius: 20px;
     text-align: center;
+    padding:0;
   }
 
 .asideNaming{

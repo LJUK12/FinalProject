@@ -32,23 +32,38 @@
 					<img src="/image/tag.png" id="tagimg"> 상품태그
 					<p class="tagbutton">#${post.postTag}</p>
 				</div><br>
-				
-				<p>${post.postPrice } 원</p><br>
+					
+				<input type="hidden" id="postPrice" value="${post.postPrice}">
+				<div id="postPriceText"></div><br>
 				<br><br>
 				<p id="content">${post.postContent }</p>
 				<br><br><br>
-				<%-- <p id="bottomid">${post.memNo}</p> --%>
+
+				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
 				
 				<div id="subfunction">
 				
 				<div id="favoritbtn"><img src="/image/likeit.png" id="favoritimg">
+				
 				<input type="text" id="favorit"value="${post.postFavorit }"readonly>
 				
-				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
+				<input type="hidden" name="memNo" class="memNo" value="${sessionScope.No}">
 				
 				<c:if test="${not empty sessionScope.sid }">
 					<c:if test="${post.postState eq '판매중' }">
-					<input type="button" id="buybtn" value="구매하기">
+					<div id = "contentbtn">
+					<c:if test="${post.memNo ne sessionScope.No}">
+						<div class="buybtn">
+							<img src="/image/장바구니.png" class="chatbtnimg">
+							<input type="button" id="buy" value="구매">
+						</div>
+						</c:if>
+						
+						<div class="deletebtn">
+							<img src="/image/삭제.png" class="chatbtnimg">
+							<input type="button" id="delete" value="삭제">
+						</div>
+					</div>
 					</c:if>
 				</c:if>
 
@@ -57,7 +72,7 @@
 				
 				<br><br>
 
-				<hr>
+				<hr class="contenthr">
 				
 				<br><br>
 				
@@ -84,7 +99,7 @@
 	        		<!-- <div style="margin-left: 10px;"><a id="insertchat">입력</a></div> -->
 	        		<div id = "chatbottom">
 	        		<div id = "chatsubmitbtn">
-	        		<img src="/image/chatbtn.png" id="chatbtnimg">
+	        		<img src="/image/chatbtn.png" class="chatbtnimg">
 	        		<input type="submit" value="등록" id="chatsubmit">
 	        		</div>
 					</div>

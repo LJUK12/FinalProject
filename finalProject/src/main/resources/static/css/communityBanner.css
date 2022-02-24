@@ -40,9 +40,9 @@ a {
 
 .slider-1 {
   margin-top: 80px;
-  margin-left:380px;
-  width: 62.5%;
-  height: 400px;
+  margin-left:470px;
+  width: 53%;
+  height: 200px;
   position: relative;
 }
 
@@ -98,7 +98,7 @@ a {
   cursor: pointer;
 }
 .slider-1 > .side-btns > div:last-child {
-  left: 760px;
+  left: 630px;
   right: 0;
 }
 .slider-1 > .side-btns > div > span {

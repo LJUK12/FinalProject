@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.finalProject.dao.IBoardDAO">
+  
+ 	<resultMap id="boardResult" type="com.project.finalProject.model.BoardVO">
+		<result property="comNo" column="comNo" />
+		<result property="comTitle" column="comTitle" />
+		<result property="comContent" column="comContent" />
+		<result property="comDate" column="comDate" />	
+		<result property="comHit" column="comHit" />	
+		<result property="comFavorite" column="comFavorite" />	
+		<result property="comImg" column="comImg" />
+		<result property="memNo" column="memNo" />			
+	</resultMap>
+	
+ 	<!-- 게시판 등록 -->
+    <insert id="enroll">
+        insert into community(comTitle, comContent, memNo) values (#{comTitle}, #{comContent}, #{memNo})
+    </insert>
+    
+    <!-- 게시글 작성  -->
+	<insert id="insertPost" parameterType="com.project.finalProject.model.BoardVO">
+		INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo)
+		VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo})
+	</insert>
+	
+    <!-- Post 페이지 이동 -->	
+    <select id="detailViewBoard" parameterType="int" resultType="com.project.finalProject.model.BoardVO">
+   		SELECT * FROM community WHERE comNo=#{comNo}
+    </select>
+    
+    <!-- index 페이지에 전체 내용 출력 (최신순) -->
+  	<select id="listAllBoard" resultMap="boardResult">
+  		SELECT * FROM community ORDER BY comNo DESC
+  	</select>
+
+    <!-- 조회수 추가 -->
+	<update id="hitCount" parameterType="int"> 
+		update community set comHit=comHit+1 where comNo=#{comNo} 
+	</update>
+	
+    <!-- 게시판 목록 -->
+    <select id="getList" resultType="com.project.finalProject.model.BoardVO">
+        select * from community
+    </select>
+  	
+    <!-- 게시판 조회 -->
+    <select id="getPage" resultType="com.project.finalProject.model.BoardVO">
+        select * from community where comNo = #{comNo}
+    </select>
+    
+    <!-- 게시판 수정 -->
+    <update id="modify">
+        update community set comTitle = #{comTitle}, comContent = #{comContent} where comNo = #{comNo} 
+    </update>
+    
+    <!-- 게시판 삭제 -->
+    <delete id="delete">
+        delete from community where comNo = #{comNo}
+    </delete>
+    
+	<!-- 게시물 총 개수 -->
+    <select id="getTotal" resultType="int">
+        select count(*) from community
+        <if test="keyword != null">
+            <include refid="criteria"></include>
+        </if>  
+    </select>    
+ 
+ 	<!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" resultType="com.project.finalProject.model.BoardVO">
+        select * from (
+                select comNo, comTitle, comContent, comDate, comHit
+                from community 
+                <if test="keyword != null">
+                    <include refid="criteria"></include>
+                </if>
+                order by comNo desc) as T1
+        limit #{skip},#{amount}
+    </select>
+ 
+ 	<!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="where (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            comTitle like concat('%',#{keyword},'%') 
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            comContent like concat('%',#{keyword},'%') 
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            memNo like concat('%',#{keyword},'%' )
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+    
+  </mapper>

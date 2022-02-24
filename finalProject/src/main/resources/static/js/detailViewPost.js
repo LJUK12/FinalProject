@@ -2,9 +2,16 @@
  * searchPost (top 검색 기능	)
  */
 window.onload = function () {
-	console.log($('#memNo').val());
+	PriceChange();
 	SearchMemIDAjax();
 	
+}
+
+function PriceChange(){
+	var price = $('#postPrice').val();
+	console.log(price);
+	var price2 = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$('#postPriceText').prepend(price2 + "원");
 }
 
 
@@ -21,7 +28,7 @@ $(function() {
 		return false;
 	})
 	
-	$('#buybtn').click(function() {
+	$('.buybtn').click(function() {
 		var postNo=$('#postNo').val();
 		console.log(postNo);
 		console.log($('#postWay').val());
@@ -33,6 +40,11 @@ $(function() {
 	})
 	
 	
+	$('.deletebtn').click(function() {
+	deleteAjax();
+	
+		return false;
+	})
 })
 
 
@@ -104,7 +116,7 @@ function FavoritAjax() {
 		dataType:'text',
 		success: function(result) {
 			favoritNo++;
-			$('#favoritbtn').prepend($('#favorit').val(favoritNo));
+			$('#favorit').prepend($('#favorit').val(favoritNo));
 			console.log(result);
 
 		},
@@ -116,6 +128,28 @@ function FavoritAjax() {
 }
 
 
+
+function deleteAjax() {
+	console.log($('#postNo').val());
+	$.ajax({
+		type:"post",
+		url:"/deletePost",
+		data:{postNo:$('#postNo').val(),memNo:$('.memNo').val()},
+		dataType:'text',
+		success: function(result) {
+			if(result == "success"){
+			alert("상품 게시글이 삭제되었습니다.");
+			location.href="/";
+			}else{
+				alert("상품 작성자가 아닙니다.");
+			}
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("상품 작성자가 아닙니다.");
+		}
+	});
+}
 
 
 /*
