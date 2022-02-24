@@ -23,4 +23,8 @@ public interface IPostService {
 	void updatePostState(int postNo);
 	void deletePost(int postNo);
 	PostVO listPost(int postNo);
+	
+	PostVO manageDetailViewPost(int postNo);	//관리자용 디테일 뷰
+	ArrayList<PostVO> manageAllPost(); //관리자 allListPost
+	void manageEditPosting(PostVO vo);		// 관리자 postEdit
 }

@@ -67,6 +67,16 @@
  		</select>
  		
  		
+ 		<!-- 관리자 회원 정보 전체 조회하기 -->
+ 		<select id="listAllProfile" resultType="com.project.finalProject.model.MemberVO">
+ 			SELECT * FROM member
+ 		</select>
+ 		
+ 		<!-- 관리자 회원 정보 삭제 기능 -->
+ 		<delete id="managerDeleteProfile" parameterType="int">
+ 			delete from member where memNo=#{memNo}
+ 		</delete>
+ 		
  		
  		
   </mapper>

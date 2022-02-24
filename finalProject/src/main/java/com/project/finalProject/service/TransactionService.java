@@ -36,4 +36,11 @@ public class TransactionService implements ITransactionService {
 		return dao.selectTran(ponstNo);
 	}
 
+
+	@Override
+	public void manageDeleteTran(int tranNo) {
+		dao.manageDeleteTran(tranNo);
+		
+	}
+
 }

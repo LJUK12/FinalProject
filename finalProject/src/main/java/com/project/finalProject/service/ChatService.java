@@ -48,6 +48,27 @@ public class ChatService implements IChatService {
 	}
 
 
+	@Override
+	public ArrayList<ChatVO> listAllChatManager() {
+		// TODO Auto-generated method stub
+		return dao.listAllChatManager();
+	}
+
+
+	@Override
+	public void deleteChat(int chatNo) {
+		// TODO Auto-generated method stub
+		dao.deleteChat(chatNo);
+	}
+
+
+	@Override
+	public ChatMemberVO2 manageChatList(int chatNo) {
+		// TODO Auto-generated method stub
+		return dao.manageChatList(chatNo);
+	}
+
+
 
 
 

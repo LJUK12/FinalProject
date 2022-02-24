@@ -77,6 +77,16 @@
 		SELECT count(*) FROM post WHERE memNo=#{memNo}
 	</select>
 	
+	<!-- 관리자 Post detail 가져오기-->	
+    <select id="manageDetailViewPost" parameterType="int" resultType="com.project.finalProject.model.PostVO">
+   		SELECT p.*, m.memId FROM post p, member m WHERE p.postNo=#{postNo} and p.memNo = m.memNo
+    </select>
+	
+	<!-- 관리자 Post allList 가져오기-->	
+    <select id="manageAllPost" parameterType="int" resultType="com.project.finalProject.model.PostVO">
+   		SELECT p.*, m.memId FROM post p, member m WHERE p.memNo = m.memNo order by postNo desc
+    </select>
+	
 	
    <!-- Favorit +1 -->
    <select id="FavoritCountPlus" parameterType="int">
@@ -95,5 +105,9 @@
   		delete from post where postNo=#{postNo}
   	</select>
  
+ <!-- 관리자 EditPost  -->
+  <update id="manageEditPosting" parameterType="com.project.finalProject.model.PostVO">
+  		UPDATE post SET postTitle=#{postTitle}, postContent=#{postContent}, postTag=#{postTag}, postImg=#{postImg}, postWay=#{postWay}, postPrice=#{postPrice} WHERE postNo=#{postNo}
+  </update>
    	
 </mapper>

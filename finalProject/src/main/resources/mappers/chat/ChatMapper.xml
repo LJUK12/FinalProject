@@ -59,4 +59,18 @@
 	</insert>
 	
 	
+	<!-- 관리자 채팅 목록 가져오기 -->
+	<select id="listAllChatManager" resultMap="ChatResult">
+		SELECT * FROM chatting ORDER BY postNo
+	</select>
+	<!-- 채팅 삭제하기 -->
+	<delete id="deleteChat" parameterType="int">
+		DELETE FROM chatting WHERE chatNo=#{chatNo}
+	</delete>
+	
+	<!-- 관리자 특정 채팅 내역 가져오기  -->
+	<select id="manageChatList" parameterType="int" resultMap="ChatmemberResult">
+		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo};
+	</select>
+	
 </mapper>

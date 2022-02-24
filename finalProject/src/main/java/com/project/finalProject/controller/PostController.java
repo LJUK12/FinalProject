@@ -218,51 +218,51 @@ public class PostController {
 	 
 	 
 
-	@RequestMapping("/objectDetection")
-	public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model) {
-		ArrayList<String> strList = null;
-		System.out.println("objectDetection �넻怨�");
-		String resultStr = "";
-		try {
-			// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
-			String uploadPath = "D:/ai/";
+		@RequestMapping("/objectDetection")
+		public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model) {
+			ArrayList<String> strList = null;
+			System.out.println("objectDetection �넻怨�");
+			String resultStr = "";
+			try {
+				// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
+				String uploadPath = "D:/ai/";
 
-			// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�
-			String originalFileName = file.getOriginalFilename();
-			String filePathName = uploadPath + originalFileName;
+				// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�
+				String originalFileName = file.getOriginalFilename();
+				String filePathName = uploadPath + originalFileName;
 
-			// 3. �뙆�씪 �깮�꽦
-			File file1 = new File(filePathName);
+				// 3. �뙆�씪 �깮�꽦
+				File file1 = new File(filePathName);
 
-			// 4. �꽌踰꾨줈 �쟾�넚
-			file.transferTo(file1);
+				// 4. �꽌踰꾨줈 �쟾�넚
+				file.transferTo(file1);
 
-			// �꽌鍮꾩뒪�뿉 �뙆�씪 path�� �뙆�씪紐� �쟾�떖 -> �꽌鍮꾩뒪 硫붿냼�뱶�뿉�꽌 蹂�寃�
-			// �꽌鍮꾩뒪�뿉�꽌 諛섑솚�맂 PoseVO 由ъ뒪�듃 ���옣
-			strList = objService.objectDetect(filePathName);
+				// �꽌鍮꾩뒪�뿉 �뙆�씪 path�� �뙆�씪紐� �쟾�떖 -> �꽌鍮꾩뒪 硫붿냼�뱶�뿉�꽌 蹂�寃�
+				// �꽌鍮꾩뒪�뿉�꽌 諛섑솚�맂 PoseVO 由ъ뒪�듃 ���옣
+				strList = objService.objectDetect(filePathName);
 
-			/*
-			 * for(int i = 0; i<strList.size(); i++) { resultStr += strList.get(i) + " "; }
-			 */
-			resultStr = strList.get(0);
-			System.out.println("Controller : " + resultStr);
-			resultStr = tsService.papagoTranslate(resultStr);
-			System.out.println("Controller papago  : " + resultStr);
-			ArrayList<PostVO> postVO = postService.searchPost(resultStr);
+				/*
+				 * for(int i = 0; i<strList.size(); i++) { resultStr += strList.get(i) + " "; }
+				 */
+				resultStr = strList.get(0);
+				System.out.println("Controller : " +resultStr);
+				resultStr = tsService.papagoTranslate(resultStr);
+				System.out.println("Controller papago  : " +resultStr);
+				ArrayList<PostVO> postVO = postService.searchPost(resultStr);
 
-			ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(resultStr);
+				ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(resultStr);
+				
+				model.addAttribute("resultStr", resultStr);
+				model.addAttribute("searchPostVO", postVO);
+				model.addAttribute("titleCntPostVO", titleCntPostVO);
 
-			model.addAttribute("resultStr", resultStr);
-			model.addAttribute("searchPostVO", postVO);
-			model.addAttribute("titleCntPostVO", titleCntPostVO);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "post/searchPost";
 		}
-
-		return "post/searchPost";
-	}
 
 	@RequestMapping("/allContentSearchPost/{resultStr}")
 	public String allContentSearchPost(@PathVariable String resultStr, Model model) {

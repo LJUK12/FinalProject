@@ -18,4 +18,5 @@ public interface IMemberService {
 	void updateProfile(MemberVO memVo);			// 프로필 수정
 	void withdrawMember(String memId);	
 	String searchMemId(int memNo);
+	void managerDeleteProfile(int memNo);	// 관리자 페이지 삭제 : 필요시 코드 지우기 가능
 }

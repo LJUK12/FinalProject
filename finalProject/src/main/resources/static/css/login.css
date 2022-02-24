@@ -13,6 +13,13 @@
    padding:0;
 }
 
+a {
+	text-decoration: none; color: black; 
+}
+
+a:visited {
+	text-decoration: none; 	
+}
 body{
    background:var(--body-background-color);
 }

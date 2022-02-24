@@ -95,6 +95,24 @@ public class PostService implements IPostService{
 		return dao.listPost(postNo);
 	}
 
+	@Override
+	public PostVO manageDetailViewPost(int postNo) {
+		// TODO Auto-generated method stub
+		return dao.manageDetailViewPost(postNo);
+	}
+
+	@Override
+	public ArrayList<PostVO> manageAllPost() {
+		// TODO Auto-generated method stub
+		return dao.manageAllPost();
+	}
+
+	@Override
+	public void manageEditPosting(PostVO vo) {
+		dao.manageEditPosting(vo);
+		
+	}
+
 	
 
 

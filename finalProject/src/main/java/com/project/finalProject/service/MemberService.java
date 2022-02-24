@@ -76,6 +76,12 @@ public class MemberService implements IMemberService{
 		return dao.searchMemId(memNo);
 	}
 
+	@Override
+	public void managerDeleteProfile(int memNo) {
+		dao.managerDeleteProfile(memNo);
+		
+	}
+
 
 
 

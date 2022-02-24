@@ -6,7 +6,7 @@
 	// 웰컴 메시지를 받기 위해서 message 입력받기 전에
 	// 빈 값으로 서버에 전송하고 웰컴 메시지를 받기 위해
 	// $.ajax()를 별도의 함수로 분리해서 호출
-	callAjax(); //매시지 입력하지 않고 호출해서 빈값 전송 -> open event -> 웰컴 메시지 출력
+	 //매시지 입력하지 않고 호출해서 빈값 전송 -> open event -> 웰컴 메시지 출력
 	
 	/////////////////////////////////////////////////////////
 	// 음성으로 질문하기
@@ -88,7 +88,7 @@
     	$.ajax({    		
 			type:"post",	
 			enctype: 'multipart/form-data',
-			url: "clovaSTT", //통신할 url		
+			url: "/speechToTextSTT", //통신할 url		
 			data: formData, //전송할 데이타	: 파일명 :voiceMsg.mp3
 			processData: false,
     		contentType: false,
@@ -139,7 +139,7 @@
 	function callAjax(){
 		$.ajax({
             type:"post",            
-            url:"chatbotCallImgLink",
+            url:"/chatbotCallImgLink",
             data:{message : $('#message').val()},
             dataType :'json',
             success:function (result){
@@ -148,7 +148,7 @@
 				for(var b in bubbles){
 					if(bubbles[b].type == 'text'){ // 기본 답변인 경우
 						/* chatBox에 받은 메시지 추가 */
-							$('#chatBox').append('<div class="msgBox receive"><span id="in"><span>챗봇</span><br><span>' + 
+							$('#chatBox').append('<div class="msgBox receive"><span id="in"><span>소나</span><br><span>' + 
 															   bubbles[b].data.description +'</span></span></div><br><br>'); 
 															   
 						// 챗봇으로 부터 받은 텍스트 답변을 음성으로 변환하기 위해 TTS 호출									   
@@ -198,7 +198,7 @@
 	function callAjaxTTS(result){
 		$.ajax({
             type:"post",            
-            url:"chatbotTTS",
+            url:"/chatbotTTS",
             data:{message : result},
             dataType :'text',
             success:function (result){ //음성 파일 이름 받음
@@ -231,7 +231,12 @@
 			$('#chatbot-btn').css('background-color', '#f7bc6c');	
 		} else {
 			$('#chatbot-btn').css('background-color', '#6fc2f0');
+			
 		}
 	}
+	
+	$("#chatbot-btn").one("click", function() {
+	  callAjax();
+	});
 
 });
