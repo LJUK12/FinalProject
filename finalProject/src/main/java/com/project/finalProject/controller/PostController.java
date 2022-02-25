@@ -225,8 +225,8 @@ public class PostController {
 			String resultStr = "";
 			try {
 				// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
-				String uploadPath = "/root/ai/";
-						/*"D:/ai/";*/
+				String uploadPath = /* "/root/ai/"; */
+						"D:/ai/";
 
 				// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�
 				String originalFileName = file.getOriginalFilename();
