@@ -18,37 +18,39 @@
 		<!-- mypagemenu -->
 		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		
-		<section id="myPageSection1">
-			<div id="commonInformation1">
+		<br><br>
+		<section class="myPageSection1">
+			<div class="commonInformation1">
 				<div id="inf1">
 					<h1>기본정보</h1><br>
 					<div class="common1">
-						<h4>ID &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memId }</h4>
+						<h4>ID: &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memId }</h4>
 					</div><hr class="common1Hr">
 					<div class="common1">
-						<h4>성명 &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
+						<h4>성명: &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
 					</div><hr class="common1Hr">
 					<div class="common1">
-						<h4>주소 &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memAddress1 }</h4>&ensp;<h4>${member.memAddress2 }</h4>
+						<h4>주소: &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memAddress1 }</h4>&ensp;<h4>${member.memAddress2 }</h4>
 					</div><hr class="common1Hr">
 				</div>
-			</div><br>
-			<div id="commonInformation2">
+			</div><br>&ensp;&ensp;
+			<div class="commonInformation2">
 				<div id="inf1">
 					<h1>연락처 정보</h1><br>
 					<div class="common1">
-						<h4>이메일 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memEmail }</h4>
+						<h4>이메일: &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memEmail }</h4>
 					</div><hr class="common1Hr">
 					<div class="common1">
-						<h4>전화번호 &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
+						<h4>전화번호: &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
 					</div><hr class="common1Hr">
-				</div><br>
-				&ensp;&ensp;<button id="update">회원 정보 수정</button>
-				&ensp;<button id="home">메인 페이지로</button>
+				</div>
 			</div>	
-		
-		
 		</section>
+		<div id="goUpdate">
+			<button id="update">회원 정보 수정</button>
+			<button id="home">메인 페이지로</button>
+		</div>
+		
 		
 <!-- BOTTOM -->
 		<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true'/>		

@@ -6,41 +6,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="<c:url value='/css/myPageMenu.css'/>" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 
-<div id="wrap">
-<!-- TOP -->
-		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true'/>
-		<br><br>
-		<!-- mypagemenu -->
-		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
-		
-		<section>
-		
-		<c:set var="i" value="0"/>
-		<h3>나의 즐겨찾기</h3>
-<div id="myPost">
-<table width="800" align="center" border="1">
-<tr>
-<th>글번호</th><th width="500">제목</th><th>글쓴이</th><th>날자</th>
-<tr>
-<c:forEach items="${postList }" var="post">
-<tr>
-<td>${post.postNo }</td><td width="500"><a href="<c:url value='/post/detailViewPost/${post.postNo }'/>">${post.postTitle }</a> </td><td><c:out value="${memIdList[i]}" /> </td><td>${post.postDate }</td>
-</tr>
-<c:set var="i" value="${i+1 }"/>
-</c:forEach>
-
-</table>
-</div>
-		
-		
-		</section>
-		
-<!-- BOTTOM -->
-		<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true'/>		
-		
+	<div id="wrap">
+			<!-- TOP -->
+			<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true'/>
+			<br><br>
+			
+			
+			<div id="paging2">
+				<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
+				<div><br><br><br><br>
+				<h3 id="fav">즐겨찾기한 상품</h3>
+				
+				<article>
+				<div class="hotItemGroup2">
+					<ul class="class-list5" data-position="0">
+						<c:set var="postNum" value="0" />
+						<c:forEach items="${postList}" var="post">
+						<div> 
+							<div>
+								<div class="class-card">
+									<a href="/post/detailViewPost/${post.postNo}"> 
+									<img src="/resource/photo_upload/${post.postImg }" alt="top1"
+										 class="class-image" />
+									</a>
+								</div>
+								<div class="class-container">
+									<div class="class-skill">
+										<div class="class-format">지역</div>
+										<div class="class-format2">${post.postState}</div>
+										<div class="class-format3"><h5>${post.postWay}</h5></div>
+										<div>
+											<i class="fa-solid fa-heart"></i>: ${post.postFavorit} 
+										</div>
+									</div>
+									<div class="class-skill">
+										<div><h4>판매가:&nbsp; ${post.postPrice }원</h4></div>&ensp;&ensp;&ensp;&ensp;
+									</div><hr>
+									<div class="class-skill2"> 
+										<p class="information">${post.postTitle}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<c:set var="postNum" value="${postNum + 1}" />
+						<c:if test="${postNum eq 5}">
+						<c:set var="postNum" value="0" />
+					</ul>
+				</div>
+				<div class="hotItemGroup2">
+					<ul class="class-list5" data-position="0">
+						</c:if>
+						</c:forEach>
+					</ul> 
+				 </article>
+				</section>
+				</div>
+			<!-- BOTTOM -->
+			<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true'/>		
+			
 </div>
 </body>
 </html>

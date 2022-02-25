@@ -18,19 +18,19 @@
 		<!-- mypagemenu -->
 		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		
-		<section>
-		<h3>회원탈퇴</h3>
-		<p>정말 탈퇴하시겠습니까? 되돌릴 수 없습니다.</p><br>
-		<p>탈퇴를 원하시면 아래에 비밀번호를 입력해주세요.</p><br>
-		<form id="withdrawMemberForm" name="withdrawMemberForm">
-		<input type="hidden" id="memId" name="memId" value="${sessionScope.sid }">
-		<input type="password" id="memPwd" name="memPwd"><br>
-		<input type="submit" value="탈퇴">
-	    <input type="reset" value="취소">
-		
-		</form>
-		
-		
+		<section class="myPageSection2">
+		<div id="withdraw">
+			<br><br><h2 id="withh3">&ensp;&ensp;회원탈퇴</h2><br>
+ 			<p>&ensp;&ensp;&ensp;정말 탈퇴하시겠습니까? 되돌릴 수 없습니다.</p><br>
+			<p>&ensp;&ensp;&ensp;탈퇴를 원하시면 아래에 비밀번호를 입력해주세요.</p><br>
+			
+			<form id="withdrawMemberForm" name="withdrawMemberForm">
+				<input type="hidden" id="memId" name="memId" value="${sessionScope.sid }">
+				<input type="password" id="memPwd" name="memPwd"><br><br>
+				<input type="submit" value="탈퇴" class="withBtn">
+			    <input type="reset" value="취소" class="withBtn2">
+			</form>
+		</div>
 		</section>
 		
 <!-- BOTTOM -->

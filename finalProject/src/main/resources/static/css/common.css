@@ -37,12 +37,10 @@ body {
 .cell{
    background: white;
    width: 110%;
-   height: auto;
+   height: 80px;
    position: sticky;
    top:0;
    z-index:10;
-   
-
 }
 
 #firstName{
@@ -53,8 +51,8 @@ body {
 
    
 #naming{
-   margin-top: 5px;
-   margin-left: 410px;
+	margin-left: 15px;
+   margin-top: 32px;
 }
 
 .naming2{
@@ -84,8 +82,7 @@ body {
 }
 
 #hr3{
- margin-top:38px;
- width: 100%;
+ width: 100%; 
  border: 1px solid #f0f0f0;
 }
 
@@ -128,7 +125,7 @@ body {
   background-color: #FAFAFA;
   padding: 0 10px;
   margin-left: 60px;
-  margin-top: 26px;
+  margin-top: 29px;
   z-index: -200;
 }
 
@@ -230,8 +227,7 @@ a {
 }
 
 .information{
-   margin-left: 10px;
-   font-size: small;
+   font-size: 0.9em;
 
 }
 
@@ -259,6 +255,34 @@ a {
   flex-shrink: 0;
 }
 
+.icon1{
+	margin-left:43px;
+	margin-top:36px;
+}
+.icon2{
+	margin-left:31px;
+	margin-top:36px;
+}
+.icon3{
+	margin-left:38px;
+	margin-top:36px;
+}
+.icon4{
+	margin-left:31px;
+	margin-top:36px;
+}
+.icon5{
+	margin-left:31px;
+	margin-top:36px;
+}
+.icon6{
+	margin-left:36px;
+	margin-top:36px;
+}
+.icon7{
+	margin-left:34px;
+	margin-top:36px;
+}
 
 
 .class-card:hover {
@@ -279,7 +303,7 @@ a {
 
 .class-container {
   margin: 0 10px;
-  height: 80px;
+  height: 120px;
   width: 220px;
   box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
   padding: 0.5rem 1rem 1rem 0.2rem;
@@ -287,11 +311,17 @@ a {
 }
 
 .class-skill {
-   margin: 5px 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+	display:flex;
+	justify-content:space-between;
+    margin: 5px 0; 
+    width:100%;
+} 
+
+.class-skill2 {
+	display:flex;
+	justify-content:space-start;
+    margin: 5px auto; 
+} 
 
 .class-type {
   font-size: 0.9rem;
@@ -303,7 +333,6 @@ a {
   color: #fff;
   background-color: #bd8f3c;
   padding: 0.3rem;
-  border-radius: 15px;
 }
 
 .class-format2 {
@@ -311,8 +340,13 @@ a {
   color: #fff;
   background-color: green;
   padding: 0.3rem;
-  border-radius: 15px;
-  margin-left:3px;
+}
+
+.class-format3 {
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #73d9fb;
+  padding: 0.3rem;
 }
 
 .class-desc {

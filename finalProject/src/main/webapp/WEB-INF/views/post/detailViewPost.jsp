@@ -16,7 +16,7 @@
 		
 	</head>
 	<body>
-<!-- TOP -->
+		<!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
 		
 		
@@ -106,10 +106,6 @@
 				
 				</form>
 				
-				
-				
-				
-				
 				<br><br>
 				
 				<div id="chatList" >
@@ -125,52 +121,56 @@
 		            </c:forEach>
 		             
 				</div>
-				
-				
-				
-				
-				
-				
+
 				</div>
 				</article>	
 				
 				
               
-			  <article>
-	                <div id="hotItemsSection">
-	                 
-	                    <h2>오늘의 hot 상품</h2><br>
-	                    <div class="hotItemGroup" style="margin-left:0">
-	                    <!-- 마진 레프트 제거 -->
-	                   <ul class="class-list" data-position="0">
-								<c:forEach items="${postList2}" var="pt" end="2">
-									<div>
-										<div class="class-card">
-											<a href="/post/detailViewPost/${pt.postNo}"> 
-											<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
-												 class="class-image" />
-											</a>
-										</div>
-										<div class="class-container">
-											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
-												<div class="class-format2">${pt.postState}</div>
-												<p class="information">${pt.postTitle}</p>
-											</div>
+		  <article>
+                <div id="hotItemsSection">
+                 
+                    <h2>오늘의 hot 상품</h2><br>
+                    <div class="hotItemGroup" style="margin-left:0">
+                    <!-- 마진 레프트 제거 -->
+                   <ul class="class-list" data-position="0">
+							<c:forEach items="${postList2}" var="pt" end="2">
+								<div>
+									<div class="class-card">
+										<a href="/post/detailViewPost/${pt.postNo}"> 
+										<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
+											 class="class-image" />
+										</a>
+									</div>
+									<div class="class-container">
+									<div class="class-skill">
+										<div class="class-format">지역</div>
+										<div class="class-format2">${pt.postState}</div>
+										<div class="class-format3"><h5>${pt.postWay}</h5></div>
+										<div>
+											<i class="fa-solid fa-heart"></i>: ${pt.postFavorit} 
 										</div>
 									</div>
-								</c:forEach>
-							</ul>
-	                </div>
-	            </article>	       
+									<div class="class-skill">
+										<div><h4>판매가:&nbsp; ${pt.postPrice }원</h4></div>&ensp;&ensp;&ensp;&ensp;
+									</div><hr>
+									<div class="class-skill2"> 
+										<p class="information">${pt.postTitle}</p>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</ul>
+                </div>
+            </article>	       
 		</div>
 		
 		</div>
 		</div>
 		
 		
-			<!-- BOTTOM -->
-			<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true' />
+		<!-- BOTTOM -->
+		<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true' />
 		
 	</body>
 </html>

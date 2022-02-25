@@ -28,9 +28,7 @@
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
 </head>
 <body id="topBody">
 	<header>
@@ -63,22 +61,20 @@
 						<a href="<c:url value='/rootManager'/>"><h2>관리자</h2></a>
 					</c:if>
 					<a href="<c:url value='/logout'/>">로그아웃</a>
-					<a href="<c:url value='/cart'/>">즐겨찾기</a>
+					<a href="<c:url value='/myFavorit'/>">즐겨찾기</a>
 					<a href="<c:url value='/myPageForm'/>">${sessionScope.sid}님의
 						마이페이지</a>
 				</c:if>
 			</div>
 			<hr />
-			<a href="<c:url value='/'/>"> <br> <br>
-				<h1 id="mainName">BaNaDa</h1></a>
-			<button type="button" class="mobile-menu">
-				<i class="fas fa-bars"></i>
-			</button>
-		</div>
+			<a href="<c:url value='/'/>">
+            	<br><br><h1 id="mainName">BaNaDa</h1></a>
+         </div>
 	</header>
 
 	<div class="cell">
 		<div id="firstName">
+			<button type="button" class="mobile-menu"><i class="fas fa-bars"></i></button>
 			<div class="menuwrap">
 				<nav id="menu">
 					<!-- "메뉴목록 표시" -->
@@ -92,8 +88,8 @@
 					</ul>
 				</nav>
 			</div>
-			<a href="<c:url value='/'/>"><br>
-				<h2 id="naming">&ensp;&ensp;&ensp;&nbsp;카테고리</h2></a>
+				
+				<h2 id="naming">&ensp;&ensp;&ensp;&nbsp;카테고리</h2>
 			<article>
 				<div id="SearchBarBox">
 					<div id="SearchBar">
@@ -109,28 +105,28 @@
 					</div>
 				</div>
 			</article>
-		<a href="<c:url value='/join'/>" style="margin-left: 30px;"><i class="fas fa-shopping-cart fa-2x naming5"></i></a> <a
-				href="<c:url value='/myPageForm'/>"><br> <br>
-				<h3 class="naming2">회원정보 &ensp;&ensp;&nbsp;</h3></a>
-			<hr id="hr2">
-			<a href="<c:url value='/board/list'/>"><br> <br>
-				<h3 class="naming3">커뮤니티 &ensp;&ensp;&nbsp;</h3></a>
-			<hr id="hr2">
-			<a href="<c:url value='/insertPostForm'/>"><br> <br>
-				<h3 class="naming4">&ensp;상품 판매</h3></a>
+			<a href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i>&ensp;&ensp;</a> 
+			<a href="<c:url value='/myPageForm'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp;</h3></a>
+				<hr id="hr2">
+			<a href="<c:url value='/board/list'/>"><br><br><h3 class="naming3">커뮤니티 &ensp;&ensp;&nbsp;</h3></a>
+				<hr id="hr2">
+			<a href="<c:url value='/insertPostForm'/>"><br><br><h3 class="naming4">&ensp;상품 판매</h3></a>
 		</div>
-		<hr id="hr3">
+		<div class="updown"></div>
 	</div>
 
 	<aside id="aside1">
 		<a href="/login"><br>
 			<p class="asideNaming">로그인</p> <i class="fas fa-sign-in-alt fa-2x"></i>
-		</a><br> <br> <br> <a href="/logout">
+		</a><br> <br> <br> 
+		<a href="/logout">
 			<p class="asideNaming">로그아웃</p> <i class="fas fa-sign-out-alt fa-2x"></i>
-		</a><br> <br> <br> <a>
-			<p class="asideNaming">최근목록</p> <i class="fas fa-sign-in-alt fa-2x"></i>
-		</a><br> <br> <br> <a>
-			<p class="asideNaming">고객센터</p> <i class="fas fa-sign-in-alt fa-2x"></i>
+		</a><br> <br> <br> 
+		<a href="/board/list">  
+			<p class="asideNaming">커뮤니티</p> <i class="fa-solid fa-chalkboard-user fa-2x"></i>
+		</a><br> <br> <br> 
+		<a href="/myFavorit">
+			<p class="asideNaming">즐겨찾기</p> <i class="fa-solid fa-star fa-2x"></i>
 		</a><br> <br>
 	</aside>
 	<br>
