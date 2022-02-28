@@ -134,3 +134,10 @@ input[name=postTitle]::placeholder {
 #loginMenu{
 	text-align:center;
 }
+
+#postMap{
+	background-color:white;
+	border:0;
+	outline:0;
+	width:500px;	
+}

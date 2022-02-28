@@ -1,11 +1,23 @@
 /**
  * searchPost (top 검색 기능	)
  */
+ 
+ 
+ 
 window.onload = function () {
 	PriceChange();
 	SearchMemIDAjax();
-	
+
+
 }
+
+
+
+
+
+
+
+
 
 function PriceChange(){
 	var price = $('#postPrice').val();
@@ -54,7 +66,7 @@ $(function() {
 	})
 	
 	if(FavoritPost == 1){
-		$("#favoritPost").css("background-color","blue");
+		document.getElementById("favoritPostimg").src = "/image/별2.png";
 	}
 	
 	
@@ -176,16 +188,16 @@ function FavoritPostAjax(){
 			var FavoritPost = $('#favoritPost').val();
 			if(favorit == 0){
 				FavoritPost = 0;
-				$("#favoritPost").css("background-color","white");
+				document.getElementById("favoritPostimg").src = "/image/별.png";
 				console.log(favorit);
 			}
 			else if(favorit == 1){
 				FavoritPost = 1;
-				$("#favoritPost").css("background-color","blue");
+				document.getElementById("favoritPostimg").src = "/image/별2.png";
 				console.log(favorit);
 			}
 			else{
-				alert("로그인 후 입력해 주세요");
+				alert("로그인 후 입력해 주세요2");
 			}
 			
 			$('#favoritPost').value = FavoritPost
