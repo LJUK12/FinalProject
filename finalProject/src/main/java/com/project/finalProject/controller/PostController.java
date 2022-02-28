@@ -191,13 +191,13 @@ public class PostController {
 	  
 
 	@RequestMapping("/objectDetection")
-	public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model) {
+	public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model, HttpServletRequest request) {
 		ArrayList<String> strList = null;
 		System.out.println("objectDetection �넻怨�");
 		String resultStr = "";
 		try {
 			// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
-			String uploadPath = "D:/ai/";
+			String uploadPath = "resource/ai_upload";
 
 			// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�
 			String originalFileName = file.getOriginalFilename();

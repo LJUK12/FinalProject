@@ -6,7 +6,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>채팅내역 관리자 페이지</title>
+	<title>거래내역 관리자 페이지</title>
 	
 </head>
 	<body>
@@ -14,7 +14,7 @@
 		<section>
 			<div id="menagementWrap">
 			<a id="returnManager" href="/rootManager">◀돌아가기</a>
-			<h2>채팅 내역</h2>
+			<h2>거래 내역</h2>
 			<input type="text" placeholder="검색하기"/>
 				<table id="memTable" border="1">
 					<tr><th>거래번호</th><th>결제방식</th><th>거래방식</th>
