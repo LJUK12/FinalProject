@@ -60,13 +60,6 @@ public class PostService implements IPostService{
 		return dao.postListCount(memNo);
 	}
 
-	
-	@Override
-	public PostVO manageDetailViewPost(int postNo) {
-		//관리자용 디테일 뷰
-		return dao.manageDetailViewPost(postNo);
-	}
-
 	@Override
 	public void FavoritCountPlus(int postNo) {
 		dao.FavoritCountPlus(postNo);
@@ -85,15 +78,27 @@ public class PostService implements IPostService{
 	}
 
 	@Override
-	public ArrayList<PostVO> manageAllPost(){
-		//관리자 allListPost
+	public PostVO listPost(int postNo) {
+		
+		return dao.listPost(postNo);
+	}
+
+	@Override
+	public PostVO manageDetailViewPost(int postNo) {
+		// TODO Auto-generated method stub
+		return dao.manageDetailViewPost(postNo);
+	}
+
+	@Override
+	public ArrayList<PostVO> manageAllPost() {
+		// TODO Auto-generated method stub
 		return dao.manageAllPost();
 	}
-	
+
 	@Override
 	public void manageEditPosting(PostVO vo) {
-		// 관리자 postEdit
 		dao.manageEditPosting(vo);
+		
 	}
 
 }

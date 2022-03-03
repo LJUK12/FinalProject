@@ -36,7 +36,14 @@
   	<delete id="manageDeleteTran" parameterType="int">
   		DELETE FROM transaction WHERE tranNo=#{tranNo}
   	</delete>
-	
+  	
+  	<!-- 관리자 거래내역 수정위한 조회 -->
+  	<select id="ManageSelectTran" parameterType="int" resultMap="tranResult">
+  		SELECT * FROM transaction WHERE tranNo=#{tranNo}
+  	</select>
   
-   
+  <!-- 관리자 거래내역 수정 -->
+  <update id="manageUpdateTran" parameterType="hashmap">
+  		UPDATE transaction SET tranAddress=#{tranAddress} WHERE tranNo=#{tranNo}
+  </update>
 </mapper>

@@ -16,7 +16,7 @@
 		
 	</head>
 	<body>
-<!-- TOP -->
+		<!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
 		
 		
@@ -28,24 +28,44 @@
 				<p>${post.postDate }</p><br>
 				<div class="topmem" id="searchmemId"></div><br>
 				<p>${post.postPrice }원</p><br>
+				<div class="topmem" id="searchmemId"></div> <p>${post.postDate }</p><br>
+				
 				<div id="tagtop">
-					<p class="tagbutton">${post.postTag}</p>
-				</div>
+					<img src="/image/tag.png" id="tagimg"> 상품태그
+					<p class="tagbutton">#${post.postTag}</p>
+				</div><br>
+					
+				<input type="hidden" id="postPrice" value="${post.postPrice}">
+				<div id="postPriceText"></div><br>
 				<br><br>
 				<p id="content">${post.postContent }</p>
 				<br><br><br>
-				<%-- <p id="bottomid">${post.memNo}</p> --%>
+
+				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
 				
 				<div id="subfunction">
 				
 				<div id="favoritbtn"><img src="/image/likeit.png" id="favoritimg">
-				<input type="text" id="favorit"value="${post.postFavorit }"readonly>
 				
-				<input type="hidden" name="postWay" id="postWay" value="${post.postWay}">
+				<input type="text" id="favorit"value="${post.postFavorit }"readonly>
+				<button id="favoritPost" value="${favoritPost }">즐겨찾기</button>
+				<input type="hidden" name="memNo" class="memNo" value="${sessionScope.No}">
 				
 				<c:if test="${not empty sessionScope.sid }">
 					<c:if test="${post.postState eq '판매중' }">
-					<input type="button" id="buybtn" value="구매하기">
+					<div id = "contentbtn">
+					<c:if test="${post.memNo ne sessionScope.No}">
+						<div class="buybtn">
+							<img src="/image/장바구니.png" class="chatbtnimg">
+							<input type="button" id="buy" value="구매">
+						</div>
+						</c:if>
+						
+						<div class="deletebtn">
+							<img src="/image/삭제.png" class="chatbtnimg">
+							<input type="button" id="delete" value="삭제">
+						</div>
+					</div>
 					</c:if>
 				</c:if>
 
@@ -54,7 +74,7 @@
 				
 				<br><br>
 
-				<hr>
+				<hr class="contenthr">
 				
 				<br><br>
 				
@@ -72,80 +92,87 @@
 	        		${sessionScope.sid}
 	        		<input type="hidden" name="postNo" id="postNo" value="${post.postNo }">
 					<input type="hidden" name="memNo" id="memNo" value="${sessionScope.No}">
-					<input type="hidden" name="memid" id="memid" value="${sessionScope.sid}">		
-	        		<div>
+
+					<input type="hidden" name="memid" id="memid" value="${sessionScope.sid}">	
+	        		<div><br>
 						<input type="text" id="chatContent" 
-						name="chatContent" placeholder="입력">
+						name="chatContent" placeholder="로그인 후 입력하세요">
 					</div>
 	        	    <%-- <fmt:formatDate value="${chat.chatDate }"  pattern="YY.MM.dd yy:hh:ss"/> --%>
 	        		<!-- <div style="margin-left: 10px;"><a id="insertchat">입력</a></div> -->
-	        		<input type="submit" value="입력">
-					
+	        		<div id = "chatbottom">
+	        		<div id = "chatsubmitbtn">
+	        		<img src="/image/chatbtn.png" class="chatbtnimg">
+	        		<input type="submit" value="등록" id="chatsubmit">
+	        		</div>
+					</div>
 				
 				</form>
-				
-				
-				
-				
 				
 				<br><br>
 				
 				<div id="chatList" >
 					
 					<c:forEach items="${chatList}" var="chat">
-					 
+					 			
+					 			<br>
 		                        <p>${chat.memId }</p>
+		                        <p class="chatingDate" id="chatid"><fmt:formatDate  value="${chat.chatDate }"  pattern="YY.MM.dd hh:ss"/></p>
 		                        <p>${chat.chatContent }</p><br>
+		                        <hr class="chathr">
 		                          
 		            </c:forEach>
 		             
 				</div>
-				
-				
-				
-				
-				
-				
+
 				</div>
 				</article>	
 				
-				
-              
-			  <article>
-	                <div id="hotItemsSection">
-	                 
-	                    <h2>오늘의 hot 상품</h2><br>
-	                    <div class="hotItemGroup" style="margin-left:0">
-	                    <!-- 마진 레프트 제거 -->
-	                   <ul class="class-list" data-position="0">
-								<c:forEach items="${postList2}" var="pt" end="2">
-									<div>
-										<div class="class-card">
-											<a href="/post/detailViewPost/${pt.postNo}"> 
-											<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
-												 class="class-image" />
-											</a>
-										</div>
-										<div class="class-container">
-											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
-												<div class="class-format2">${pt.postState}</div>
-												<p class="information">${pt.postTitle}</p>
-											</div>
+
+		  <article>
+                <div id="hotItemsSection">
+                 
+                    <h2>오늘의 hot 상품</h2><br>
+                    <div class="hotItemGroup" style="margin-left:0">
+                    <!-- 마진 레프트 제거 -->
+                   <ul class="class-list" data-position="0">
+							<c:forEach items="${postList2}" var="pt" end="2">
+								<div>
+									<div class="class-card">
+										<a href="/post/detailViewPost/${pt.postNo}"> 
+										<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
+											 class="class-image" />
+										</a>
+									</div>
+									<div class="class-container">
+									<div class="class-skill">
+										<div class="class-format">지역</div>
+										<div class="class-format2">${pt.postState}</div>
+										<div class="class-format3"><h5>${pt.postWay}</h5></div>
+										<div>
+											<i class="fa-solid fa-heart"></i>: ${pt.postFavorit} 
 										</div>
 									</div>
-								</c:forEach>
-							</ul>
-	                </div>
-	            </article>	       
+									<div class="class-skill">
+										<div><h4>판매가:&nbsp; ${pt.postPrice }원</h4></div>&ensp;&ensp;&ensp;&ensp;
+									</div><hr>
+									<div class="class-skill2"> 
+										<p class="information">${pt.postTitle}</p>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</ul>
+                </div>
+            </article>	       
 		</div>
 		
 		</div>
 		</div>
 		
 		
-			<!-- BOTTOM -->
-			<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true' />
+		<!-- BOTTOM -->
+		<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true' />
 		
 	</body>
 </html>

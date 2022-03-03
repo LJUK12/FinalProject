@@ -154,12 +154,17 @@ public class ManageController {
 	}
 	
 	@RequestMapping("/tradeManager/tranEdit/{tranNo}")
-	public String tranEdit(@PathVariable int tranNo) {
-		/*
-		 * TransactionVO tranVO = postService.manageDetailViewPost(postNo);
-		 * model.addAttribute("tranVO", tranVO);
-		 */
-		return "manage/chatEditManagement";
+	public String tranEdit(@PathVariable int tranNo, Model model) {
+		
+		 TransactionVO tranVO = tsService.ManageSelectTran(tranNo);
+		 model.addAttribute("tranVO", tranVO);
+		 
+		return "manage/tradeEditManagement";
+	}
+	@RequestMapping("/tradeManager/tranEdit2")
+	public String tranEdit2(@RequestParam HashMap<String, Object> param) {
+		tsService.manageUpdateTran(param);
+		return "redirect:/tradeManager";
 	}
 	@RequestMapping("/tradeManager/tranDelete/{tranNo}")
 	public String tranDelete(@PathVariable int tranNo) {
@@ -167,3 +172,4 @@ public class ManageController {
 		return "redirect:/tradeManager";
 	}
 }
+

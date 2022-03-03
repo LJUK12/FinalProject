@@ -2,11 +2,25 @@
  * searchPost (top 검색 기능	)
  */
 window.onload = function () {
+<<<<<<< HEAD
 	console.log($('#memNo').val());
+=======
+	PriceChange();
+>>>>>>> upstream/main
 	SearchMemIDAjax();
 	
 }
 
+<<<<<<< HEAD
+=======
+function PriceChange(){
+	var price = $('#postPrice').val();
+	console.log(price);
+	var price2 = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$('#postPriceText').prepend(price2 + "원");
+}
+
+>>>>>>> upstream/main
 
 $(function() {
 	$('#Chatting').on('submit', function() {
@@ -21,7 +35,11 @@ $(function() {
 		return false;
 	})
 	
+<<<<<<< HEAD
 	$('#buybtn').click(function() {
+=======
+	$('.buybtn').click(function() {
+>>>>>>> upstream/main
 		var postNo=$('#postNo').val();
 		console.log(postNo);
 		console.log($('#postWay').val());
@@ -33,6 +51,28 @@ $(function() {
 	})
 	
 	
+<<<<<<< HEAD
+=======
+	$('.deletebtn').click(function() {
+	deleteAjax();
+	
+		return false;
+	})
+	
+	var FavoritPost = $('#favoritPost').val();
+	$("#favoritPost").on("click",function(){
+		
+		console.log("dd");
+		FavoritPostAjax();
+	})
+	
+	if(FavoritPost == 1){
+		$("#favoritPost").css("background-color","blue");
+	}
+	
+	
+	
+>>>>>>> upstream/main
 })
 
 
@@ -61,7 +101,14 @@ function SearchMemIDAjax() {
 
 function insertchatAjax() {
 	var formdata = $('#Chatting').serialize();
+<<<<<<< HEAD
 	
+=======
+	if($('#chatContent').val() ==""){
+		alert("내용을 입력하세요");
+		return false;
+	}
+>>>>>>> upstream/main
 	$.ajax({
 		type: "post",
 		url: "/insertChat.do",
@@ -69,12 +116,29 @@ function insertchatAjax() {
 		dataType: 'text',
 		
 		success: function(result) {
+<<<<<<< HEAD
 
 			$('#chatList').prepend($('#chatContent').val() + "<br><br>");
 			$('#chatList').prepend($('#memid').val() + "<br>");
 			
 			$('#chatContent').val('');
 			console.log(result);
+=======
+			let today = new Date();
+			var year = today.getFullYear().toString();
+			var year2 = year.substr(2,4);
+			let month = today.getMonth() + 1
+			let date = today.getDate();
+			let hours = today.getHours();
+			let minutes = today.getMinutes();
+			let seconds = today.getSeconds();
+			$('#chatList').prepend($('#chatContent').val() + "<br><br><hr class='chathr'>");
+			$('#chatList').prepend("<p class='chatingDate'>"+year2+"."+"0"+month+"."+date+"."+hours+"."+minutes+"</p>");
+			$('#chatList').prepend("<br>"+$('#memid').val() + "<br>");
+			
+			$('#chatContent').val('');
+			
+>>>>>>> upstream/main
 
 		},
 		error: function(result, textStatus) {
@@ -93,7 +157,11 @@ function FavoritAjax() {
 		dataType:'text',
 		success: function(result) {
 			favoritNo++;
+<<<<<<< HEAD
 			$('#favoritbtn').prepend($('#favorit').val(favoritNo));
+=======
+			$('#favorit').prepend($('#favorit').val(favoritNo));
+>>>>>>> upstream/main
 			console.log(result);
 
 		},
@@ -106,6 +174,63 @@ function FavoritAjax() {
 
 
 
+<<<<<<< HEAD
+=======
+function deleteAjax() {
+	console.log($('#postNo').val());
+	$.ajax({
+		type:"post",
+		url:"/deletePost",
+		data:{postNo:$('#postNo').val(),memNo:$('.memNo').val()},
+		dataType:'text',
+		success: function(result) {
+			if(result == "success"){
+			alert("상품 게시글이 삭제되었습니다.");
+			location.href="/";
+			}else{
+				alert("상품 작성자가 아닙니다.");
+			}
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("상품 작성자가 아닙니다.");
+		}
+	});
+}
+
+
+function FavoritPostAjax(){
+	$.ajax({
+		type:"post",
+		url:"/favoritPost",
+		data:{postNo:  $('#postNo').val(),favorit:$('#favoritPost').val()},
+		dataType:'text',
+		success: function(favorit) {
+			var FavoritPost = $('#favoritPost').val();
+			if(favorit == 0){
+				FavoritPost = 0;
+				$("#favoritPost").css("background-color","white");
+				console.log(favorit);
+			}
+			else if(favorit == 1){
+				FavoritPost = 1;
+				$("#favoritPost").css("background-color","blue");
+				console.log(favorit);
+			}
+			else{
+				alert("로그인 후 입력해 주세요");
+			}
+			
+			$('#favoritPost').value = FavoritPost
+
+		},
+		error: function(favorit, textStatus) {
+			alert("로그인 후 입력해 주세요");
+		}
+	});
+}
+
+>>>>>>> upstream/main
 
 /*
 1) detailViewPost.jsp

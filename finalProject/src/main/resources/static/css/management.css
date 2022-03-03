@@ -1,15 +1,9 @@
-/* 관리자 페이지 css - management */
-
 @charset "UTF-8";
 * {
 	box-sizing: border-box;
 }
-#menagementWrap {
-    width: 1068px;
-    margin: 40px auto;
-}
 
-/* main logo */
+/* main logo 관리자 처음페이지 */
 #mainLogo {
   text-align: right;
   margin-right: 388px;
@@ -66,24 +60,221 @@
 }
 #returnManager {
 	text-decoration: none;
+	
+	border-color: rgb(103, 131, 183);
+}
+
+/* 관리 리스트 페이지 공통 */
+#menagementWrap {
+    width: 1068px;
+    margin: 40px auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
 	color: black;
 }
 
+table tr th:first-child{
+	width: 50px;
+}
+
+table tr td{
+	height: 40px;
+}
+
+
+#trTableStyle1, #trTableStyle2, #trTableStyle3, #trTableStyle4 {
+	border : 3px solid rgb(103, 131, 183);
+	border-radius: 10px;	
+}
+
+#mngEditBtn {/* 수정버튼 */
+	border: 2px solid rgb(137, 201, 188);
+	border-radius: 5px;
+	padding: 3px;
+	color: black;
+}
+#mngEditBtn:hover {/* 수정버튼 */
+	background: rgb(137, 201, 188);
+	color: white;
+}
+
+#mngDeleteBtn {/* 삭제버튼 */
+	border: 2px solid rgb(255, 91, 91);
+	border-radius: 5px;
+	padding: 3px;
+	color: black;
+}
+#mngDeleteBtn:hover {
+	background: rgb(255, 91, 91);
+	color: white;
+}
+
+tr th:nth-last-child(2){ /* 수정 버튼 TH태그 */
+	border: solid 2px;
+	border-color : rgb(165, 211, 187) rgb(183, 150, 207) rgb(165, 211, 187) white;
+	background : rgb(137, 201, 188);
+	color:white;
+}
+
+tr th:last-child{ /* 삭제 버튼 TH태그 */
+	border: solid 2px;
+	border-color : rgb(255, 91, 91) rgb(255, 128, 128) rgb(255, 187, 187) white;
+	background: rgb(255, 91, 91);
+	color: white;
+}
+
 /* 관리자 회원관리 css */
-#memTable td:nth-child(3) input{
+#trTableStyle1 {
+	border-color: rgb(103, 131, 183);
+}
+
+#memTable tr th:nth-child(n+2):nth-child(-n+10){
+	border: solid 2px;
+	border-top-color: rgb(149, 160, 201);
+	border-right-color: rgb(183, 197, 297);
+	border-bottom-color: rgb(183, 197, 297);
+	border-left-color: rgb(183, 197, 297);
+}
+#memTable tr th:nth-child(2n+2):nth-child(-2n+10){
+	background: rgb(149, 160, 201);
+	color: white;
+}
+#memTable tr th:first-child{
+	border: solid 2px;
+	border-color : white rgb(183, 197, 297) rgb(183, 197, 297) white;
+}
+
+
+#memTable tr td:nth-child(n+2):nth-child(-n+9){
+	border: solid 2px;
+	border-color : white rgb(183, 197, 297) white rgb(183, 197, 297);
+}
+#memTable td:nth-child(3) input, #memTable td:nth-child(3), #memTable td:nth-child(6), #memTable td:nth-child(9){
+	width: 80px;
+	border: none;
+	text-align: center;
+}
+#memTable td:nth-child(8) {
+	width: 120px;
+}
+#memTable td:nth-child(5) {
 	width: 100px;
 }
 
+
 /* 관리자 포스트관리 css */
 
-#postTable {
-	table-layout: fixed;
+
+#trTableStyle2 {
+	border-color: rgb(131, 88, 13);
 }
-#postTable td:nth-child(8){
-	width: 200px;
-	text-overflow:ellipsis; 
+
+#postTable tr th:nth-child(n+2):nth-child(-n+11){
+	border: solid 2px;
+	border-top-color: rgb(131, 88, 13);
+	border-right-color: rgb(201, 184, 154);
+	border-bottom-color: rgb(201, 184, 154);
+	border-left-color: rgb(201, 184, 154);
+}
+
+#postTable tr th:nth-child(2n+2):nth-child(-2n+10){
+	background: rgb(131, 88, 13);
+	color: white;
+}
+
+#postTable tr th:first-child{
+	border: solid 2px;
+	border-color : white rgb(201, 184, 154) rgb(201, 184, 154) white;
+}
+
+#postTable tr td:nth-child(n+2):nth-child(-n+10){
+	border: solid 2px;
+	border-color : white rgb(201, 184, 154) white rgb(201, 184, 154);
+}
+#postTable td:nth-child(6) {
+	width: 115px;
+}
+
+#postTable td:nth-child(7), #postTable td:nth-child(8) {
+	width: 60px;
+}
+#postTable td:nth-child(2) {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100px;
+	
+}
+
+/* 관리자 채팅관리 css */
+#trTableStyle3{
+	border-color: rgb(217, 128, 119);
+}
+
+#chatTable tr th:nth-child(n+2):nth-child(-n+5){
+	border: solid 2px;
+	border-top-color: rgb(217, 128, 119);
+	border-right-color: rgb(234, 184, 179);
+	border-bottom-color: rgb(234, 184, 179);
+	border-left-color: rgb(234, 184, 179);
+}
+#chatTable tr th:nth-child(2n+2):nth-child(-2n+4){
+	background: rgb(217, 128, 119);
+	color: white;
+}
+#chatTable tr th:first-child{
+	border: solid 2px;
+	border-color : white rgb(234, 184, 179) rgb(234, 184, 179) white;
+}
+#chatTable tr td:nth-child(n+2):nth-child(-n+4){
+	border: solid 2px;
+	border-color : white rgb(234, 184, 179) white rgb(234, 184, 179);
+}
+#chatTable td:nth-child(2), #chatTable td:nth-child(3) {
+	width: 120px;
+}
+#chatTable td:nth-child(4) {
+	width: 500px;
+}
+/* 관리자 거래내역 관리 css */
+#trTableStyle4{
+	border-color: rgb(103, 183, 105);
+}
+
+#tranTable tr th:nth-child(n+2):nth-child(-n+9){
+	border: solid 2px;
+	border-top-color: rgb(103, 183, 105);
+	border-right-color: rgb(169, 214, 170);	
+	border-bottom-color: rgb(169, 214, 170);	
+	border-left-color: rgb(169, 214, 170);	
+}
+#tranTable tr th:nth-child(2n+2):nth-child(-2n+8){
+	background: rgb(103, 183, 105);
+	color: white;
+}
+#tranTable tr th:first-child{
+	border: solid 2px;
+	border-color : white rgb(169, 214, 170) rgb(169, 214, 170) white;
+}
+#tranTable tr td:nth-child(n+2):nth-child(-n+8){
+	border: solid 2px;
+	border-color : white rgb(169, 214, 170) white rgb(169, 214, 170);
+}
+#tranTable td:nth-child(2), #chatTable td:nth-child(8) {
+	width: 100px;
+}
+#tranTable th:nth-child(8) {
+	width: 100px;
+}
+#tranTable th:nth-child(9) {
+	width: 300px;
+}
+#tranTable th td:nth-child(9) {
 	overflow:hidden;
-}
-#postTable tr {
-	height: 50px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	max-width: 300px;
 }

@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"charset="utf-8"></script>
 	
 	<link href="<c:url value='/css/insertPost.css'/>" rel="stylesheet" type="text/css">
-	
 		
 	<script>
 		$(document).on('click', '#btnSave', function(e) {

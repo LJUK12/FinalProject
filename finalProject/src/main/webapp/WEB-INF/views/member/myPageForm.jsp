@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="<c:url value='/css/myPageMenu.css'/>" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#myPageFormSec{
+		margin-left: 700px;
+	}
+</style>
 </head>
 <body>
 
@@ -13,10 +19,9 @@
 <!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true'/>
 		<br><br>
-		<!-- mypagemenu -->
-		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 		
-		<section>
+		
+		<section id="myPageFormSec">
 		<h1>mypage</h1><br><br>
 			<a href="<c:url value='/memberDetail'/>">
 				<div class="mypageBox">
@@ -33,7 +38,10 @@
 					내가 쓴 글<br>
 				</div>
 			</a>
-		
+			<a href="<c:url value='/myFavorit'/>">
+				<div class="mypageBox">
+	        		나의 즐겨찾기<br>		
+				</div>
 		
 		
 		

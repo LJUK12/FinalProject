@@ -24,6 +24,8 @@ public interface IPostDAO {
 	void FavoritCountPlus(int postNo);
 	ArrayList<PostVO> listAllPostByFavorit();
 	void updatePostState(int postNo);
+	PostVO listPost(int postNo);
+	
 	ArrayList<PostVO> manageAllPost(); //관리자 allListPost
 	void manageEditPosting(PostVO vo);		// 관리자 postEdit
 }

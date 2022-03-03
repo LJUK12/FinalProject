@@ -4,14 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.project.finalProject.dao.IChatDAO">
-	<resultMap id="ChatResult" type="com.project.finalProject.model.ChatVO">
-		<result property="chatNo" column="chatNo" />
-		<result property="postNo" column="postNo" />
-		<result property="memNo" column="memNo" />
-		<result property="chatContent" column="chatContent" />
-		<result property="chatDate" column="chatDate" />
-
-	</resultMap>
 	
 	<resultMap id="ChatmemberResult" type="com.project.finalProject.model.ChatMemberVO2">
 		<result property="chatNo" column="chatNo" />
@@ -22,22 +14,38 @@
 		<result property="memId" column="memId" />
 	</resultMap>
 	
+	<resultMap id="ChatmemberResult2" type="com.project.finalProject.model.ComChatMemberVO2">
+		<result property="com_chatNo" column="com_chatNo" />
+		<result property="comNo" column="comNo" />
+		<result property="memNo" column="memNo" />
+		<result property="chatContent" column="chatContent" />
+		<result property="chatDate" column="chatDate" />
+		<result property="memId" column="memId" />
+	</resultMap>
+	
+	
 	<!-- index 페이지에 전체 내용 출력 (최신순) -->
   	<select id="listAllChat" parameterType="int" resultMap="ChatmemberResult">
-  		SELECT c.chatNo,c.postNo, c.memNo, c.chatContent, c.chatDate, m.memId
+  		SELECT c.chatNo,c.postNo, c.memNo, c.chatContent, c.chatDate, m.memId, c.chatDate
   		FROM chatting c, member m 
   		where c.memNo = m.memNo AND postNo=#{postNo} ORDER BY chatNo DESC
   	</select>
 	
-	
+		<!-- index 페이지에 전체 내용 출력 (최신순) -->
+  	<select id="listAllChatCommunity" parameterType="int" resultMap="ChatmemberResult2">
+  		SELECT c.com_chatNo, c.comNo, c.memNo, c.chatContent, c.chatDate, m.memId
+  		FROM com_chatting c, member m 
+  		where c.memNo = m.memNo AND comNo=#{comNo} ORDER BY com_chatNo DESC
+  	</select>
+  		
 	<!-- 게시글 작성  -->
-	<insert id="insertChat" parameterType="com.project.finalProject.model.ChatVO">
-		INSERT INTO chatting (chatNo,postNo,memNo,chatContent,chatDate)
-		VALUES (null,#{postNo},#{memNo},#{chatContent},default)
+	<insert id="insertChat2" parameterType="com.project.finalProject.model.ComChatVO">
+		INSERT INTO com_chatting (com_chatNo, comNo, memNo, chatContent, chatDate)
+		VALUES (null, #{comNo}, #{memNo}, #{chatContent}, default)
 	</insert>
 	
 	<!-- 관리자 채팅 목록 가져오기 -->
-	<select id="listAllChatManager" resultMap="ChatResult">
+	<select id="listAllChatManager" resultMap="ChatmemberResult">
 		SELECT * FROM chatting ORDER BY postNo
 	</select>
 	<!-- 채팅 삭제하기 -->
@@ -49,8 +57,10 @@
 	<select id="manageChatList" parameterType="int" resultMap="ChatmemberResult">
 		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo};
 	</select>
+
 	<!-- 관리자 특정 채팅 수정하기  -->
 	<update id="manageUpdateChat" parameterType="hashmap">
 		update chatting set chatContent = #{chatContent} WHERE chatNo=#{chatNo}
 	</update>
+
 </mapper>

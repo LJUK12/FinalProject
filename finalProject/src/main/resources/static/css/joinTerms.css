@@ -9,6 +9,14 @@
     text-align: center;
 }
 
+a {
+	text-decoration: none; color: black; 
+}
+
+a:visited {
+	text-decoration: none; 	
+}
+
 .agree_box{
    margin-left:34%;
    display:inline;

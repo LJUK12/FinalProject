@@ -51,6 +51,19 @@
  			memEmail=#{memEmail}, memPhone=#{memPhone} 
  			WHERE memId=#{memId}
  		</update>
+
+ 		<!-- 회원 탈퇴 -->
+ 		<delete id="withdrawMember" parameterType="string">
+ 		DELETE FROM member WHERE memId=#{memId}
+ 		</delete>
+ 		
+ 		<!-- memNo로 memId 찾기  -->
+ 		<select id="searchMemId" parameterType="int" resultType="string">
+ 			SELECT m.memId 
+ 			FROM post p,member m 
+ 			WHERE m.memNo = p.memNo AND p.postNo=#{postNo}		
+ 		</select>
+ 		
  		
  		<!-- 관리자 회원 정보 전체 조회하기 -->
  		<select id="listAllProfile" resultType="com.project.finalProject.model.MemberVO">
@@ -61,19 +74,5 @@
  		<delete id="managerDeleteProfile" parameterType="int">
  			delete from member where memNo=#{memNo}
  		</delete>
-
- 		<!-- 회원 탈퇴 -->
- 		<delete id="withdrawMember" parameterType="string">
- 		DELETE FROM member WHERE memId=#{memId}
- 		</delete>
-
- 		
- 		<!-- memNo로 memId 찾기  -->
- 		<select id="searchMemId" parameterType="int" resultType="string">
- 			SELECT m.memId 
- 			FROM post p,member m 
- 			WHERE m.memNo = p.memNo AND p.postNo=#{postNo}		
- 		</select>
- 		
 
   </mapper>

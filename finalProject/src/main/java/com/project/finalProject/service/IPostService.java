@@ -18,12 +18,14 @@ public interface IPostService {
 	ArrayList<PostVO> titleContentSearchPost(String postKeyword);
 	ArrayList<PostVO> myPost(HashMap<String, Object> myOpt);								//내가 쓴 글 찾기
 	int postListCount(int memNo);		
-
-	PostVO manageDetailViewPost(int postNo);	//관리자용 디테일 뷰
-
+	
 	void FavoritCountPlus(int postNo);
 	ArrayList<PostVO> listAllPostByFavorit();
 	void updatePostState(int postNo);
+	PostVO listPost(int postNo);
+	
+	PostVO manageDetailViewPost(int postNo);	//관리자용 디테일 뷰
+
 	ArrayList<PostVO> manageAllPost(); //관리자 allListPost
 	void manageEditPosting(PostVO vo);		// 관리자 postEdit
 }

@@ -48,9 +48,5 @@ public class ChatMemberVO2 {
 	}
 	public void setChatDate(Date chatDate) {
 		this.chatDate = chatDate;
-	}
-	
-
-	
-	
+	}	
 }

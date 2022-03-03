@@ -81,7 +81,4 @@ public class MemberService implements IMemberService{
 		return dao.searchMemId(memNo);
 	}
 
-
-
-
 }

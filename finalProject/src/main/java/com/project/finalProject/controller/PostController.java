@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
+import com.project.finalProject.model.FavoritVO;
 import com.project.finalProject.model.PhotoVo;
 import com.project.finalProject.model.PostVO;
 import com.project.finalProject.service.ChatService;
+import com.project.finalProject.service.FavoritService;
 import com.project.finalProject.service.MemberService;
 import com.project.finalProject.service.ObjectDetectionService;
 import com.project.finalProject.service.PostService;
@@ -35,8 +37,7 @@ public class PostController {
 	
 	@Autowired
 	MemberService memService;
-	
-	
+
 	@Autowired
 	ChatService chatService;
 
@@ -46,6 +47,9 @@ public class PostController {
 	@Autowired
 	private TranslationService tsService;
 
+	@Autowired
+	private FavoritService faService;
+	
 	@RequestMapping("/insertPostForm")
 	public String insertPostForm() {
 		return "/post/insertPostForm";
@@ -127,12 +131,25 @@ public class PostController {
 	// detailViewPost 상세 보기에서 사용
 
 	@RequestMapping("/post/detailViewPost/{postNo}")
-	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model) {
+	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model, HttpSession session) {
 
 
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
 
+		//즐겨찾기 여부
+				model.addAttribute("favoritPost",0);
+				if(session.getAttribute("No") != null) {
+					int memNo = (int)session.getAttribute("No");
+					HashMap<String, Object> list = new HashMap<String, Object>();
+					list.put("memNo", memNo);
+					list.put("postNo", postNo);
+					if(faService.selectFavorit(list) != null) {
+						model.addAttribute("favoritPost",1);
+					}
+				
+				}
+				
 		/* chatService.insertChat(vo); */
 		
 		
@@ -142,8 +159,6 @@ public class PostController {
 
 		ArrayList<PostVO> postList2 = postService.listAllPost();
 		model.addAttribute("postList2", postList2);
-		
-		
 		return "post/detailViewPost";
 	}
 
@@ -158,85 +173,101 @@ public class PostController {
 
 		return "post/searchPost";
 	}	  
-		
-		 @ResponseBody
-		 @RequestMapping("/insertChat.do")
-		 public String insertChat(ChatVO vo) {
-		  String result ="success"; 
-		  chatService.insertChat(vo);
-		 // model.addAttribute("chatVO",chatVO); 
-		  return result; }
-		
-	  
-		 @ResponseBody
-		 @RequestMapping("/favorit")
-		 public String Favoritcountplus(@RequestParam("postNo")int postNo) {
-		  String result ="success"; 
-		  postService.FavoritCountPlus(postNo);
-		  return result; 
-		  }
-		
-		 //페이지 시작시 memNo로 아이디 찾아오기
-		 @ResponseBody
-		 @RequestMapping("/searchMemid")
-		 public String searchMemid(@RequestParam("postNo")int postNo) {
-		  System.out.println(postNo);
-		  String result=memService.searchMemId(postNo);
-		  return result; 
-		  }
-	  
-	  
-	  
-	  
-	  
 
-	@RequestMapping("/objectDetection")
-	public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model, HttpServletRequest request) {
-		ArrayList<String> strList = null;
-		System.out.println("objectDetection �넻怨�");
-		String resultStr = "";
-		try {
-			// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
-			String uploadPath = "resource/ai_upload";
+	@ResponseBody
+	@RequestMapping("/insertChat.do")
+	public String insertChat(ChatVO vo) {
+		String result = "success";
+		chatService.insertChat(vo);
+		// model.addAttribute("chatVO",chatVO);
+		return result;
+	}
 
-			// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�
-			String originalFileName = file.getOriginalFilename();
-			String filePathName = uploadPath + originalFileName;
+	@ResponseBody
+	@RequestMapping("/favorit")
+	public String Favoritcountplus(@RequestParam("postNo") int postNo) {
+		String result = "success";
+		postService.FavoritCountPlus(postNo);
+		return result;
+	}
 
-			// 3. �뙆�씪 �깮�꽦
-			File file1 = new File(filePathName);
+	// 페이지 시작시 memNo로 아이디 찾아오기
+	@ResponseBody
+	@RequestMapping("/searchMemid")
+	public String searchMemid(@RequestParam("postNo") int postNo) {
+		String result = memService.searchMemId(postNo);
+		return result;
+	}
 
-			// 4. �꽌踰꾨줈 �쟾�넚
-			file.transferTo(file1);
+	
+	 @ResponseBody
+	 @RequestMapping("/deletePost")
+	 public String deletePost(@RequestParam("postNo")int postNo,@RequestParam("memNo")int memNo){ 
+	 PostVO vo = postService.listPost(postNo); 
+	 System.out.println(vo);
+	 System.out.println(vo.getMemNo());
+	 String result = "fail"; 
+	 if(vo.getPostNo() == postNo) 
+	 { 
+		if(vo.getMemNo() == memNo) {
+		postService.deletePost(postNo); 
+		result = "success"; 
+			}
+		} 
+	 System.out.println(result);
+	 return result; 
+	 }
+	 
+	 
 
-			// �꽌鍮꾩뒪�뿉 �뙆�씪 path�� �뙆�씪紐� �쟾�떖 -> �꽌鍮꾩뒪 硫붿냼�뱶�뿉�꽌 蹂�寃�
-			// �꽌鍮꾩뒪�뿉�꽌 諛섑솚�맂 PoseVO 由ъ뒪�듃 ���옣
-			strList = objService.objectDetect(filePathName);
+		@RequestMapping("/objectDetection")
+		public String objectDetection(@RequestParam("uploadFile") MultipartFile file, Model model) {
+			ArrayList<String> strList = null;
+			System.out.println("objectDetection �넻怨�");
+			String resultStr = "";
+			try {
+				// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
+				//String uploadPath = "/root/ai/";
+				String uploadPath = "resource/ai_upload";
+					/*	"D:/ai/";*/
 
-			/*
-			 * for(int i = 0; i<strList.size(); i++) { resultStr += strList.get(i) + " "; }
-			 */
-			resultStr = strList.get(0);
-			System.out.println("Controller : " +resultStr);
-			resultStr = tsService.papagoTranslate(resultStr);
-			System.out.println("Controller papago  : " +resultStr);
-			ArrayList<PostVO> postVO = postService.searchPost(resultStr);
+				// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�
+				String originalFileName = file.getOriginalFilename();
+				String filePathName = uploadPath + originalFileName;
 
-			ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(resultStr);
-			
-			model.addAttribute("resultStr", resultStr);
-			model.addAttribute("searchPostVO", postVO);
-			model.addAttribute("titleCntPostVO", titleCntPostVO);
+				// 3. �뙆�씪 �깮�꽦
+				File file1 = new File(filePathName);
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				// 4. �꽌踰꾨줈 �쟾�넚
+				file.transferTo(file1);
+
+				// �꽌鍮꾩뒪�뿉 �뙆�씪 path�� �뙆�씪紐� �쟾�떖 -> �꽌鍮꾩뒪 硫붿냼�뱶�뿉�꽌 蹂�寃�
+				// �꽌鍮꾩뒪�뿉�꽌 諛섑솚�맂 PoseVO 由ъ뒪�듃 ���옣
+				strList = objService.objectDetect(filePathName);
+
+				/*
+				 * for(int i = 0; i<strList.size(); i++) { resultStr += strList.get(i) + " "; }
+				 */
+				resultStr = strList.get(0);
+				System.out.println("Controller : " +resultStr);
+				resultStr = tsService.papagoTranslate(resultStr);
+				System.out.println("Controller papago  : " +resultStr);
+				ArrayList<PostVO> postVO = postService.searchPost(resultStr);
+
+				ArrayList<PostVO> titleCntPostVO = postService.titleContentSearchPost(resultStr);
+				
+				model.addAttribute("resultStr", resultStr);
+				model.addAttribute("searchPostVO", postVO);
+				model.addAttribute("titleCntPostVO", titleCntPostVO);
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return "post/searchPost";
 		}
 
-		return "post/searchPost";
-	}
-	
-	
 	@RequestMapping("/allContentSearchPost/{resultStr}")
 	public String allContentSearchPost(@PathVariable String resultStr, Model model) {
 		System.out.println("allSearch : " + resultStr);
@@ -251,45 +282,92 @@ public class PostController {
 		model.addAttribute("searchPostVO", postVO);
 		return "post/allSearchPost";
 	}
-	
-	
-	//내가 쓴 글 목록
-		@RequestMapping("/myPostList/{page}")
-		public String myPostList(HttpSession session, Model model, @PathVariable String page) {
-			int memNo = (int)session.getAttribute("No");
-			
-			int spage = 1;
-			if(page != null)
-	            spage = Integer.parseInt(page);
-			
-			HashMap<String, Object> myOpt = new HashMap<String, Object>();
-			myOpt.put("memNo", memNo);
-			myOpt.put("start", spage*10-9);
-			
-			ArrayList<PostVO> postList = postService.myPost(myOpt);
-			int listCount = postService.postListCount(memNo);
-			
-			// 전체 페이지 수
-	        int maxPage = (int)(listCount/10.0 + 0.9);
-	        //시작 페이지 번호
-	        int startPage = (int)(spage/5.0 + 0.8) * 5 - 4;
-	        //마지막 페이지 번호
-	        int endPage = startPage + 4;
-	        if(endPage > maxPage)    endPage = maxPage;
-	        
-	        model.addAttribute("spage",spage);
-	        model.addAttribute("maxPage",maxPage);
-	        model.addAttribute("startPage",startPage);
-	        model.addAttribute("endPage",endPage);
-			model.addAttribute("postList",postList);
-			
-			return "/post/myPostList";
-		}
+
+	// 내가 쓴 글 목록
+	@RequestMapping("/myPostList/{page}")
+	public String myPostList(HttpSession session, Model model, @PathVariable String page) {
+		int memNo = (int) session.getAttribute("No");
+
+		int spage = 1;
+		if (page != null)
+			spage = Integer.parseInt(page);
+
+		HashMap<String, Object> myOpt = new HashMap<String, Object>();
+		myOpt.put("memNo", memNo);
+		myOpt.put("start", spage * 10 - 9);
+
+		ArrayList<PostVO> postList = postService.myPost(myOpt);
+		int listCount = postService.postListCount(memNo);
+
+		// 전체 페이지 수
+		int maxPage = (int) (listCount / 10.0 + 0.9);
+		// 시작 페이지 번호
+		int startPage = (int) (spage / 5.0 + 0.8) * 5 - 4;
+		// 마지막 페이지 번호
+		int endPage = startPage + 4;
+		if (endPage > maxPage)
+			endPage = maxPage;
+
+		model.addAttribute("spage", spage);
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("postList", postList);
+
+		return "/post/myPostList";
+	}
+
+	//게시글 즐겨찾기
 		
+		@ResponseBody
+		@RequestMapping("/favoritPost")
+		public int favoritPost(@RequestParam HashMap<String, Object> list, HttpSession session) {
+			int memNo = (int)session.getAttribute("No");
+			String memId = (String)session.getAttribute("sid");
+			System.out.println(list.get("favorit"));
+			int favorit = Integer.parseInt(String.valueOf(list.get("favorit")));
+			list.remove("favorit");
+			list.put("memNo", memNo);
+			FavoritVO vo = faService.selectFavorit(list);
+			System.out.println("in");
+			
+			if(memId != null) {
+				if(vo == null) {
+					favorit = 1;
+					faService.insertFavorit(list);
+				}
+				else {
+					favorit =0;
+					faService.deleteFavorit(vo.getFvrNo());
+				}
+			}
+			else {
+				favorit = -1;
+			}
+			System.out.println(favorit + " out");
+			return favorit;
+			
+		}
 	
-	
-	
-	
+		//즐겨찾기 목록
+		@RequestMapping("/myFavorit")
+		public String myFavorit(HttpSession session, Model model) {
+			int memNo = (int)session.getAttribute("No");
+			ArrayList<FavoritVO> fvList = faService.selectFavoritList(memNo);
+			
+			ArrayList<PostVO> postList = new ArrayList<PostVO>();
+			ArrayList<String> memIdList = new ArrayList<String>();
+			
+			for(FavoritVO fv : fvList) {
+				postList.add(postService.detailVeiwPost(Integer.parseInt(fv.getPostNo())));
+				memIdList.add(memService.searchMemId(Integer.parseInt(fv.getPostNo())));
+			}
+			
+			model.addAttribute("postList",postList);
+			model.addAttribute("memIdList",memIdList);
+			
+			return "/post/myFavoritList";
+		}
 	
 
 }

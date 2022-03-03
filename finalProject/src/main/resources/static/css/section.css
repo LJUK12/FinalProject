@@ -48,6 +48,11 @@
   margin-left:20%;
 }
 
+.hotItemGroup4 {
+  display: flex;
+  margin-left:18.2%;
+}
+
 .hotItems {
   width: 200px;
   height: 250px;

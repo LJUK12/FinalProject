@@ -4,8 +4,8 @@
 
 .mobile-menu {
     display: block;
-    position: fixed;
-    top: 15px;
+    position: relative;
+    top : -40px;
     left: 15px;
     z-index: 500;
     width: 35px;
@@ -16,6 +16,7 @@
     margin-left: 365px;
     margin-top: 72px;
 }
+
 .mobile-menu i {
     font-size: 2em;
 }
