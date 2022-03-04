@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -193,7 +194,15 @@ public class BoardController {
         return "redirect:/board/list";
     }
     
-    
+    //나의 게시글 목록
+    @RequestMapping("/myBoardList")
+    public String myBoardList(HttpSession session, Model model) {
+    	int memNo = (int) session.getAttribute("No");
+    	ArrayList<BoardVO> vo = boardService.getMyList(memNo);
+    	
+    	model.addAttribute("bList",vo);
+    	return "/board/myBoardList";
+    }
     
     
     

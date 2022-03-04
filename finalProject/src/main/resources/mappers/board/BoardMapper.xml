@@ -80,6 +80,11 @@
                 order by comNo desc) as T1
         limit #{skip},#{amount}
     </select>
+    
+    <!-- 나의 게시글 조회 -->
+    <select id="getMyList" parameterType="int" resultType="com.project.finalProject.model.BoardVO">
+    	SELECT * FROM community WHERE memNo=#{memNo}
+    </select>
  
  	<!-- 검색 조건문 -->
     <sql id="criteria">
