@@ -1,18 +1,24 @@
 /**
  * searchPost (top 검색 기능	)
  */
+ 
+ 
+ 
 window.onload = function () {
-<<<<<<< HEAD
-	console.log($('#memNo').val());
-=======
 	PriceChange();
->>>>>>> upstream/main
 	SearchMemIDAjax();
-	
+
+
 }
 
-<<<<<<< HEAD
-=======
+
+
+
+
+
+
+
+
 function PriceChange(){
 	var price = $('#postPrice').val();
 	console.log(price);
@@ -20,7 +26,6 @@ function PriceChange(){
 	$('#postPriceText').prepend(price2 + "원");
 }
 
->>>>>>> upstream/main
 
 $(function() {
 	$('#Chatting').on('submit', function() {
@@ -35,11 +40,7 @@ $(function() {
 		return false;
 	})
 	
-<<<<<<< HEAD
-	$('#buybtn').click(function() {
-=======
 	$('.buybtn').click(function() {
->>>>>>> upstream/main
 		var postNo=$('#postNo').val();
 		console.log(postNo);
 		console.log($('#postWay').val());
@@ -51,8 +52,6 @@ $(function() {
 	})
 	
 	
-<<<<<<< HEAD
-=======
 	$('.deletebtn').click(function() {
 	deleteAjax();
 	
@@ -67,12 +66,11 @@ $(function() {
 	})
 	
 	if(FavoritPost == 1){
-		$("#favoritPost").css("background-color","blue");
+		document.getElementById("favoritPostimg").src = "/image/별2.png";
 	}
 	
 	
 	
->>>>>>> upstream/main
 })
 
 
@@ -101,14 +99,10 @@ function SearchMemIDAjax() {
 
 function insertchatAjax() {
 	var formdata = $('#Chatting').serialize();
-<<<<<<< HEAD
-	
-=======
 	if($('#chatContent').val() ==""){
 		alert("내용을 입력하세요");
 		return false;
 	}
->>>>>>> upstream/main
 	$.ajax({
 		type: "post",
 		url: "/insertChat.do",
@@ -116,14 +110,6 @@ function insertchatAjax() {
 		dataType: 'text',
 		
 		success: function(result) {
-<<<<<<< HEAD
-
-			$('#chatList').prepend($('#chatContent').val() + "<br><br>");
-			$('#chatList').prepend($('#memid').val() + "<br>");
-			
-			$('#chatContent').val('');
-			console.log(result);
-=======
 			let today = new Date();
 			var year = today.getFullYear().toString();
 			var year2 = year.substr(2,4);
@@ -138,7 +124,6 @@ function insertchatAjax() {
 			
 			$('#chatContent').val('');
 			
->>>>>>> upstream/main
 
 		},
 		error: function(result, textStatus) {
@@ -157,11 +142,7 @@ function FavoritAjax() {
 		dataType:'text',
 		success: function(result) {
 			favoritNo++;
-<<<<<<< HEAD
-			$('#favoritbtn').prepend($('#favorit').val(favoritNo));
-=======
 			$('#favorit').prepend($('#favorit').val(favoritNo));
->>>>>>> upstream/main
 			console.log(result);
 
 		},
@@ -174,8 +155,6 @@ function FavoritAjax() {
 
 
 
-<<<<<<< HEAD
-=======
 function deleteAjax() {
 	console.log($('#postNo').val());
 	$.ajax({
@@ -209,16 +188,16 @@ function FavoritPostAjax(){
 			var FavoritPost = $('#favoritPost').val();
 			if(favorit == 0){
 				FavoritPost = 0;
-				$("#favoritPost").css("background-color","white");
+				document.getElementById("favoritPostimg").src = "/image/별.png";
 				console.log(favorit);
 			}
 			else if(favorit == 1){
 				FavoritPost = 1;
-				$("#favoritPost").css("background-color","blue");
+				document.getElementById("favoritPostimg").src = "/image/별2.png";
 				console.log(favorit);
 			}
 			else{
-				alert("로그인 후 입력해 주세요");
+				alert("로그인 후 입력해 주세요2");
 			}
 			
 			$('#favoritPost').value = FavoritPost
@@ -230,23 +209,18 @@ function FavoritPostAjax(){
 	});
 }
 
->>>>>>> upstream/main
 
 /*
 1) detailViewPost.jsp
 <form id="Chatting">에서 method, action 제거
 - 여기에 action을 작성해두면 Ajax로 전송되지 않음
-
 2)insertchat2.js 	
 $('#chatList').prepend($('#chatContent').val() + "<br>");
 $('#chatContent').val('');
-
 - 댓글 영역에 댓글 추가하는 코드와, 입력한 댓글 지워주는 코드 추가
-
 3) PostController.java
 @ResponseBody
 @RequestMapping("/insertChat.do") 
 public String insertChat(ChatVO vo) 
-
 - ChatVO vo만 받아오기. 
 */
