@@ -118,7 +118,7 @@ display: inline-block;
 
 #favoritbtn img{
 	
-	float:left;
+
 	width:23px; 
 	height:23px;
 	margin-right:10px;
@@ -238,4 +238,10 @@ display: inline-block;
 
 #delete{
 	background-color:white;
+}
+
+#favoritPost{
+	background-color:white;
+	border:0;
+	outline:0;
 }
