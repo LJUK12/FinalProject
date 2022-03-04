@@ -29,6 +29,7 @@
 <script src="https://kit.fontawesome.com/2d323a629b.js"
    crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
+
 </head>
 <body id="topBody">
    <header>
@@ -76,17 +77,40 @@
       <div id="firstName">
          <button type="button" class="mobile-menu"><i class="fas fa-bars"></i></button>
          <div class="menuwrap">
-            <nav id="menu">
-               <!-- "메뉴목록 표시" -->
-               <ul class="category_list">
-                  <li class=""><a class="link_sub_item" href="/category/1">지역별
-                        장터</a></li>
-                  <li class=""><a class="link_sub_item" href="/category/2">중고시세</a></li>
-                  <li class=""><a class="link_sub_item" href="/category/3">의류</a></li>
-                  <li class=""><a class="link_sub_item" href="/category/4">신발</a></li>
-                  <li class=""><a class="link_sub_item" href="/category/5">시계</a></li>
-               </ul>
-            </nav>
+            <nav>
+			  <ul id="main_menu">
+			    <li><a id="navA" href="#"><h2>지역</h2></a>
+			    <ul class="snd_menu sub_menu">
+			      <li><a id="navA" href="/list?a=서울특별시">서울</a></li>
+			      <li><a id="navA" href="/list?a=세종">세종</a></li>
+			      <li><a id="navA" href="/list?a=인천">인천</a></li>
+			      <li><a id="navA" href="/list?a=대전">대전</a></li>
+			      <li><a id="navA" href="/list?a=대구">대구</a></li>
+			      <li><a id="navA" href="/list?a=광주">광주</a><li>
+			      <li><a id="navA" href="/list?a=울산">울산</a><li>
+			      <li><a id="navA" href="/list?a=부산">부산</a><li>
+			      <li><a id="navA" href="/list?a=경기도">경기도</a><li>
+			      <li><a id="navA" href="/list?a=강원도">강원도</a><li>
+			      <li><a id="navA" href="/list?a=충청북도">충청북도</a><li>
+			      <li><a id="navA" href="/list?a=충청남도">충청남도</a><li>
+			      <li><a id="navA" href="/list?a=전라북도">전라북도</a><li>
+			      <li><a id="navA" href="/list?a=전라남도">전라남도</a><li>
+			      <li><a id="navA" href="/list?a=경상북도">경상북도</a><li>
+			      <li><a id="navA" href="/list?a=경상남도">경상남도</a><li>
+			      <li><a id="navA" href="#">제주도</a>
+			        <ul class="trd_menu sub_menu">
+			          <li><a id="navA" href="#">Hue</a></li>
+			          <li><a id="navA" href="#">Saturation</a></li>
+			          <li><a id="navA" href="#">Value</a></li>
+			      </ul>
+			      </li>
+			    </ul>
+			    </li><hr><br>
+			    <li><a id="navA" href="<c:url value='/myPageForm'/>"><h2>내정보</h2></a></li><hr><br>
+			    <li><a id="navA" href="<c:url value='/board/list'/>"><h2>커뮤니티</h2></a></li><hr><br>
+			    <li><a id="navA" href="<c:url value='/'/>"><h2>Home</h2></a></li><hr><br>
+			  </ul>
+			</nav>
          </div>
             
             <h2 id="naming">&ensp;&ensp;&ensp;&nbsp;카테고리&ensp;&ensp;&ensp;&ensp;&ensp;</h2>

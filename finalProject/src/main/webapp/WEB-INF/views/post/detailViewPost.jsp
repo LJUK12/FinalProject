@@ -45,7 +45,7 @@
 			<c:if test="${post.postWay eq '직거래' }">
 			<h3>거래 장소</h3>
 			<!-- 지도 테스트 -->
-			<div id="map" style="width: 100%; height: 350px;"></div>
+			<div id="map" style="width: 700px; height: 350px;"></div>
 			</c:if>
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=475eae8079274f19f0fdcfd11cb97d05&libraries=services"></script>
@@ -101,11 +101,16 @@
 			<div id="subfunction">
 
 				<div id="favoritbtn">
-					<img src="/image/likeit.png" id="favoritimg"> <input
-						type="text" id="favorit" value="${post.postFavorit }" readonly>
+					<img src="/image/하트.png" id="favoritimg"> 
+					<input type="text" id="favorit" value="${post.postFavorit }" readonly>
+					<img src="/image/조회수.png" id="hitimg">
+					<input type="text" id="hit" value="${post.postHit}" readonly>
+					<img src="/image/신고.png" id="declimg">
+					<input type="text" id="decl" value="신고" readonly>
 					<c:if test="${not empty sessionScope.sid }">
 						<button id="favoritPost" value="${favoritPost }">
 							<img id="favoritPostimg" src="/image/별.png">
+							
 						</button>
 					</c:if>
 					<input type="hidden" name="memNo" class="memNo"

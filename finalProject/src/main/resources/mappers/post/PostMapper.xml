@@ -18,22 +18,28 @@
 		<result property="postDecl" column="postDecl" />
 		<result property="postMap" column="postMap" />
 		<result property="postWay" column="postWay" />
-		<result property="postPrice" column="postPrice" />		
+		<result property="postPrice" column="postPrice" />	
 	</resultMap>
 	
-	<!-- index 페이지에 전체 내용 출력 (최신순) -->
+	<!-- index 페이지에 전체 내용 출력 (조회수 순) -->
   	<select id="listAllPost" resultMap="postResult">
-  		SELECT * FROM post ORDER BY postNo DESC
+  		SELECT * FROM post where postState = "판매중" ORDER BY postHit DESC;
   	</select>
+	
+	<!-- index 페이지에 전체 내용 출력 (최신 순) -->
+  	<select id="listAllPostByDESC" resultMap="postResult">
+  			SELECT * FROM post ORDER BY postNo DESC
+  	</select>
+	
 	
 	<!-- post -->
   	<select id="listPost" parameterType="int" resultMap="postResult">
-  		SELECT * FROM post WHERE postNo=#{postNo}
+  		SELECT * FROM post WHERE postNo=#{postNo} DESC
   	</select>
   	
 	<!-- index 페이지에 전체 내용 출력 (인기순) -->
   	<select id="listAllPostByFavorit" resultMap="postResult">
-  		SELECT * FROM post ORDER BY postFavorit DESC
+  		SELECT * FROM post WHERE postState = "판매중" ORDER BY postFavorit DESC 
   	</select>
 	
 	<!-- 게시글 작성  -->
@@ -93,6 +99,10 @@
 		UPDATE post set postFavorit=postFavorit+1 WHERE postNo=#{postNo}
 	</select>
    
+    <!-- hit +1 -->
+   <select id="posthitplus" parameterType="int">
+		UPDATE post set postHit=postHit+1 WHERE postNo=#{postNo}
+	</select>
    
    <!-- 구매 확인 -->
   	<select id="updatePostState" parameterType="int">
@@ -105,9 +115,35 @@
   		delete from post where postNo=#{postNo}
   	</select>
  
+ 	<!-- 신고 횟수 증가 -->
+  	<select id="declPlus" parameterType="int">
+  		update post SET postDecl = postDecl+1 WHERE postNo=#{postNo};
+  	</select>
+ 
  <!-- 관리자 EditPost  -->
   <update id="manageEditPosting" parameterType="com.project.finalProject.model.PostVO">
   		UPDATE post SET postTitle=#{postTitle}, postContent=#{postContent}, postTag=#{postTag}, postImg=#{postImg}, postWay=#{postWay}, postPrice=#{postPrice} WHERE postNo=#{postNo}
   </update>
+  
+  
+  <!-- 카테고리별 상품 리스트 -->
+   <select id="list" parameterType="string" resultType="com.project.finalProject.model.PostVO" >
+        SELECT p.postNo, m.memNo, p.postTitle, p.postContent, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, p.postWay, p.postMap, m.memId
+       FROM post p, member m
+       WHERE m.memNo = p.memNo AND p.postMap LIKE CONCAT("%", #{postMap}, "%")
+     </select>
+  
+  	 	<!-- 관리자 Post 검색-->	
+    <select id="postSearchManage" parameterType="string" resultType="com.project.finalProject.model.PostVO">
+   		SELECT DISTINCT p.postNo, p.postTitle, p.postPrice, p.postWay, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
+   		FROM post p, member m 
+   		WHERE p.memNo = m.memNo
+   		AND (p.postTitle LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR p.postTitle LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR p.postTag LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR m.memId LIKE CONCAT("%", #{postSearch}, "%"))
+   		order by postNo DESC
+    </select>
+  
    	
 </mapper>

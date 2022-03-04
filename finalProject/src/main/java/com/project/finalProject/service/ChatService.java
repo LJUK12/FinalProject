@@ -1,6 +1,7 @@
 package com.project.finalProject.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -68,9 +69,17 @@ public class ChatService implements IChatService {
 		return dao.manageChatList(chatNo);
 	}
 
+	@Override
+	public ArrayList<ChatVO> chatSearchManage(String chatSearch){
+		// 관리자 채팅 검색
+		return dao.chatSearchManage(chatSearch);
+	}
 
-
-
+	@Override
+	public void manageUpdateChat(HashMap<String, Object> map) {
+		// 관리자 채팅 수정
+		dao.manageUpdateChat(map);
+	}
 
 	
 

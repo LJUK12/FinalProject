@@ -25,8 +25,8 @@
                         <a href="<c:url value='/'/>">브랜드 스토리</a>&nbsp;|&nbsp;
                         <a href="<c:url value='/'/>">회사 소개</a>&nbsp;|&nbsp;
                         <a href="<c:url value='/'/>">채용 정보 </a>&nbsp;|&nbsp;
-                        <a href="<c:url value='/'/>">이용 약관</a>&nbsp;|&nbsp;
-                        <a href="<c:url value='/'/>">개인 정보 처리 방침</a>&nbsp;|&nbsp;
+                        <a href="<c:url value='/termsAndCondition'/>">이용 약관</a>&nbsp;|&nbsp;
+                        <a href="<c:url value='/privacyPolicy'/>">개인 정보 처리 방침</a>&nbsp;|&nbsp;
                         <a href="<c:url value='/'/>">이용 안내</a>&nbsp;|&nbsp;
                         <a href="<c:url value='/'/>">공지사항</a>&nbsp;|&nbsp;
                         <a href="<c:url value='/'/>">고객센터</a>&nbsp;|&nbsp;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,42 +30,41 @@ import com.project.finalProject.service.ChatService;
 import com.project.finalProject.service.IBoardService;
 import com.project.finalProject.service.MemberService;
 
-
 @RequestMapping("/board/*")
 @Controller
 public class BoardController {
 
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
-	
+
 	@Autowired
 	private IBoardService boardService;
-	
+
 	@Autowired
 	ChatService chatService;
-	
+
 	@Autowired
 	MemberService memService;
 
-	
 	/* 게시판 목록 페이지 접속(페이징 적용) */
-    @GetMapping("/list")
-    public void boardListGET(Model model, Criteria cri) {
-    	
-        model.addAttribute("list", boardService.getListPaging(cri));
-        int total = boardService.getTotal(cri);
-        PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-        model.addAttribute("board", boardService.getList());
-        model.addAttribute("pageMaker", pageMake);
-    }    
- 
-    
-    @RequestMapping("/insertCommunityForm")
+	@GetMapping("/list")
+	public String boardListGET(Model model, Criteria cri) {
+
+		model.addAttribute("list", boardService.getListPaging(cri));
+		int total = boardService.getTotal(cri);
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("board", boardService.getList());
+		model.addAttribute("pageMaker", pageMake);
+
+		return "/board/list";
+	}
+
+	@RequestMapping("/insertCommunityForm")
 	public String insertPostForm() {
 		return "/board/insertCommunityForm";
 	}
-    
-    // 게시글 등록 스마트 버전
-    @RequestMapping("/insertBoard")
+
+	// 게시글 등록 스마트 버전
+	@RequestMapping("/insertBoard")
 	public String insertBoard(BoardVO vo) {
 
 		System.out.println("content = " + vo.getComContent());
@@ -135,7 +135,7 @@ public class BoardController {
 		}
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
 	}
-    
+
 	// detailViewPost 게시글 상세 보기
 	@RequestMapping("/detailViewBoard/{comNo}")
 	public String detailViewBoard(@PathVariable int comNo, Model model) {
@@ -145,56 +145,64 @@ public class BoardController {
 
 		ArrayList<ComChatMemberVO2> chatList = chatService.listAllChatCommunity(comNo);
 		model.addAttribute("chatList", chatList);
-		
+
 		boardService.hitCount(comNo);
 		return "board/detailViewBoard";
 	}
-	
-	//댓글달기
+
+	// 댓글달기
 	@ResponseBody
 	@RequestMapping("/insertChat2.do")
 	public String insertChat2(ComChatVO vo) {
-		String result ="success"; 
+		String result = "success";
 		chatService.insertChat2(vo);
-		// model.addAttribute("chatVO",chatVO); 
-		return result; 
+		// model.addAttribute("chatVO",chatVO);
+		return result;
+	}
+
+	// 페이지 시작시 memNo로 아이디 찾아오기
+	@ResponseBody
+	@RequestMapping("/searchMemid")
+	public String searchMemid(@RequestParam("comNo") int comNo) {
+		System.out.println(comNo);
+		String result = memService.searchMemId(comNo);
+		return result;
+	}
+
+	/* 수정 페이지 이동 */
+	@PostMapping("/modify/{comNo}")
+	public String boardModifyGET(@PathVariable int comNo, Model model) {
+		BoardVO boardVO = boardService.detailViewBoard(comNo);
+		model.addAttribute("pageInfo", boardVO);
+		return "/board/updateCommunityForm";
+	}
+
+	/* 페이지 수정 */
+	@PostMapping("/modify")
+	public String boardModifyPOST(BoardVO board) {
+
+		boardService.modify(board);
+
+		return "redirect:/board/list";
+	}
+
+	/* 페이지 삭제 */
+	@PostMapping("/delete")
+	public String boardDeletePOST(int comNo, RedirectAttributes rabs) {
+
+		boardService.delete(comNo);
+		rabs.addFlashAttribute("result", "delete success");
+		return "redirect:/board/list";
 	}
 	
-	 //페이지 시작시 memNo로 아이디 찾아오기
-	 @ResponseBody
-	 @RequestMapping("/searchMemid")
-	 public String searchMemid(@RequestParam("comNo")int comNo) {
-	  System.out.println(comNo);
-	  String result=memService.searchMemId(comNo);
-	  return result; 
-	  }
-    
-    /* 수정 페이지 이동 */
-    @GetMapping("/modify")
-    public void boardModifyGET(int comNo, Model model) {
-        model.addAttribute("pageInfo", boardService.getPage(comNo));
+	  //나의 게시글 목록
+    @RequestMapping("/myBoardList")
+    public String myBoardList(HttpSession session, Model model) {
+    	int memNo = (int) session.getAttribute("No");
+    	ArrayList<BoardVO> vo = boardService.getMyList(memNo);
+
+    	model.addAttribute("bList",vo);
+    	return "/board/myBoardList";
     }
-    
-    /* 페이지 수정 */
-    @PostMapping("/modify")
-    public String boardModifyPOST(BoardVO board, RedirectAttributes rabs) {
-        
-    	boardService.modify(board);
-        rabs.addFlashAttribute("result", "modify success");
-        return "redirect:/board/list";
-    }
-    
-    /* 페이지 삭제 */
-    @PostMapping("/delete")
-    public String boardDeletePOST(int comNo, RedirectAttributes rabs) {
-        
-        boardService.delete(comNo);
-        rabs.addFlashAttribute("result", "delete success");
-        return "redirect:/board/list";
-    }
-    
-    
-    
-    
-    
+
 }

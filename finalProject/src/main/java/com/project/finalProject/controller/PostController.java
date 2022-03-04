@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,9 +58,10 @@ public class PostController {
 
 	@RequestMapping("/post/insertPost")
 	public String insertPost(PostVO vo) {
-
+	
+		
 		System.out.println("content = " + vo.getPostContent());
-
+		
 		//
 		int startIdx = vo.getPostContent().indexOf("/photo_upload/");
 
@@ -135,7 +137,10 @@ public class PostController {
 
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
-
+		
+		//조회수 증가
+		postService.posthitplus(postNo);
+		
 		//즐겨찾기 여부
 				model.addAttribute("favoritPost",0);
 				if(session.getAttribute("No") != null) {
@@ -160,6 +165,8 @@ public class PostController {
 		return "post/detailViewPost";
 	}
 
+	
+	
 	@RequestMapping("/searchPost")
 	public String searchPost(@RequestParam("searchBarInput") String searchBarInput, Model model) {
 
@@ -197,6 +204,22 @@ public class PostController {
 		return result;
 	}
 
+	// 페이지 시작시 memNo로 아이디 찾아오기2
+	@ResponseBody
+	@RequestMapping("/searchMemid2")
+	public String searchMemid2(@RequestParam("postNo") int postNo) {
+		String result = memService.searchMemId2(postNo);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/declPost")
+	public String declPost(@RequestParam("postNo") int postNo) {
+		String result = "success";
+		postService.declPlus(postNo);
+		return result;
+	}
+
 	
 	 @ResponseBody
 	 @RequestMapping("/deletePost")
@@ -216,6 +239,7 @@ public class PostController {
 	 return result; 
 	 }
 	 
+	
 	 
 
 		@RequestMapping("/objectDetection")
@@ -365,6 +389,14 @@ public class PostController {
 			
 			return "/post/myFavoritList";
 		}
-	
+		//카테고리별 상품 리스트
+				@GetMapping("/list")
+				public String getList(@RequestParam("a") String memAddress1, Model model) {
+					ArrayList<PostVO> list = postService.list(memAddress1);
+					
+					model.addAttribute("list", list);
+					
+					return "list";
+				}
 
 }

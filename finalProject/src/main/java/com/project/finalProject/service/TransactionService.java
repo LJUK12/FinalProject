@@ -1,6 +1,7 @@
 package com.project.finalProject.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -40,6 +41,25 @@ public class TransactionService implements ITransactionService {
 	@Override
 	public void manageDeleteTran(int tranNo) {
 		dao.manageDeleteTran(tranNo);
+		
+	}
+	@Override
+	public ArrayList<TransactionVO> tranSearchManage(String tranSearch){
+		// 관리자 거래내역 검색
+		return dao.tranSearchManage(tranSearch);
+	}
+	
+	@Override
+	public TransactionVO ManageSelectTran(int tranNo) {
+		// 관리자 수정조회
+		return dao.ManageSelectTran(tranNo);
+	}
+
+
+	@Override
+	public void manageUpdateTran(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		dao.manageUpdateTran(map);
 		
 	}
 

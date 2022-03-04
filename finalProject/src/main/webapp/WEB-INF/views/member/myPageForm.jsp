@@ -35,16 +35,19 @@
 			</a><br><br>
 			<a href="<c:url value='/myPostList/1'/>">
 				<div class="mypageBox">
-					내가 쓴 글<br>
+					내가 판매한 상품<br>
 				</div>
 			</a>
 			<a href="<c:url value='/myFavorit'/>">
 				<div class="mypageBox">
 	        		나의 즐겨찾기<br>		
+				</div><br><br>
+			<a href="<c:url value='/board/myBoardList'/>">
+				<div class="mypageBox">
+	        		내가 쓴 글<br>		
 				</div>
-		
-		
-		
+			</a>
+		<br><br>
 		</section>
 		
 <!-- BOTTOM -->

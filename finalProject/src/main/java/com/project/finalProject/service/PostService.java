@@ -113,6 +113,38 @@ public class PostService implements IPostService{
 		
 	}
 
+	@Override
+	public void posthitplus(int postNo) {
+		dao.posthitplus(postNo);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> listAllPostByDESC() {
+		// TODO Auto-generated method stub
+		return dao.listAllPostByDESC();
+	}
+
+	@Override
+	public void declPlus(int postNo) {
+		// TODO Auto-generated method stub
+		dao.declPlus(postNo);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> list(String memAddress1) {
+		// TODO Auto-generated method stub
+		return dao.list(memAddress1);
+	}
+	
+
+
+	@Override
+	public ArrayList<PostVO> postSearchManage(String postSearch){
+		// 관리자 상품검색
+		return dao.postSearchManage(postSearch);
+	}
 	
 
 

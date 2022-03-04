@@ -60,11 +60,6 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public ArrayList<MemberVO> pwdSearch(HashMap<String, Object> map) {
-		return dao.pwdSearch(map);
-	}
-
-	@Override
 	public void withdrawMember(String memId) {
 		dao.withdrawMember(memId);
 		
@@ -80,6 +75,35 @@ public class MemberService implements IMemberService{
 	public void managerDeleteProfile(int memNo) {
 		dao.managerDeleteProfile(memNo);
 		
+	}
+
+	@Override
+	public String searchMemId2(int memNo) {
+		// TODO Auto-generated method stub
+		return dao.searchMemId2(memNo);
+	}
+
+	@Override
+	public String searchAddress2(int memNo) {
+		// TODO Auto-generated method stub
+		return dao.searchAddress2(memNo);
+	}
+
+	@Override
+	public MemberVO pwdSearch(MemberVO memvo) {
+		// TODO Auto-generated method stub
+		return dao.pwdSearch(memvo);
+	}
+
+	@Override
+	public int pwdChange(MemberVO memVO) {
+		// TODO Auto-generated method stub
+		return dao.pwdChange(memVO);
+	}
+	@Override
+	public ArrayList<MemberVO> memSearchManage(String memSearch){
+		// 멤버 검색 ajax
+		return dao.memSearchManage(memSearch);
 	}
 
 

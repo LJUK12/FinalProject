@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body{
+	margin :0;
+	padding:0;
+}
+
+.modal_content>div:first-child {
+	padding : 20px;
+	color: white;
+  	background: #A4A4A4;
+}
+
+.modal_content>div:first-child>div:first-child {
+	font-size:25px;
+}
+
+.modal_content>div:first-child>div:last-child {
+	font-size:15px;
+	margin-top: 5px;
+}
+
+.modal_content>div:nth-child(2) {
+	padding : 20px;
+	max-width: 450px;
+}
+
+.modal_content>div:nth-child(2)>span{
+	font-size: 15px;
+	margin-top: 5px;
+}
+.modal_content>div:nth-child(2)>div>input{
+	float: right;
+	width: 45%;
+	border-radius: 3px;
+	border : 1px solid #9c9c9c;
+}
+
+.notice-text{
+	font-size: 15px;
+	color:#fff;
+	text-align: right;
+	margin: 5px 0;
+}
+
+.modal_content>div:nth-child(2)>div:last-child {
+	margin : 20px 0 0;
+	text-align: center;
+}
+
+#modal_pwChange_confirm_btn{
+	height:40px;
+   width: 80px;
+   font-size:15px;
+   color: white;
+   background:coral;
+   border: none;
+   border-radius: 3px;
+}
+
+#modal_pwChange_close_btn{
+	height:40px;
+   width: 60px;
+   font-size:15px;
+   background: #dadada;
+   border: none;
+   border-radius: 3px;
+} 

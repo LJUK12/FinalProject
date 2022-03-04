@@ -15,7 +15,7 @@
 <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 	<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
-
+<script src="<c:url value='/js/insertPost.js'/>"></script>
 <link href="<c:url value='/css/insertPost.css'/>" rel="stylesheet"
 	type="text/css">
     <style>
@@ -125,9 +125,13 @@
 								<div class="mb-3">
 									<input type="text" class="form-control1" name="postTitle"
 										id="postTitle" placeholder="제목을 입력해 주세요"> <br> <label
-										for="reg_id">작성자:</label> <input type="text"
-										class="form-control2" name="memNo" id="memNo"
-										value="${sessionScope.No}" readonly> <label
+										for="reg_id">작성자:</label> 
+										<input type="hidden" class="form-control2" name="memNo" id="memNo"
+										value="${sessionScope.No}" readonly>
+										<input type="text" class="form-control2" name="memId" id="memId"
+										value="${sessionScope.No}" readonly>
+										
+										 <label
 										for="reg_id">가격:</label> <input type="text"
 										class="form-control3" name="postPrice" id="postPrice"
 										placeholder="가격 입력"> <br>
@@ -162,8 +166,8 @@
 									<option value="디지털기기" selected>디지털기기</option>
 								</select> <label for="tag"><br>거래방식</label> <select
 									class="form-control3" name="postWay" id="postWay">
-									<option value="직거래">직거래</option>
-									<option value="택배거래" selected>택배거래</option>
+									<option value="직거래" selected>직거래</option>
+									<option value="택배거래">택배거래</option>
 								</select> <br> 
 								<input type="hidden" class="form-control" name="postState" id="postState" value="판매중"> 
 					<br>

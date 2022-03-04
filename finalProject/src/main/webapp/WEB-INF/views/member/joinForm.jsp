@@ -59,7 +59,7 @@
 	  				<span class='box name'>
 	  					<input type="text" class="textBox" id='memName' name="memName" maxlength="10">
 	  				</span>
-	  				<span id='errorName'>이름을 입력해주세요</span>
+	  				<span id='errorName'>이름은 한글로 1~6글자 입력해주세요</span>
 	  			</div>
 
 	  			<div>

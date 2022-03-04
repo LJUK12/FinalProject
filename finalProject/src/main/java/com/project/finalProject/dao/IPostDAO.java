@@ -23,9 +23,13 @@ public interface IPostDAO {
 	void updatePostState(int postNo);
 	void deletePost(int postNo);
 	PostVO listPost(int postNo);
-	
+	void posthitplus(int postNo);
 
 	PostVO manageDetailViewPost(int postNo);	//관리자용 디테일 뷰
 	ArrayList<PostVO> manageAllPost(); //관리자 allListPost
 	void manageEditPosting(PostVO vo);		// 관리자 postEdit
+	ArrayList<PostVO> listAllPostByDESC(); 
+	void declPlus(int postNo);
+	public ArrayList<PostVO> list(String memAddress1);
+	ArrayList<PostVO> postSearchManage(String postSearch);	// 관리자 상품검색
 }

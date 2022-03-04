@@ -18,7 +18,9 @@ public class PostVO {
 	private String postMap;
 	private String postWay;
 	private int postPrice;
+
 	
+
 	public int getPostPrice() {
 		return postPrice;
 	}

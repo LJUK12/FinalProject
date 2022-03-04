@@ -34,7 +34,8 @@
 		else{
 			$('#errorPwdCheck').css('display','none');
 		}
-		if($('#memName').val()==''){
+		var nameRule = /^[가-힣]{1,6}$/;
+		if($('#memName').val()==''|| !nameRule.test($('#memName').val())){
 			$('#errorName').css('display','block');
 			$('#memName').focus();
 			return false;
@@ -72,8 +73,10 @@
 		else{
 			$('#errorEmail2').css('display','none');
 		}
+		var phoneRule = /^[0-9]{4}$/;
+		if($('#hp2').val().length!=4||$('#hp3').val().length!=4 || 
+			!phoneRule.test($('#hp2').val())||!phoneRule.test($('#hp3').val())){
 		
-		if($('#hp2').val().length!=4||$('#hp3').val().length!=4){
 			$('#errorHp').css('display','block');
 			$('#hp2').focus();
 			return false;

@@ -73,6 +73,9 @@ public class BoardService implements IBoardService{
 		boardDAO.hitCount(comNo);
 	}
 
-	
+	@Override//나의 게시글 조회
+    public ArrayList<BoardVO> getMyList(int memNo){
+		return boardDAO.getMyList(memNo);
+	}
 
 }

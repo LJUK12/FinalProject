@@ -4,56 +4,56 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.project.finalProject.dao.IBoardDAO">
   
- 	<resultMap id="boardResult" type="com.project.finalProject.model.BoardVO">
-		<result property="comNo" column="comNo" />
-		<result property="comTitle" column="comTitle" />
-		<result property="comContent" column="comContent" />
-		<result property="comDate" column="comDate" />	
-		<result property="comHit" column="comHit" />	
-		<result property="comFavorite" column="comFavorite" />	
-		<result property="comImg" column="comImg" />
-		<result property="memNo" column="memNo" />			
-	</resultMap>
-	
- 	<!-- 게시판 등록 -->
+    <resultMap id="boardResult" type="com.project.finalProject.model.BoardVO">
+      <result property="comNo" column="comNo" />
+      <result property="comTitle" column="comTitle" />
+      <result property="comContent" column="comContent" />
+      <result property="comDate" column="comDate" />   
+      <result property="comHit" column="comHit" />   
+      <result property="comFavorite" column="comFavorite" />   
+      <result property="comImg" column="comImg" />
+      <result property="memNo" column="memNo" />         
+   </resultMap>
+   
+    <!-- 게시판 등록 -->
     <insert id="enroll">
         insert into community(comTitle, comContent, memNo) values (#{comTitle}, #{comContent}, #{memNo})
     </insert>
     
     <!-- 게시글 작성  -->
-	<insert id="insertPost" parameterType="com.project.finalProject.model.BoardVO">
-		INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo)
-		VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo})
-	</insert>
-	
-    <!-- Post 페이지 이동 -->	
+   <insert id="insertPost" parameterType="com.project.finalProject.model.BoardVO">
+      INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo)
+      VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo})
+   </insert>
+   
+    <!-- Post 페이지 이동 -->   
     <select id="detailViewBoard" parameterType="int" resultType="com.project.finalProject.model.BoardVO">
-   		SELECT * FROM community WHERE comNo=#{comNo}
+         SELECT * FROM community WHERE comNo=#{comNo}
     </select>
     
     <!-- index 페이지에 전체 내용 출력 (최신순) -->
-  	<select id="listAllBoard" resultMap="boardResult">
-  		SELECT * FROM community ORDER BY comNo DESC
-  	</select>
+     <select id="listAllBoard" resultMap="boardResult">
+        SELECT * FROM community ORDER BY comNo DESC
+     </select>
 
     <!-- 조회수 추가 -->
-	<update id="hitCount" parameterType="int"> 
-		update community set comHit=comHit+1 where comNo=#{comNo} 
-	</update>
-	
+   <update id="hitCount" parameterType="int"> 
+      update community set comHit=comHit+1 where comNo=#{comNo} 
+   </update>
+   
     <!-- 게시판 목록 -->
     <select id="getList" resultType="com.project.finalProject.model.BoardVO">
         select * from community
     </select>
-  	
+     
     <!-- 게시판 조회 -->
     <select id="getPage" resultType="com.project.finalProject.model.BoardVO">
         select * from community where comNo = #{comNo}
     </select>
     
     <!-- 게시판 수정 -->
-    <update id="modify">
-        update community set comTitle = #{comTitle}, comContent = #{comContent} where comNo = #{comNo} 
+    <update id="modify" parameterType="com.project.finalProject.model.BoardVO">
+        update community set comTitle=#{comTitle}, comContent=#{comContent}, comImg=#{comImg} where comNo=#{comNo} 
     </update>
     
     <!-- 게시판 삭제 -->
@@ -61,7 +61,7 @@
         delete from community where comNo = #{comNo}
     </delete>
     
-	<!-- 게시물 총 개수 -->
+   <!-- 게시물 총 개수 -->
     <select id="getTotal" resultType="int">
         select count(*) from community
         <if test="keyword != null">
@@ -69,7 +69,7 @@
         </if>  
     </select>    
  
- 	<!-- 게시물 목록(페이징) -->
+    <!-- 게시물 목록(페이징) -->
     <select id="getListPaging" resultType="com.project.finalProject.model.BoardVO">
         select * from (
                 select comNo, comTitle, comContent, comDate, comHit
@@ -81,7 +81,7 @@
         limit #{skip},#{amount}
     </select>
  
- 	<!-- 검색 조건문 -->
+    <!-- 검색 조건문 -->
     <sql id="criteria">
         <trim prefix="where (" suffix=")" prefixOverrides="OR">
             <foreach collection="typeArr" item="type">
@@ -102,5 +102,10 @@
         </trim>
     </sql>
 
+    
+     <!-- 나의 게시글 조회 -->
+    <select id="getMyList" parameterType="int" resultType="com.project.finalProject.model.BoardVO">
+    	SELECT * FROM community WHERE memNo=#{memNo}
+    </select>
     
   </mapper>

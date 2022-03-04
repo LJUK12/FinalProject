@@ -112,11 +112,11 @@ display: inline-block;
 	display: flex;
 	margin:0;
 	width:700px;
-
+	align-items: center;
 }
 
 
-#favoritbtn img{
+#favoritimg{
 	
 
 	width:23px; 
@@ -125,14 +125,43 @@ display: inline-block;
 	
 }
 
+#hitimg{
+	width:30px; 
+	height:21px;
+	margin-right:10px;
+}
+
+#declimg{
+	margin-left: 5px;
+	width:23px; 
+	height:23px;
+	margin-right:10px;
+}
+
+#favoritPostimg{
+	width:23px; 
+	height:23px;
+	margin-right:10px;
+}
+
 #favorit{
 	width:30px;
 	margin-right:5px;
 	
 }
 
+#hit{
+	width:30px;
+	margin-right:5px;
+}
+
+#decl{
+	width:30px;
+	margin-right:10px;
+}
+
 #favoritPost{
-	margin-right:350px;
+	margin-right:260px;
 }
 
 

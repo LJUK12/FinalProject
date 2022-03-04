@@ -58,6 +58,16 @@ $(function() {
 		return false;
 	})
 	
+	$('#declimg').click(function(){
+		var confirmflag = confirm("확인을 누르시면 해당 게시글이 신고됩니다.");
+		if(confirmflag){
+			declAjax()
+		}else{
+			alert("신고 기능을 취소하셨습니다.");
+		}
+		return false;
+	})
+	
 	var FavoritPost = $('#favoritPost').val();
 	$("#favoritPost").on("click",function(){
 		
@@ -208,6 +218,32 @@ function FavoritPostAjax(){
 		}
 	});
 }
+
+
+function declAjax() {
+	$.ajax({
+		type:"post",
+		url:"/declPost",
+		data:{postNo:$('#postNo').val()},
+		dataType:'text',
+		success: function(result) {
+			if(result == "success"){
+			alert("상품 게시글이 신고되었습니다.");
+			location.href="/";
+			}else{
+				alert("상품이 신고되지 않았습니다.");
+			}
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("상품이 신고되지 않았습니다.");
+		}
+	});
+}
+
+
+
+
 
 
 /*

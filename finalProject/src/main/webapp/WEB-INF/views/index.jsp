@@ -260,7 +260,7 @@
 							<div class="hotItemGroup2">
 								<ul class="class-list" data-position="0">
 									<c:set var="postNum" value="0" />
-									<c:forEach items="${postList}" var="post">
+									<c:forEach items="${listAllPostByDESC}" var="post">
 									<div> 
 										<div>
 											<div class="class-card">

@@ -51,7 +51,6 @@
 			</div>
 			<div id="loginMenu">
 				<a href="<c:url value='/myFeed'/>">${postVO.postNo}</a>
-				
 				<br><br>
 			</div>
 						
@@ -64,6 +63,7 @@
 							enctype="multipart/form-data" onsubmit="submitContents()">
 							
 							<div class="postWrite">
+								<input type="hidden" name="postNo" value="${postVO.postNo}">
 								<div class="mb-3">
 									<input type="text"
 										class="form-control1" name="postTitle" id="postTitle"
@@ -157,6 +157,3 @@
 </body>
 
 </html>
-
-
-
