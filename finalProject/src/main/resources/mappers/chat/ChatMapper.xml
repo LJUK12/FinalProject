@@ -46,7 +46,7 @@
 	
 	<!-- 관리자 채팅 목록 가져오기 -->
 	<select id="listAllChatManager" resultMap="ChatmemberResult">
-		SELECT * FROM chatting ORDER BY postNo
+		SELECT c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo ORDER BY postNo DESC
 	</select>
 	<!-- 채팅 삭제하기 -->
 	<delete id="deleteChat" parameterType="int">
@@ -55,12 +55,21 @@
 	
 	<!-- 관리자 특정 채팅 내역 가져오기  -->
 	<select id="manageChatList" parameterType="int" resultMap="ChatmemberResult">
-		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo};
+		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo}
 	</select>
 
 	<!-- 관리자 특정 채팅 수정하기  -->
 	<update id="manageUpdateChat" parameterType="hashmap">
 		update chatting set chatContent = #{chatContent} WHERE chatNo=#{chatNo}
 	</update>
+	
+	<!-- 관리자 채팅 검색하기  -->
+	<select id="chatSearchManage" parameterType="string" resultMap="ChatmemberResult">
+		SELECT c.*, m.memId 
+		FROM chatting c, member m WHERE c.memNo = m.memNo 
+		AND (chatContent LIKE CONCAT("%", #{chatSearch}, "%") 
+		OR memId LIKE CONCAT("%", #{chatSearch}, "%"))
+		ORDER BY postNo DESC
+	</select>
 
 </mapper>

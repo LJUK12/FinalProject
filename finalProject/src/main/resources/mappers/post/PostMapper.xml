@@ -107,4 +107,15 @@
   		UPDATE post SET postTitle=#{postTitle}, postContent=#{postContent}, postTag=#{postTag}, postImg=#{postImg}, postWay=#{postWay}, postPrice=#{postPrice} WHERE postNo=#{postNo} 
   </update>
    	
+   	<!-- 관리자 Post 검색-->	
+    <select id="postSearchManage" parameterType="string" resultType="com.project.finalProject.model.PostVO">
+   		SELECT DISTINCT p.postNo, p.postTitle, p.postPrice, p.postWay, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
+   		FROM post p, member m 
+   		WHERE p.memNo = m.memNo
+   		AND (p.postTitle LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR p.postTitle LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR p.postTag LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR m.memId LIKE CONCAT("%", #{postSearch}, "%"))
+   		order by postNo DESC
+    </select>
 </mapper>

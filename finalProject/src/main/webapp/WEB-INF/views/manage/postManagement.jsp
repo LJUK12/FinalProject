@@ -6,7 +6,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>포스트 관리자 페이지</title>
+	<title>상품 포스트 관리</title>
 	
 </head>
 	<body>
@@ -14,15 +14,19 @@
 		<section>
 			<div id="menagementWrap">
 				<a id="returnManager" href="/rootManager">◀돌아가기</a>
-				<h2>포스트 내역</h2>
-				<input type="text" placeholder="검색하기"/>
+				<h2><img src="<c:url value='/image/boardTemp.png'/>">상품 포스트 관리</h2>
+				<div id="MngSearchDiv">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input type="text" id="srchPost" class="MngSearch" placeholder="검색하기"/>
+				</div>
 				<div id="trTableStyle2">
 					<table id="postTable">
 						<tr><th>번호</th><th>제목</th><th>가격</th><th>거래방식</th><th>작성일</th><th>카테고리</th><th>조회수</th>
 						<th>좋아요</th><th>판매상태</th><th>섬네일</th><th>작성자</th>
 						<th>수정</th><th>삭제</th></tr>
+						<c:if test="${not empty postVO }">
 						<c:forEach items="${postVO}" var="post">
-							<tr><td>${post.postNo }</td><td>${post.postTitle }</td>
+							<tr><td>${post.postNo }</td><td><a href="<c:url value='/postManager/postDetails/${post.postNo }' />">${post.postTitle }</a></td>
 								<td>${post.postPrice }</td><td>${post.postWay }</td>
 								<td><%-- <fmt:formatDate value="${post.postDate }"  pattern="YY.MM.dd yy:hh:ss"/> --%></td>
 								<td>${post.postTag }</td><td>${post.postHit }</td><td>${post.postFavorit }</td><td>${post.postState }</td>
@@ -32,6 +36,11 @@
 								<td><a id="mngDeleteBtn" href="<c:url value='/postManager/postDelete/${post.postNo}' />">삭제</a></td>
 							</tr>
 						</c:forEach>
+						</c:if>
+						<c:if test="${empty postVO }">
+							<tr><td colspan="12">결과가 없습니다.</td>
+							</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>

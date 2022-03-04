@@ -28,4 +28,6 @@ public interface IPostService {
 
 	ArrayList<PostVO> manageAllPost(); //관리자 allListPost
 	void manageEditPosting(PostVO vo);		// 관리자 postEdit
+	
+	ArrayList<PostVO> postSearchManage(String postSearch);	// 관리자 상품검색
 }

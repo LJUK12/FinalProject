@@ -17,4 +17,6 @@ public interface IChatService {
 	void deleteChat(int chatNo);	// 채팅 내역 삭제
 	ChatMemberVO2 manageChatList(int chatNo); // 채팅 수정 위해 기록 가져오기
 	void manageUpdateChat(HashMap<String, Object> map);	// 관리자 채팅 수정
+	
+	ArrayList<ChatVO> chatSearchManage(String chatSearch);	// 관리자 채팅 검색
 }

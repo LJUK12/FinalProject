@@ -19,4 +19,6 @@ public interface IChatDAO {
 	void manageUpdateChat(HashMap<String, Object> map);	// 관리자 채팅 수정
 	 void insertChat2(ComChatVO vo);
 	 ArrayList<ComChatMemberVO2> listAllChatCommunity(int comNo);
+	 
+	ArrayList<ChatVO> chatSearchManage(String chatSearch);	// 관리자 채팅 검색
 }

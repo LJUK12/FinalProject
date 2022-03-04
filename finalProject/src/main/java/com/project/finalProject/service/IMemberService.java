@@ -21,4 +21,5 @@ public interface IMemberService {
 
 	void withdrawMember(String memId);	
 	String searchMemId(int memNo);
+	ArrayList<MemberVO> memSearchManage(String memSearch);	// 멤버 검색 ajax
 }

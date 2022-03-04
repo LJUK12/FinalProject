@@ -13,4 +13,6 @@ public interface ITransactionDAO {
 	void manageDeleteTran(int tranNo);	// 관리자 삭제
 	TransactionVO ManageSelectTran(int tranNo);	// 관리자 수정조회
 	void manageUpdateTran(HashMap<String, Object> map);	// 관리자 거래내역 수정
+	
+	ArrayList<TransactionVO> tranSearchManage(String tranSearch); // 관리자 거래내역 검색
 }

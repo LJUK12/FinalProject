@@ -74,5 +74,11 @@
  		<delete id="managerDeleteProfile" parameterType="int">
  			delete from member where memNo=#{memNo}
  		</delete>
+ 		
+ 		<!-- 관리자 회원 검색 -->
+ 		<select id="memSearchManage" parameterType="string" resultType="com.project.finalProject.model.MemberVO">
+ 			SELECT * FROM member WHERE memName LIKE CONCAT("%", #{memSearch}, "%") OR memAddress1 LIKE CONCAT("%", #{memSearch}, "%") 
+ 			OR memAddress2 LIKE CONCAT("%", #{memSearch}, "%") OR memGrade LIKE CONCAT("%", #{memSearch}, "%")
+ 		</select>
 
   </mapper>

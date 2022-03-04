@@ -100,5 +100,11 @@ public class PostService implements IPostService{
 		dao.manageEditPosting(vo);
 		
 	}
+	
+	@Override
+	public ArrayList<PostVO> postSearchManage(String postSearch){
+		// 관리자 상품검색
+		return dao.postSearchManage(postSearch);
+	}
 
 }

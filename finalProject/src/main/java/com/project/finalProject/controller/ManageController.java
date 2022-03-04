@@ -3,6 +3,8 @@ package com.project.finalProject.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -170,6 +172,86 @@ public class ManageController {
 	public String tranDelete(@PathVariable int tranNo) {
 		tsService.manageDeleteTran(tranNo);
 		return "redirect:/tradeManager";
+	}
+	
+	// 관리자 페이지 검색 부분
+	// 관리자 회원검색
+	@RequestMapping("/mngMemberSearch")
+	public String mngMemberSearch(@RequestParam("memSearchVal") String memSearchVal, Model model) {
+		ArrayList<MemberVO> memberVO = memService.memSearchManage(memSearchVal);
+		model.addAttribute("memberVO", memberVO);
+		return "manage/memSearchManagement";
+	}
+	
+	// 관리자 상품검색
+	@RequestMapping("/mngPostSearch")
+	public String mngPostSearch(@RequestParam("postSearchVal") String postSearchVal, Model model) {
+		ArrayList<PostVO> postVO = postService.postSearchManage(postSearchVal);
+		model.addAttribute("postVO", postVO);
+		return "manage/postSearchManagement";
+	}
+	
+	//관리자 채팅검색
+	@RequestMapping("/mngChatSearch")
+	public String mngChatSearch(@RequestParam("chatSearchVal") String chatSearchVal, Model model) {
+		ArrayList<ChatVO> chatVO = chatService.chatSearchManage(chatSearchVal);
+		model.addAttribute("chatVO", chatVO);
+		return "manage/chatSearchManagement";
+	}
+	
+	//관리자 거래내역검색
+	@RequestMapping("/mngTranSearch")
+	public String mngTranSearch(@RequestParam("tranSearchVal") String tranSearchVal, Model model) {
+		ArrayList<TransactionVO> tsVO = tsService.tranSearchManage(tranSearchVal);
+		model.addAttribute("tsVO", tsVO);
+		return "manage/tradeSearchManagement";
+	}
+	
+	// 관리자 상세보기 페이지
+	// 멤버 상세보기
+	@RequestMapping("/memberManager/memDetails/{memId}")
+	public String memDetails(@PathVariable String memId, Model model){
+		MemberVO member = memService.profileInfo(memId);
+		
+		model.addAttribute("member",member);
+		return "manage/memDetailManagement";
+	}
+	
+	//관리자 상품포스트 상세 보기
+	@RequestMapping("/postManager/postDetails/{postNo}")
+	public String postDetails(@PathVariable int postNo, Model model) {
+
+
+		PostVO post = postService.detailVeiwPost(postNo);
+		model.addAttribute("post", post);
+
+		
+
+		ArrayList<ChatMemberVO2> chatList = chatService.listAllChat(postNo);
+		model.addAttribute("chatList", chatList);
+
+		ArrayList<PostVO> postList2 = postService.listAllPost();
+		model.addAttribute("postList2", postList2);
+		return "manage/postDetailManagement";
+	}
+	
+	// 관리자 채팅내역 상세보기
+	@RequestMapping("/chatManager/chatDetails/{chatNo}")
+	public String chatDetails(@PathVariable int chatNo, Model model){
+		ChatMemberVO2 chatVO = chatService.manageChatList(chatNo);
+		model.addAttribute("chatVO", chatVO);
+		
+		return "manage/chatDetailManagement";
+	}
+	
+	// 관리자 거래내역 상세보기
+	@RequestMapping("/tradeManager/tranDetails/{tranNo}")
+	public String tranDetails(@PathVariable int tranNo, Model model) {
+		
+		 TransactionVO tranVO = tsService.ManageSelectTran(tranNo);
+		 model.addAttribute("tranVO", tranVO);
+		 
+		return "manage/tradeDetailManagement";
 	}
 }
 

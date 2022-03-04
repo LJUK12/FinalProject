@@ -42,9 +42,9 @@
 		  			<div>
 		  				<h3>채팅 내용 수정</h3>
 		  				<span class='box name'>
-		  					<input type="text" class="textBox" id='chatContent' name="chatContent" maxlength="10" value="${chatVO.chatContent }">
+		  					<textarea id='chatContent' name="chatContent"> ${chatVO.chatContent }</textarea>
 		  				</span>
-		  				<span id='errorName'>이름을 입력해주세요</span>
+		  				<span id='errorName'>채팅을 입력해주세요</span>
 		  			</div>
 		  				<h3>작성날짜 : ${chatVO.chatDate }</h3>
 		  			</div>

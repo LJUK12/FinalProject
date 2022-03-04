@@ -81,4 +81,9 @@ public class MemberService implements IMemberService{
 		return dao.searchMemId(memNo);
 	}
 
+	@Override
+	public ArrayList<MemberVO> memSearchManage(String memSearch){
+		// 멤버 검색 ajax
+		return dao.memSearchManage(memSearch);
+	}
 }

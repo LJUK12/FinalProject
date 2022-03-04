@@ -6,17 +6,18 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>포스트 관리자 페이지</title>
-	
+	<title>회원 관리자 페이지</title>
 </head>
 	<body>
 		<jsp:include page="/WEB-INF/views/manage/manageTop.jsp" flush="true"/>
 		<section>
 			<div id="menagementWrap">
 				<a id="returnManager" href="/rootManager">◀돌아가기</a>
-				<h2>회원정보</h2>
-				<input type="text" placeholder="검색하기"/>
-				
+				<h2><img src="<c:url value='/image/memberTemp.png'/>">회원 관리</h2>
+				<div id="MngSearchDiv">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input type="text" id="srchMem" class="MngSearch" placeholder="검색하기"/>
+				</div>
 				<div id="trTableStyle1">
 					<table id="memTable">
 						<tr><th>번호</th><th>아이디</th><th>패스워드</th><th>이름</th><th>주소1</th>
@@ -26,8 +27,9 @@
 						<tr><th></th><th></th><th></th><th></th><th></th>
 						<th></th><th></th><th></th><th></th><th></th>
 						<th></th><th></th></tr>
+						<c:if test="${not empty memberVO }">
 						<c:forEach items="${memberVO}" var="mem">
-						<tr><td>${mem.memNo }</td><td>${mem.memId }</td>
+						<tr><td>${mem.memNo }</td><td><a href="<c:url value='/memberManager/memDetails/${mem.memId }' />">${mem.memId }</a></td>
 							<td><input type="password" value="${mem.memPwd }" readonly/></td>
 							<td>${mem.memName }</td><td>${mem.memAddress1 }</td><td>${mem.memAddress2 }</td>
 							<td>${mem.memEmail }</td><td>${mem.memPhone }</td>
@@ -36,6 +38,11 @@
 							<td><a id="mngDeleteBtn" href="<c:url value='/memberManager/memDelete/${mem.memNo}' />">삭제</a></td>
 						</tr>
 						</c:forEach>
+						</c:if>
+						<c:if test="${empty memberVO }">
+						<tr><td colspan="10">검색 결과가 존재하지 않습니다.</td>
+						</tr>
+						</c:if>
 					</table>
 				</div>
 			</div>

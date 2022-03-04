@@ -11,6 +11,11 @@
     <link href="<c:url value='/css/common.css'/>" rel="stylesheet" type="text/css">
 	<link href="<c:url value='/css/management.css'/>" rel="stylesheet" type="text/css">
     <script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
+	<script src="<c:url value='/js/manageSearch.js'/>"></script>
+	
+	<script src="https://kit.fontawesome.com/2d323a629b.js"
+		   crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
 </head>
 	<body>
 		<header>

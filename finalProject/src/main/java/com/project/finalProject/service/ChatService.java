@@ -72,4 +72,10 @@ public class ChatService implements IChatService {
 		// 관리자 채팅 수정
 		dao.manageUpdateChat(map);
 	}
+	
+	@Override
+	public ArrayList<ChatVO> chatSearchManage(String chatSearch){
+		// 관리자 채팅 검색
+		return dao.chatSearchManage(chatSearch);
+	}
 }

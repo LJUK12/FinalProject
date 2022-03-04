@@ -55,4 +55,10 @@ public class TransactionService implements ITransactionService {
 		// 관리자 거래내역 수정
 		dao.manageUpdateTran(map);
 	}
+	
+	@Override
+	public ArrayList<TransactionVO> tranSearchManage(String tranSearch){
+		// 관리자 거래내역 검색
+		return dao.tranSearchManage(tranSearch);
+	}
 }
