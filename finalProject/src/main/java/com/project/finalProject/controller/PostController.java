@@ -34,7 +34,7 @@ public class PostController {
 
 	@Autowired
 	PostService postService;
-
+	
 	@Autowired
 	MemberService memService;
 
@@ -133,6 +133,7 @@ public class PostController {
 	@RequestMapping("/post/detailViewPost/{postNo}")
 	public String detailViewPost(ChatVO vo, @PathVariable int postNo, Model model, HttpSession session) {
 
+
 		PostVO post = postService.detailVeiwPost(postNo);
 		model.addAttribute("post", post);
 
@@ -150,13 +151,14 @@ public class PostController {
 				}
 				
 		/* chatService.insertChat(vo); */
+		
+		
 
 		ArrayList<ChatMemberVO2> chatList = chatService.listAllChat(postNo);
 		model.addAttribute("chatList", chatList);
 
 		ArrayList<PostVO> postList2 = postService.listAllPost();
 		model.addAttribute("postList2", postList2);
-
 		return "post/detailViewPost";
 	}
 
@@ -170,7 +172,7 @@ public class PostController {
 		model.addAttribute("titleCntPostVO", titleCntPostVO);
 
 		return "post/searchPost";
-	}
+	}	  
 
 	@ResponseBody
 	@RequestMapping("/insertChat.do")
@@ -225,7 +227,8 @@ public class PostController {
 			String resultStr = "";
 			try {
 				// 1. �뙆�씪 ���옣 寃쎈줈 �꽕�젙 : �떎�젣 �꽌鍮꾩뒪�릺�뒗 �쐞移� (�봽濡쒖젥�듃 �쇅遺��뿉 ���옣)
-				String uploadPath = "/root/ai/";
+				//String uploadPath = "/root/ai/";
+				String uploadPath = "resource/ai_upload";
 					/*	"D:/ai/";*/
 
 				// 2. �썝蹂� �뙆�씪 �씠由� �븣�븘�삤湲�

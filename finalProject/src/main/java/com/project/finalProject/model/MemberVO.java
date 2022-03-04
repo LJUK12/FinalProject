@@ -75,5 +75,4 @@ public class MemberVO {
 		this.memPhone = memPhone;
 	}
 	
-	
 }

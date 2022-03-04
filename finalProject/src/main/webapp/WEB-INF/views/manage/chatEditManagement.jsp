@@ -20,7 +20,7 @@
 			
 				<div id='form_box'>
 				
-				<form  name="joinForm" id="joinForm" method="post" action='<c:url value="/memberManager/memEdit2" />'>
+				<form  name="joinForm" id="joinForm" method="post" action='<c:url value="/chatManager/chatEdit2" />'>
 					<div>
 		  				<h3>채팅 번호 : ${chatVO.chatNo }
 		  			</div>
@@ -33,7 +33,7 @@
 					<div>
 		  				<h3>작성자</h3>
 		  				<span class='box id'>
-		  					<input type="hidden" id='memNo' name="memNo" value="${chatVO.memNo }">
+		  					<input type="hidden" id='chatNo' name="chatNo" value="${chatVO.chatNo }">
 		  					<span class='textBox'>${chatVO.memId }</span>
 		  				</span>
 		  			</div>
@@ -42,19 +42,11 @@
 		  			<div>
 		  				<h3>채팅 내용 수정</h3>
 		  				<span class='box name'>
-		  					<input type="text" class="textBox" id='chatContent' name="chatContent" maxlength="10" value="${chatVO.chatContent }">
+		  					<textarea id='chatContent' name="chatContent"> ${chatVO.chatContent }</textarea>
 		  				</span>
-		  				<span id='errorName'>이름을 입력해주세요</span>
+		  				<span id='errorName'>채팅을 입력해주세요</span>
 		  			</div>
-		  			<div>
-		  				<h3>이름 입력</h3>
-		  				<span class='box name'>
-		  					<input type="text" class="textBox" id='memName' name="memName" maxlength="10" value="${chatVO.chatContent }">
-		  				</span>
-		  				<span id='errorName'>이름을 입력해주세요</span>
-		  			</div>
-		  			<div>
-		  				<h3>작성날짜 : ${chatVO.chatDate }
+		  				<h3>작성날짜 : ${chatVO.chatDate }</h3>
 		  			</div>
 		  			<br>
 		
@@ -70,4 +62,5 @@
 	  		</div> <!-- content -->
 		</div> <!-- wrap -->
 	</body>
+
 </html>

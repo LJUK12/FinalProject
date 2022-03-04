@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import com.project.finalProject.dao.IPostDAO;
 import com.project.finalProject.model.PostVO;
 
-
-
-
 @Service
 public class PostService implements IPostService{
 
@@ -33,7 +30,7 @@ public class PostService implements IPostService{
 	}
 
 	@Override
-	public void deletePost(String postNo) {
+	public void deletePost(int postNo) {
 		dao.deletePost(postNo);
 		
 	}
@@ -50,7 +47,6 @@ public class PostService implements IPostService{
 
 	@Override
 	public ArrayList<PostVO> titleContentSearchPost(String postKeyword) {
-		// TODO Auto-generated method stub
 		return dao.titleContentSearchPost(postKeyword);
 	}
 
@@ -72,21 +68,13 @@ public class PostService implements IPostService{
 
 	@Override
 	public ArrayList<PostVO> listAllPostByFavorit() {
-		// TODO Auto-generated method stub
 		return dao.listAllPostByFavorit();
 	}
 
 	@Override
 	public void updatePostState(int postNo) {
-		// TODO Auto-generated method stub
 		dao.updatePostState(postNo);
 		
-	}
-
-	@Override
-	public void deletePost(int postNo) {
-		// TODO Auto-generated method stub
-		dao.deletePost(postNo);
 	}
 
 	@Override
@@ -112,8 +100,11 @@ public class PostService implements IPostService{
 		dao.manageEditPosting(vo);
 		
 	}
-
 	
-
+	@Override
+	public ArrayList<PostVO> postSearchManage(String postSearch){
+		// 관리자 상품검색
+		return dao.postSearchManage(postSearch);
+	}
 
 }

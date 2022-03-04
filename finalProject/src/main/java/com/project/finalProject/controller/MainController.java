@@ -43,7 +43,7 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
-
+	
 	@ResponseBody
 	@RequestMapping("/chatbotCallImgLink")
 	public String chatbotCallImgLink(@RequestParam("message") String message) throws IOException{

@@ -2,8 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="com.project.finalProject.dao.IPostDAO">
+ <mapper namespace="com.project.finalProject.dao.IPostDAO">
 	<resultMap id="postResult" type="com.project.finalProject.model.PostVO">
 		<result property="postNo" column="postNo" />
 		<result property="postTitle" column="postTitle" />
@@ -76,8 +75,8 @@
 	<select id="postListCount" parameterType="int" resultType="int">
 		SELECT count(*) FROM post WHERE memNo=#{memNo}
 	</select>
-	
-	<!-- 관리자 Post detail 가져오기-->	
+   
+   <!-- 관리자 Post detail 가져오기-->	
     <select id="manageDetailViewPost" parameterType="int" resultType="com.project.finalProject.model.PostVO">
    		SELECT p.*, m.memId FROM post p, member m WHERE p.postNo=#{postNo} and p.memNo = m.memNo
     </select>
@@ -87,12 +86,10 @@
    		SELECT p.*, m.memId FROM post p, member m WHERE p.memNo = m.memNo order by postNo desc
     </select>
 	
-	
    <!-- Favorit +1 -->
    <select id="FavoritCountPlus" parameterType="int">
 		UPDATE post set postFavorit=postFavorit+1 WHERE postNo=#{postNo}
 	</select>
-   
    
    <!-- 구매 확인 -->
   	<select id="updatePostState" parameterType="int">
@@ -107,7 +104,18 @@
  
  <!-- 관리자 EditPost  -->
   <update id="manageEditPosting" parameterType="com.project.finalProject.model.PostVO">
-  		UPDATE post SET postTitle=#{postTitle}, postContent=#{postContent}, postTag=#{postTag}, postImg=#{postImg}, postWay=#{postWay}, postPrice=#{postPrice} WHERE postNo=#{postNo}
+  		UPDATE post SET postTitle=#{postTitle}, postContent=#{postContent}, postTag=#{postTag}, postImg=#{postImg}, postWay=#{postWay}, postPrice=#{postPrice} WHERE postNo=#{postNo} 
   </update>
    	
+   	<!-- 관리자 Post 검색-->	
+    <select id="postSearchManage" parameterType="string" resultType="com.project.finalProject.model.PostVO">
+   		SELECT DISTINCT p.postNo, p.postTitle, p.postPrice, p.postWay, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
+   		FROM post p, member m 
+   		WHERE p.memNo = m.memNo
+   		AND (p.postTitle LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR p.postTitle LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR p.postTag LIKE CONCAT("%", #{postSearch}, "%") 
+   		OR m.memId LIKE CONCAT("%", #{postSearch}, "%"))
+   		order by postNo DESC
+    </select>
 </mapper>

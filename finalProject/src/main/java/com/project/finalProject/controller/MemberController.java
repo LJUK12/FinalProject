@@ -186,6 +186,7 @@ public class MemberController {
 		@RequestMapping("/withdrawMemberForm")
 		public String withdrawMemberForm() {
 			return "/member/withdrawMemberForm";
+
 		}
 		
 		//회원 탈퇴 처리
@@ -201,7 +202,7 @@ public class MemberController {
 			}
 			return result;
 		}
-		
+
 		
 		
 }

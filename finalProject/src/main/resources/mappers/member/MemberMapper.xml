@@ -51,13 +51,11 @@
  			memEmail=#{memEmail}, memPhone=#{memPhone} 
  			WHERE memId=#{memId}
  		</update>
- 		
+
  		<!-- 회원 탈퇴 -->
  		<delete id="withdrawMember" parameterType="string">
  		DELETE FROM member WHERE memId=#{memId}
  		</delete>
- 		
- 		
  		
  		<!-- memNo로 memId 찾기  -->
  		<select id="searchMemId" parameterType="int" resultType="string">
@@ -77,6 +75,10 @@
  			delete from member where memNo=#{memNo}
  		</delete>
  		
- 		
- 		
+ 		<!-- 관리자 회원 검색 -->
+ 		<select id="memSearchManage" parameterType="string" resultType="com.project.finalProject.model.MemberVO">
+ 			SELECT * FROM member WHERE memName LIKE CONCAT("%", #{memSearch}, "%") OR memAddress1 LIKE CONCAT("%", #{memSearch}, "%") 
+ 			OR memAddress2 LIKE CONCAT("%", #{memSearch}, "%") OR memGrade LIKE CONCAT("%", #{memSearch}, "%")
+ 		</select>
+
   </mapper>

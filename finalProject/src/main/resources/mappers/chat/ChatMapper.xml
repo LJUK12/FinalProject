@@ -4,14 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.project.finalProject.dao.IChatDAO">
-	<resultMap id="ChatResult" type="com.project.finalProject.model.ChatVO">
-		<result property="chatNo" column="chatNo" />
-		<result property="postNo" column="postNo" />
-		<result property="memNo" column="memNo" />
-		<result property="chatContent" column="chatContent" />
-		<result property="chatDate" column="chatDate" />
-
-	</resultMap>
 	
 	<resultMap id="ChatmemberResult" type="com.project.finalProject.model.ChatMemberVO2">
 		<result property="chatNo" column="chatNo" />
@@ -45,23 +37,16 @@
   		FROM com_chatting c, member m 
   		where c.memNo = m.memNo AND comNo=#{comNo} ORDER BY com_chatNo DESC
   	</select>
-  	
-	<!-- 게시글 작성  -->
-	<insert id="insertChat" parameterType="com.project.finalProject.model.ChatVO">
-		INSERT INTO chatting (chatNo,postNo,memNo,chatContent,chatDate)
-		VALUES (null,#{postNo},#{memNo},#{chatContent},default)
-	</insert>
-	
+  		
 	<!-- 게시글 작성  -->
 	<insert id="insertChat2" parameterType="com.project.finalProject.model.ComChatVO">
 		INSERT INTO com_chatting (com_chatNo, comNo, memNo, chatContent, chatDate)
 		VALUES (null, #{comNo}, #{memNo}, #{chatContent}, default)
 	</insert>
 	
-	
 	<!-- 관리자 채팅 목록 가져오기 -->
-	<select id="listAllChatManager" resultMap="ChatResult">
-		SELECT * FROM chatting ORDER BY postNo
+	<select id="listAllChatManager" resultMap="ChatmemberResult">
+		SELECT c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo ORDER BY postNo DESC
 	</select>
 	<!-- 채팅 삭제하기 -->
 	<delete id="deleteChat" parameterType="int">
@@ -70,7 +55,21 @@
 	
 	<!-- 관리자 특정 채팅 내역 가져오기  -->
 	<select id="manageChatList" parameterType="int" resultMap="ChatmemberResult">
-		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo};
+		select c.*, m.memId FROM chatting c, member m WHERE c.memNo = m.memNo AND chatNo=#{chatNo}
 	</select>
+
+	<!-- 관리자 특정 채팅 수정하기  -->
+	<update id="manageUpdateChat" parameterType="hashmap">
+		update chatting set chatContent = #{chatContent} WHERE chatNo=#{chatNo}
+	</update>
 	
+	<!-- 관리자 채팅 검색하기  -->
+	<select id="chatSearchManage" parameterType="string" resultMap="ChatmemberResult">
+		SELECT c.*, m.memId 
+		FROM chatting c, member m WHERE c.memNo = m.memNo 
+		AND (chatContent LIKE CONCAT("%", #{chatSearch}, "%") 
+		OR memId LIKE CONCAT("%", #{chatSearch}, "%"))
+		ORDER BY postNo DESC
+	</select>
+
 </mapper>

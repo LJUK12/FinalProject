@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 	$('#withdrawMemberForm').on('submit', function(){
 		event.preventDefault();
@@ -24,6 +25,7 @@ $(document).ready(function(){
 		});
 	});	
 });
+
 
 
 

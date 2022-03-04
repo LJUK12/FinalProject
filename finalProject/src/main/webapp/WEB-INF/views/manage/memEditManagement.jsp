@@ -10,7 +10,7 @@
 	<link href="<c:url value='/css/join.css'/>" rel="stylesheet" type="text/css">	
 	<script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
 	<script src="<c:url value='/js/memEmailCheck.js'/>"></script>
-	<script src="<c:url value='/js/editMemManage.js'/>"></script>
+	<script src="<c:url value='/js/joinAddress.js'/>"></script>
 </head>
 	<body>
 		<jsp:include page="/WEB-INF/views/manage/manageTop.jsp" flush="true"/>

@@ -65,6 +65,11 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
+	public void managerDeleteProfile(int memNo) {
+		dao.managerDeleteProfile(memNo);
+	}
+	
+	@Override
 	public void withdrawMember(String memId) {
 		dao.withdrawMember(memId);
 		
@@ -77,12 +82,8 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public void managerDeleteProfile(int memNo) {
-		dao.managerDeleteProfile(memNo);
-		
+	public ArrayList<MemberVO> memSearchManage(String memSearch){
+		// 멤버 검색 ajax
+		return dao.memSearchManage(memSearch);
 	}
-
-
-
-
 }
