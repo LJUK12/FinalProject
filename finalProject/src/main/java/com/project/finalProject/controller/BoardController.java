@@ -39,6 +39,7 @@ public class BoardController {
 	@Autowired
 	private IBoardService boardService;
 
+	
 	@Autowired
 	ChatService chatService;
 
