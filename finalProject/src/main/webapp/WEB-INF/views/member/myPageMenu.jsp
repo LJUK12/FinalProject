@@ -13,8 +13,9 @@
 <div id="menuBar">
 	<div class="informationBar"><a href="<c:url value='/memberDetail'/>">회원 정보</a></div>
 	<div class="informationBar"><a href="<c:url value='/withdrawMemberForm'/>">회원 탈퇴</a></div>
-	<div class="informationBar"><a href="<c:url value='/myPostList/1'/>">내가 쓴 글</a></div>
+	<div class="informationBar"><a href="<c:url value='/myPostList/1'/>">내가 판매한 상품</a></div>
 	<div class="informationBar"><a href="<c:url value='/myFavorit'/>">즐겨찾기 목록</a></div>
+	<div class="informationBar"><a href="<c:url value='/board/myBoardList'/>">내가 쓴 글</a></div>ㄴ
 </div>
 
 

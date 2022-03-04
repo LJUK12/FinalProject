@@ -41,7 +41,8 @@ public interface IBoardDAO {
     //게시글 조회수 상승
     void hitCount(int comNo);
     
-    
+  //나의 게시글 확인
+    ArrayList<BoardVO> getMyList(int memNo);
 
     
 
