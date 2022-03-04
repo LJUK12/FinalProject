@@ -34,6 +34,7 @@ import com.project.finalProject.service.MemberService;
 @Controller
 public class BoardController {
 
+	
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 
 	@Autowired
