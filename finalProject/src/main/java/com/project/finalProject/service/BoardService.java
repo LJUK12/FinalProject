@@ -11,7 +11,7 @@ import com.project.finalProject.dao.IBoardDAO;
 import com.project.finalProject.model.BoardVO;
 import com.project.finalProject.model.Criteria;
 
-@Service("BoardService")
+@Service
 public class BoardService implements IBoardService{
 
 	@Autowired 
