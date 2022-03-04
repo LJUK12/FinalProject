@@ -60,8 +60,8 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public ArrayList<MemberVO> pwdSearch(HashMap<String, Object> map) {
-		return dao.pwdSearch(map);
+	public MemberVO pwdSearch (MemberVO memvo) {
+		return dao.pwdSearch(memvo);
 	}
 
 	@Override
@@ -80,6 +80,11 @@ public class MemberService implements IMemberService{
 	public void managerDeleteProfile(int memNo) {
 		dao.managerDeleteProfile(memNo);
 		
+	}
+
+	@Override
+	public int pwdChange(MemberVO memVO) {
+		return dao.pwdChange(memVO);
 	}
 
 

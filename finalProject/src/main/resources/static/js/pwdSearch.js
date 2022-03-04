@@ -1,23 +1,16 @@
 window.onload = function() {
-	$('#pwdSearchForm').on('submit', function(){
-		event.preventDefault();
-		var formData = $(this).serialize();
+	$("#pwd_btn").on("click", function () {
+	    $("#memIdHidden").val($("#memId").val());
+	    $("#memEmailHidden").val($("#memEmail").val());
+	                
+	    if($("#mIdHidden").val() == "" || $("#mPhoneHidden").val() == ""){
+	    	alert('작성되지 않은 정보가 있습니다.');
+	        return;
+	    }
+	    let left = Math.ceil((window.screen.width-400)/2);
+	    let top = Math.ceil((window.screen.height-350)/2);
+	    window.open('', 'popup', 'width=430px, height=250px, left='+left+', top='+top)
+	    $("#pop-form").submit();
+    });
 
-		$.ajax({
-			type:"post",
-			url:"pwdSearch",
-			data:formData,
-			success:function(result){
-				if(result == "") {
-					$('#searchResultBox').append('');
-					$('#searchResultBox').append('가입되지 않은 회원정보입니다.');
-				} else {
-					$('#searchResultBox').append(result[0].memId+'님이 가입하신 비밀번호는 "'+result[0].memPwd+'" 입니다.');
-				}
-			},
-			error:function(data, textStatus){
-				alert("전송 실패");
-			}
-		});
-	});
 }; 

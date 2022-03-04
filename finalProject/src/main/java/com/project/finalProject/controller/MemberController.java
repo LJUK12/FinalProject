@@ -3,6 +3,7 @@ package com.project.finalProject.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,15 +124,33 @@ public class MemberController {
 		}
 
 		//비밀번호 찾기
-		@ResponseBody
 		@RequestMapping("/pwdSearch")
-		public ArrayList<MemberVO> pwdSearch(@RequestParam HashMap<String, Object> param, 
+		public String pwdSearch(MemberVO m, HttpSession session,
 				Model model){
 
-			ArrayList<MemberVO> memList = service.pwdSearch(param);
-			model.addAttribute("memList", memList);
+			MemberVO member = service.pwdSearch(m);
+			if(member != null) {
+				session.setAttribute("memberId", member.getMemId());
+				return "member/pwdChange";
+			}else {
+				model.addAttribute("msg", "일치하는 회원 정보가 없습니다.");
+				model.addAttribute("msg2", "true");
+				model.addAttribute("loc", "/pwdSearch");
+				return "member/msg";
+			}
 
-			return memList;
+		}
+		
+		//비밀번호 변경
+		@RequestMapping("/pwdChange")
+		public String changePw(MemberVO m, HttpSession session, Model model) {
+			int result = service.pwdChange(m);
+			if(result>0) {
+				session.setAttribute("memberId", null);
+				model.addAttribute("msg", "비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+				model.addAttribute("msg2", "true");
+			}
+			return "member/msg";
 		}
 
 		// 전체 정보 조회

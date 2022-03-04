@@ -1,5 +1,16 @@
 window.onload = function() {
 	$('#loginForm').on('submit', function(){
+		
+		if($('#memId').val()==''){
+			alert("아이디를 입력해주세요.");
+			$('#memId').focus();
+			return false;
+		} else if($('#memPwd').val()==''){
+			alert("비밀번호를 입력해주세요.");
+			$('#memPwd').focus();
+			return false;
+		}
+		
 		event.preventDefault();
 		
 		var formData = $(this).serialize();

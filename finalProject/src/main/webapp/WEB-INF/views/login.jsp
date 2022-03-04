@@ -12,6 +12,9 @@
       <script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
       <script src="<c:url value='/js/login.js'/>"></script>
       <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+      <!--소셜 로그인  -->
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=465050345348940" nonce="SiOBIhLG"></script>
+   	  <script src="<c:url value='/js/socialLogin.js'/>"></script>
    </head>
    <body>
     <div id="wrap">
@@ -30,10 +33,10 @@
          <form id="loginForm">
          <p id="loginError"></p>
             <div class="login-input-wrap">   
-               <input placeholder="아이디" type="text" name="id"></input>
+               <input placeholder="아이디" type="text" name="id" id="memId"></input>
             </div>
             <div class="login-input-wrap password-wrap">   
-               <input placeholder="비밀번호" type="password" name="pwd"></input>
+               <input placeholder="비밀번호" type="password" name="pwd" id="memPwd"></input>
             </div>
             <div class="login-button-wrap">
                <button type="submit" name="submit" id="submit" form="loginForm">Sign in</button>
@@ -44,8 +47,8 @@
       <section class="Easy-sgin-in-wrap">
          <h2>소셜 로그인</h2>
          <ul class="sign-button-list">
-            <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
-            <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
+            <li><button id="faceLoginBtn" style="cursor: pointer"><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
+            <li><button id="googleLoginBtn" style="cursor: pointer"><i class="fab fa-google"></i><span>Google</span></button></li>
          </ul>
       </section>
       <section id="login3">
@@ -61,4 +64,6 @@
       
     </div>
    </body>
+   
+		
 </html>

@@ -28,9 +28,14 @@ a:visited {
 }
 
 .article{
-   height: 100px;
-   border: 0.5;
-   overflow-y: scroll;
+   height: 150px;
+	border: solid 1px #dadada;
+	overflow-y: scroll;
+	border-radius: 3px;
+}
+
+.article_box p{
+	margin: 5px 0;
 }
 
 label{
@@ -57,7 +62,7 @@ input[type='checkbox'] + label:before {
     display: inline-block;
     width: 20px;
     height: 20px;
-    margin:-4px 5px 0 0;
+    margin:1px 5px 0 0;
     background: url("../image/checkbox_01.png") no-repeat 0 0;
     background-size: 20px;
     vertical-align: top;
@@ -70,6 +75,7 @@ input[type='checkbox']:checked + label:before {
 
 #joinCancle_btn{
    height:40px;
+   width: 40px;
    font-size:15px;
    border: solid 1px #dadada;
    border: none;
@@ -78,9 +84,13 @@ input[type='checkbox']:checked + label:before {
 
 #joinTerms_btn{
    height:40px;
+   width: 200px;
    font-size:15px;
    background:coral;
-   color:white;
    border: none;
    border-radius: 3px;
 } 
+
+#joinTerms_btn a{
+	color: white;
+}

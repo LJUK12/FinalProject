@@ -85,4 +85,15 @@ public class MainController {
 		System.out.println("STT : " + result);
 		return result;
 	}
+	
+
+	@RequestMapping("/termsAndCondition")
+	public String termsAndCondition() {
+		return "member/termsAndCondition";
+	}
+	
+	@RequestMapping("/privacyPolicy")
+	public String privacyPolicy() {
+		return "member/privacyPolicy";
+	}
 }

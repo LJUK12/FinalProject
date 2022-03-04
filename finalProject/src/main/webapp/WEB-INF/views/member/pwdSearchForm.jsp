@@ -28,7 +28,13 @@
                <h3>회원정보를 활용한 비밀번호 찾기</h3>
                <p>회원정보에 등록한 아이디와 이메일로 비밀번호 찾기</p>
             </div>
-            <form id="pwdSearchForm">
+            <div id="pwdSearchForm">
+            	<form id="pop-form" action="/pwdSearch" method="post" target="popup">
+                	<input type="hidden" name="memId" id="memIdHidden">
+                	<input type="hidden" name="memEmail" id="memEmailHidden">
+                </form>
+
+            	
                <div class="name_box">
                   <h4>아이디 &ensp;</h4>
                   <input type="text" class="textBox" id='memId' name="memId" >
@@ -38,9 +44,9 @@
                   <input type="text" class="textBox" id='memEmail' name="memEmail" >
                </div><br>
                <div class="submit_btn">
-                  <input type="submit" id="pwd_btn" value="비밀번호 찾기">
+                  <input type="button" id="pwd_btn" target="_self" value="비밀번호 찾기">
                </div>
-            </form>
+            </div>
 
 
             <div id="searchResultBox"></div><br>

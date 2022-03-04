@@ -1,6 +1,17 @@
 
  window.onload = function() {
 	$('#idSearchForm').on('submit', function(){
+		
+		if($('#memName').val()==''){
+			alert("이름을 입력해주세요.");
+			$('#memName').focus();
+			return false;
+		} else if($('#memEmail').val()==''){
+			alert("이메일을 입력해주세요.");
+			$('#memEmail').focus();
+			return false;
+		}
+		
 		event.preventDefault();
 		var formData = $(this).serialize();
 
