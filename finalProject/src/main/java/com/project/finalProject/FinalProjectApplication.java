@@ -21,12 +21,7 @@ import com.project.finalProject.dao.ITransactionDAO;
  * 
  * @ComponentScan(basePackageClasses=PostController.class)
  */
-@MapperScan(basePackageClasses = IMemberDAO.class)
-@MapperScan(basePackageClasses = IPostDAO.class)
-@MapperScan(basePackageClasses = IChatDAO.class)
-@MapperScan(basePackageClasses = ITransactionDAO.class)
-@MapperScan(basePackageClasses = IBoardDAO.class)
-@MapperScan(basePackageClasses = IFavoritDAO.class)
+
 @SpringBootApplication
 public class FinalProjectApplication {
 
