@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>택배거래</title>
 
+
 <link href='/css/courierTransaction.css' rel="stylesheet"
 	type="text/css">
 <script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
