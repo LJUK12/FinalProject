@@ -49,13 +49,13 @@
 						action="/post/insertTran/${post.postNo }"
 						enctype="multipart/form-data" onsubmit="submitContents()">
 						<div>
-							<h3>결제방식</h3>
+							<h3>결제방식</h3><br>
 							<select class="form-control3" name="tranPayment" id="tranPayment">
 								<option value="카드">카드</option>
 								<option value="현금결제" selected>현금결제</option>
 							</select><br> <br>
 						</div>
-
+						<br>
 						<div>
 							<h3>거래방식</h3>
 							<span class='box'><input type="text" id="tranWay"
@@ -99,24 +99,26 @@
 						</div>
 
 						<tr class="mobileNo">
-							<th><label for="phone">휴대폰 번호</label></th>
+							<th><h3>휴대폰 번호</h3></th>
+							<br>
 							<td>
 								<p>
 									<input id="phone" type="text" name="phone" title="전화번호 입력"required /> 
 									<span id="phoneChk" class="doubleChk">인증번호보내기</span><br/> 
 									<input id="phone2" type="text" name="phone2"title="인증번호 입력" disabled required /> 
-									<span id="phoneChk2"class="doubleChk">본인인증</span> 
+									<span id="phoneChk2"class="doubleChk" style="display:none;">본인인증</span> 
 									<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span> 
 									<input type="hidden" id="phoneDoubleChk" />
 								</p>
-								<p class="tip">최초 가입 시에만 사용하고 있습니다. 따로 저장되지 않습니다.(번호만 입력해주세요.)</p>
+								<p class="tip">결제 시에만 사용하고 있습니다. 따로 저장되지 않습니다.(번호만 입력해주세요.)</p>
 							</td>
 						</tr>
 
 
-						<c:if test="${not empty sessionScope.sid }">
-							<input type="submit" class="postComplete1" value="등록">
-						</c:if>
+						<div id = "submitPost"></div>
+		<%-- <c:if test="${not empty sessionScope.sid }">
+			<input type="submit" class="postComplete1" value="등록"> 
+		</c:if> --%>
 						<input type="button" class="postComplete2" value="취소"
 							onclick="location.href='<c:url value="/"/>'">
 
@@ -213,6 +215,9 @@
 			$(".successPhoneChk").css("color","green");
 			$("#phoneDoubleChk").val("true");
 			$("#phone2").attr("disabled",true);
+			$("#submitPost").prepend('<c:if test="${not empty sessionScope.sid }">');
+			$("#submitPost").prepend('<input type="submit" class="postComplete1" value="등록"> ');
+			$("#submitPost").prepend('</c:if>');
 		}else{
 			$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
 			$(".successPhoneChk").css("color","red");

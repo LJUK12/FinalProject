@@ -34,3 +34,18 @@
     font-size: 15px;
 
 }
+
+.tip{
+	color:#2089df;
+	font-size:0.5em;
+}
+.point.successPhoneChk{
+	color:red;
+	font-size:0.5em;
+}
+.doubleChk{
+	border:1px solid;
+}
+.phoneChk2{
+	display:none;
+}
