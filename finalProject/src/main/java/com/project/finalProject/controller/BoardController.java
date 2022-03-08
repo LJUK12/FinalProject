@@ -172,7 +172,7 @@ public class BoardController {
 	}
 
 	/* 수정 페이지 이동 */
-	@PostMapping("/modify/{comNo}")
+	@RequestMapping("/modify/{comNo}")
 	public String boardModifyGET(@PathVariable int comNo, Model model) {
 		BoardVO boardVO = boardService.detailViewBoard(comNo);
 		model.addAttribute("pageInfo", boardVO);
@@ -180,7 +180,7 @@ public class BoardController {
 	}
 
 	/* 페이지 수정 */
-	@PostMapping("/modify")
+	@RequestMapping("/modify")
 	public String boardModifyPOST(BoardVO board) {
 
 		boardService.modify(board);

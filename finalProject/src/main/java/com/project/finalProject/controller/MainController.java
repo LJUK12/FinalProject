@@ -31,10 +31,13 @@ public class MainController {
 	public String index(Model model) {
 		
 		  ArrayList<PostVO> postList = pstService.listAllPost();
+		 
 		  model.addAttribute("postList",postList);
 		  
 		  ArrayList<PostVO> postList2 = pstService.listAllPostByDESC();
 		  model.addAttribute("listAllPostByDESC",postList2);
+		  
+		  
 		  
 		  ArrayList<PostVO> postFavoritList =pstService.listAllPostByFavorit();
 		  model.addAttribute("postFavoritList",postFavoritList);
