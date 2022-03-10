@@ -57,3 +57,7 @@ a:visited {
 .phoneChk2{
 	display:none;
 }
+
+#submitPost{
+	display:flex;
+}

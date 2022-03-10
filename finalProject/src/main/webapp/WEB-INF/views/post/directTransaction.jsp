@@ -119,18 +119,17 @@
                      </div>
                   </div>
 
-                  
-                  <%-- <c:if test="${not empty sessionScope.sid }">
-                     <input type="submit" class="postComplete1" value="등록"> 
-                  </c:if> --%>
-                  
-               </form>
-
                <div id = "submitPost">
-              
+               <div id = "sub"></div>
+               <div id = "submitPost2"></div>
                <input type="button" class="postComplete2" value="취소"
                      onclick="location.href='<c:url value="/"/>'">
                </div>
+               
+                  
+               </form>
+
+              
             </div>
          </div>
       </div>
@@ -223,9 +222,9 @@
          $(".successPhoneChk").css("color","green");
          $("#phoneDoubleChk").val("true");
          $("#phone2").attr("disabled",true);
-         $("#submitPost").prepend('<c:if test="${not empty sessionScope.sid }">');
-         $("#submitPost").prepend('<input type="submit" class="postComplete1" value="등록"> ');
-         $("#submitPost").prepend('</c:if>');
+         $("#submitPost2").prepend('<c:if test="${not empty sessionScope.sid }">');
+         $("#submitPost2").prepend('<input type="submit" class="postComplete1" value="등록"> ');
+         $("#submitPost2").prepend('</c:if>');
       }else{
          $(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
          $(".successPhoneChk").css("color","red");

@@ -167,8 +167,15 @@
 	font-size:0.5em;
 }
 
+.postComplete1{
+	margin-left:1%;
+	width:50px;
+	height: 35px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
 .postComplete2{
-	margin-left:48%;
+	margin-left:1%;
 	width:50px;
 	height: 35px;
 	border-radius: 5px;
@@ -193,4 +200,11 @@
 
 .phoneChk2{
 	display:none;
+}
+
+#submitPost{
+	display:flex;
+}
+#sub{
+	margin-left:45%;
 }

@@ -72,7 +72,7 @@
 										<div class="class-card">
 											<a class="class-img" href="/post/detailViewPost/${pt.postNo}"> 
 											<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
-												 class="class-image" />
+												 class="class-image" onError="javascript:this.src='/image/default.jpg'"/>
 											</a>
 										</div>
 										<div class="class-container">
@@ -177,7 +177,7 @@
 									<div class="class-card">
 										<a class="class-img" href="/post/detailViewPost/${ptf.postNo}"> 
 										<img src="/resource/photo_upload/${ptf.postImg }" alt="top1"
-											 class="class-image" />
+											 class="class-image" onError="javascript:this.src='/image/default.jpg'"/>
 										</a>
 									</div>
 									<div class="class-container">
@@ -273,7 +273,7 @@
 											<div class="class-card">
 												<a class="class-img" href="/post/detailViewPost/${post.postNo}"> 
 												<img src="/resource/photo_upload/${post.postImg }" alt="top1"
-													 class="class-image" />
+													 class="class-image" onError="javascript:this.src='/image/default.jpg'"/>
 												</a>
 											</div>
 											<div class="class-container">
