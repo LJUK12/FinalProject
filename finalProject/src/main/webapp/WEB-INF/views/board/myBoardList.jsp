@@ -9,7 +9,10 @@
 <link href="<c:url value='/css/list.css'/>" rel="stylesheet" type="text/css">
 <style>
 	table{
-		margin-left: 0;
+		margin-left: 0 !important;
+	}
+	section{
+		margin-left: 390px !important;
 	}
 </style>
 </head>

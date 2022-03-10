@@ -151,7 +151,7 @@
 						    <input type="hidden" id="postNo" name="postNo" class='textBox' value="${post.postNo }"readOnly>
 						</form>
 					</div>
-					<div>
+					<div id = "submitPost">
 					<input type="button" class="postComplete2" value="취소"
 							onclick="location.href='<c:url value="/"/>'">
 					</div>
