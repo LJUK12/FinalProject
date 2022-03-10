@@ -12,7 +12,8 @@
       <script src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
       <script src="<c:url value='/js/login.js'/>"></script>
       <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
- 
+    <!--소셜  -->  
+ 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=465050345348940" nonce="SiOBIhLG"></script>
    </head>
    <body>
     <div id="wrap">

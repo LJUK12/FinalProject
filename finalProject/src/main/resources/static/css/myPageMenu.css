@@ -1,5 +1,11 @@
 /* myPageMenu.css */
 
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .class-list5 {
   display: flex;
@@ -29,7 +35,7 @@
 
 section{
 	margin-left:600px;
-	height: 300px;
+	height: 500px;
 }
 
 #logo{
@@ -44,6 +50,9 @@ section{
 	border: 1px solid black;
 	text-align:center;
 	padding: 60px;
+	border-radius: 20px;
+	font-family: 'GmarketSansBold'; 
+	font-size: 20px;
 }
 
 a {
