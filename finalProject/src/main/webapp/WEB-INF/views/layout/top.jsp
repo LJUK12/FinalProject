@@ -24,6 +24,7 @@
 <script src="<c:url value='/js/main.js'/>"></script>
 <script src="<c:url value='/js/menuNav.js'/>"></script>
 <script src="<c:url value='/js/mainBanner.js'/>"></script>
+<script src="<c:url value='/js/myPageClick.js'/>"></script>
 <script src="<c:url value='/js/object.js'/>"></script>
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
@@ -65,6 +66,7 @@
                <a href="<c:url value='/myPageForm'/>">${sessionScope.sid}님의
                   마이페이지</a>
             </c:if>
+            <input type="hidden" id="loginId" value="${sessionScope.sid}">
          </div>
          <hr />
          <a href="<c:url value='/'/>">
@@ -106,7 +108,7 @@
             </div>
          </article>
          <a id="naming5A" href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i>&ensp;&ensp;</a> 
-         <a href="<c:url value='/myPageForm'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp;</h3></a>
+         <a href="<c:url value='/myPageForm'/>" id="myp"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp;</h3></a>
             <hr id="hr2">
          <a href="<c:url value='/board/list'/>"><br><br><h3 class="naming3">커뮤니티 &ensp;&ensp;&nbsp;</h3></a>
             <hr id="hr2">

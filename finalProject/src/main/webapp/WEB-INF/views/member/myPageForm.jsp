@@ -23,6 +23,8 @@
 		
 		<section id="myPageFormSec">
 		<h1>mypage</h1><br><br>
+		
+		<h3>당신의 등급은 ${member.memGrade }입니다.</h3><br>
 			<a href="<c:url value='/memberDetail'/>">
 				<div class="mypageBox">
 					회원 정보<br>
@@ -48,10 +50,10 @@
 				</div>
 			</a>
 		
-			<br><br>
+			<br><br><br><br><br><br>
 		
 		</section>
-		
+		<br><br><br><br><br><br>
 <!-- BOTTOM -->
 		<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true'/>		
 		

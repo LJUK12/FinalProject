@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="<c:url value='/css/myPageMenu.css'/>" rel="stylesheet" type="text/css">
+<link href="<c:url value='/css/myBoardList.css'/>" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -13,17 +15,21 @@
 <!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true'/>
 		<br><br>
+		<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
+		<br><br>
 		
-		<section>
-		<h3>내가 쓴 글 목록</h3><br>
+		
 		<div id="myPost">
-		<table width="800" align="center" border="1">
+		<h3>내가 쓴 글 목록</h3><br><br>
+		<table>
+		<thead>
 		<tr>
-		<th>글번호</th><th width="500">제목</th><th>글쓴이</th><th>날자</th>
+		<th>글번호</th><th>제목</th><th>작성자</th><th>작성일</th>
 		<tr>
+		</thead>
 		<c:forEach items="${bList }" var="board">
 		<tr>
-		<td>${board.comNo }</td><td width="500"><a href="<c:url value='/board/detailViewBoard/${board.comNo }'/>">${board.comTitle }</a> </td><td>${sessionScope.sid }</td><td>${board.comDate }</td>
+		<td>${board.comNo }</td><td><a href="<c:url value='/board/detailViewBoard/${board.comNo }'/>">${board.comTitle }</a> </td><td>${sessionScope.sid }</td><td>${board.comDate }</td>
 		</tr>
 		</c:forEach>
 		
@@ -32,7 +38,6 @@
 		
 		
 		
-		</section>
 		
 		
 		

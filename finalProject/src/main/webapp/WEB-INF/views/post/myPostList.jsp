@@ -14,14 +14,15 @@
 	<!-- TOP -->
 	<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true'/>
 	<br><br>
-	<!-- mypagemenu -->
-	<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
 	
-	<article>
-	<section id="mylist" class="">
-		<br><br>
-		<h3>내가 판매한 상품</h3><br>
-		<div class="hotItemGroup2">
+	<div id="paging2">
+				<jsp:include page="/WEB-INF/views/member/myPageMenu.jsp" flush='true'/>
+				<div><br><br><br><br>
+				
+				<h3 id="fav">내가 판매한 상품</h3>
+				
+				<article>
+				<div class="hotItemGroup2">
 					<ul class="class-list5" data-position="0">
 						<c:set var="postNum" value="0" />
 						<c:forEach items="${postList}" var="post">
@@ -61,8 +62,7 @@
 						</c:if>
 						</c:forEach>
 					</ul> 
-		</div>
-		</article>
+				 </article>
 		<br>
 		<div id="pageForm" align="center">
 		<c:if test="${startPage != 1}">
@@ -82,11 +82,13 @@
 		            <a href="<c:url value='/myPostList/${endPage+1 }'/>">[다음]</a>
 		        </c:if>
 		</div>
-	</section>
+		</div>
+	
 		
 	<!-- BOTTOM -->
 	<jsp:include page="/WEB-INF/views/layout/bottom.jsp" flush='true'/>		
 		
+</div>
 </div>
 </body>
 </html>

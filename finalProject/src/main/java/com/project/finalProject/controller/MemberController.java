@@ -165,7 +165,11 @@ public class MemberController {
 		
 		//마이페이지로 이동
 		@RequestMapping("/myPageForm")
-		public String myPageForm() {
+		public String myPageForm(Model model, HttpSession session) {
+			String memId = (String)session.getAttribute("sid");
+			MemberVO member = service.profileInfo(memId);
+			
+			model.addAttribute("member",member);
 			return "/member/myPageForm";
 		}
 		
