@@ -41,7 +41,7 @@
 						<h4>이메일: &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memEmail }</h4>
 					</div><hr class="common1Hr">
 					<div class="common1">
-						<h4>전화번호: &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memName }</h4>
+						<h4>전화번호: &ensp;&ensp;&ensp;&ensp;&ensp;</h4><h4>${member.memPhone }</h4>
 					</div><hr class="common1Hr">
 				</div>
 			</div>	
