@@ -31,12 +31,16 @@
 							enctype="multipart/form-data" onsubmit="submitContents()">
 	<div>
 	<h3>결제방식</h3><br>						
-		<select class="form-control3" name="tranPayment" id="tranPayment">
+		<!-- <select class="form-control3" name="tranPayment" id="tranPayment">
 		<option value="카드" >카드</option>
 		<option value="현금결제" selected>현금결제</option>
-	</select><br>
+	</select><br> -->
+		<INPUT type="radio" name="tranPayment" id="tranPayment" value="현금" checked > 현금
+		<INPUT type="radio" name="tranPayment" id="tranPayment" value="체크카드" >체크카드
+		<INPUT type="radio" name="tranPayment" id="tranPayment" value="통장 입금">계좌거래
+		<br><br>
 	</div>
-	<br>
+
 	<div>
 	<h3>거래방식</h3>
 	<span class='box'><input type="text" id="tranWay" name="tranWay" class='textBox' value="${post.postWay }"readOnly></span><br>
@@ -44,17 +48,23 @@
 	
 	<div>
 	<h3>상품명</h3>
-	<span class='box'><input type="text" id="postNo" name="postNo" class='textBox' value="${post.postNo }"readOnly></span><br>
+	<span class='box'><input type="hidden" id="postNo" name="postNo" class='textBox' value="${post.postNo }"readOnly>
+	<input type="text" id="postTitle" name="postTitle" class='textBox' value="${post.postTitle }"readOnly>
+	</span><br>
 	</div>
 	
 	<div>
 	<h3>판매자</h3>
-	<span class='box'><input type="text" id="sellerNo" name="sellerNo" class='textBox' value="${post.memNo }"readOnly></span><br>
+	<span class='box'>
+	<input type="hidden" id="sellerNo" name="sellerNo" class='textBox' value="${post.memNo }" readOnly>
+	<input type="text" id="searchmemId" name="searchmemId" class='textBox' value="" readOnly>
+	</span><br>
 	</div>
 	
 	<div>
 	<h3>구매자</h3>
-	<span class='box'><input type="text" id="memNo" name="memNo"class='textBox' value="${sessionScope.No}"readOnly></span><br>
+	<span class='box'><input type="hidden" id="memNo" name="memNo"class='textBox' value="${sessionScope.No}"readOnly>
+	<input type="text"class='textBox' value="${sessionScope.sid }"readOnly></span></span><br>
 	</div>
 	
 	<div>
@@ -79,9 +89,9 @@
 						</tr>
 		<br>
 		<div id = "submitPost"></div>
-		<%-- <c:if test="${not empty sessionScope.sid }">
+		<%--  <c:if test="${not empty sessionScope.sid }">
 			<input type="submit" class="postComplete1" value="등록"> 
-		</c:if> --%>
+		</c:if>  --%>
 		<input type="button" class="postComplete2" value="취소" onclick="location.href='<c:url value="/"/>'">
 	</form>
 	</div>
@@ -137,6 +147,32 @@
 	});
 
 	
+	
+	window.onload = function () {
+		SearchMemIDAjax();
+
+
+	}
+	
+
+	function SearchMemIDAjax() {
+		console.log($('#postNo').val());
+		$.ajax({
+			type:"post",
+			url:"/searchMemid",
+			data:{postNo:$('#postNo').val()},
+			dataType:'text',
+			success: function(result) {
+				$('#searchmemId').val(result);
+				console.log(result);
+
+			},
+			error: function(result, textStatus) {
+				console.log(result + textStatus);
+				alert("아이디 불러오기 에러");
+			}
+		});
+	}
 	
 	
 </script>

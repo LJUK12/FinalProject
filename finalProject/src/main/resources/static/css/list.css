@@ -121,3 +121,24 @@ a:visited {
 .search_area select{
   	height: 35px;
 }
+
+#menuBar{
+	margin-left: 25%;
+	display: flex;
+	width: 52.5%;
+	margin-top:1%;
+}
+
+.informationBar{
+	border: 1px solid black;
+	width: 295px;
+	height: 40px; 
+	text-align: center; 
+	padding: 7px;   
+}
+
+.informationBar:hover{
+    box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
+  	transform: translate(0, -1px);
+  	background-color: #dadada;
+}

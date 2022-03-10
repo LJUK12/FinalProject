@@ -145,6 +145,12 @@ public class PostService implements IPostService{
 		// 관리자 상품검색
 		return dao.postSearchManage(postSearch);
 	}
+
+	@Override
+	public String searchTitle(int postNo) {
+		// TODO Auto-generated method stub
+		return dao.searchTitle(postNo);
+	}
 	
 
 

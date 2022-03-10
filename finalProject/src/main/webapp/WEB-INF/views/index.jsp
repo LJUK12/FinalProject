@@ -8,6 +8,13 @@
 <title>4조 최종 프로젝트</title>
 <link href="<c:url value='/css/mainBanner.css'/>" rel="stylesheet" type="text/css">
 
+<script>
+	var result = '${msg}';
+	
+	if (result == 'success') {
+        alert("카카오 페이 결제 완료!");
+	}
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -63,7 +70,7 @@
 								<c:forEach items="${postList}" var="pt" end="3">
 									<div>
 										<div class="class-card">
-											<a href="/post/detailViewPost/${pt.postNo}"> 
+											<a class="class-img" href="/post/detailViewPost/${pt.postNo}"> 
 											<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
 												 class="class-image" />
 											</a>
@@ -168,7 +175,7 @@
 								<c:forEach items="${postFavoritList}" var="ptf" end="3">
 								<div>
 									<div class="class-card">
-										<a href="/post/detailViewPost/${ptf.postNo}"> 
+										<a class="class-img" href="/post/detailViewPost/${ptf.postNo}"> 
 										<img src="/resource/photo_upload/${ptf.postImg }" alt="top1"
 											 class="class-image" />
 										</a>
@@ -264,7 +271,7 @@
 									<div> 
 										<div>
 											<div class="class-card">
-												<a href="/post/detailViewPost/${post.postNo}"> 
+												<a class="class-img" href="/post/detailViewPost/${post.postNo}"> 
 												<img src="/resource/photo_upload/${post.postImg }" alt="top1"
 													 class="class-image" />
 												</a>

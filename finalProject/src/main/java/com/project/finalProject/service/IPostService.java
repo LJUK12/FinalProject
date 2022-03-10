@@ -31,4 +31,6 @@ public interface IPostService {
 	void declPlus(int postNo);
 	public ArrayList<PostVO> list(String memAddress1);
 	ArrayList<PostVO> postSearchManage(String postSearch);	// 관리자 상품검색
+
+	String searchTitle(int postNo);
 }

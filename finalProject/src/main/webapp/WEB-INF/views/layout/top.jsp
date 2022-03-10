@@ -24,6 +24,7 @@
 <script src="<c:url value='/js/main.js'/>"></script>
 <script src="<c:url value='/js/menuNav.js'/>"></script>
 <script src="<c:url value='/js/mainBanner.js'/>"></script>
+<script src="<c:url value='/js/myPageClick.js'/>"></script>
 <script src="<c:url value='/js/object.js'/>"></script>
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
@@ -66,6 +67,9 @@
                <a href="<c:url value='/myPageForm'/>">${sessionScope.sid}님의
                   마이페이지</a>
             </c:if>
+            
+           <input type="hidden" id="loginId" value="${sessionScope.sid}">
+           
          </div>
          <hr />
          <a href="<c:url value='/'/>">
@@ -75,7 +79,7 @@
 
    <div class="cell">
       <div id="firstName">
-         <button type="button" class="mobile-menu"><i class="fas fa-bars"></i></button>
+         <button type="button" class="mobile-menu"><i class="fas fa-bars naming6"></i></button>
          <div class="menuwrap">
             <nav>
 			  <ul id="main_menu">
@@ -130,7 +134,7 @@
             </div>
          </article>
          <a id="naming5A" href="<c:url value='/join'/>"><i class="fas fa-shopping-cart fa-2x naming5"></i>&ensp;&ensp;</a> 
-         <a href="<c:url value='/myPageForm'/>"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp;</h3></a>
+          <a href="<c:url value='/myPageForm'/>" id="myp"><br><br><h3 class="naming2">회원정보 &ensp;&ensp;&nbsp;</h3></a>
             <hr id="hr2">
          <a href="<c:url value='/board/list'/>"><br><br><h3 class="naming3">커뮤니티 &ensp;&ensp;&nbsp;</h3></a>
             <hr id="hr2">
@@ -140,16 +144,16 @@
 
    <aside id="aside1">
       <a href="/login"><br>
-         <p class="asideNaming">로그인</p> <i class="fas fa-sign-in-alt fa-2x"></i>
-      </a><br> <br> <br> 
+         <p class="asideNaming">로그인<br><br></p> <i class="fas fa-sign-in-alt fa-2x asideNaming2"></i>
+      </a><br> <br> 
       <a href="/logout">
-         <p class="asideNaming">로그아웃</p> <i class="fas fa-sign-out-alt fa-2x"></i>
-      </a><br> <br> <br> 
+         <p class="asideNaming">로그아웃<br><br></p> <i class="fas fa-sign-out-alt fa-2x asideNaming2"></i>
+      </a><br> <br> 
       <a href="/board/list">  
-         <p class="asideNaming">커뮤니티</p> <i class="fa-solid fa-chalkboard-user fa-2x"></i>
-      </a><br> <br> <br> 
+         <p class="asideNaming">커뮤니티<br><br></p> <i class="fa-solid fa-chalkboard-user fa-2x asideNaming2"></i>
+      </a><br> <br> 
       <a href="/myFavorit">
-         <p class="asideNaming">즐겨찾기</p> <i class="fa-solid fa-star fa-2x"></i>
+         <p class="asideNaming">즐겨찾기<br><br></p> <i class="fa-solid fa-star fa-2x asideNaming2"></i>
       </a><br> <br>
    </aside>
    <br>

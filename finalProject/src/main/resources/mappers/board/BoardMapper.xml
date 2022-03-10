@@ -12,7 +12,8 @@
       <result property="comHit" column="comHit" />   
       <result property="comFavorite" column="comFavorite" />   
       <result property="comImg" column="comImg" />
-      <result property="memNo" column="memNo" />         
+      <result property="memNo" column="memNo" />  
+      <result property="comTag" column="comTag" />         
    </resultMap>
    
     <!-- 게시판 등록 -->
@@ -22,8 +23,8 @@
     
     <!-- 게시글 작성  -->
    <insert id="insertPost" parameterType="com.project.finalProject.model.BoardVO">
-      INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo)
-      VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo})
+      INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo,comTag)
+      VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo},#{comTag})
    </insert>
    
     <!-- Post 페이지 이동 -->   
@@ -68,11 +69,17 @@
             <include refid="criteria"></include>
         </if>  
     </select>    
+    
+   <!-- 카테고리별 게시글 리스트 -->
+   <select id="list" parameterType="string" resultType="com.project.finalProject.model.BoardVO" >
+        SELECT * FROM community c
+        WHERE c.comTag = #{comTag}
+   </select>
  
     <!-- 게시물 목록(페이징) -->
     <select id="getListPaging" resultType="com.project.finalProject.model.BoardVO">
         select * from (
-                select comNo, comTitle, comContent, comDate, comHit
+                select comNo, comTag, comTitle, comContent, comDate, comHit
                 from community 
                 <if test="keyword != null">
                     <include refid="criteria"></include>

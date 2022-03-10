@@ -43,7 +43,8 @@ public interface IBoardDAO {
     //나의 게시글 확인
     ArrayList<BoardVO> getMyList(int memNo);
     
-
+    //게시글 카테고리별 확인
+    public ArrayList<BoardVO> list(String comTag);
     
 
     

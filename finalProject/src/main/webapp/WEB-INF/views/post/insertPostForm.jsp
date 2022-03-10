@@ -21,7 +21,7 @@
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
+.map_wrap {position:relative;width:95%;height:500px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
@@ -129,7 +129,7 @@
 										<input type="hidden" class="form-control2" name="memNo" id="memNo"
 										value="${sessionScope.No}" readonly>
 										<input type="text" class="form-control2" name="memId" id="memId"
-										value="${sessionScope.No}" readonly>
+										value="${post.memId}" readonly>
 										
 										 <label
 										for="reg_id">가격:</label> <input type="text"
@@ -170,38 +170,33 @@
 									<option value="택배거래">택배거래</option>
 								</select> <br> 
 								<input type="hidden" class="form-control" name="postState" id="postState" value="판매중"> 
-					<br>
-					<h3>직거래시 거래장소 선택</h3>		
-					<br>
-					
-					<div id = "map_direct">
-					<div class="map_wrap">
-<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                
-                    키워드 : <input type="text" value="서울역" id="keyword" size="15"> 
-                    <button onclick="searchPlaces(); return false;">검색하기</button> 
-               
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-        <div class="hAddr">
-    </div>
-    </div>
-    <br>
-거래장소:<input type="text" class="form-control" name="postMap" id="postMap" readonly>
-<br> 
-</div>
-</div>
-
-
-
-
+								<br>
+								<h3>직거래시 거래장소 선택</h3>		
+								<br>
+								
+								<div id = "map_direct">
+								<div class="map_wrap">
+									<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+									
+									    <div id="menu_wrap" class="bg_white">
+									        <div class="option">
+									            <div>						                
+								                    키워드 : <input type="text" value="서울역" id="keyword" size="15"> 
+								                    <button onclick="searchPlaces(); return false;">검색하기</button> 
+									            </div>
+									        </div>
+									        <hr>
+									        <ul id="placesList"></ul>
+									        <div id="pagination"></div>
+									        <div class="hAddr">
+									    </div>
+								    </div>
+								    <br>
+								거래장소:<input type="text" class="form-control" name="postMap" id="postMap" readonly>
+								<br> 
+								</div>
+							</div>
+				
 <!-- 지도 js -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=475eae8079274f19f0fdcfd11cb97d05&libraries=services"></script>
 <script>
@@ -494,16 +489,11 @@ if (status === kakao.maps.services.Status.OK) {
 }
 </script>
 
-
-		
-							
-							
-							
 							
 							<br>
 							<fmt:formatDate value="${post.postDate }"
 								pattern="YY.MM.dd yy:hh:ss" />
-							<hr id="hrhr">
+							<hr id="hrhr"><br>
 							<div>
 								<br> <input type="submit" class="postComplete1" value="등록">
 								<input type="button" class="postComplete2" value="취소"

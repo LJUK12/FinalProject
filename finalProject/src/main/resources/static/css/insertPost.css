@@ -23,7 +23,7 @@ a:visited {
 
 .container2{
 	margin-top:30px;
-	margin-left:50px;
+	margin-left:50px; 
 }
 
 #postMain{
@@ -71,7 +71,7 @@ a:visited {
 #postAside{
 	margin-left:19%;
 	width:15%;
-    height:900px;
+    height:1520px;
 	border: 1px solid #f0f0f0;
 	float:left;
 	background-color: #F2F2F2;

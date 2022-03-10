@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js"charset="utf-8"></script>
 	
 	<link href="<c:url value='/css/insertPost.css'/>" rel="stylesheet" type="text/css">
-	
+	<script src="<c:url value='/js/postList.js'/>"></script>
 
 		
 	<script>
@@ -85,15 +85,15 @@
 								<!-- CONTENT -->
 								<div class="mb-3 content">
 									<textarea name="comContent" id="postContent" rows="10" cols="90"></textarea>
-									<!-- <div contentEditable="true" id="post_content" class="form-control" >
-			
-			                            </div> -->
-			
-									<!-- <textarea class="form-control" rows="5" name="post_content"
-			                                id="post_content" placeholder="내용을 입력해 주세요"></textarea> -->
 								</div><br><hr id="hrhr">
 					
-		
+								<label for="comTag"><br>카테고리</label>
+								<select class="form-control3" name="comTag" id="comTag">
+									<option value="공지사항">공지사항</option>
+									<option value="구매요청">구매요청</option>
+									<option value="질문">질문</option>
+									<option value="리뷰" selected>리뷰</option>
+								</select>
 								
 							<hr id="hrhr">
 							<div><br>

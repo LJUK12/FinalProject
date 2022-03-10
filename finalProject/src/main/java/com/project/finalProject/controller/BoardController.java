@@ -26,6 +26,7 @@ import com.project.finalProject.model.ComChatVO;
 import com.project.finalProject.model.Criteria;
 import com.project.finalProject.model.PageMakerDTO;
 import com.project.finalProject.model.PhotoVo;
+import com.project.finalProject.model.PostVO;
 import com.project.finalProject.service.ChatService;
 import com.project.finalProject.service.IBoardService;
 import com.project.finalProject.service.MemberService;
@@ -58,6 +59,17 @@ public class BoardController {
 		model.addAttribute("pageMaker", pageMake);
 
 		return "/board/list";
+	}
+	
+	// 카테고리별 게시글 리스트
+	@GetMapping("/communityCategoryList")
+	public String getList(@RequestParam("comTag") String comTag, Model model, Criteria cri) {
+		ArrayList<BoardVO> list = boardService.list(comTag);
+
+		model.addAttribute("list", list);
+		
+
+		return "/board/communityCategorylist";
 	}
 
 	@RequestMapping("/insertCommunityForm")
@@ -103,7 +115,7 @@ public class BoardController {
 		// 포스트 내용의 \n을 <br>로 변경
 		vo.setComContent(vo.getComContent().replace("\n", "<br>"));
 		boardService.insertPost(vo);
-		return "redirect:/";
+		return "redirect:/board/list";
 	}
 
 	// 게시글 작성 - 이미지

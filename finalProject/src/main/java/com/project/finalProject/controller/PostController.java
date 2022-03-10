@@ -203,6 +203,17 @@ public class PostController {
 		String result = memService.searchMemId(postNo);
 		return result;
 	}
+	
+	// 페이지 시작시 post로 Title 찾아오기
+		@ResponseBody
+		@RequestMapping("/searchTitle")
+		public String searchTitle(@RequestParam("postNo") int postNo) {
+			String result = postService.searchTitle(postNo);
+			return result;
+		}
+	
+	
+	
 
 	// 페이지 시작시 memNo로 아이디 찾아오기2
 	@ResponseBody

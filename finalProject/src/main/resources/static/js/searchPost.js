@@ -31,7 +31,7 @@ function searchPostAjax(){
 				data:{"searchBarInput" : $searchBarInput.val()},
 				dataType: "text",
 				success:function(result){
-					$('#mainIndexBox').html(result);
+					$('body').html(result);
 				},
 				error:function(data, textStatus){
 					alert("전송 실패");

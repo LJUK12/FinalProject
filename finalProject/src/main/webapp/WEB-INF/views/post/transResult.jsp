@@ -38,17 +38,21 @@
 		
 		<div>
 		<h3>상품명</h3>		
-		<span class='box'><input type="text"class='textBox' value="${tranList.postNo }"readOnly></span><br>
+		<span class='box'><input type="hidden"class='textBox' id = "postNo" value="${tranList.postNo }"readOnly>
+		<input type="text"class='textBox' id="postTitle" value=""readOnly></span><br>
 		</div>
 		
 		<div>
 		<h3>판매자</h3>		
-		<span class='box'><input type="text"class='textBox' value="${tranList.sellerNo }"readOnly></span><br>
+		<span class='box'><input type="hidden"class='textBox' value="${tranList.sellerNo }"readOnly>
+		<input type="text"class='textBox' id="searchmemId" value=""readOnly>
+		</span><br>
 		</div>
 		
 		<div>
 		<h3>구매자</h3>		
-		<span class='box'><input type="text"class='textBox' value="${tranList.memNo }"readOnly></span><br>
+		<span class='box'><input type="hidden"class='textBox' value="${tranList.memNo }"readOnly>
+		<input type="text"class='textBox' value="${sessionScope.sid }"readOnly></span><br>
 		</div>
 		
 		<div>
@@ -103,6 +107,57 @@ geocoder.addressSearch('${tranList.tranAddress}', function(result, status) {
         map.setCenter(coords);
     } 
 });    
+
+window.onload = function () {
+	SearchMemIDAjax();
+	SearchTitleAjax();
+
+
+}
+
+
+function SearchMemIDAjax() {
+	console.log($('#postNo').val());
+	$.ajax({
+		type:"post",
+		url:"/searchMemid",
+		data:{postNo:$('#postNo').val()},
+		dataType:'text',
+		success: function(result) {
+			$('#searchmemId').val(result);
+			console.log(result);
+
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("아이디 불러오기 에러");
+		}
+	});
+}
+
+function SearchTitleAjax() {
+	console.log($('#postNo').val());
+	$.ajax({
+		type:"post",
+		url:"/searchTitle",
+		data:{postNo:$('#postNo').val()},
+		dataType:'text',
+		success: function(result) {
+			$('#postTitle').val(result);
+			console.log(result);
+
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("상품명 불러오기 에러");
+		}
+	});
+}
+
+
+
+
+
 </script>
 		</div>
 

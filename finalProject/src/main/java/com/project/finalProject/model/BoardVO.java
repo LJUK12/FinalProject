@@ -15,13 +15,15 @@ public class BoardVO {
 	private int comDecl; 
 	private int memNo;
 	private String memId;
+	private String comTag;
 	
 	
-	@Override
-	public String toString() {
-		return "BoardVO [comNo=" + comNo + ", comTitle=" + comTitle + ", comContent=" + comContent + ", comDate="
-				+ comDate + ", comUpdateDate=" + comUpdateDate + ", comHit=" + comHit + ", comFavorite=" + comFavorite
-				+ ", comImg=" + comImg + ", comDecl=" + comDecl + ", memNo=" + memNo + ", memId=" + memId + "]";
+	
+	public String getComTag() {
+		return comTag;
+	}
+	public void setComTag(String comTag) {
+		this.comTag = comTag;
 	}
 	public String getMemId() {
 		return memId;

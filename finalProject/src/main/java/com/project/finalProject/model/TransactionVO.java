@@ -9,6 +9,7 @@ public class TransactionVO {
 	private int sellerNo;
 	private String tranDate;
 	private String tranAddress;
+	
 	public String getTranAddress() {
 		return tranAddress;
 	}

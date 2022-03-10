@@ -22,7 +22,7 @@
 			success:function(result){
 				console.log(result, fileName);
 				console.log(fileName);
-				$('#mainIndexBox').html(result);
+				$('body').html(result);
 			},
 			error:function(e){
 				alert("오류가 발생했습니다." + e);

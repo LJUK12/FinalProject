@@ -44,8 +44,8 @@
 	
 	<!-- 게시글 작성  -->
 	<insert id="insertPost" parameterType="com.project.finalProject.model.PostVO">
-		INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo,postDecl,postMap,postWay,postPrice)
-		VALUES (null,#{postTitle},#{postContent},default,#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo},#{postDecl},#{postMap},#{postWay},#{postPrice})
+	INSERT INTO post (postNo,postTitle,postContent,postDate,postTag,postHit,postFavorit,postState,postImg,memNo,memId,postDecl,postMap,postWay,postPrice)
+		VALUES (null,#{postTitle},#{postContent},default,#{postTag},#{postHit},#{postFavorit},#{postState},#{postImg},#{memNo},#{memId},#{postDecl},#{postMap},#{postWay},#{postPrice})
 	</insert>
 	
 	
@@ -57,14 +57,14 @@
 		
 		<!-- 상품 category 검색 -->
    <select id="searchPost" parameterType="string" resultType="com.project.finalProject.model.PostVO">
-  		SELECT p.postNo, m.memNo, p.postTitle, p.postContent, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
+		SELECT DISTINCT p.postNo, p.postTitle, p.postPrice, p.postWay, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
  		FROM post p, member m
  		WHERE m.memNo = p.memNo AND p.postTag LIKE CONCAT("%", #{postTag}, "%")
    </select>
    
       <!-- 상품 title, content 검색 -->
    <select id="titleContentSearchPost" parameterType="string" resultType="com.project.finalProject.model.PostVO">
-  		SELECT DISTINCT p.postNo, m.memNo, p.postTitle, p.postContent, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
+  		SELECT DISTINCT p.postNo, p.postTitle, p.postPrice, p.postWay, p.postDate, p.postTag, p.postHit, p.postFavorit, p.postState, p.postImg, m.memId
  		FROM post p, member m
  		WHERE m.memNo = p.memNo AND (p.postTitle LIKE CONCAT("%", #{postKeyword}, "%") OR p.postContent LIKE CONCAT("%", #{postKeyword}, "%"))
    </select>
@@ -144,6 +144,13 @@
    		OR m.memId LIKE CONCAT("%", #{postSearch}, "%"))
    		order by postNo DESC
     </select>
+    
+    
+    <select id="searchTitle" parameterType="int" resultType="string">
+ 			SELECT postTitle 
+ 			FROM post
+ 			WHERE postNo=#{postNo}		
+ 		</select>
   
    	
 </mapper>

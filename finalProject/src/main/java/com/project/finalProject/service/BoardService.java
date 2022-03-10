@@ -78,4 +78,9 @@ public class BoardService implements IBoardService{
 		return boardDAO.getMyList(memNo);
 	}
 
+	@Override
+	public ArrayList<BoardVO> list(String comTag) {
+		return boardDAO.list(comTag);
+	}
+
 }
