@@ -170,7 +170,7 @@ function deleteAjax() {
 	$.ajax({
 		type:"post",
 		url:"/deletePost",
-		data:{postNo:$('#postNo').val(),memNo:$('.memNo').val()},
+		data:{postNo:$('#postNo').val(),memNo:$('#memNo').val()},
 		dataType:'text',
 		success: function(result) {
 			if(result == "success"){

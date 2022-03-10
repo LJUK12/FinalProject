@@ -34,7 +34,7 @@
 	
 	<!-- post -->
   	<select id="listPost" parameterType="int" resultMap="postResult">
-  		SELECT * FROM post WHERE postNo=#{postNo} DESC
+  		SELECT * FROM post WHERE postNo=#{postNo}
   	</select>
   	
 	<!-- index 페이지에 전체 내용 출력 (인기순) -->
