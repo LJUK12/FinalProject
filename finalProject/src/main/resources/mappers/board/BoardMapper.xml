@@ -23,8 +23,8 @@
     
     <!-- 게시글 작성  -->
    <insert id="insertPost" parameterType="com.project.finalProject.model.BoardVO">
-      INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo,comTag)
-      VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo},#{comTag})
+      INSERT INTO community (comNo,comTitle,comContent,comDate,comHit,comFavorite,comImg,memNo,comTag,memId)
+      VALUES (null,#{comTitle},#{comContent},default,#{comHit},#{comFavorite},#{comImg},#{memNo},#{comTag},#{memId})
    </insert>
    
     <!-- Post 페이지 이동 -->   
@@ -79,7 +79,7 @@
     <!-- 게시물 목록(페이징) -->
     <select id="getListPaging" resultType="com.project.finalProject.model.BoardVO">
         select * from (
-                select comNo, comTag, comTitle, comContent, comDate, comHit
+                select comNo, comTag, comTitle, memId, comDate, comHit
                 from community 
                 <if test="keyword != null">
                     <include refid="criteria"></include>

@@ -94,7 +94,9 @@
                         <c:out value="${list.comTitle}"/>
                     </a>
                 </td>
-                <td><c:out value="${sessionScope.sid}"/></td>
+                
+                <td><c:out value="${list.memId}"/></td>
+                
                 <td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.comDate}"/></td>
                 <td><c:out value="${list.comHit}"/></td>
             </tr>

@@ -74,7 +74,9 @@
 										class="form-control1" name="comTitle" id="postTitle"
 										placeholder="제목을 입력해 주세요">
 									<br>
-									<label for="reg_id">작성자:</label> <input type="text"
+									<label for="reg_id">작성자:</label> 
+									<input type="text" id="searchmemId" name="memId" class='textBox' value="${sessionScope.sid }"readOnly>
+									<input type="hidden"
 										class="form-control2" name="memNo" id="memNo"
 										value="${sessionScope.No}" readonly>
 									
