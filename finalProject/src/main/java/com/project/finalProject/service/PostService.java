@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import com.project.finalProject.dao.IPostDAO;
 import com.project.finalProject.model.PostVO;
 
+
+
+
 @Service
 public class PostService implements IPostService{
 
@@ -30,7 +33,7 @@ public class PostService implements IPostService{
 	}
 
 	@Override
-	public void deletePost(int postNo) {
+	public void deletePost(String postNo) {
 		dao.deletePost(postNo);
 		
 	}
@@ -47,6 +50,7 @@ public class PostService implements IPostService{
 
 	@Override
 	public ArrayList<PostVO> titleContentSearchPost(String postKeyword) {
+		// TODO Auto-generated method stub
 		return dao.titleContentSearchPost(postKeyword);
 	}
 
@@ -60,13 +64,6 @@ public class PostService implements IPostService{
 		return dao.postListCount(memNo);
 	}
 
-	
-	@Override
-	public PostVO manageDetailViewPost(int postNo) {
-		//관리자용 디테일 뷰
-		return dao.manageDetailViewPost(postNo);
-	}
-
 	@Override
 	public void FavoritCountPlus(int postNo) {
 		dao.FavoritCountPlus(postNo);
@@ -75,25 +72,86 @@ public class PostService implements IPostService{
 
 	@Override
 	public ArrayList<PostVO> listAllPostByFavorit() {
+		// TODO Auto-generated method stub
 		return dao.listAllPostByFavorit();
 	}
 
 	@Override
 	public void updatePostState(int postNo) {
+		// TODO Auto-generated method stub
 		dao.updatePostState(postNo);
 		
 	}
 
 	@Override
-	public ArrayList<PostVO> manageAllPost(){
-		//관리자 allListPost
+	public void deletePost(int postNo) {
+		// TODO Auto-generated method stub
+		dao.deletePost(postNo);
+	}
+
+	@Override
+	public PostVO listPost(int postNo) {
+		
+		return dao.listPost(postNo);
+	}
+
+	@Override
+	public PostVO manageDetailViewPost(int postNo) {
+		// TODO Auto-generated method stub
+		return dao.manageDetailViewPost(postNo);
+	}
+
+	@Override
+	public ArrayList<PostVO> manageAllPost() {
+		// TODO Auto-generated method stub
 		return dao.manageAllPost();
 	}
-	
+
 	@Override
 	public void manageEditPosting(PostVO vo) {
-		// 관리자 postEdit
 		dao.manageEditPosting(vo);
+		
 	}
+
+	@Override
+	public void posthitplus(int postNo) {
+		dao.posthitplus(postNo);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> listAllPostByDESC() {
+		// TODO Auto-generated method stub
+		return dao.listAllPostByDESC();
+	}
+
+	@Override
+	public void declPlus(int postNo) {
+		// TODO Auto-generated method stub
+		dao.declPlus(postNo);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> list(String memAddress1) {
+		// TODO Auto-generated method stub
+		return dao.list(memAddress1);
+	}
+	
+
+
+	@Override
+	public ArrayList<PostVO> postSearchManage(String postSearch){
+		// 관리자 상품검색
+		return dao.postSearchManage(postSearch);
+	}
+
+	@Override
+	public String searchTitle(int postNo) {
+		// TODO Auto-generated method stub
+		return dao.searchTitle(postNo);
+	}
+	
+
 
 }

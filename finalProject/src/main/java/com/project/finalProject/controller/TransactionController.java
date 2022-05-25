@@ -25,7 +25,6 @@ public class TransactionController {
 	
 	@RequestMapping("/post/insertdirectTranForm/{postNo}")
 	public String insertdirectTranForm(@PathVariable int postNo,Model model) {
-		System.out.println(postNo);
 		PostVO vo = postService.detailVeiwPost(postNo);
 		model.addAttribute("post",vo);
 		return "/post/directTransaction";

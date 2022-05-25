@@ -20,40 +20,46 @@
 			
 				<div id='form_box'>
 				
-				<form  name="joinForm" id="joinForm" method="post" action='<c:url value="/chatManager/chatEdit2" />'>
+				<form  name="joinForm" id="joinForm" method="post" action='<c:url value="/tradeManager/tranEdit2" />'>
 					<div>
-		  				<h3>채팅 번호 : ${chatVO.chatNo }
+						<input type="hidden" name="tranNo" value=${tranVO.tranNo}>
+		  				<h3>거래 번호 : ${tranVO.tranNo }</h3>
+		  				<h3>게시판 번호 : ${tranVO.postNo }</h3>
 		  			</div>
-		  			<br>
+		  			<br><hr><br>
 		  			<div>
-		  				<h3>포스트 번호 : ${chatVO.postNo }
+		  				<h3>판매자 번호 : ${tranVO.sellerNo }</h3>
+		  				<h3>구매자 번호 : ${tranVO.memNo }</h3>
+		  				<h3>거래 날짜 : ${tranVO.tranDate }</h3>
 		  			</div>
 		  			<br>
 		  			
 					<div>
-		  				<h3>작성자</h3>
+		  				<h3>결제 방법</h3>
 		  				<span class='box id'>
-		  					<input type="hidden" id='chatNo' name="chatNo" value="${chatVO.chatNo }">
-		  					<span class='textBox'>${chatVO.memId }</span>
+		  					<span class='textBox' readonly>${tranVO.tranPayment }</span>
 		  				</span>
 		  			</div>
-	
-	
 		  			<div>
-		  				<h3>채팅 내용 수정</h3>
-		  				<span class='box name'>
-		  					<input type="text" class="textBox" id='chatContent' name="chatContent" maxlength="10" value="${chatVO.chatContent }">
+		  				<h3>거래 방법</h3>
+		  				<span class='box id'>
+		  					<span class='textBox' readonly>${tranVO.tranWay }</span>
 		  				</span>
-		  				<span id='errorName'>이름을 입력해주세요</span>
 		  			</div>
-		  				<h3>작성날짜 : ${chatVO.chatDate }</h3>
-		  			</div>
-		  			<br>
-		
+					
+					<c:if test="${tranVO.tranWay eq '택배거래' }">
+		  			<div>
+		  				<h3>거래 주소 수정</h3>
+		  				<span class='box name'>
+		  					<input type="text" class="textBox" id='tranAddress' name="tranAddress" maxlength="100" value="${tranVO.tranAddress }">
+		  				</span>
+		  				<span id='errorName'>거래 주소를 입력해주세요</span>
+	  				</div>
+					</c:if>
 	
 		  			<div>
 		  				<input type="submit" value="수정하기" id='submit'>
-		  				<input type="reset" value="취소하기" id="submit" onclick="location.href='<c:url value="/chatManager"/>'">
+		  				<input type="reset" value="취소하기" id="submit" onclick="location.href='<c:url value="/tradeManager"/>'">
 		  			</div>
 	
 		  		</form>

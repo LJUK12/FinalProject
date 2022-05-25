@@ -1,6 +1,5 @@
 
 
-
 $(document).ready(function(){
 	
 	$("#update").on("click",function(){
@@ -17,5 +16,4 @@ $(document).ready(function(){
 		
 	});
 	
-
 });

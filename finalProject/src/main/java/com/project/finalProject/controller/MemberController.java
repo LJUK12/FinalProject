@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.project.finalProject.model.MemberVO;
 import com.project.finalProject.service.MemberService;
 
@@ -123,17 +124,39 @@ public class MemberController {
 		}
 
 		//비밀번호 찾기
-		@ResponseBody
+	
 		@RequestMapping("/pwdSearch")
-		public ArrayList<MemberVO> pwdSearch(@RequestParam HashMap<String, Object> param, 
+		public String pwdSearch(MemberVO m, HttpSession session,
 				Model model){
-
-			ArrayList<MemberVO> memList = service.pwdSearch(param);
-			model.addAttribute("memList", memList);
-
-			return memList;
+			MemberVO member = service.pwdSearch(m);
+			if(member != null) {
+				session.setAttribute("memberId", member.getMemId());
+				return "member/pwdChange";
+			}else {
+				model.addAttribute("msg", "일치하는 회원 정보가 없습니다.");
+				model.addAttribute("msg2", "true");
+				model.addAttribute("loc", "/pwdSearch");
+				return "member/msg";
+			}
+			
 		}
 
+		//비밀번호 변경
+				@RequestMapping("/pwdChange")
+				public String changePw(MemberVO m, HttpSession session, Model model) {
+					int result = service.pwdChange(m);
+					if(result>0) {
+						session.setAttribute("memberId", null);
+						model.addAttribute("msg", "비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+						model.addAttribute("msg2", "true");
+					}
+					return "member/msg";
+				}
+		
+		
+		
+		
+		
 		// 전체 정보 조회
 		@RequestMapping("/listAllProfile")
 		public String listAllProfile() { //Model model
@@ -165,7 +188,11 @@ public class MemberController {
 		
 		//마이페이지로 이동
 		@RequestMapping("/myPageForm")
-		public String myPageForm() {
+		public String myPageForm(Model model, HttpSession session) {
+			String memId = (String)session.getAttribute("sid");
+			MemberVO member = service.profileInfo(memId);
+
+			model.addAttribute("member",member);
 			return "/member/myPageForm";
 		}
 		
@@ -186,7 +213,6 @@ public class MemberController {
 		@RequestMapping("/withdrawMemberForm")
 		public String withdrawMemberForm() {
 			return "/member/withdrawMemberForm";
-
 		}
 		
 		//회원 탈퇴 처리
@@ -202,7 +228,7 @@ public class MemberController {
 			}
 			return result;
 		}
-
+		
 		
 		
 }

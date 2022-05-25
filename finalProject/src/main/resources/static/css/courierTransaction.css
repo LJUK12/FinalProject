@@ -1,15 +1,123 @@
 @charset "UTF-8";
 
+#firstName2{
+	margin-left:20%;
+}
+
 #content{
    display: flex;
     flex-direction: column;
     text-align: center;
+    border: solid 1px #dadada;
+    width:62.5%;
+    margin-left:20%;
 }
 
 #form_box{
-   margin-left:34%;
+   
    text-align: left;
 }
+
+#postNav{
+	display: flex;
+	border: solid 1px #dadada;
+	width:100%;
+	height:200px;
+	padding: 2%;
+}
+
+#box1{
+	width: 150px;
+    height: 150px; 
+    border-radius: 20%;
+    overflow: hidden;
+    margin-left:2%;
+}
+
+#box2{
+	margin-top: 3%;
+		margin-left:3.5%;
+}
+
+#postNavImg{
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.postNavNaming{
+	text-align:center;
+}
+
+
+#tak{
+	margin-left:4%;	
+}
+
+
+#postAside{
+	float:right;	
+	margin-right: 10%;
+	margin-top: -54%;
+	width:25%;
+	height: 100%;
+	border: 1px solid #dadada;
+
+}
+
+#member_post{
+	width:24.8%;
+	height:35px;	
+}
+
+#member_addr{
+	width:24.8%;
+	height:35px;	
+}
+
+#member_addr2{
+	margin-top:5px;
+	width:49.9%; 
+	height:35px;	
+}
+
+#tax{
+	margin-left:4%;
+}
+
+#tax2{
+	margin-left:4%;
+}
+
+.taxBox2{
+	padding:1%;
+	border: solid 1px #dadada;
+	width:50%;
+	height: 50px;
+}
+
+#phoneCheck{
+	margin-left:4%;
+}
+
+#phoneChk{
+	width:10%;
+	height: 22px;
+	border:1px solid;
+	
+}
+
+#phoneChk:hover{
+  box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
+  transform: translate(0.2, -5px);
+  background: #dadada;
+}
+
+#phone{
+	width:200px;
+	height: 25px;
+}
+
 
 .box {
     display: block;
@@ -25,12 +133,78 @@
 }
 
 .textBox {
-    display: block;
+    font-size: 15px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #fff;
+    text-align:center;
+
+}
+
+.textBox2{
+	display: block;
     position: relative;
     width: 100%;
     height: 29px;
     border: none;
     background: #fff;
     font-size: 15px;
+}
 
+#kakao{
+	margin-left:4%;	
+	margin-bottom: 3%;
+}
+
+.tip{
+	color:#2089df;
+	font-size:0.5em;
+}
+
+.point.successPhoneChk{
+	color:red;
+	font-size:0.5em;
+}
+
+.postComplete1{
+	margin-left:1%;
+	width:50px;
+	height: 35px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+.postComplete2{
+	margin-left:1%;
+	width:50px;
+	height: 35px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.postComplete2:hover{
+	  box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
+	  transform: translate(0.2, -5px);
+	  background: #dadada; 
+}
+
+#kakaoBtn{
+	border:none;
+}
+
+#kakaoBtn:hover{
+	  box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
+	  transform: translate(0.2, -5px);
+	  background: #dadada;
+}
+
+.phoneChk2{
+	display:none;
+}
+
+#submitPost{
+	display:flex;
+}
+#sub{
+	margin-left:45%;
 }

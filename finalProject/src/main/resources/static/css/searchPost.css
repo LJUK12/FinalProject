@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
-.searchDiv{
-	margin-left:22%;
+.searchDiv, .categoryDiv{
+    width: 1068px;
+    margin: 30px auto;
 }
 
-.categoryDiv{
-	margin-left:22%;
-} 
+.searchResBox {
+	width: 1080px;
+	margin: 30px auto;
+}

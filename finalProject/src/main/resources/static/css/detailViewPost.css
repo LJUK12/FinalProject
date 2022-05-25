@@ -21,37 +21,15 @@ div {
     margin-right: 44rem;
     margin-bottom: 5px;
 }
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-#tagtop {
-    margin-top: 0.875rem;
-    margin-bottom: -0.875rem;
-    min-height: 0.875rem;
-}
-.tagbutton {
-    margin-bottom: 0.875rem;
-    background: rgb(241, 243, 245);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    height: 2rem;
-    border-radius: 1rem;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-right: 44rem;
-    color: rgb(12, 166, 120);
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 1rem;
 
+a {
+	text-decoration: none; color: black; 
 }
+
+a:visited {
+	text-decoration: none; 	
+}
+
 
 .topmem {
     -webkit-box-align: center;
@@ -131,41 +109,171 @@ display: inline-block;
 
 
 #favoritbtn{
+	display: flex;
 	margin:0;
-	width:650px;
-
+	width:700px;
+	align-items: center;
 }
 
 
-#favoritbtn img{
+#favoritimg{
 	
-	float:left;
-	width:25px; 
+
+	width:23px; 
+	height:23px;
 	margin-right:10px;
 	
 }
 
+#hitimg{
+	width:30px; 
+	height:21px;
+	margin-right:10px;
+}
+
+#declimg{
+	margin-left: 5px;
+	width:23px; 
+	height:23px;
+	margin-right:10px;
+}
+
+#favoritPostimg{
+	width:23px; 
+	height:23px;
+	margin-right:10px;
+}
+
 #favorit{
 	width:30px;
-
+	margin-right:5px;
 	
 }
 
+#hit{
+	width:30px;
+	margin-right:5px;
+}
+
+#decl{
+	width:30px;
+	margin-right:10px;
+}
+
+#favoritPost{
+	margin-right:260px;
+}
 
 
-#buybtn{
-    font-weight: 600;
-    height: 25px;
-    font-size: 18px;
+.buybtn{
+ 	border: 1px solid rgb(238, 238, 238);
+    height: 32px;
+    display: flex;
+    -webkit-box-align: center;
     align-items: center;
-	background: rgb(247, 0, 0);
-    border: 1px solid rgb(223, 0, 0);
-    color: rgb(255, 255, 255);
-	float:right;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: rgb(136, 136, 136);
+    width:100px;
+    margin-right:3px;
+}
+
+
+.deletebtn{
+ 	border: 1px solid rgb(238, 238, 238);
+    height: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: rgb(136, 136, 136);
+    width:100px;
+    margin-right:3px;
+}
+
+#buy{
+	background-color:white;
 }
 
 
 
+.chatingDate{
+    color: #848484;
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 0;
+    font-family: tahoma;
+}
 
+.chathr{
+	border-top : 1px dashed #bbb; border-bottom : 1px dashed #fff
+}
 
+#chatContent{
+	width: 100%;
+    padding: 20px;
+    height: 80px;
+    border: 1px solid rgb(238, 238, 238);
+}
 
+#chatbottom{
+	display: flex;
+    width: 100%;
+    height: 50px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    
+}
+
+#chatsubmitbtn{
+	border: 1px solid rgb(238, 238, 238);
+    height: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 13px;
+    color: rgb(136, 136, 136)
+}
+
+#chatsubmit{
+	background-color:white;
+}
+
+.chatbtnimg{
+	height:60%;
+	margin-right:5px;
+}
+
+#contentbtn{
+	display: flex;
+}
+
+#tagimg{
+	width: 13px;
+    aspect-ratio: auto 13 / 16;
+    height: 16px;
+}
+
+#tagtop{
+	color: rgb(178, 178, 178);
+	text-decoration: none;
+    display: block;
+    margin-top: 25px;
+    padding-bottom: 23px;
+    position: relative;
+    
+}
+
+#delete{
+	background-color:white;
+}
+
+#favoritPost{
+	background-color:white;
+	border:0;
+	outline:0;
+}

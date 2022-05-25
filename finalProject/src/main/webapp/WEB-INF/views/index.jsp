@@ -6,30 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>4조 최종 프로젝트</title>
+<link href="<c:url value='/css/mainBanner.css'/>" rel="stylesheet" type="text/css">
+
+<script>
+	var result = '${msg}';
+	
+	if (result == 'success') {
+        alert("카카오 페이 결제 완료!");
+	}
+</script>
 </head>
 <body>
 	<div id="wrap">
 		<!-- TOP -->
 		<jsp:include page="/WEB-INF/views/layout/top.jsp" flush='true' />
-
-		<aside id="aside1">
-			<a href="/login"><br>
-				<p class="asideNaming">로그인</p> 
-				<i class="fas fa-sign-in-alt fa-2x"></i>
-			</a><br><br><br>
-			<a href="/logout">
-				<p class="asideNaming">로그아웃</p>
-				<i class="fas fa-sign-out-alt fa-2x"></i>
-			</a><br><br><br>
-			<a>
-				<p class="asideNaming">최근목록</p>
-				<i class="fas fa-sign-in-alt fa-2x"></i>
-			</a><br><br><br>
-			<a>
-				<p class="asideNaming">고객센터</p>
-				<i class="fas fa-sign-in-alt fa-2x"></i>
-			</a><br><br>
-		</aside><br> 
 
 		<div id="mainIndexBox">
 			<section>
@@ -80,21 +70,25 @@
 								<c:forEach items="${postList}" var="pt" end="3">
 									<div>
 										<div class="class-card">
-											<a href="/post/detailViewPost/${pt.postNo}"> 
+											<a class="class-img" href="/post/detailViewPost/${pt.postNo}"> 
 											<img src="/resource/photo_upload/${pt.postImg }" alt="top1"
-												 class="class-image" />
+												 class="class-image" onError="javascript:this.src='/image/default.jpg'"/>
 											</a>
 										</div>
 										<div class="class-container">
 											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
+												<div class="class-format">지역</div>
 												<div class="class-format2">${pt.postState}</div>
-												<p class="information">${pt.postTitle}</p>
+												<div class="class-format3"><h5>${pt.postWay}</h5></div>
+												<div>
+													<i class="fa-solid fa-thumbs-up"></i>: ${pt.postFavorit} 
+												</div>
 											</div>
 											<div class="class-skill">
-												<div>좋아요: ${pt.postFavorit}</div>&ensp;
-												<div>가격: ${pt.postPrice }원</div>&ensp;
-												<div>${pt.postWay}</div>
+												<div><h4>판매가:&nbsp; ${pt.postPrice }원</h4></div>&ensp;&ensp;&ensp;&ensp;
+											</div><hr>
+											<div class="class-skill2"> 
+												<p class="information">${pt.postTitle}</p>
 											</div>
 										</div>
 									</div>
@@ -111,48 +105,49 @@
 							<ul class="class-list" data-position="0">
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_room_black_24dp.png" 
+											alt="top1" class="class-image2" /> 
+											<a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">지역별 장터</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_contact_phone_black_18dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">고객센터</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_local_fire_department_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">지역 best</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_attach_money_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">시세조회</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_safety_divider_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">안심거래</h4>
 								</div>
 								<div>
 									<div>
-										<li class="class-card3"><img src="" alt="top1"
-											class="class-image" /> <a
+										<li class="class-card3"><img src="image/baseline_shopping_basket_black_24dp.png" alt="top1"
+											class="class-image2" /> <a
 											href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 									</div>
 									<h4 align="center">전체상품</h4>
@@ -178,26 +173,30 @@
 							</ul>
 							<ul class="class-list" data-position="0">
 								<c:forEach items="${postFavoritList}" var="ptf" end="3">
-									<div>
-										<div class="class-card">
-											<a href="/post/detailViewPost/${ptf.postNo}"> 
-											<img src="/resource/photo_upload/${ptf.postImg }" alt="top1"
-												 class="class-image" />
-											</a>
+								<div>
+									<div class="class-card">
+										<a class="class-img" href="/post/detailViewPost/${ptf.postNo}"> 
+										<img src="/resource/photo_upload/${ptf.postImg }" alt="top1"
+											 class="class-image" onError="javascript:this.src='/image/default.jpg'"/>
+										</a>
+									</div>
+									<div class="class-container">
+										<div class="class-skill">
+											<div class="class-format">지역</div>
+											<div class="class-format2">${ptf.postState}</div>
+											<div class="class-format3"><h5>${ptf.postWay}</h5></div>
+											<div>
+												<i class="fa-solid fa-thumbs-up"></i>: ${ptf.postFavorit} 
+											</div>
 										</div>
-										<div class="class-container">
-											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
-												<div class="class-format2">${ptf.postState}</div>
-												<p class="information">${ptf.postTitle}</p>
-											</div>
-											<div class="class-skill">
-												<div>좋아요: ${pt.postFavorit}</div>&ensp;
-												<div>가격: ${pt.postPrice }원</div>&ensp;
-												<div>${pt.postWay}</div>
-											</div>
+										<div class="class-skill">
+											<div><h4>판매가:&nbsp; ${ptf.postPrice }원</h4></div>&ensp;&ensp;&ensp;&ensp;
+										</div><hr>
+										<div class="class-skill2"> 
+											<p class="information">${ptf.postTitle}</p>
 										</div>
 									</div>
+								</div>
 								</c:forEach>
 							</ul>
 						</div>
@@ -207,62 +206,56 @@
 				<article>
 					<div id="hotItemsSection1">
 						<h3 class="productTag">&ensp;카테고리</h3><br><br>
-						<div class="hotItemGroup">
+						<div class="hotItemGroup4">
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
+									<li class="class-card3"><i class="fa-solid fa-mobile-screen-button fa-3x icon1"></i> <a
 										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
 								<h4 align="center">전자기기</h4>
 							</div>
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
+									<li class="class-card3"><i class="fa-solid fa-couch fa-3x icon2"></i><a
 										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
 								<h4 align="center">가구</h4>
 							</div>
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
+									<li class="class-card3"><i class="fa-solid fa-clock fa-3x icon3"></i><a
 										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
 								<h4 align="center">시계</h4>
 							</div>
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
-										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
+									<li class="class-card3"><i class="fa-solid fa-hat-cowboy fa-3x icon4"></i>
+									<a href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
 								<h4 align="center">의류</h4>
 							</div>
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
+									<li class="class-card3"><i class="fa-solid fa-robot fa-3x icon5"></i><a
 										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
-								<h4 align="center">생활용품</h4>
+								<h4 align="center">장난감</h4>
 							</div>
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
+									<li class="class-card3"><i class="fa-solid fa-toilet-paper fa-3x icon6"></i><a
 										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
 								<h4 align="center">생필품</h4>
 							</div>
 							<div>
 								<div>
-									<li class="class-card2"><img src="" alt="top1"
-										class="class-image" /> <a
-										href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
+									<li class="class-card3">
+									<i class="fa-solid fa-cat fa-3x icon7"></i>
+									<a href="/post/detailViewPost/${1006 }" target="_blank"></a></li>
 								</div>
-								<h4 align="center">반려동물</h4>
+								<h4 align="center">반려동물 용품</h4>
 							</div>
 						</div>
 					</div>
@@ -274,24 +267,30 @@
 							<div class="hotItemGroup2">
 								<ul class="class-list" data-position="0">
 									<c:set var="postNum" value="0" />
-									<c:forEach items="${postList}" var="post">
+									<c:forEach items="${listAllPostByDESC}" var="post">
+									<div> 
 										<div>
-										<div class="class-card">
-											<a href="/post/detailViewPost/${post.postNo}"> 
-											<img src="/resource/photo_upload/${post.postImg }" alt="top1"
-												 class="class-image" />
-											</a>
-										</div>
-										<div class="class-container">
-											<div class="class-skill">
-												<div class="class-format">지역</div>&ensp;
-												<div class="class-format2">${post.postState}</div>
-												<p class="information">${post.postTitle}</p>
+											<div class="class-card">
+												<a class="class-img" href="/post/detailViewPost/${post.postNo}"> 
+												<img src="/resource/photo_upload/${post.postImg }" alt="top1"
+													 class="class-image" onError="javascript:this.src='/image/default.jpg'"/>
+												</a>
 											</div>
-											<div class="class-skill">
-												<div>좋아요: ${post.postFavorit}</div>&ensp;
-												<div>가격: ${post.postPrice }원</div>&ensp;
-												<div>${post.postWay}</div>
+											<div class="class-container">
+												<div class="class-skill">
+													<div class="class-format">지역</div>
+													<div class="class-format2">${post.postState}</div>
+													<div class="class-format3"><h5>${post.postWay}</h5></div>
+													<div>
+														<i class="fa-solid fa-thumbs-up"></i>: ${post.postFavorit} 
+													</div>
+												</div>
+												<div class="class-skill">
+													<div><h4>판매가:&nbsp; ${post.postPrice }원</h4></div>&ensp;&ensp;&ensp;&ensp;
+												</div><hr>
+												<div class="class-skill2"> 
+													<p class="information">${post.postTitle}</p>
+												</div>
 											</div>
 										</div>
 									</div>

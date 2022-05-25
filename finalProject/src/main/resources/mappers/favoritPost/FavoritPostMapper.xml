@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.finalProject.dao.IFavoritDAO">
+  
+  <!-- 즐겨찾기 등록 -->
+  <insert id="insertFavorit" parameterType="hashmap">
+  INSERT INTO favorit(memNo,postNo) VALUES(#{memNo},#{postNo});
+  </insert>
+  
+  <!-- 즐겨찾기 여부 검색 -->
+  <select id="selectFavorit" parameterType="hashmap" resultType="com.project.finalProject.model.FavoritVO">
+  SELECT * FROM favorit WHERE memNo = #{memNo} and postNo = #{postNo}
+  </select>
+  
+  <!-- 즐겨찾기 리스트 검색 -->
+  <select id="selectFavoritList" parameterType="int" resultType="com.project.finalProject.model.FavoritVO">
+  SELECT * FROM favorit WHERE memNo = #{memNo}
+  </select>
+  
+  <!-- 즐겨찾기 삭제 -->
+  <delete id="deleteFavorit" parameterType="int">
+  DELETE FROM favorit WHERE fvrNo=#{fvrNo}
+  </delete>
+  
+  </mapper>

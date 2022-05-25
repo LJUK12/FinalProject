@@ -25,16 +25,24 @@ public class MainController {
 	@Autowired STTService sttService;
 	@Autowired ChatbotService chbService;
 	@Autowired TTSService ttsService;
+
 	// index 페이지로 이동
 	@RequestMapping("/")
 	public String index(Model model) {
 		
 		  ArrayList<PostVO> postList = pstService.listAllPost();
+		 
 		  model.addAttribute("postList",postList);
+		  
+		  ArrayList<PostVO> postList2 = pstService.listAllPostByDESC();
+		  model.addAttribute("listAllPostByDESC",postList2);
+		  
 		  
 		  
 		  ArrayList<PostVO> postFavoritList =pstService.listAllPostByFavorit();
 		  model.addAttribute("postFavoritList",postFavoritList);
+		  
+		  
 		return "index";
 	}
 
@@ -42,7 +50,7 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/chatbotCallImgLink")
 	public String chatbotCallImgLink(@RequestParam("message") String message) throws IOException{
@@ -83,5 +91,16 @@ public class MainController {
 		result = sttService.clovaSttService(filePathName);
 		System.out.println("STT : " + result);
 		return result;
+	}
+	
+
+	@RequestMapping("/termsAndCondition")
+	public String termsAndCondition() {
+		return "member/termsAndCondition";
+	}
+
+	@RequestMapping("/privacyPolicy")
+	public String privacyPolicy() {
+		return "member/privacyPolicy";
 	}
 }

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.project.finalProject.dao.IChatDAO;
 import com.project.finalProject.model.ChatMemberVO2;
 import com.project.finalProject.model.ChatVO;
+import com.project.finalProject.model.ComChatMemberVO2;
+import com.project.finalProject.model.ComChatVO;
 
 @Service
 public class ChatService implements IChatService {
@@ -34,21 +36,43 @@ public class ChatService implements IChatService {
 
 
 	@Override
-	public ArrayList<ChatVO> listAllChatManager(){
-		// 관리자 채팅 목록 조회
+	public ArrayList<ComChatMemberVO2> listAllChatCommunity(int comNo) {
+		// TODO Auto-generated method stub
+		return dao.listAllChatCommunity(comNo);
+	}
+
+
+	@Override
+	public void insertChat2(ComChatVO vo) {
+		// TODO Auto-generated method stub
+		dao.insertChat2(vo);
+	}
+
+
+	@Override
+	public ArrayList<ChatVO> listAllChatManager() {
+		// TODO Auto-generated method stub
 		return dao.listAllChatManager();
 	}
 
+
 	@Override
 	public void deleteChat(int chatNo) {
-		// 채팅 내역 삭제
+		// TODO Auto-generated method stub
 		dao.deleteChat(chatNo);
 	}
 
+
 	@Override
 	public ChatMemberVO2 manageChatList(int chatNo) {
-		// 채팅 수정 위해 기록 가져오기
+		// TODO Auto-generated method stub
 		return dao.manageChatList(chatNo);
+	}
+
+	@Override
+	public ArrayList<ChatVO> chatSearchManage(String chatSearch){
+		// 관리자 채팅 검색
+		return dao.chatSearchManage(chatSearch);
 	}
 
 	@Override
@@ -56,4 +80,8 @@ public class ChatService implements IChatService {
 		// 관리자 채팅 수정
 		dao.manageUpdateChat(map);
 	}
+
+	
+
+	
 }

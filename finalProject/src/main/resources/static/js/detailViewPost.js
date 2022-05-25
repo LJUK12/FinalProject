@@ -1,10 +1,29 @@
 /**
  * searchPost (top 검색 기능	)
  */
+ 
+ 
+ 
 window.onload = function () {
-	console.log($('#memNo').val());
+	PriceChange();
 	SearchMemIDAjax();
-	
+
+
+}
+
+
+
+
+
+
+
+
+
+function PriceChange(){
+	var price = $('#postPrice').val();
+	console.log(price);
+	var price2 = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$('#postPriceText').prepend(price2 + "원");
 }
 
 
@@ -21,7 +40,7 @@ $(function() {
 		return false;
 	})
 	
-	$('#buybtn').click(function() {
+	$('.buybtn').click(function() {
 		var postNo=$('#postNo').val();
 		console.log(postNo);
 		console.log($('#postWay').val());
@@ -31,6 +50,35 @@ $(function() {
 			location.href="/post/insertcourierTranForm/"+postNo;
 		}
 	})
+	
+	
+	$('.deletebtn').click(function() {
+	deleteAjax();
+	
+		return false;
+	})
+	
+	$('#declimg').click(function(){
+		var confirmflag = confirm("확인을 누르시면 해당 게시글이 신고됩니다.");
+		if(confirmflag){
+			declAjax()
+		}else{
+			alert("신고 기능을 취소하셨습니다.");
+		}
+		return false;
+	})
+	
+	var FavoritPost = $('#favoritPost').val();
+	$("#favoritPost").on("click",function(){
+		
+		console.log("dd");
+		FavoritPostAjax();
+	})
+	
+	if(FavoritPost == 1){
+		document.getElementById("favoritPostimg").src = "/image/별2.png";
+	}
+	
 	
 	
 })
@@ -61,7 +109,10 @@ function SearchMemIDAjax() {
 
 function insertchatAjax() {
 	var formdata = $('#Chatting').serialize();
-	
+	if($('#chatContent').val() ==""){
+		alert("내용을 입력하세요");
+		return false;
+	}
 	$.ajax({
 		type: "post",
 		url: "/insertChat.do",
@@ -69,12 +120,20 @@ function insertchatAjax() {
 		dataType: 'text',
 		
 		success: function(result) {
-
-			$('#chatList').prepend($('#chatContent').val() + "<br><br>");
-			$('#chatList').prepend($('#memid').val() + "<br>");
+			let today = new Date();
+			var year = today.getFullYear().toString();
+			var year2 = year.substr(2,4);
+			let month = today.getMonth() + 1
+			let date = today.getDate();
+			let hours = today.getHours();
+			let minutes = today.getMinutes();
+			let seconds = today.getSeconds();
+			$('#chatList').prepend($('#chatContent').val() + "<br><br><hr class='chathr'>");
+			$('#chatList').prepend("<p class='chatingDate'>"+year2+"."+"0"+month+"."+date+"."+hours+"."+minutes+"</p>");
+			$('#chatList').prepend("<br>"+$('#memid').val() + "<br>");
 			
 			$('#chatContent').val('');
-			console.log(result);
+			
 
 		},
 		error: function(result, textStatus) {
@@ -93,7 +152,7 @@ function FavoritAjax() {
 		dataType:'text',
 		success: function(result) {
 			favoritNo++;
-			$('#favoritbtn').prepend($('#favorit').val(favoritNo));
+			$('#favorit').prepend($('#favorit').val(favoritNo));
 			console.log(result);
 
 		},
@@ -103,6 +162,86 @@ function FavoritAjax() {
 		}
 	});
 }
+
+
+
+function deleteAjax() {
+	console.log($('#postNo').val());
+	$.ajax({
+		type:"post",
+		url:"/deletePost",
+		data:{postNo:$('#postNo').val(),memNo:$('#memNo').val()},
+		dataType:'text',
+		success: function(result) {
+			if(result == "success"){
+			alert("상품 게시글이 삭제되었습니다.");
+			location.href="/";
+			}else{
+				alert("상품 작성자가 아닙니다.");
+			}
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("상품 작성자가 아닙니다.");
+		}
+	});
+}
+
+
+function FavoritPostAjax(){
+	$.ajax({
+		type:"post",
+		url:"/favoritPost",
+		data:{postNo:  $('#postNo').val(),favorit:$('#favoritPost').val()},
+		dataType:'text',
+		success: function(favorit) {
+			var FavoritPost = $('#favoritPost').val();
+			if(favorit == 0){
+				FavoritPost = 0;
+				document.getElementById("favoritPostimg").src = "/image/별.png";
+				console.log(favorit);
+			}
+			else if(favorit == 1){
+				FavoritPost = 1;
+				document.getElementById("favoritPostimg").src = "/image/별2.png";
+				console.log(favorit);
+			}
+			else{
+				alert("로그인 후 입력해 주세요2");
+			}
+			
+			$('#favoritPost').value = FavoritPost
+
+		},
+		error: function(favorit, textStatus) {
+			alert("로그인 후 입력해 주세요");
+		}
+	});
+}
+
+
+function declAjax() {
+	$.ajax({
+		type:"post",
+		url:"/declPost",
+		data:{postNo:$('#postNo').val()},
+		dataType:'text',
+		success: function(result) {
+			if(result == "success"){
+			alert("상품 게시글이 신고되었습니다.");
+			location.href="/";
+			}else{
+				alert("상품이 신고되지 않았습니다.");
+			}
+		},
+		error: function(result, textStatus) {
+			console.log(result + textStatus);
+			alert("상품이 신고되지 않았습니다.");
+		}
+	});
+}
+
+
 
 
 

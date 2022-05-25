@@ -17,29 +17,30 @@ body {
   background: white;
 }
 #wrap {
-   padding-top: 150px;
   width: 100%;
   margin: 0 auto;
 }
 
-/************* Header ************/
-#header {   
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  
-  
-  width: 100%;
-  height: 150px;
-  background: white;
-  text-align: center;
-  z-index: 999;
+#mainIndexBox{
+   margin-top: -80px;
 }
 
-#cell{
+/************* Header ************/
+#header {   
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: white;
+  text-align: center;
+}
+
+.cell{
    background: white;
    width: 110%;
+   height: 80px;
+   position: sticky;
+   top:0;
+   z-index:10;
 }
 
 #firstName{
@@ -50,26 +51,51 @@ body {
 
    
 #naming{
-   margin-top: 5px;
-   margin-left: 410px;
+   margin-left: 15px;
+   margin-top: 32px;
 }
 
 .naming2{
    margin-left: 40px;
 }
 
+.naming2:hover{
+	color: green;
+}
+
 .naming3{
    margin-left: 40px;
 }
 
-.naming4{
-   margin-left: 40px;
+.naming3:hover{
+	color: green;
+}
+
+.naming4{ 
+   margin-left: 30px;
+}
+
+.naming4:hover{
+	color:green;
 }
 
 .naming5{
-	max-width: 50px;
    margin-top: 30px;
-   margin-left: 150px;
+   margin-left:77px;
+}
+
+.naming5:hover{
+	color:green;
+}
+
+.naming5A{
+   margin:0;
+   padding:0;
+   margin-left:100px;
+}
+
+.naming6:hover{
+	color:green;
 }
 
 #hr2{
@@ -78,19 +104,18 @@ body {
  border-width:0;
  color:#000;
  background-color:#000;
- margin-top: 36px;
+ margin-top: 2%;
 }
 
 #hr3{
- margin-top:38px;
- width: 100%;
+ width: 100%; 
  border: 1px solid #f0f0f0;
 }
 
 /* main logo */
 #mainLogo {
   text-align: right;
-  margin-right: 315px;
+  margin-right: 324px;
   padding: 10px;
  
 }
@@ -107,24 +132,6 @@ body {
   display: inline;
 }
 
-/* btn */
-#userManageBtn {
-  margin-top : 20px;
-  margin-right: 30px;
-}
-
-#userManageBtn > a {
-  float: right;
-  color: #e9e7e3;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 0 8px;
-}
-
-#userManageBtn > a:hover {
-  color: black;
-}
 
 /************* SearchBar ************/
 #SearchBarBox {
@@ -137,14 +144,14 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  width: 420px;
   height: 40px;
   font-size: 10px;
   border: 1px solid red;
   background-color: #FAFAFA;
   padding: 0 10px;
-  margin-left: 60px;
-  margin-top: 26px;
+  
+  margin-top: 29px;
   z-index: -200;
 }
 
@@ -161,7 +168,7 @@ body {
   height: 40px;
   background: transparent;
   border: none;
-  padding-left: 25px;
+  
   font-size: 20px;
   text-align: left;
 }
@@ -226,6 +233,14 @@ a {
   object-fit:cover;
 }
 
+.class-image2 {
+  margin:28px;
+  border-radius: 8px 8px 0 0;
+  width:55%;
+  height:55%;
+  object-fit:cover;
+}
+
 .class-card {
   height: 200px;
   width: 220px;
@@ -238,8 +253,7 @@ a {
 }
 
 .information{
-   margin-left: 10px;
-   font-size: small;
+   font-size: 0.9em;
 
 }
 
@@ -267,16 +281,44 @@ a {
   flex-shrink: 0;
 }
 
+.icon1{
+   margin-left:43px;
+   margin-top:36px;
+}
+.icon2{
+   margin-left:31px;
+   margin-top:36px;
+}
+.icon3{
+   margin-left:38px;
+   margin-top:36px;
+}
+.icon4{
+   margin-left:31px;
+   margin-top:36px;
+}
+.icon5{
+   margin-left:31px;
+   margin-top:36px;
+}
+.icon6{
+   margin-left:36px;
+   margin-top:36px;
+}
+.icon7{
+   margin-left:34px;
+   margin-top:36px;
+}
 
 
 .class-card:hover {
   box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
-  transform: translate(0, -5px);
+  
 }
 
 .class-card2:hover {
   box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
-  transform: translate(0, -5px);
+ 
 }
 
 .class-card3:hover {
@@ -287,7 +329,7 @@ a {
 
 .class-container {
   margin: 0 10px;
-  height: 80px;
+  height: 120px;
   width: 220px;
   box-shadow: 1px 1px 1px 1px rgba(25, 42, 70, 0.2);
   padding: 0.5rem 1rem 1rem 0.2rem;
@@ -295,11 +337,17 @@ a {
 }
 
 .class-skill {
-   margin: 5px 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+   display:flex;
+   justify-content:space-between;
+    margin: 5px 0; 
+    width:100%;
+} 
+
+.class-skill2 {
+   display:flex;
+   justify-content:space-start;
+    margin: 5px auto; 
+} 
 
 .class-type {
   font-size: 0.9rem;
@@ -310,14 +358,21 @@ a {
   font-size: 0.8rem;
   color: #fff;
   background-color: #bd8f3c;
-  padding: 0.2rem;
+  padding: 0.3rem;
 }
 
 .class-format2 {
   font-size: 0.8rem;
   color: #fff;
   background-color: green;
-  padding: 0.2rem;
+  padding: 0.3rem;
+}
+
+.class-format3 {
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #73d9fb;
+  padding: 0.3rem;
 }
 
 .class-desc {
@@ -401,9 +456,27 @@ a {
     border: 0.5px solid;
     border-radius: 20px;
     text-align: center;
+    padding:0;
   }
 
 .asideNaming{
    font-size:small;
 }
 
+.asideNaming2:hover{
+	color:green;
+	
+  	transform: translate(0, -1px);
+}
+
+.class-img{
+  display: block;
+  width: 100%; height: 100%;
+  overflow: hidden; /* 자손이 현재 요소보다 클때 안보이게 처리 */
+}
+
+img{ transition: 0.4s; }
+
+.class-img:hover img, .class-img:focus img{ /* a태그에 마우스를 올렸을 때 */
+  transform: scale(1.1);
+}
